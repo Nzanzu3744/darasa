@@ -1,0 +1,112 @@
+<?php
+include_once('param_connexion.php');
+class crs_lecon {
+    private static  $idLecon;
+    private static  $idCours;
+    private static $lecon;
+    private static $titreLecon;
+    private static  $idUtilisateur;
+    private static $actif;
+    private static $con;
+    //CONSTRUCTEUR
+    public function __construct(){
+        return self::$con=con();
+    }
+    //GETTEURS
+    public static function getidLecon(){
+        return self::$idLecon;
+    }
+    public static function getidCours(){
+        return self::$idCours;
+    }
+    //METHODES
+    public static function ajouter($idCours,$titreL,$lecon,$iduti)
+    {
+        $idCrs=htmlspecialchars($idCours);
+        $lecon=$lecon;
+
+        $idutil=htmlspecialchars($iduti);
+        $titreLecon=htmlspecialchars($titreL);
+        $actif=1;
+        $req=self::$con->prepare('INSERT INTO crs_lecon (idCours, titreLecon, lecon, idUtilisateur, actif) VALUES (?,?,?,?,?)');
+        if($req->execute(array($idCrs,$titreLecon,$lecon,$idutil,$actif))){
+            self::$idCours=$idCours;
+            self::$lecon=$lecon;
+            self::$idUtilisateur=$idutil;
+            self::$actif=$actif;
+            $lc = new crs_lecon();
+            $lc=$lc->selectionnerDer($idCrs);
+            foreach($lc as $selc){
+                echo $selc['idLecon'];
+            }
+            
+        }else{
+            return false;
+        }
+
+    }
+    
+    public static function modifier($idLe,$idCours,$titreL, $lecon, $idUti)
+    {
+        $idLecon = htmlspecialchars($idLe);
+        $idCrs = htmlspecialchars($idCours);
+        $titreLec=htmlspecialchars($titreL);
+        $lecon=$lecon;
+        $idUtr= htmlspecialchars($idUti);
+        $req=self::$con->prepare('UPDATE crs_lecon SET idCours=?,titreLecon=?,lecon=?, idUtilisateur=?  WHERE idLecon=?');
+           if($req->execute(array($idCrs,$titreLec,$lecon,$idUtr,$idLecon))) {
+                $idLecon = htmlspecialchars($idLecon);
+                self::$idCours=htmlspecialchars($idCours);
+                self::$lecon =$lecon;
+                self::$titreLecon= htmlspecialchars($titreL);
+                // echo true;  
+            }else{
+                echo false;
+            }
+    }
+   
+    public function supprimer($idLecon){
+        $idLecon = htmlspecialchars($idLecon);
+        if(self::$con->exec('DELETE FROM `crs_lecon` WHERE idLecon="'.$idLecon.'"')){
+            self::$idLecon = '';
+            self::$lecon = "";
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function selectionner(){
+        return  self::$con->query('SELECT * FROM crs_lecon ORDER BY idLecon ASC');
+    }
+      public static function selectionnerByIdCours($idCours){
+        return  self::$con->query('SELECT * FROM `crs_lecon`as lc INNER JOIN crs_cours AS cr ON lc.idCours=cr.idCours WHERE lc.idCours='.$idCours.' LIMIT 1');
+    }
+    public function selectionnerDer($idCrs){
+        return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
+    }
+    public static function selectionnerByCours($idCours){
+        return  self::$con->query('SELECT * FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours WHERE cr.idCours='.$idCours);
+    }
+    
+    public static function getAuteur($idLecon){
+        $idLecon = htmlspecialchars($idLecon);
+        $var = self::$con->query("SELECT idUtilisateur FROM crs_lecon WHERE idLecon =".$idLecon);
+        return $var; 
+    }  
+    public static function rechercher($idLecon){
+        $idLecon = htmlspecialchars($idLecon);
+        $var = self::$con->query("SELECT * FROM crs_lecon WHERE idLecon =".$idLecon);
+        return $var; 
+    }
+    public static function filtrer($idCours){
+        $idCrs=htmlspecialchars($idCours);
+        $var = self::$con->query("SELECT * FROM crs_lecon WHERE idCours like '".$idCrs."%' ORDER BY idLecon ASC");
+        return $var;
+    }
+    //DESTRUCTEUR
+    public function __destuct(){
+    }
+}
+
+
