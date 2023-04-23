@@ -17,14 +17,14 @@ class org_anneesco {
         return self::$anneeSco;
     }
     //METHODES
-    public function ajouter($anneeSco,$commentaire)
+    public static function ajouter($anneeSco,$commentaire)
     {
         $ansco=htmlspecialchars($anneeSco);
         $cmt=htmlspecialchars($commentaire);
         $req=self::$con->prepare('INSERT INTO org_anneesco (anneeSco, commentaire) VALUES (?,?)');
         if($req->execute(array($ansco,$cmt))){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
-            self::$anneeSco=$anneeSco;
+            self::$anneeSco=$ansco;
             self::$commentaire=$cmt;
             return true;
         }else{
