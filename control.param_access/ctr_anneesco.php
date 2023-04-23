@@ -7,7 +7,8 @@ $annee = new org_anneesco();
 $annee->ajouter($_GET['anneesco'],$_GET['description']);
 
  }else if(isset($_GET['AjouteRapport'])){
-  echo 'RAPPORT DE L"ANNEE';
+  include_once('../vue.param_access/rapport_annuel.php');
+
  }else{
  echo 'ECHEC ANNEE';
  }

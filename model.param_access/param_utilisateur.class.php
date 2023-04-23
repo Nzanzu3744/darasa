@@ -120,7 +120,7 @@ class param_utilisateur {
         return $var;
     }
      public static function selectionnerUtByCrs($crs){
-        return  self::$con->query('SELECT ut.idutilisateur, ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.photoUtilisateur, gr.genre  FROM param_utilisateur as ut LEFT JOIN org_affectation as aff ON aff.idUtilisateur=ut.idUtilisateur  INNER JOIN param_genre as gr ON ut.idGenre=gr.IdGenre INNER JOIN crs_cours as crs ON aff.idAffectation=crs.idAffectation WHERE crs.idCours='.$crs );
+        return  self::$con->query('SELECT ut.idutilisateur, ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.photoUtilisateur, gr.genre  FROM param_utilisateur as ut LEFT JOIN org_affectation as aff ON aff.idUtilisateur=ut.idUtilisateur  LEFT JOIN param_genre as gr ON ut.idGenre=gr.IdGenre INNER JOIN crs_cours as crs ON aff.idAffectation=crs.idAffectation WHERE crs.idCours='.$crs );
     }
     
     public static function rechercher($idUtilisateur){

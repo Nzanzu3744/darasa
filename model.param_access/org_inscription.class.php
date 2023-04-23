@@ -64,7 +64,7 @@ class org_inscription {
         }
     }
 
-    public function selectionner(){
+    public static function selectionner(){
         return  self::$con->query('SELECT * FROM org_inscription ORDER BY idInscription ASC');
     }
     //
