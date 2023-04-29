@@ -13,7 +13,8 @@ include_once('../model.param_access/crs_lecon.class.php');
             $idC=$_GET['idCours'];
          }
          ?>
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_lecon.php?leconsgauche_eleve&idCours=<?=$idC?>','#leconsgauche');"  ></input>   
+         <input  id="" value="Actualiser" type="button" class="form-control " style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_lecon.php?leconsgauche_eleve&idCours=<?=$idC?>','#leconsgauche');"  ></input>   
+            <div class="table-responsive" style="height:530px" >
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
            <?php
@@ -31,7 +32,7 @@ include_once('../model.param_access/crs_lecon.class.php');
              ?>
                 <td style="height:100%;  background:#f2f2f2"> 
                   <z class="dropdown">
-                  <button data-toggle="dropdown" style="height:60px; ">Options<b class="caret ppull-right"></b></button>
+                  <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
                         <ul class="dropdown-menu pull-right">
                         <?php
 
@@ -54,5 +55,6 @@ include_once('../model.param_access/crs_lecon.class.php');
            ?>
            </tbody>
             </table>
+            </div>
            
         </section>

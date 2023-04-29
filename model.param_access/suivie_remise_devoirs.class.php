@@ -40,7 +40,7 @@ class suivie_remise_devoirs {
            
     }
     public static function remis($idDevoir){
-        return self::$con->query('SELECT * FROM suivie_remise_devoirs WHERE idDevoir='.$idDevoir);
+        return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN param_utilisateur as ut  WHERE rms.idDevoir='.$idDevoir);
     }
 
     //DESTRUCTEUR

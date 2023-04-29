@@ -17,7 +17,7 @@ include_once('../model.param_access/org_classe.class.php');
                     foreach($perm->selectionnerByUtIns(($_SESSION['idUtilisateur'])) as $sel){
                         $maClasse =" <z style=>".$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$sel['anneeSco']."</z>";
                     ?>
-                    <li style="border: 2px dashed blue;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCoursEleve&maClasse=<?=$maClasse?>&idIns=<?=$sel['idInscription']?>&idClasse=<?=$sel['idClasse']?>','#editLeco','')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper("<b style=color:black>".$maClasse."</b>")?></a></li> 
+                    <li style="border: 2px dashed blue;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCoursEleve&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idIns=<?=$sel['idInscription']?>&idClasse=<?=$sel['idClasse']?>','#editLeco','')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper("<b style=color:black>".$maClasse."</b>")?></a></li> 
                     <?php 
                      }
                 ?>   

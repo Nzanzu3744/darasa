@@ -9,7 +9,7 @@ function Orientation(lien,vue,form){
         success:function(serveur){
             // $(vue).html(''); 
             $(vue).html(serveur);      
-            $('#loader').hide(4000);                                                  
+            $('#loader').hide();                                                  
         } 
     });
     

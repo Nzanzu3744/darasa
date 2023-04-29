@@ -37,7 +37,7 @@ if(isset($_GET['annul'])){
  }else if(isset($_GET['courssgauche'])){ 
     include("../vue.param_access/form_cours.php");
 
- }else if(isset($_GET['VueCours']) AND isset($_GET['idClasse'])){ 
+ }else if(isset($_GET['VueCours']) AND isset($_GET['idClasse']) AND isset($_GET['idAnneeSco'])){ 
     include("../vue.param_access/cours_ense_cls.php");
     
  }else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){

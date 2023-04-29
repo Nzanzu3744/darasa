@@ -10,23 +10,19 @@ include_once('../model.param_access/crs_devoirs.class.php');
             $idC=$_GET['idCours'];
          }
          ?>
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_ense=true&idCours=<?=$idC?>','#devoirssgauche','');"  ></input>  
+         <input  id="idx" placeholder="Recherche devoir par index" type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_devoirs.php?maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&clerech='+$('#idx').val(),'#filtrer','');"  ></input>  
             <div class="table-responsive" style="height:530px">
-            <table class="table table-bordered table-striped table-condensed">
+            <table id="filtrer"  class="table table-bordered table-striped table-condensed">
                 <tbody>
            <?php
            $dv = new crs_devoirs();
-           $devoirs = $dv->selectionnerByCours($_GET['idCours']);
+           $devoirs = $dv->selectionnerBytitreCrs($_GET['cours']);
            $i=0;
-           $tr=1;
            foreach($devoirs as $seldv){
             $i++;
-            if($tr==1){echo '<tr style="margin:3px">';}
             ?>
+            <tr>
                <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:red">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?></center></br></td>
-            <?php
-             if($tr>=2){$tr=0; echo "</td>";}
-             ?>
                 <td style="height:100%;  background:#f2f2f2"> 
                   <z class="dropdown">
                   <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
@@ -46,7 +42,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                      </z>                
                </td>
                     
-                    
+               </tr>     
             <?php
            }
            ?>

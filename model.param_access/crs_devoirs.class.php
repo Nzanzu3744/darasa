@@ -16,12 +16,12 @@ class crs_devoirs {
         return self::$idDevoir;
     }
     //METHODES
-    public function ajouter($idCours,$dateRemise,$description)
+    public function ajouter($idCours,$dateRemise,$idx)
     {
         $idCrs= htmlspecialchars($idCours);
         $dtRms = htmlspecialchars($dateRemise);
-        $Dscri = htmlspecialchars($description);
-        if(self::$con->exec('INSERT INTO crs_devoirs (idCours, dateCreation, dateRemise, description) VALUES ('.$idCrs.',now(),"'.$dtRms.'","'.$Dscri.'")')){
+        $idx = htmlspecialchars($idx);
+        if(self::$con->exec('INSERT INTO crs_devoirs (idCours, dateCreation, dateRemise, indexation) VALUES ('.$idCrs.',now(),"'.$dtRms.'","'.$idx.'")')){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
             self::$idCours = $idCrs;
             self::$dateRemise = $dtRms;
@@ -38,7 +38,7 @@ class crs_devoirs {
         }
     }
    public static function selectionnerByCours($idCours){
-        return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours WHERE cr.idCours='.$idCours);
+        return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours);
     }
       public static function selectionnerByIdCours($idCours){
         return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC LIMIT 1');
@@ -79,6 +79,14 @@ class crs_devoirs {
     public static function selectionner(){
         return  self::$con->query('SELECT * FROM crs_devoirs ORDER BY idDevoir ASC');
     }
+    public static function selectionnerBytitreDev($cours,$idx){
+        return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.indexation like "%'.$idx.'%" AND cr.cours LIKE "%'.$cours.'%" ORDER BY dv.idDevoir DESC');
+    }
+    public static function selectionnerBytitreCrs($cours){
+        return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.cours LIKE "%'.$cours.'%" ORDER BY dv.idDevoir DESC');
+    }
+
+
     public static function remisC($idDevoir, $idUtil){
         return  self::$con->query('SELECT dv.idDevoir,repc.idUtilisateur FROM crs_devoirs as dv LEFT JOIN crs_question as qst ON dv.idDevoir=qst.idDevoir LEFT JOIN crs_assertion as ass ON qst.idQuestion = ass.idQuestion LEFT JOIN crs_reponsec as repc ON ass.idAssertion=repc.idAssertion WHERE dv.idDevoir=317 and repc.idReponse=9 LIMIT 1');
     }

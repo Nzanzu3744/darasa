@@ -1,5 +1,5 @@
 <?php
-include_once("header_rapport.php");
+
 include_once('../model.param_access/param_utilisateur.Class.php');
 include_once('../model.param_access/crs_devoirs.class.php');
 include_once('../model.param_access/crs_lecon.class.php');
@@ -7,10 +7,10 @@ $editeur = new param_utilisateur();
 $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
 ?>
 <div style="border: 1px solid black; pabing:5px">
+<button class="pull-right btn btn-warning" onclick="Orientation('../control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button>
+<button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button>
     <table class="table table-bordered">
-
         <center style="background: aliceblue; font-size:20px" class="col-sm-12"><b> RAPPORT SYNTHESE DU COURS</b></center>
-
     <tbody>
      <tr style="color: white">
                 <td></td>
@@ -67,7 +67,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                         $tur =1;
                         foreach($lc as $selLc){
                         ?>
-                            <li id='<?=$selLc['idLecon']?>'> <?=$tur++?>)<b><?=' '.$selLc['titreLecon']?></b></li>
+                            <li id='<?=$selLc['idLecon']?>'> <?=strtoupper($tur++.') '.$selLc['titreLecon'])?></li>
                         <?php
                         include_once('../model.param_access/visite_lecon.class.php');
                         $nvues =new visite_lecon();
@@ -99,7 +99,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                         $tur =1;
                         foreach($dv as $selDv){
                         ?>
-                            <li id='<?=$selDv['idDevoir']?>'> <?=$tur++?>)<b><?='Devoir code : ['.$selDv['idDevoir'].'] Date de Creation '.$selDv['dateCreation'].'date Remise :'.$selDv['dateRemise'].''?></b></li>
+                            <li id='<?=$selDv['idDevoir']?>'> <?=strtoupper($tur++.') Devoir code : ['.$selDv['idDevoir'].'] Date de Creation '.$selDv['dateCreation'].'date Remise :'.$selDv['dateRemise'].'')?></b></li>
                          <?php
                         include_once('../model.param_access/suivie_remise_devoirs.class.php');
                         $rm = new suivie_remise_devoirs();
@@ -110,7 +110,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                             $nbrm++;
                          }
                          ?>
-                         <div onclick="Orientation('../control.param_access/ctr_devoirs.php?idDevoir=<?=$selDv['idDevoir']?>&Rmis','<?='#Rm'.$selDv['idDevoir']?>','')"> Nombre devoirs remis : <?=$nbrm?></div>
+                         <div onclick="Orientation('../control.param_access/ctr_devoirs.php?listeRms=true&idDevoir=<?=$selDv['idDevoir']?>&Rmis','<?='#Rm'.$selDv['idDevoir']?>','')"> Nombre devoirs remis : <?=$nbrm?></div>
                          <div id='<?='Rm'.$selDv['idDevoir']?>'  style="">
                    
                          </div>
@@ -136,5 +136,5 @@ echo $_GET['maClasse'];
 echo $_GET['cours'];
 echo $_GET['idCours'];
 echo $_GET['idCls'];
-include_once("footer_rapport.php");
+
 ?>

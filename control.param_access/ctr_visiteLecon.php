@@ -8,7 +8,7 @@ if(isset($_GET['idlc']) AND isset($_GET['Lvit'])){
     <?php
     foreach($vt as $selVt){
     ?>
-        <li><?=$selVt['nomUtilisateur'].' '.$selVt['postnomUtilisateur'].' '.$selVt['prenomUtilisateur']?></li>
+        <li><?=strtoupper('Id:['.$selVt['idUtilisateur'].']   '.$selVt['nomUtilisateur'].' '.$selVt['postnomUtilisateur'].' '.$selVt['prenomUtilisateur'])?></li>
     <?php   
     }
     ?>

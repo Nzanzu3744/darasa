@@ -18,13 +18,13 @@
             </div>
             <div class="col-sm-5" style="border: 1px solid rgba(174, 174, 174, 0.4); margin:2%;padding:2%" >
               
-                <textarea id="cmt" style="width:300px; height:100px" type="textarea" class="form-control">Description (Commentaire) </textarea>
+                <textarea id="idx" style="width:300px; height:100px" type="textarea" placeholder="indexation" class="form-control"></textarea>
             </div>
     </div>
           
     </div>
 
     <div style="padding: 10px" >
-    <button id="enrg" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?PreEb2&maClasse=<?=$_GET['maClasse']?>&cours<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>&nbQT='+$('#nbQT').val()+'&nbQC='+$('#nbQC').val()+'&dtremise='+$('#dtremise').val()+'&cmt='+$('#cmt').val(),'#editLeco','');Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_ense&maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  class="btn btn-success pull-left col-sm-6">OK</button>
+    <button id="enrg" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?PreEb2&maClasse=<?=$_GET['maClasse']?>&cours<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>&nbQT='+$('#nbQT').val()+'&nbQC='+$('#nbQC').val()+'&dtremise='+$('#dtremise').val()+'&idx='+$('#idx').val(),'#editLeco','');Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_ense&maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  class="btn btn-success pull-left col-sm-6">OK</button>
     <button onclick="Encour()"  class="btn btn-default pull-right  col-sm-6">Annuler</button>
 </form>

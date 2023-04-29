@@ -9,5 +9,9 @@
     src="https://en.m.wikipedia.org/">
 </iframe> -->
 
-
 <?php include_once("footer.php");?>
+
+
+<!-- include_once('../model.param_access/crs_reler_lecon.class.php');
+  $rl = new crs_reler_lecon();
+  echo $rl->ajouter(1,1,1); -->

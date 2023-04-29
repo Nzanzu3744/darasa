@@ -23,14 +23,11 @@
                             <li class="" onclick="Orientation('../control.param_access/ctr_role.php?VueRl=','#panel')"> <a href="#"> <span class="glyphicon glyphicon-user"></span>MEMBRES PAR GROUPE</a> </li>
                             
 
-                            <li class="dropdown ">
-                                <a data-toggle="dropdown" href="#">COURS<b class="caret pull-right"></b></a>
-                                    <ul class="dropdown-menu">
-                                    <li><a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseAff=true','#panel'); ">Cours Interface Enseignant</a></li>
-                                    <li><a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseIns=true','#panel'); ">Cours Interface Elève</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#"onclick="Encour()">Rapport Cours</a></li>
-                                </ul>
+                           <li>
+                                <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseIns=true','#panel'); ">ELEVE</a>
+                            </li>
+                             <li class="dropdown ">
+                                <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseAff=true','#panel'); ">ENSEIGNANT</a>
                             </li>
 
                             <li class="dropdown ">
@@ -40,6 +37,9 @@
                                     <li><a href="#" onclick="Orientation('../control.param_access/ctr_anneesco.php?AfficheAnnee=true','#panel'); ">Annee Scolaire</a></li>
                                     <li><a href="#" onclick="Orientation('../control.param_access/ctr_permission.php?VuePr=','#panel')"> Permission </a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="#" onclick="Encour()">BLOG</a>
                             </li>
                             <li class="dropdown ">
                                 <a class=" data-toggle="dropdown" href="#">BACK-UP<b class="caret pull-right"></b></a>

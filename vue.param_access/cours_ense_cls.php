@@ -13,7 +13,7 @@ include_once('../model.param_access/param_groupe.class.php');
                 <tbody>
            <?php
            $crs = new crs_cours();
-           $cours = $crs->selectionnerByUtCls($_SESSION['idUtilisateur'],$_GET['idClasse']);
+           $cours = $crs->selectionnerCrsByUtClsAnn($_SESSION['idUtilisateur'],$_GET['idClasse'],$_GET['idAnneeSco']);
            $i=0;
            $tr =0;
            $idcours=0;
@@ -43,10 +43,12 @@ include_once('../model.param_access/param_groupe.class.php');
                         <li><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?NvDevoi=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$selCrs['cours']?>&idCours=<?=$selCrs['idCours']?>','#editLeco',''); Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Nouveau Devoir</a></i></li>
                         <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">Liste Leçons</a></i></li>
                         <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Liste Devoir</a></i></li>
+                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?rechercheGauche&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres Devoirs</a></i></li>
+                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_lecon.php?rechercheGauche&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres lecons</a></i></li>
                         <li ><a href="#" onclick="Encour()" >Supprimer</a></i></li>
                         <li class="divider"></li>
                         <li>
-                             <a id="charge"   onmousedown="Orientation('../control.param_access/ctr_rapport.php?rptCours_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#test09','')" data-toggle="modal" href="#infos" > Rapport </a> 
+                             <a id="charge"   onmousedown="Orientation('../control.param_access/ctr_rapport.php?rptCours_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Rapport </a> 
                         </li>
 
                     </ul>
@@ -64,5 +66,5 @@ include_once('../model.param_access/param_groupe.class.php');
            
         </section>
 
- <button class="btn btn-default pull-left col-sm-2" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_cours.php?idClasse=<?=$_GET['idClasse']?>&idCours=<?=$idcours?>&maClasse=<?=$_GET['maClasse']?>&idAfft=<?=$_GET['idAfft']?>&courssgauche','#leconsgauche')"> NOUVEAU COURS</button>
+ <button class="btn btn-default pull-left col-sm-2" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_cours.php?idClasse=<?=$_GET['idClasse']?>&idCours=<?=$idcours?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&maClasse=<?=$_GET['maClasse']?>&idAfft=<?=$_GET['idAfft']?>&courssgauche','#leconsgauche')"> NOUVEAU COURS</button>
 

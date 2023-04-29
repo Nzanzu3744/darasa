@@ -12,7 +12,7 @@ include_once('../model.param_access/param_groupe.class.php');
                 <tbody>
            <?php
            $crs = new crs_cours();
-           $cours = $crs->selectionnerCrsEleveByCls($_GET['idClasse']);
+           $cours = $crs->selectionnerCrsEleveByCls($_GET['idClasse'],$_GET['idAnneeSco']);
            $i=0;
            $tr =0;
            foreach($cours as $selCrs){

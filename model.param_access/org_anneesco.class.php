@@ -66,6 +66,9 @@ class org_anneesco {
     public static function selectionnerDerAn(){
         return  self::$con->query('SELECT * FROM org_anneesco ORDER BY idAnneeSco DESC LIMIT 1 ');
     }
+    public static function selectionnerDerAnAff($idUti){
+        return  self::$con->query('SELECT * FROM org_anneesco as an LEFT JOIN org_affectation as aff ON an.idAnneeSco=aff.idAnneeSco LEFT JOIN param_utilisateur as ut ON ut.idUtilisateur=aff.idUtilisateur WHERE ut.idUtilisateur='.$idUti.'  ORDER BY an.idAnneeSco DESC LIMIT 1 ');
+    }
     
     public static function rechercher($idAnneeSco){
         $idAnnee = htmlspecialchars($idAnneeSco);
