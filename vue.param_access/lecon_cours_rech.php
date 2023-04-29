@@ -7,7 +7,7 @@ include_once('../model.param_access/crs_lecon.class.php');
 
 
          <section  class="fenetre " style=";background-color: transparent">
-         <input  id="rechleco" placeholder="Recherche lecon par titre"   type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&clerech='+$('#rechleco').val(),'#filtrer','');"  ></input>  
+         <input  id="rechleco" placeholder="Recherche lecon par titre"   type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech='+$('#rechleco').val(),'#filtrer','');"  ></input>  
          <div class="table-responsive" style="height:530px" >
          <center><i id="resul"></i></center>
             <table id="filtrer"  class="table table-bordered table-striped table-condensed ">
@@ -35,7 +35,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                        $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
                               <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
-                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</a></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</a></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

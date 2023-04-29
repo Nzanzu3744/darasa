@@ -93,7 +93,7 @@ class crs_lecon {
         return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
     }
     public static function selectionnerByCours($idCours){
-        return  self::$con->query('SELECT * FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours);
+        return  self::$con->query('SELECT lc.idLecon, lc.titreLecon, cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours.' UNION SELECT lc.idLecon, lc.titreLecon,cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_reler_lecon` as rl INNER JOIN crs_lecon as lc ON rl.idLecon=lc.idLecon INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours);
     }
     
     public static function getAuteur($idLecon){
