@@ -62,14 +62,13 @@ include_once('../model.param_access/crs_devoirs.class.php');
                  <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
                     <ul class="dropdown-menu pull-right">
                      <?php
-                      $sel_C = new crs_devoirs();
-                      $sel_C=$sel_C->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D = new crs_devoirs();
+                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
                         ?>
-                              <li><a onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selDv['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selDv['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
-                              
+                              <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
                               <li class="divider"></li>
                               <li>
-                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
+                                 <a href="#" onclick="Encour()">Rapport Devoir</a>
                               </li>
                         </ul>
                 </z>                
@@ -98,11 +97,10 @@ include_once('../model.param_access/crs_devoirs.class.php');
                  <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
                     <ul class="dropdown-menu pull-right">
                      <?php
-                      $sel_C = new crs_devoirs();
-                      $sel_C=$sel_C->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D = new crs_devoirs();
+                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
                         ?>
-                              <li><a onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selDv['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selDv['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
-                              
+                              <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>
