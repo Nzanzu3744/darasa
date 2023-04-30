@@ -25,7 +25,7 @@ class crs_devoirs {
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
             self::$idCours = $idCrs;
             self::$dateRemise = $dtRms;
-            self::$description = $Dscri;
+            self::$description = $idx;
 
               $dvoir = new crs_devoirs();
             $dvoir=$dvoir->selectionnerByIdCours($idCrs);
@@ -38,7 +38,7 @@ class crs_devoirs {
         }
     }
    public static function selectionnerByCours($idCours){
-        return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours);
+        return  self::$con->query('SELECT dv.idDevoir, cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' UNION SELECT dv.idDevoir, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours);
     }
       public static function selectionnerByIdCours($idCours){
         return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC LIMIT 1');

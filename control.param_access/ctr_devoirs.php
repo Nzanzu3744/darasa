@@ -30,10 +30,17 @@ if(isset($_GET['NvDevoi'])){
         ?>
         </ol>
         <?php
-}elseif(isset($_GET['rechercheGauche'])){
+}else if(isset($_GET['rechercheGauche'])){
     include_once('../vue.param_access/devoir_cours_rech.php');
 
-}elseif(isset($_GET['clerech']) AND $_GET['clerech']!=''){    
+}else if(isset($_GET['RelierDevoir'])){
+    include_once('../model.param_access/crs_reler_devoir.class.php');
+    include_once('../model.param_access/org_anneesco.class.php');
+     $rl =new crs_reler_devoir();
+     $sel_A=new org_anneesco();
+    $sel_A=$sel_A->selectionnerDerAn()->fetch();
+    echo $rl->ajouter($_GET['idDevoir'],$_GET['idCours'],$sel_A['idAnneeSco']); 
+}else if(isset($_GET['clerech']) AND $_GET['clerech']!=''){    
 include_once('../model.param_access/crs_devoirs.class.php');
 ?>
  <table id="filtrer"  class="table table-bordered table-striped table-condensed">
