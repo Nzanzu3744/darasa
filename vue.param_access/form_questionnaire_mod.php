@@ -61,6 +61,8 @@
     }else{
             ?>
       <div class="col-sm-12  " style="border: 2px dashed rgba(174, 174, 174, 0.4) margin:botton:15px" >
+      <div id="clef" name="clef" style="color:white">
+      
         <?php
         $asstion = new crs_assertion();
          $Tbasstion = $asstion->selectionnerByQst($selQst['idQuestion']);
@@ -68,32 +70,32 @@
          foreach($Tbasstion as $selAzioni){
               if($tura==1){
             ?>
-              <input disabled style="color:red" id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==2){
             ?>
-              <input disabled style="color:red" id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==3){
             ?>
-              <input disabled style="color:red" id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==4){
             ?>
-              <input disabled style="color:red" id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==5){
             ?>
-              <input disabled style="color:red" id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==6){
             ?>
-              <input disabled style="color:red" id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input disabled  id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }
@@ -101,6 +103,7 @@
          }
 
         ?>
+        </div>
         <div id=<?='QuestC'.$nub?> name=<?='QuestC'.$nub?> >
                 <labelle for=<?='qstC'.$nub?> class="col-sm-12" style="font-size:20px"> Question :<?=$nub?></labelle>
                 <form id="<?='fseria'.$nub?>" name="<?='fseria'.$nub?>">
@@ -189,7 +192,7 @@
         <input  id=<?='pond'.$nub?> type="text" placeholder="Point" value='<?=$selQst['ponderation']?>'/>
     
           <div class="col-sm-12">
-              <button onclick="Orientation('../control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
+              <button onclick="showme1('#clef');Orientation('../control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
                 +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
                 +'&ass1='+$('#ass1'+<?=$nub?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$nub?>).val()
@@ -202,11 +205,16 @@
                 +'&ass5='+$('#ass5'+<?=$nub?>).val()
                 +'&asCk6='+$('#asCk6'+<?=$nub?>).val()
                 +'&ass6='+$('#ass6'+<?=$nub?>).val()
-       
-                ,'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
+                +'&modif1='+$('#modif1<?=$nub?>').val()
+                +'&modif2='+$('#modif2<?=$nub?>').val()
+                +'&modif3='+$('#modif3<?=$nub?>').val()
+                +'&modif4='+$('#modif4<?=$nub?>').val()
+                +'&modif5='+$('#modif5<?=$nub?>').val()
+                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
         </div>
       </div>
     </div>
+  </div>
         <?php
         $nub++;
     }

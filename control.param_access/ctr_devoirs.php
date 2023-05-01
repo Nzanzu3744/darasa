@@ -66,6 +66,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                       $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
                         ?>
                               <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$_GET['idCours']?>&&idDevoir=<?=$selDv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Devoir</a>
@@ -101,6 +102,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                       $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
                         ?>
                               <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$_GET['idCours']?>&&idDevoir=<?=$selDv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

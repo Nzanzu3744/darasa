@@ -6,7 +6,7 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
    ?>
    <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
    <?php
-   $var->modifier($_GET['idlc'],$_GET['idcrs'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
+   $var->modifier($_GET['idlc'],$_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
     include_once('../vue.param_access/form_lecon_mod.php');
     echo "UNDEF";
 

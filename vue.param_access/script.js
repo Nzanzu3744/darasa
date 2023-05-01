@@ -26,7 +26,7 @@ function charge_Image(){
 }
 
  function showme1(fn1){
-        $(fn1).toggle('slow');      
+        $(fn1).toggle();      
 }
   function showme(fn1,fn2,aff){
     if(aff=='true'){

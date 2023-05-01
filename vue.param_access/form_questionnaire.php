@@ -98,9 +98,7 @@
                 +'&ass5='+$('#ass5'+<?=$nub?>).val()
                 +'&asCk6='+$('#asCk6'+<?=$nub?>).val()
                 +'&ass6='+$('#ass6'+<?=$nub?>).val()
-                +'&idDev='+$('#idDev').val()
-
-                ,'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
+                +'&idDev='+$('#idDev').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
             </div>
     </div>
     <?php
