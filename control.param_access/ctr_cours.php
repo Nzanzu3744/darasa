@@ -31,14 +31,23 @@ if(isset($_GET['annul'])){
  }else if(isset($_GET['VueClasseIns'])){ 
     include("../vue.param_access/cours_Elve.php");
 
+ }else if(isset($_GET['VueClasseDir'])){ 
+    include("../vue.param_access/cours_directeur.php");
+
  }else if(isset($_GET['VueCoursEleve'])){ 
     include("../vue.param_access/cours_eleve_cls.php");
+
+ }else if(isset($_GET['VueCoursDirecteur'])){ 
+    include("../vue.param_access/cours_directeur_cls.php");
 
  }else if(isset($_GET['courssgauche'])){ 
     include("../vue.param_access/form_cours.php");
 
  }else if(isset($_GET['VueCours']) AND isset($_GET['idClasse']) AND isset($_GET['idAnneeSco'])){ 
     include("../vue.param_access/cours_ense_cls.php");
+    
+ }else if(isset($_GET['VueCours_dir']) AND isset($_GET['idClasse']) AND isset($_GET['idAnneeSco'])){ 
+    include("../vue.param_access/cours_directeur_cls.php");
     
  }else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
     include_once("../vue.param_access/liste_role.php");

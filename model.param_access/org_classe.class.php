@@ -71,7 +71,10 @@ class org_classe {
     }
 
     public function selectionner(){
-        return  self::$con->query('SELECT * FROM org_classe ORDER BY idClasse ASC');
+        return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite');
+    }
+    public function selectionnerByProm($idProm){
+        return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE cls.idPromotion='.$idProm);
     }
     public function selectionnerByUt($idUt,$ansc){
         return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_affectation as af ON af.idClasse=cls.idClasse INNER JOIN org_anneesco as ansc ON af.idAnneeSco=ansc.idAnneeSco INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE af.actif=1 AND af.idUtilisateur="'.$idUt.'" AND ansc.idAnneeSco="'.$ansc.'" ORDER BY ansc.idAnneeSco DESC');

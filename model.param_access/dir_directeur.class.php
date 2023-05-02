@@ -28,6 +28,12 @@ class dir_directeur {
                         return false;
                     }  
     }
+    public function selectionnerByUtiActif($idUt){
+        return  self::$con->query('SELECT * FROM `dir_directeur` as dir INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=dir.idUtilisateur WHERE dir.idUtilisateur="'.$idUt.'" AND dir.actif=1 ');
+    }
+    public function selectionnerByUti($idUt){
+        return  self::$con->query('SELECT * FROM `dir_directeur` as dir INNER JOIN org_promotion as pr ON pr.idPromotion=dir.idPromotion INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=dir.idUtilisateur WHERE dir.idUtilisateur='.$idUt);
+    }
    
     //DESTRUCTEUR
     public function __destuct(){

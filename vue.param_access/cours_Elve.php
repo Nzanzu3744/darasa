@@ -25,8 +25,8 @@ include_once('../model.param_access/org_classe.class.php');
         </nav>
     </header>
 <section class="" id="corps" style="height:580px;">
-    <div id="editLeco" style="padding:0px; margin:0px; height:560px; with:100% display: inline-block;" class="well table-responsive">
-        <center class="titres" style="font-size:30px; padding:18%" > Selectionner une classe pour visualiser tes cours de cette derniere.</center>
+    <div id="editLeco" style="padding:0px; margin:0px; height:580px; with:100% display: inline-block;" class="well table-responsive">
+        <center class="titres" style="font-size:30px; padding:10%" >Bonjour APPRENANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> Les classes dans les quelles vous vous etes inscrit du plus ancienne au plus recente.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2" style="display:none">
     </div>

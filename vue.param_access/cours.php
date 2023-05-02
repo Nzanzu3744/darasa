@@ -51,7 +51,7 @@ include_once('../model.param_access/org_anneesco.class.php');
     </header>
 <section class="" id="corps" style="height:580px">
     <div id="editLeco" style="padding:0px; margin:0px; height:560px; width:100% display: inline-block;" class="well table-responsive">
-        <center class="titres" style="font-size:30px; padding:18%" > Selectionner une classe pour visualiser tes cours de cette derniere.</center>
+        <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) ENSEIGNANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours de votre affectation est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2">
     </div>

@@ -29,6 +29,9 @@
                              <li class="dropdown ">
                                 <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseAff=true','#panel'); ">ENSEIGNANT</a>
                             </li>
+                            <li class="dropdown ">
+                                <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseDir=true','#panel'); ">DIRECTION</a>
+                            </li>
 
                             <li class="dropdown ">
                                 <a data-toggle="dropdown" href="#">PARAMETRE<b class="caret pull-right"></b></a>

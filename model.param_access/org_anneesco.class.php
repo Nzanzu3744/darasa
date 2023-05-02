@@ -63,6 +63,9 @@ class org_anneesco {
     public static function selectionner(){
         return  self::$con->query('SELECT * FROM org_anneesco ORDER BY idAnneeSco ASC');
     }
+    public static function selectionnerDesc(){
+        return  self::$con->query('SELECT * FROM org_anneesco ORDER BY idAnneeSco DESC');
+    }
     public static function selectionnerDerAn(){
         return  self::$con->query('SELECT * FROM org_anneesco ORDER BY idAnneeSco DESC LIMIT 1 ');
     }

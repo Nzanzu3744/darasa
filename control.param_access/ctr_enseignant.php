@@ -37,6 +37,6 @@ if(isset($_GET['annul'])){
 }else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
    include_once("../vue.param_access/liste_role.php");
 }else{
-  echo "ECHEC LISTE INSCRIPTION";
+  echo "ECHEC LISTE AFFECTATION";
 }
 ?>

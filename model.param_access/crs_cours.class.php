@@ -74,6 +74,9 @@ class crs_cours {
     public function selectionnerCrsByUtClsAnn($idUt,$cls,$ann){
         return  self::$con->query('SELECT * FROM `crs_cours`  as crs INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur WHERE ut.idUtilisateur='.$idUt.' AND af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );
     }
+    public function selectionnerCrsByClsAnn($cls,$ann){
+        return  self::$con->query('SELECT * FROM `crs_cours`  as crs INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur WHERE af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );
+    }
     
      public function selectionnerCrsEleveByCls($cls,$ann){
         return  self::$con->query('SELECT * FROM `crs_cours`  as crs  INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=af.idUtilisateur  INNER JOIN org_classe as cls ON cls.idClasse=af.idClasse WHERE af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );

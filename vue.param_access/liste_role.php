@@ -48,14 +48,15 @@ include_once('../model.param_access/param_groupe.class.php');
             <?php
             ?>
                 <!--  -->
-                <td style="height:100%; padding:5px; background:#f2f2f2"> 
+                <td style="height:100%; padding:0px; background:#f2f2f2"> 
+                <center>
 
-                            <button class="btn" style="color: blue"    href="#" onclick="Orientation('../control.param_access/ctr_eleve.php?eleve&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')">Profil Eleve</button>
-                            <button class="btn" style="color: blue"  href="#" onclick="Orientation('../control.param_access/ctr_enseignant.php?enseigna&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')">Profil Enseignant</button>
+                            <button class="btn btn-sm btn-defaulter" style="color: blue"    href="#" onclick="Orientation('../control.param_access/ctr_eleve.php?eleve&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')">INSCRIRE ELEVE</button>
+                            <button class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('../control.param_access/ctr_enseignant.php?enseigna&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')">AFFECTER ENSEIG.</button>
+                            <button class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('../control.param_access/ctr_directeur.php?directeur&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')">AFFECTER DIR.</button>
 
-                            <button class="btn" style="color: blue" href="#" onclick="Encour()">Rapport Eleve 
-                            </button>                
-
+                            <button class="btn btn-sm btn-defaulter" style="color: blue" href="#" onclick="Encour()">Rapport</button>                
+        </center>
                     </td>
                     
                     
