@@ -13,7 +13,7 @@ include_once('../model.param_access/param_groupe.class.php');
            <?php
            $crs = new crs_cours();
            $cours = $crs->selectionnerCrsEleveByCls($_GET['idClasse'],$_GET['idAnneeSco']);
-           $i=0;
+           $i=1;
            $tr =0;
            foreach($cours as $selCrs){
             $tr++;
@@ -22,7 +22,7 @@ include_once('../model.param_access/param_groupe.class.php');
 
                     <?php if($tr==1){echo '<tr style="margin:3px">';}?>
                                 
-                            <td style="background-color: aliceblue"><?=$i++;?></td>
+                            <td style="background-color: blue; color:white"><?=$i++;?></td>
                             <td><?=$selCrs['idCours']?></td>
                             <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=": <z style=font-size:10px".strtoupper($_GET['maClasse'])?></z></td>
                             <td style="" ><i class="labelles" >Enseignant : </i><b style='font-size:10px'><?=":".strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></td>

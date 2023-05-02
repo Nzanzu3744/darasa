@@ -24,7 +24,7 @@ include_once('../model.param_access/org_anneesco.class.php');
                         // .$sel['anneeSco']
                          $maClasse =" <z style=>".$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$sel['anneeSco']."</z>";
                     ?>
-                    <li style="border: 2px dashed black; width:13%; height:55px;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idAfft=<?=$sel['idAffectation']?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 2px dashed red; width:13%; height:55px;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idAfft=<?=$sel['idAffectation']?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                 ?>   

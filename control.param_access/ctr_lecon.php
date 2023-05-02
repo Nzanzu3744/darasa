@@ -7,8 +7,18 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
    <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
    <?php
    $var->modifier($_GET['idlc'],$_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
-    include_once('../vue.param_access/form_lecon_mod.php');
-    echo "UNDEF";
+    include_once('../vue.param_access/form_lecon_mod_ense.php');
+
+
+
+}else if(isset($_GET['ajouterLViaDir']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefined"){
+    include_once('../model.param_access/crs_lecon.class.php');
+   $var = new crs_lecon();
+   ?>
+   <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
+   <?php
+   $var->modifier($_GET['idlc'],$_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
+    include_once('../vue.param_access/form_lecon_mod_dir.php');
 
 
 }else if(isset($_GET['ajouterL']) AND isset($_POST['lcn'])){
@@ -17,7 +27,7 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
        ?>
         <input disabled style="color:red" id="idlc" value='<?=$idLecon->ajouter($_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] )?>'>
         <?php
-        include_once('../vue.param_access/form_lecon_mod.php');
+        include_once('../vue.param_access/form_lecon_mod_ense.php');
 
 
 
@@ -29,17 +39,29 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
 }else  if(isset($_GET['leconsgauche_ense']) and isset($_GET['idCours'])){
     include_once('../vue.param_access/lecon_cours_ense_cls.php');
 //LECTURE LECON
+}else  if(isset($_GET['leconsgauche_dir']) and isset($_GET['idCours'])){
+    include_once('../vue.param_access/lecon_cours_dir_cls.php');
+//LECTURE LECON
 }else  if(isset($_GET['leconsgauche_eleve']) and isset($_GET['idCours'])){
     include_once('../vue.param_access/lecon_cours_eleve_cls.php');
 //LECTURE LECON
-}else if(isset($_GET['LireLecon'])){
+}else if(isset($_GET['LireLecon_ense'])){
+    include_once('../model.param_access/visite_lecon.class.php');
+    $visite =new visite_lecon();
+    $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
+    ?>
+        <input disabled style="color:red" id="idlc" value='<?=$_GET['idlc']?>'/>
+    <?php
+include_once('../vue.param_access/form_lecon_mod_ense.php');
+}else if(isset($_GET['LireLecon_dir'])){
     include_once('../model.param_access/visite_lecon.class.php');
     $visite =new visite_lecon();
     $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
     ?>
         <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
     <?php
-include_once('../vue.param_access/form_lecon_mod.php');
+include_once('../vue.param_access/form_lecon_mod_dir.php');
+
 }else if(isset($_GET['RelierLecon'])){
     include_once('../model.param_access/crs_reler_lecon.class.php');
     include_once('../model.param_access/org_anneesco.class.php');
@@ -52,19 +74,22 @@ include_once('../vue.param_access/form_lecon_mod.php');
      include_once('../model.param_access/visite_lecon.class.php');
     $visite =new visite_lecon();
     $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
-    echo '<labelle disabled style="color:green" id="idlc"'.$_GET['idlc'].'</labelle>';
+    echo '<labelle disabled style="color:blue" id="idlc">'.$_GET['idlc'].'</labelle>';
 include_once('../vue.param_access/lecon_eleve.php');
-}else if(isset($_GET['rechercheGauche'])){
-    include_once('../vue.param_access/lecon_cours_rech.php');
+}else if(isset($_GET['rechercheGauche_ense'])){
+    include_once('../vue.param_access/lecon_cours_rech_ense.php');
 
-}else if(isset($_GET['clerech']) AND $_GET['clerech']!=''){    
+}else if(isset($_GET['rechercheGauche_dir'])){
+    include_once('../vue.param_access/lecon_cours_rech_dir.php');
+    
+}else if(isset($_GET['clerech_ense']) AND $_GET['clerech_ense']!=''){    
 include_once('../model.param_access/crs_lecon.class.php');
 ?>
  <table id="filtrer"  class="table table-bordered table-striped table-condensed">
 <?php
     $lc = new crs_lecon();
     $lecon;
-    $lecon = $lc->selectionnerBytitrelC($_GET['cours'],$_GET['clerech']);     
+    $lecon = $lc->selectionnerBytitrelC($_GET['cours'],$_GET['clerech_ense']);     
     $i=0;
     foreach($lecon as $selLc){
         $i++;
@@ -81,7 +106,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                       $sel_C = new crs_lecon();
                       $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
-                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_ense=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
                               <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</li>
                               <li class="divider"></li>
                               <li>
@@ -94,7 +119,7 @@ include_once('../model.param_access/crs_lecon.class.php');
         </table>   
             <?php
            }
-}else if(isset($_GET['clerech']) AND $_GET['clerech']==''){    
+}else if(isset($_GET['clerech_ense']) AND $_GET['clerech_ense']==''){    
 include_once('../model.param_access/crs_lecon.class.php');
 ?>
  <table id="filtrer"  class="table table-bordered table-striped table-condensed">
@@ -118,7 +143,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                       $sel_C = new crs_lecon();
                       $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
-                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_ense=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
                               <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</li>
                               <li class="divider"></li>
                               <li>
@@ -131,6 +156,87 @@ include_once('../model.param_access/crs_lecon.class.php');
         </table>   
             <?php
            }
+}else if(isset($_GET['clerech_dir']) AND $_GET['clerech_dir']!=''){    
+include_once('../model.param_access/crs_lecon.class.php');
+?>
+ <table id="filtrer"  class="table table-bordered table-striped table-condensed">
+<?php
+    $lc = new crs_lecon();
+    $lecon;
+    $lecon = $lc->selectionnerBytitrelC($_GET['cours'],$_GET['clerech_dir']);     
+    $i=0;
+    foreach($lecon as $selLc){
+        $i++;
+        ?>
+        <tr id="filtrer" style="margin:3px">
+        <?php
+         ?>
+          <td style="background-color: aliceblue; font-size:12px">[<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:green">TITRE<br><?=$selLc['titreLecon']?><br><?=$selLc['anneeSco']?><br><a href='#' style='font-size:8px'><?=$selLc['nomUtilisateur'].'  '.$selLc['postnomUtilisateur'].' '.$selLc['prenomUtilisateur']?></a></center></br></td>
+            <td style="height:100%;  background:#f2f2f2"> 
+               <z class="dropdown">
+                 <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
+                    <ul class="dropdown-menu pull-right">
+                     <?php
+                      $sel_C = new crs_lecon();
+                      $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
+                        ?>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_dir=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</li>
+                              <li class="divider"></li>
+                              <li>
+                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
+                              </li>
+                        </ul>
+                </z>                
+            </td>
+        </tr>
+        </table>   
+            <?php
+           }
+}else if(isset($_GET['clerech_dir']) AND $_GET['clerech_dir']==''){    
+include_once('../model.param_access/crs_lecon.class.php');
+?>
+ <table id="filtrer"  class="table table-bordered table-striped table-condensed">
+<?php
+    $lc = new crs_lecon();
+    $lecon;
+    $lecon = $lc->selectionnerBytitreCrs($_GET['cours']);       
+    $i=0;
+    foreach($lecon as $selLc){
+        $i++;
+        ?>
+        <tr id="filtrer" style="margin:3px">
+        <?php
+         ?>
+          <td style="background-color: aliceblue; font-size:12px">[<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:green">TITRE<br><?=$selLc['titreLecon']?><br><?=$selLc['anneeSco']?><br><a href='#' style='font-size:8px'><?=$selLc['nomUtilisateur'].'  '.$selLc['postnomUtilisateur'].' '.$selLc['prenomUtilisateur']?></a></center></br></td>
+            <td style="height:100%;  background:#f2f2f2"> 
+               <z class="dropdown">
+                 <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
+                    <ul class="dropdown-menu pull-right">
+                     <?php
+                      $sel_C = new crs_lecon();
+                      $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
+                        ?>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_dir=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon dir</a></i></li>
+                              <li><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?RelierLecon=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#resul','')">Rapporter</li>
+                              <li class="divider"></li>
+                              <li>
+                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
+                              </li>
+                        </ul>
+                </z>                
+            </td>
+        </tr>
+        </table>   
+            <?php
+           }
+}else if(isset($_GET['Evalue'])){
+     include_once('../vue.param_access/form_evaluation_lecon.php');
+}else if(isset($_GET['Subj']) AND isset($_GET['pt'])){
+include_once('../model.param_access/dir_subjection_lecon.class.php');
+    $sbj = new dir_subjection_lecon();
+    $sbj = $lc->ajouter($_GET['Subj'],$_GET['pt'] );   
+     ECHO 'SUBJECTION VALIDEE';
 }else{
     echo "ECHEC LECON";
 }

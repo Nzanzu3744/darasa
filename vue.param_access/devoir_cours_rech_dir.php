@@ -10,7 +10,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
             $idC=$_GET['idCours'];
          }
          ?>
-         <input  id="idx" placeholder="Recherche devoir par index" type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_devoirs.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech='+$('#idx').val(),'#filtrer','');"  ></input>  
+         <input  id="idx" placeholder="Recherche devoir par index" type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_devoirs.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech_dir='+$('#idx').val(),'#filtrer','');"  ></input>  
             <div class="table-responsive" style="height:530px">
             <center><i id="resul"></i></center>
             <table id="filtrer"  class="table table-bordered table-striped table-condensed">
@@ -23,7 +23,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
             $i++;
             ?>
             <tr>
-               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:red">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?></center></br></td>
+               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:green">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?></center></br></td>
                 <td style="height:100%;  background:#f2f2f2"> 
                   <z class="dropdown">
                   <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>

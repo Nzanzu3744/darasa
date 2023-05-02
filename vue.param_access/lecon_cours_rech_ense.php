@@ -7,7 +7,7 @@ include_once('../model.param_access/crs_lecon.class.php');
 
 
          <section  class="fenetre " style=";background-color: transparent">
-         <input  id="rechleco" placeholder="Recherche lecon par titre"   type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech='+$('#rechleco').val(),'#filtrer','');"  ></input>  
+         <input  id="rechleco" placeholder="Recherche lecon par titre"   type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech_ense='+$('#rechleco').val(),'#filtrer','');"  ></input>  
          <div class="table-responsive" style="height:530px" >
          <center><i id="resul"></i></center>
             <table id="filtrer"  class="table table-bordered table-striped table-condensed ">

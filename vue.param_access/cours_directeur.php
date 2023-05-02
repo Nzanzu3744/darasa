@@ -32,7 +32,7 @@ include_once('../model.param_access/dir_directeur.class.php');
                         foreach($Maclasse->selectionnerByProm($selDir['idPromotion']) as $sel){
                          $maClasse =" <z style=>".$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$anneeSco."</z>";
                     ?>
-                    <li style="border: 2px dashed black; width:13%; height:55px;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours_dir&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 2px dashed green; width:13%; height:55px;"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours_dir&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                     }
@@ -63,7 +63,9 @@ include_once('../model.param_access/dir_directeur.class.php');
     </div>
     <div id="leconsgauche" class="col-sm-2">
     </div>
-    
+    <div id="dessoueditLeco" class="col-sm-12 pull-right">
+
+    </div>   
 </section>
 
 </div>
