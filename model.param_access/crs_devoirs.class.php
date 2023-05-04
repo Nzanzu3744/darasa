@@ -6,6 +6,7 @@ class crs_devoirs {
     private static $dateCreation;
     private static $dateRemise;
     private static $description;
+    private static $actif;
     private static $con;
     //CONSTRUCTEUR
     public function __construct(){
@@ -41,9 +42,27 @@ class crs_devoirs {
         return  self::$con->query('SELECT dv.idDevoir, dv.dateCreation, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' UNION SELECT dv.idDevoir, dv.dateCreation, dv.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours);
     }
       public static function selectionnerByIdCours($idCours){
+        return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC');
+    }
+    public static function selectionnerDerByIdCours($idCours){
         return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC LIMIT 1');
     }
-
+    public static function selectionnerByIdCoursActif($idCours){
+        return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' AND dv.actif=1 ORDER BY dv.idDevoir DESC');
+    }
+     public static function activer($idDv,$val)
+    {
+        $idDevoir = htmlspecialchars($idDv);
+        $actif = htmlspecialchars($val);
+        $req=self::$con->prepare('UPDATE crs_devoirs SET actif=? WHERE idDevoir=?');
+           if($req->execute(array($actif,$idDevoir))) {
+                self::$actif = $actif;
+                self::$idDevoir=$idDevoir;
+                echo true;  
+            }else{
+                echo false;
+            }
+    }
     
     // ID AFFECTATION DOIT ETRE AJOUTE !!!!!!!ICI BAS
     public function modifier($idDevoir,$idCours, $dateCreation,$dateRemise,$descri)
@@ -78,6 +97,9 @@ class crs_devoirs {
 
     public static function selectionner(){
         return  self::$con->query('SELECT * FROM crs_devoirs ORDER BY idDevoir ASC');
+    }
+    public static function selectionnerDerByDevoir($idDevoir){
+        return  self::$con->query('SELECT * FROM crs_devoirs WHERE idDevoir='.$idDevoir.' ORDER BY idDevoir DESC LIMIT 1');
     }
     public static function selectionnerBytitreDev($cours,$idx){
         return  self::$con->query('SELECT * FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.indexation like "%'.$idx.'%" AND cr.cours LIKE "%'.$cours.'%" ORDER BY dv.idDevoir DESC');

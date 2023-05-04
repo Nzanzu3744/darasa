@@ -6,6 +6,7 @@
 
    }else if(isset($_GET['ajouterGrp'])){
     include_once('../model.param_access/param_groupe.class.php');
+    include_once('../model.param_access/param_permission.class.php');
     $grp = new param_groupe();
     $grp->ajouter($_GET['grp']);
     include_once("../vue.param_access/permission.php");

@@ -18,14 +18,14 @@ class dir_subjection_lecon {
         $idDirect=htmlspecialchars($idDir);
         $idLecon=htmlspecialchars($idLec);
         $cte=htmlspecialchars($cte);
-        $subj=$subj;
+        $subjection=$subj;
        
                   $req=self::$con->prepare('INSERT INTO dir_subjection_lecon (idDirecteur, idLecon, subjection, cote) VALUES (?,?,?,?)');
                     if($req->execute(array($idDirect,$idLecon,$subjection,$cte))){
                         self::$idDirecteur=$idDirect;
                         self::$idLecon=$idLecon;
                         self::$idLecon=$idLecon;
-                        self::$subjection=$subj;
+                        self::$subjection=$subjection;
                         return true;               
                     }else{
                         return false;

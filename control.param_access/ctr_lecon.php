@@ -230,13 +230,33 @@ include_once('../model.param_access/crs_lecon.class.php');
         </table>   
             <?php
            }
-}else if(isset($_GET['Evalue'])){
+}else if(isset($_GET['Evalue']) AND isset($_GET['idLecon'])){
      include_once('../vue.param_access/form_evaluation_lecon.php');
-}else if(isset($_GET['Subj']) AND isset($_GET['pt'])){
+}else if(isset($_GET['evalue']) AND isset($_GET['Subj']) AND isset($_GET['pt'])){
 include_once('../model.param_access/dir_subjection_lecon.class.php');
+include_once('../model.param_access/dir_directeur.class.php');
+    $affDir = new dir_directeur();
+    $affDir=$affDir->selectionnerByUtiPromActif($_SESSION['idUtilisateur'],$_GET['idPromotion'])->fetch();
     $sbj = new dir_subjection_lecon();
-    $sbj = $lc->ajouter($_GET['Subj'],$_GET['pt'] );   
-     ECHO 'SUBJECTION VALIDEE';
+    $sbj = $sbj->ajouter($affDir['idDirecteur'],$_GET['idLecon'],$_GET['Subj'],$_GET['pt'] );   
+     ECHO '<i style="color:green">ENREGISTREMENT REUSSI</i>';
+}else if(isset($_GET['activer']) AND isset($_GET['idLecon']) AND isset($_GET['value'])){
+include_once('../model.param_access/crs_lecon.class.php');
+    $actLeson = new crs_lecon();
+    if($_GET['value']==1){
+         $actLeson=$actLeson->activer($_GET['idLecon'],0);
+         ?> 
+         <input id="actif" class="btn btn-lg btn-success" value="__ACTIVER__"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idLecon=<?=$_GET['idLecon']?>&value=0','#resul','')"  type="button" >
+        <?php
+    }else{
+          $actLeson=$actLeson->activer($_GET['idLecon'],1);
+         ?> 
+         <input id="actif" class="btn btn-lg btn-danger" value="DESACTIVER"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idLecon=<?=$_GET['idLecon']?>&value=1','#resul','')"  type="button" >
+        <?php
+
+    }
+      
+     
 }else{
     echo "ECHEC LECON";
 }

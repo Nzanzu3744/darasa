@@ -16,7 +16,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                 <tbody>
            <?php
            $dv = new crs_devoirs();
-           $devoirs = $dv->selectionnerByCours($_GET['idCours']);
+           $devoirs = $dv->selectionnerByIdCoursActif($_GET['idCours']);
            $i=0;
            $tr=1;
            foreach($devoirs as $seldv){
@@ -33,7 +33,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                         <ul class="dropdown-menu pull-right">
                         <?php
                         $sel_C = new crs_devoirs();
-                        $sel_C=$sel_C->selectionnerByIdCours($seldv['idCours'])->fetch();
+                        $sel_C=$sel_C->selectionnerDerByIdCours($seldv['idCours'])->fetch();
                         ?>
                               <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?Liredevoirs_eleve=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco')">Lire le devoirs</a></i></li>
                               <li class="divider"></li>

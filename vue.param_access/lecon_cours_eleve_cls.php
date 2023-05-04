@@ -19,7 +19,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                 <tbody>
            <?php
            $lc = new crs_lecon();
-           $lecon = $lc->selectionnerByCours($_GET['idCours']);
+           $lecon = $lc->selectionnerByCoursActif($_GET['idCours']);
            $i=0;
            $tr=1;
            foreach($lecon as $selLc){

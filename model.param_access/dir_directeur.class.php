@@ -31,6 +31,9 @@ class dir_directeur {
     public function selectionnerByUtiActif($idUt){
         return  self::$con->query('SELECT * FROM `dir_directeur` as dir INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=dir.idUtilisateur WHERE dir.idUtilisateur="'.$idUt.'" AND dir.actif=1 ');
     }
+    public function selectionnerByUtiPromActif($idUt,$pro){
+        return  self::$con->query('SELECT * FROM `dir_directeur` as dir INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=dir.idUtilisateur WHERE dir.idUtilisateur="'.$idUt.'" AND dir.idPromotion="'.$pro.'" AND dir.actif=1 ORDER BY dir.idDirecteur DESC LIMIT 1');
+    }
     public function selectionnerByUti($idUt){
         return  self::$con->query('SELECT * FROM `dir_directeur` as dir INNER JOIN org_promotion as pr ON pr.idPromotion=dir.idPromotion INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=dir.idUtilisateur WHERE dir.idUtilisateur='.$idUt);
     }

@@ -28,6 +28,12 @@ function charge_Image(){
  function showme1(fn1){
         $(fn1).toggle();      
 }
+ function showme2(fn1){
+        $(fn1).show();      
+}
+function showme3(fn1){
+        $(fn1).hide();      
+}
   function showme(fn1,fn2,aff){
     if(aff=='true'){
         $(fn2).css('width','82%');

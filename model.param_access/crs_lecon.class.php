@@ -64,7 +64,19 @@ class crs_lecon {
                 echo false;
             }
     }
-   
+    public static function activer($idLe,$val)
+    {
+        $idLecon = htmlspecialchars($idLe);
+        $value = htmlspecialchars($val);
+        $req=self::$con->prepare('UPDATE crs_lecon SET actif=? WHERE idLecon=?');
+           if($req->execute(array($value,$idLecon))) {
+                self::$actif = $value;
+                self::$idLecon=$idLecon;
+                echo true;  
+            }else{
+                echo false;
+            }
+    }
     public function supprimer($idLecon){
         $idLecon = htmlspecialchars($idLecon);
         if(self::$con->exec('DELETE FROM `crs_lecon` WHERE idLecon="'.$idLecon.'"')){
@@ -89,11 +101,17 @@ class crs_lecon {
         return  self::$con->query('SELECT * FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE lc.titreLecon like "%'.$titrelc.'%" AND cr.cours LIKE "%'.$cours.'%" ORDER BY lc.idLecon DESC');
     }
     
-    public function selectionnerDer($idCrs){
-        return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
+    // public function selectionnerDerByCours($idCrs){
+    //     return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
+    // }
+    public function selectionnerDerByLec($idlc){
+        return  self::$con->query('SELECT * FROM crs_lecon WHERE idLecon='.$idlc.' ORDER BY idLecon DESC DESC LIMIT 1');
     }
     public static function selectionnerByCours($idCours){
         return  self::$con->query('SELECT lc.idLecon, lc.titreLecon, cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours.' UNION SELECT lc.idLecon, lc.titreLecon,cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_reler_lecon` as rl INNER JOIN crs_lecon as lc ON rl.idLecon=lc.idLecon INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours);
+    }
+    public static function selectionnerByCoursActif($idCours){
+        return  self::$con->query('SELECT lc.idLecon, lc.actif, lc.titreLecon, cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE cr.idCours='.$idCours.' AND lc.actif=1 UNION SELECT lc.idLecon, lc.actif, lc.titreLecon,cr.idCours,uti.nomUtilisateur,uti.postnomUtilisateur, uti.prenomUtilisateur,an.anneeSco FROM `crs_reler_lecon` as rl INNER JOIN crs_lecon as lc ON rl.idLecon=lc.idLecon INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours.' AND lc.actif=1');
     }
     
     public static function getAuteur($idLecon){

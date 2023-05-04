@@ -46,6 +46,7 @@ if(isset($_GET['nomT']) && isset($_GET['option']) && isset($_GET['idPermi']) ){
                     <td><input type="checkbox" onchange="Orientation('<?=$lien.'afficher'?>','<?=$vue?>')" <?=($sel['afficher']==1)?"checked='checked'":"";?>/></td>
                     <td><input type="checkbox" onchange="Orientation('<?=$lien.'modifier'?>','<?=$vue?>')" <?=($sel['modifier']==1)?"checked='checked'":"";?>/></td>
                     <td><input type="checkbox" onchange="Orientation('<?=$lien.'supprimer'?>','<?=$vue?>')" <?=($sel['supprimer']==1)?"checked='checked'":"";?>/></td>
+                     <td><?=$sel['commentaire']?></td>
                 </tr>
                <?php
                     }

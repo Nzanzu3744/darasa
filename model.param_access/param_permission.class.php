@@ -174,7 +174,7 @@ class param_permission {
 
     public function rechercheByIdGroupe($idGpe){
         $idGp = htmlspecialchars($idGpe);
-        return $var = self::$con->query("SELECT * FROM param_permission WHERE idGroupe ='".$idGp."' ORDER BY idPermission ASC");
+        return $var = self::$con->query("SELECT * FROM param_permission as pr INNER JOIN param_table as pt ON pr.nomTable=pt.nomTable WHERE  pr.idGroupe ='".$idGp."' ORDER BY idPermission ASC");
     }
     //DESTRUCTEUR
     public function __destuct(){

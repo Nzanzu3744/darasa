@@ -194,6 +194,34 @@ include_once('../model.param_access/crs_devoirs.class.php');
         </table>   
             <?php
            }
+}else if(isset($_GET['Evalue']) AND isset($_GET['idDevoir'])){
+     include_once('../vue.param_access/form_evaluation_devoir.php');
+   
+}else if(isset($_GET['Evalue']) AND isset($_GET['Subj']) AND isset($_GET['pt'])){
+include_once('../model.param_access/dir_subjection_devoir.class.php');
+include_once('../model.param_access/dir_directeur.class.php');
+    $affDir = new dir_directeur();
+    $affDir=$affDir->selectionnerByUtiPromActif($_SESSION['idUtilisateur'],$_GET['idPromotion'])->fetch();
+    $sbj = new dir_subjection_devoir();
+    $sbj = $sbj->ajouter($affDir['idDirecteur'],$_GET['idDevoir'],$_GET['Subj'],$_GET['pt']);   
+     ECHO '<i style="color:green">ENREGISTREMENT REUSSI</i>';
+}else if(isset($_GET['activer']) AND isset($_GET['idDevoir']) AND isset($_GET['value'])){
+include_once('../model.param_access/crs_devoirs.class.php');
+    $actdevoir = new crs_devoirs();
+    if($_GET['value']==1){
+         $actdevoir=$actdevoir->activer($_GET['idDevoir'],0);
+         ?> 
+         <input id="actif" class="btn btn-lg btn-success" value="__ACTIVER__"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=0','#resul','')"  type="button" >
+        <?php
+    }else{
+          $actdevoir=$actdevoir->activer($_GET['idDevoir'],1);
+         ?> 
+         <input id="actif" class="btn btn-lg btn-danger" value="DESACTIVER"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=1','#resul','')"  type="button" >
+        <?php
+
+    }
+      
+     
 }else{
     echo ".><.";
 }

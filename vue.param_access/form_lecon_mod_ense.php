@@ -19,7 +19,7 @@ if(isset($_GET['LireLecon_ense'])){
   ?>
   <textarea id="lcn" name="lcn" class="textarea" style="width:99%"><?=$lec['lecon']?></textarea>
 <?php
-}if(isset($_GET['LireLecon_dir'])){
+}else if(isset($_GET['LireLecon_dir'])){
   $lec = new crs_lecon();
   $lec =$lec->rechercher($_GET['idlc']);
   $lec = $lec->fetch();
