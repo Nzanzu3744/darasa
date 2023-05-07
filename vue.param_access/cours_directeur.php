@@ -44,7 +44,7 @@ include_once('../model.param_access/dir_directeur.class.php');
                     if(isset($_GET['idAnnee'])){
                         $annSelect = org_anneesco::rechercher($_GET['idAnnee'])->fetch();
                         ?>
-                        <option style="color:green"  value="<?php echo $annSelect ['idAnnee']?>"><?php echo strtoupper($annSelect ['anneeSco'])?></option>
+                        <option style="color:green"  value="<?php echo $annSelect['idAnneeSco']?>"><?php echo strtoupper($annSelect ['anneeSco'])?></option>
                         <?php
                     }
                     foreach($Maclasse->selectionnerDesc() as $sel){
@@ -58,7 +58,7 @@ include_once('../model.param_access/dir_directeur.class.php');
         
     </header>
 <section class="" id="corps" style="height:580px">
-    <div id="editLeco" style="padding:0px; margin:0px; height:560px; width:100% display: inline-block;" class="well table-responsive">
+    <div id="editLeco" style="padding:0px; margin:0px; height:600px; width:100% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) DIRECTEUR(TRICE)<?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours pour les <a>évaluers</a>. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2">

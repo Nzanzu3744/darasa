@@ -6,7 +6,7 @@ include_once('../model.param_access/crs_lecon.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:512PX;background-color: transparent">
+         <section class="fenetre " style="height:500PX;">
          <?php
          $idC=0;
          if(isset($_GET['idCours'])){
@@ -39,7 +39,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                         $sel_C = new crs_lecon();
                        $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
-                              <li><a href='#' onclick="showme2('#dessoueditLeco'); Orientation('../control.param_access/ctr_lecon.php?LireLecon_dir=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco',''); Orientation('../control.param_access/ctr_lecon.php?Evalue=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idLecon=<?=$selLc['idLecon']?>','#dessoueditLeco','')">Lire la leçon</a></i></li>
+                              <li><a href='#' onclick="showme2('#dessoueditLeco'); Orientation('../control.param_access/ctr_lecon.php?LireLecon_dir=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco',''); Orientation('../control.param_access/ctr_lecon.php?Evalue=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idLecon=<?=$selLc['idLecon']?>','#dessoueditLeco','')">Lire la leçon</a></i></li>
                               <li class="divider"><?=$_GET['idPromotion']?></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

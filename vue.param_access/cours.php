@@ -35,7 +35,7 @@ include_once('../model.param_access/org_anneesco.class.php');
                     if(isset($_GET['idAnnee'])){
                         $annSelect = org_anneesco::rechercher($_GET['idAnnee'])->fetch();
                         ?>
-                        <option style="color:green"  value="<?php echo $annSelect ['idAnnee']?>"><?php echo strtoupper($annSelect ['anneeSco'])?></option>
+                        <option style="color:green"  value="<?=$annSelect['idAnneeSco']?>"><?=$annSelect['anneeSco']?></option>
                         <?php
                     }
                     foreach($perm->selectionnerByUtAff($_SESSION['idUtilisateur']) as $sel){
