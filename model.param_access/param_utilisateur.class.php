@@ -103,6 +103,9 @@ class param_utilisateur {
     public static function selectionnerByIdGroupe($idGroupe){
         return  self::$con->query('SELECT * FROM param_utilisateur as pu LEFT JOIN param_role as pr ON pu.idUtilisateur=pr.idUtilisateur LEFT JOIN param_groupe as pg ON pr.idGroupe=pg.idGroupe WHERE pg.idGroupe='.$idGroupe.' ORDER BY pu.idUtilisateur DESC');
     }
+    public static function selectionnerByIdGroupeRoleActif($idGroupe){
+        return  self::$con->query('SELECT * FROM param_utilisateur as pu LEFT JOIN param_role as pr ON pu.idUtilisateur=pr.idUtilisateur LEFT JOIN param_groupe as pg ON pr.idGroupe=pg.idGroupe WHERE pr.actif=1 AND pg.idGroupe='.$idGroupe.' ORDER BY pu.idUtilisateur DESC');
+    }
 
 
     public static function selectionnerDsc(){

@@ -1,8 +1,10 @@
 <?php
+include_once('../model.param_access/param_connexion.php');
 class param_role {
     private static  $idRole;
     private static $idGroupe;
     private static $idUtilisateur;
+    private static $actif;
     private static $con;
     //CONSTRUCTEUR
     public function __construct(){
@@ -13,7 +15,7 @@ class param_role {
         return self::$idRole;
     }
     //METHODES
-    public function ajouter($idGroupe,$idutilisateur)
+    public static function ajouter($idGroupe,$idutilisateur)
     {
 
         $idGrp= htmlspecialchars($idGroupe);
@@ -29,22 +31,32 @@ class param_role {
         }
 
     }
-    
-    public function modifier($idRole,$idGroupe,$idUtilisateur,$actif)
+      public static function desactiverPrec($idUtilisateur)
     {
-        $idRl = htmlspecialchars($idRole);
-        $idGrp = htmlspecialchars($idGroupe);
         $idUtil= htmlspecialchars($idUtilisateur);
-        $act = htmlspecialchars($actif);
-        if(self::$con->exec('UPDATE param_role SET idGroupe="'.$idGrp.'",idUtilisateur = "'.$idUtil.'" ,actif = "'.$act.'" WHERE idRole="'.$idRl.'"'))
+        if(self::$con->exec('UPDATE param_role SET actif=0 WHERE idUtilisateur = '.$idUtil))
            {  
-            self::$idGroupe = htmlspecialchars($idGrp);
-            self::$idUtilisateur = htmlspecialchars($idUtil);
             return true;
          }else{
              return false;
     }
     }
+    
+    // public function modifier($idRole,$idGroupe,$idUtilisateur,$actif)
+    // {
+    //     $idRl = htmlspecialchars($idRole);
+    //     $idGrp = htmlspecialchars($idGroupe);
+    //     $idUtil= htmlspecialchars($idUtilisateur);
+    //     $act = htmlspecialchars($actif);
+    //     if(self::$con->exec('UPDATE param_role SET idGroupe="'.$idGrp.'",idUtilisateur = "'.$idUtil.'" ,actif = "'.$act.'" WHERE idRole="'.$idRl.'"'))
+    //        {  
+    //         self::$idGroupe = htmlspecialchars($idGrp);
+    //         self::$idUtilisateur = htmlspecialchars($idUtil);
+    //         return true;
+    //      }else{
+    //          return false;
+    // }
+    // }
    
     public function supprimer($idRole){
         $idRl = htmlspecialchars($idRole);

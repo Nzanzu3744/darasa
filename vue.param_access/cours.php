@@ -41,7 +41,7 @@ include_once('../model.param_access/org_anneesco.class.php');
                     foreach($perm->selectionnerByUtAff($_SESSION['idUtilisateur']) as $sel){
                     ?>
                     
-                    <option  value="<?php echo $sel['idAnneeSco']?>"><?php echo strtoupper($sel['anneeSco'])?></option> 
+                    <option  value="<?=$sel['idAnneeSco']?>"><?=strtoupper($sel['anneeSco'])?></option> 
                     <?php 
                      }
                 ?>   

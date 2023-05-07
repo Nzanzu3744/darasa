@@ -74,8 +74,8 @@ class param_groupe {
     public function selectionner(){
         return  self::$con->query('SELECT * FROM param_groupe ORDER BY idGroupe ASC');
     }
-    static function selectioneerByIdItu ($idUtil){
-        return  self::$con->query('SELECT * FROM param_groupe as pg LEFT JOIN param_role as pr ON pg.idGroupe=pr.idGroupe LEFT JOIN param_utilisateur as pu ON pr.idUtilisateur=pu.idUtilisateur  WHERE pu.idUtilisateur='.$idUtil.' ORDER BY pr.idRole DESC LIMIT 1');
+    public static function selectionDerRolActif($idUtil){
+        return  self::$con->query('SELECT * FROM param_groupe as pg LEFT JOIN param_role as pr ON pg.idGroupe=pr.idGroupe LEFT JOIN param_utilisateur as pu ON pr.idUtilisateur=pu.idUtilisateur  WHERE pr.actif=1 AND pu.idUtilisateur='.$idUtil.' ORDER BY pr.idRole DESC LIMIT 1');
     }
     public static function selectioneerDerEnreg(){
         return  self::$con->query('SELECT idGroupe FROM param_groupe ORDER BY idGroupe DESC LIMIT 1');

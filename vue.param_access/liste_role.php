@@ -4,14 +4,14 @@ include_once('../model.param_access/param_groupe.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:490px;background-color: transparent">
+         <section class="fenetre " style="height:490px;background-color: transparent;">
             <table class="table table-bordered table-striped table-condensed">
                  </thead>
                 </thead>
                 <tbody>
            <?php
            $util = new param_utilisateur();
-           $utilisateur = $util->selectionnerByIdGroupe($_GET['idGroupe']);
+           $utilisateur = $util->selectionnerByIdGroupeRoleActif($_GET['idGroupe']);
            $i=0;
            $tr =0;
            foreach($utilisateur as $selut){
@@ -19,7 +19,7 @@ include_once('../model.param_access/param_groupe.class.php');
             ?>
                <!--  -->
 
-                    <?php if($tr==1){echo '<tr style="margin:3px">';}?>
+                    <?php if($tr==1){echo '<tr style="">';}?>
                                 
                             <td style="background-color: aliceblue"><?=$i++;?></td>
                             <td><?=$selut['idUtilisateur']?></td>
@@ -27,7 +27,12 @@ include_once('../model.param_access/param_groupe.class.php');
                             <td>
 
                             <i class="labelles"> Groupe/Niveau d'acces</i>
-                        <select id="groupe" class="form-control col-sm-12">
+                        <select id="groupe" class="form-control col-sm-12" onchange="Orientation('../control.param_access/ctr_membre.php?modifGroupe&idUtilisateur=<?=$selut['idUtilisateur']?>&idGroupe='+$(this).val(),'#corps')">
+                        <?php
+                            $groupeActif = new param_groupe();
+                            $groupeActif = $groupeActif ->selectionDerRolActif($selut['idUtilisateur'])->fetch();
+                        ?>
+                             <option value="<?=$groupeActif['idGroupe']?>"> <a style="color:green"><?=$groupeActif['idGroupe']." : ".strtoupper($groupeActif['groupe']);?></a></option>
                         <?php
                             $groupe = new param_groupe();
                             $grp = $groupe->selectionner();
@@ -35,7 +40,7 @@ include_once('../model.param_access/param_groupe.class.php');
                             foreach($grp as $sel01){
                             echo "N : ".$u++;
                         ?>
-                                <option class="" id="<?=$sel01['idGroupe']?>"> <a><?=$sel01['idGroupe']." : ".strtoupper($sel01['groupe']);?></a></option>
+                                <option value="<?=$sel01['idGroupe']?>"> <a><?=$sel01['idGroupe']." : ".strtoupper($sel01['groupe']);?></a></option>
                         <?php
                             
                             }
