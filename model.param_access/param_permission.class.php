@@ -156,6 +156,9 @@ class param_permission {
     public function selectionner(){
         return  self::$con->query('SELECT * FROM param_permission ORDER BY idPermission ASC');
     }
+    public static function selectionnerByIdGroupe($idGroupe){
+        return  self::$con->query('SELECT * FROM param_permission as pr LEFT JOIN param_groupe as pg ON pr.idGroupe=pg.idGroupe WHERE pr.idGroupe='.$idGroupe);
+    }
     //
     public function rechercher($idPermission){
         $idPmt = htmlspecialchars($idPermission);

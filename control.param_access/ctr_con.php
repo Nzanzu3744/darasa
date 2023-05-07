@@ -1,5 +1,5 @@
 <?php
-session_start();
+(empty($_SESSION))?session_start():'';
 
 if(isset($_GET['lgdfds']) AND isset($_GET['ps'])){
 
@@ -9,6 +9,7 @@ if(isset($_GET['lgdfds']) AND isset($_GET['ps'])){
 
     $log = htmlspecialchars($_GET['lgdfds']);
     $pwd = htmlspecialchars($_GET['ps']);
+    //UTILISATEUR IDENTIFIANTS
     $util= new param_utilisateur();
     $sel_Ut = $util->log($log,$pwd);
      if($sel_Ut==true){
@@ -21,15 +22,21 @@ if(isset($_GET['lgdfds']) AND isset($_GET['ps'])){
    
     $_SESSION['actif']=$sel_Ut['actif'];
 
-    $sel_Ut= new org_affectation();
-    $sel_Ut=$sel_Ut->rechercherByUti(6);
-    $tbAff= array();
-    foreach($sel_Ut as $selU){
-        array_push($tbAff,$selU['idAffectation']);
-    }
-
-    $_SESSION['affectation']=$tbAff;
-
+    //LISTE DES ROLE DE L'UTILISATEUR
+    include_once('../model.param_access/param_role.class.php');
+    $monRole = new param_role();
+    $monRole = $monRole->selectionnerDerRoleUti($sel_Ut['idUtilisateur'])->fetch();
+    //COMME ON A ID DU GROUPE ON PEUT DIRECTEMENT PRENDRES SES DIFFERENTES PERMISSIONS 
+    include_once('../model.param_access/param_permission.class.php');
+     $mesPerm = new param_permission();
+     $mesPerm = $mesPerm->selectionnerByIdGroupe($monRole['idGroupe']);
+     foreach($mesPerm as $selPerm){
+        $_SESSION[$selPerm['nomTable'].'_afficher']=$selPerm['afficher'];
+        $_SESSION[$selPerm['nomTable'].'_ajouter']=$selPerm['ajouter'];
+        $_SESSION[$selPerm['nomTable'].'_modifier']=$selPerm['modifier'];
+        $_SESSION[$selPerm['nomTable'].'_supprimer']=$selPerm['supprimer'];
+     }
+    // AFFICHAGE
     include_once('../vue.param_access/acceuille.php');
      }else{ 
     ECHO "<center class='col-sm-12 well' style='font-size: 20px; color:red; margin-top:10%'><b>ECHEC DE CONNEXION LOGIN OU MOT CLE INCORRECT</b>

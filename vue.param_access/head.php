@@ -19,26 +19,56 @@
                                 <a data-toggle="dropdown" href="#" onclick="showme1('#entete')"><i class="glyphicon glyphicon-user "></i> PROFIL</a>
 
                             </li>
+                            <?php
+                            if($_SESSION['param_utilisateur_afficher']==1){
+                            ?>
+                            <li class="" onclick="Orientation('../control.param_access/ctr_role.php?VueRl=','#panel')"> <a href="#"> <span class="glyphicon glyphicon-user"></span>MEMBRES PAR GROUPE</a> </li>';
+                            <?php
+                            }
                             
-                            <li class="" onclick="Orientation('../control.param_access/ctr_role.php?VueRl=','#panel')"> <a href="#"> <span class="glyphicon glyphicon-user"></span>MEMBRES PAR GROUPE</a> </li>
-                            
+                            if($_SESSION['org_inscription_afficher']==1){
+                            ?>
 
-                           <li>
-                                <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseIns=true','#panel'); ">ELEVE</a>
-                            </li>
+                           <li><a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseIns=true','#panel'); ">ELEVE</a> </li>
+                           <?php
+                           }
+                            
+                            if($_SESSION['org_affectation_afficher']==1){
+                            ?>
                              <li class="dropdown ">
                                 <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseAff=true','#panel'); ">ENSEIGNANT</a>
                             </li>
+                             <?php
+                            }
+                            if($_SESSION['dir_directeur_afficher']==1){
+                            ?>
                             <li class="dropdown ">
                                 <a href="#" onclick="Orientation('../control.param_access/ctr_cours.php?VueClasseDir=true','#panel'); ">DIRECTION</a>
                             </li>
-
+                          <?php
+                            }
+                            ?>
                             <li class="dropdown ">
                                 <a data-toggle="dropdown" href="#">PARAMETRE<b class="caret pull-right"></b></a>
                                     <ul class="dropdown-menu">
+                                    <?php
+                                    if($_SESSION['org_classe_afficher']==1){
+                                    ?>
                                     <li><a href="#" onclick="Orientation('structuration.php','#panel')">Creation Classe</a></li>
+                                    <?php
+                                    }
+                                    if($_SESSION['org_anneesco_afficher']==1){
+                                    ?>
                                     <li><a href="#" onclick="Orientation('../control.param_access/ctr_anneesco.php?AfficheAnnee=true','#panel'); ">Annee Scolaire</a></li>
+                                    <?php
+                                    }
+                                 
+                                    if($_SESSION['param_permission_afficher']==1){
+                                    ?>
                                     <li><a href="#" onclick="Orientation('../control.param_access/ctr_permission.php?VuePr=','#panel')"> Permission </a></li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </li>
                             <li>

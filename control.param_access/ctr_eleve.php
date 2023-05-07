@@ -2,7 +2,7 @@
 <?php
 
 if(isset($_GET['annul'])){
-    session_start();
+    (empty($_SESSION))?session_start():'';
     setcookie('classeSel',"", (time()-1));
     include("../vue.param_access/profil_Eleve.php");
 
@@ -21,7 +21,7 @@ if(isset($_GET['annul'])){
                     $Ins->ajouter($inscr,$sel_A['idAnneeSco'],$_GET['idutil']);
             }
         setcookie('classeSel','', (time()-1));
-        // session_start();
+        // (empty($_SESSION))?session_start():'';
         include("../vue.param_access/profil_Eleve.php");
         
 
@@ -29,7 +29,7 @@ if(isset($_GET['annul'])){
         echo '<center class="col-sm-12" style="color:red">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center> <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick=Orientation("../control.param_access/ctr_membre.php?rtn=true&idGroupe='.$_GET['idGroupe'].'","#corps")>Returner</button>'; 
     }
 }else if(isset($_GET['idutil']) AND isset($_GET['eleve'])){ 
-    // session_start();
+    // (empty($_SESSION))?session_start():'';
     include("../vue.param_access/profil_Eleve.php");
 
 

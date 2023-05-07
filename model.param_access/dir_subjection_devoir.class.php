@@ -20,7 +20,7 @@ class dir_subjection_devoir {
         $cote=htmlspecialchars($cpt);
         $subj=$subj;
        
-                  $req=self::$con->prepare('INSERT INTO dir_subjection_devoir (idDirecteur, idDevoir, subjection,cpt) VALUES (?,?,?,?)');
+                  $req=self::$con->prepare('INSERT INTO dir_subjection_devoir (idDirecteur, idDevoir, subjection,cote) VALUES (?,?,?,?)');
                     if($req->execute(array($idDirect,$idDevoir,$subj,$cote))){
                         self::$idDirecteur=$idDirect;
                         self::$idDevoir=$idDevoir;

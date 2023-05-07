@@ -1,5 +1,5 @@
 <?php
-session_start();
+(empty($_SESSION))?session_start():'';
 include('../model.param_access/crs_reponset.class.php');
 include('../model.param_access/crs_reponsec.class.php');
 include('../model.param_access/crs_assertion.class.php');

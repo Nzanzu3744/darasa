@@ -22,8 +22,18 @@ include_once('../model.param_access/param_groupe.class.php');
 <center class="titres" style="font-size:30px; padding:14%" > Selectionner le groupe pour visualiser ses membres.</center>
 </section>
 <div class=" well " style="height:65px">
-        <button id="btnutil" name="btnutil" class="btn btn-default pull-right col-sm-5" onclick="showme('#frmuti','#gdpanel','true'); Orientation('../control.param_access/ctr_utilisateur.php?formUt=','#frmuti')"> CREER UTILISATEUR</button>
-        <button  id="btgrp" name="btgrp"  class="btn btn-default pull-left col-sm-5" onclick="showme('#frmuti','#gdpanel','true'); Orientation('../control.param_access/ctr_groupe.php?formGrp=','#frmuti')"> CREER UNE GROUPE</button>
+<?php
+if($_SESSION['param_utilisateur_ajouter']==1){
+?>
+    <button id="btnutil" name="btnutil" class="btn btn-default pull-right col-sm-5" onclick="showme('#frmuti','#gdpanel','true'); Orientation('../control.param_access/ctr_utilisateur.php?formUt=','#frmuti')"> CREER UTILISATEUR</button>
+<?php
+}
+if($_SESSION['param_groupe_ajouter']==1){
+?>
+    <button  id="btgrp" name="btgrp"  class="btn btn-default pull-left col-sm-5" onclick="showme('#frmuti','#gdpanel','true'); Orientation('../control.param_access/ctr_groupe.php?formGrp=','#frmuti')"> CREER UNE GROUPE</button>
+<?php
+}
+?>
 </div>
 </div>
 <div id="frmuti" class="col-sm-1" style="display:none">

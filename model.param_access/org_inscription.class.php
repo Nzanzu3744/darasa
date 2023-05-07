@@ -16,7 +16,7 @@ class org_inscription {
         return self::$idInscription;
     }
     //METHODES
-    public function ajouter($idClasse, $idAnneesco,$idutilisateur)
+    public static function ajouter($idClasse, $idAnneesco,$idutilisateur)
     {
 
         $idCls= htmlspecialchars($idClasse);
@@ -36,7 +36,7 @@ class org_inscription {
 
     }
     
-    public function modifier($idInscription,$idClasse, $idAnneesco,$idUtilisateur)
+    public static function modifier($idInscription,$idClasse, $idAnneesco,$idUtilisateur)
     {
         $idIns = htmlspecialchars($idInscription);
         $idUtil= htmlspecialchars($idUtilisateur);
@@ -54,7 +54,7 @@ class org_inscription {
     }
     }
    
-    public function supprimer($idInscription){
+    public static function supprimer($idInscription){
         $idIns = htmlspecialchars($idInscription);
         if(self::$con->exec('DELETE FROM `org_inscription` WHERE idInscription="'.$idIns.'"')){
             self::$idInscription = '';
@@ -68,7 +68,7 @@ class org_inscription {
         return  self::$con->query('SELECT * FROM org_inscription ORDER BY idInscription ASC');
     }
     //
-    public function rechercher($idInscription){
+    public static function rechercher($idInscription){
         $idIns = htmlspecialchars($idInscription);
         return $var = self::$con->query("SELECT * FROM org_inscription WHERE idInscription =".$idIns);
         // foreach($var as $sel){
@@ -79,7 +79,7 @@ class org_inscription {
         // }
         // return $var; 
     }
-    public function rechercherByUti($idInscription){
+    public static function rechercherByUti($idInscription){
         $idIns = htmlspecialchars($idInscription);
         return $var = self::$con->query("SELECT * FROM org_inscription AS `is` 
         INNER JOIN org_classe AS `cl` ON `is`.`idClasse` = `cl`.`idClasse` 

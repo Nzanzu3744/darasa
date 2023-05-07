@@ -197,7 +197,8 @@ include_once('../model.param_access/crs_devoirs.class.php');
 }else if(isset($_GET['Evalue']) AND isset($_GET['idDevoir'])){
      include_once('../vue.param_access/form_evaluation_devoir.php');
    
-}else if(isset($_GET['Evalue']) AND isset($_GET['Subj']) AND isset($_GET['pt'])){
+}else if(isset($_GET['Subj']) AND isset($_GET['pt'])){
+(empty($_SESSION))?session_start():'';
 include_once('../model.param_access/dir_subjection_devoir.class.php');
 include_once('../model.param_access/dir_directeur.class.php');
     $affDir = new dir_directeur();

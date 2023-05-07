@@ -26,7 +26,7 @@ class org_promotion {
 
     }
     
-    public function modifier($idPromotion,$promotion)
+    public static function modifier($idPromotion,$promotion)
     {
         $idPmt = htmlspecialchars($idPromotion);
         $pmtion = htmlspecialchars($promotion);
@@ -40,7 +40,7 @@ class org_promotion {
     }
     }
    
-    public function supprimer($idPromotion){
+    public static function supprimer($idPromotion){
         $idPmt = htmlspecialchars($idPromotion);
         if(self::$con->exec('DELETE FROM `org_promotion` WHERE idPromotion="'.$idPmt.'"')){
             self::$idPromotion = '';
@@ -50,11 +50,11 @@ class org_promotion {
         }
     }
 
-    public function selectionner(){
+    public static function selectionner(){
         return  self::$con->query('SELECT * FROM org_promotion ORDER BY idPromotion ASC');
     }
     //
-    public function rechercher($idPromotion){
+    public static function rechercher($idPromotion){
         $idPmt = htmlspecialchars($idPromotion);
         return $var = self::$con->query("SELECT * FROM org_promotion WHERE idPromotion =".$idPmt." LIMIT 1");
         // foreach($var as $sel){

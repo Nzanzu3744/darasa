@@ -59,6 +59,9 @@ class param_role {
     public function selectionner(){
         return  self::$con->query('SELECT * FROM param_role ORDER BY idRole ASC');
     }
+    public static function selectionnerDerRoleUti($idUti){
+        return  self::$con->query('SELECT * FROM param_role WHERE idUtilisateur='.$idUti.' ORDER BY idRole DESC LIMIT 1');
+    }
     //
     public function rechercher($idRole){
         $idRl = htmlspecialchars($idRole);

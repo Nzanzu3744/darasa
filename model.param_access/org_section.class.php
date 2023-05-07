@@ -12,7 +12,7 @@ class org_section {
         return self::$idSection;
     }
     //METHODES
-    public function ajouter($section)
+    public static function ajouter($section)
     {
         $stion = htmlspecialchars($section);
         $req=self::$con->prepare('INSERT INTO `org_section`( `section`) VALUES (?)');
@@ -26,7 +26,7 @@ class org_section {
 
     }
     
-    public function modifier($idSection,$section)
+    public static function modifier($idSection,$section)
     {
         $idPmt = htmlspecialchars($idSection);
         $stion = htmlspecialchars($section);
@@ -40,7 +40,7 @@ class org_section {
     }
     }
    
-    public function supprimer($idSection){
+    public static function supprimer($idSection){
         $idPmt = htmlspecialchars($idSection);
         if(self::$con->exec('DELETE FROM `org_section` WHERE idSection="'.$idPmt.'"')){
             self::$idSection = '';
@@ -50,11 +50,11 @@ class org_section {
         }
     }
 
-    public function selectionner(){
+    public static function selectionner(){
         return  self::$con->query('SELECT * FROM org_section ORDER BY idSection ASC');
     }
     //
-    public function rechercher($idSection){
+    public static function rechercher($idSection){
         $idPmt = htmlspecialchars($idSection);
         return $var = self::$con->query("SELECT * FROM org_section WHERE idSection =".$idPmt." ORDER BY idSection ASC");
         // foreach($var as $sel){

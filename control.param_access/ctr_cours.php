@@ -53,7 +53,7 @@ if(isset($_GET['annul'])){
     include_once("../vue.param_access/liste_role.php");
 
  }else if(isset($_GET['ajouterC']) AND isset($_GET['idClasse'])){
-   session_start();
+   (empty($_SESSION))?session_start():'';
     include_once('../model.param_access/crs_cours.class.php');
     include_once('../model.param_access/org_anneesco.class.php');
     include_once('../model.param_access/org_affectation.class.php');

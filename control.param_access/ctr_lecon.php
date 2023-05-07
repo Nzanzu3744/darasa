@@ -1,5 +1,5 @@
 <?php
-session_start();
+(empty($_SESSION))?session_start():'';
 if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefined"){
     include_once('../model.param_access/crs_lecon.class.php');
    $var = new crs_lecon();

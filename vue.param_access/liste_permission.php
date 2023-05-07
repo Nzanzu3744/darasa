@@ -21,8 +21,8 @@ if(isset($_GET['nomT']) && isset($_GET['option']) && isset($_GET['idPermi']) ){
                 <tr>
                     <th>N</th>
                     <th>Table</th>
-                    <th>Ajouter</th>
                     <th>Afficher</th>
+                    <th>Ajouter</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>
@@ -40,13 +40,16 @@ if(isset($_GET['nomT']) && isset($_GET['option']) && isset($_GET['idPermi']) ){
                     <td><?=strtoupper($sel['nomTable'])?></td>
                     <?php
                         $lien = "../control.param_access/ctr_permission.php?idPermi=".$sel['idPermission']."& idGroupe=".$sel['idGroupe']."& nomT=".$sel['nomTable']."& option=";
+                        $lien2 = "../control.param_access/ctr_permission.php?echeMod&idGroupe=".$sel['idGroupe'];
                         $vue = "#corps";
                     ?>
-                    <td><input type="checkbox" onchange="Orientation('<?=$lien.'ajouter'?>','<?=$vue?>')" <?=($sel['ajouter']==1)?"checked='checked'":"";?>/></td>
-                    <td><input type="checkbox" onchange="Orientation('<?=$lien.'afficher'?>','<?=$vue?>')" <?=($sel['afficher']==1)?"checked='checked'":"";?>/></td>
-                    <td><input type="checkbox" onchange="Orientation('<?=$lien.'modifier'?>','<?=$vue?>')" <?=($sel['modifier']==1)?"checked='checked'":"";?>/></td>
-                    <td><input type="checkbox" onchange="Orientation('<?=$lien.'supprimer'?>','<?=$vue?>')" <?=($sel['supprimer']==1)?"checked='checked'":"";?>/></td>
+                    <td><input type="checkbox" onchange="<?=($_SESSION['param_permission_modifier']==1)?"Orientation('".$lien."afficher','".$vue."')":"Orientation('".$lien2."afficher','".$vue."'); alert('Vous n\'etes pas permis de faire la modification des permission')"?>" <?=($sel['afficher']==1)?"checked='checked'":"";?>/></td>
+                    <td><input type="checkbox" onchange="<?=($_SESSION['param_permission_modifier']==1)?"Orientation('".$lien."ajouter','".$vue."')":"Orientation('".$lien2."ajouter','".$vue."'); alert('Vous n\'etes pas permis de faire la modification des permission')"?>" <?=($sel['ajouter']==1)?"checked='checked'":"";?>/></td>
+                    <td><input type="checkbox" onchange="<?=($_SESSION['param_permission_modifier']==1)?"Orientation('".$lien."modifier','".$vue."')":"Orientation('".$lien2."modifier','".$vue."'); alert('Vous n\'etes pas permis de faire la modification des permission')"?>"  <?=($sel['modifier']==1)?"checked='checked'":"";?>/></td>
+                    <td><input type="checkbox" onchange="<?=($_SESSION['param_permission_modifier']==1)?"Orientation('".$lien."supprimer','".$vue."')":"Orientation('".$lien2."supprimer','".$vue."'); alert('Vous n\'etes pas permis de faire la modification des permission')"?>" <?=($sel['supprimer']==1)?"checked='checked'":"";?>/></td>
                      <td><?=$sel['commentaire']?></td>
+
+
                 </tr>
                <?php
                     }

@@ -35,7 +35,7 @@ class crs_lecon {
             self::$idUtilisateur=$idutil;
             self::$actif=$actif;
             $lc = new crs_lecon();
-            $lc=$lc->selectionnerDer($idCrs);
+            $lc=$lc->selectionnerDerByCours($idCrs);
             foreach($lc as $selc){
                 echo $selc['idLecon'];
             }
@@ -101,9 +101,9 @@ class crs_lecon {
         return  self::$con->query('SELECT * FROM `crs_lecon` as lc INNER JOIN crs_cours as cr ON lc.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE lc.titreLecon like "%'.$titrelc.'%" AND cr.cours LIKE "%'.$cours.'%" ORDER BY lc.idLecon DESC');
     }
     
-    // public function selectionnerDerByCours($idCrs){
-    //     return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
-    // }
+    public function selectionnerDerByCours($idCrs){
+        return  self::$con->query('SELECT * FROM crs_lecon WHERE idCours='.$idCrs.'  ORDER BY idLecon DESC LIMIT 1');
+    }
     public function selectionnerDerByLec($idlc){
         return  self::$con->query('SELECT * FROM crs_lecon WHERE idLecon='.$idlc.' ORDER BY idLecon DESC LIMIT 1');
     }

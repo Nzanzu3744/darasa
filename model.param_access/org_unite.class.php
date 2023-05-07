@@ -28,7 +28,7 @@ class org_unite {
 
     }
     
-    public function modifier($idUnite,$unite)
+    public static function modifier($idUnite,$unite)
     {
         $idUte = htmlspecialchars($idUnite);
         $ute = htmlspecialchars($unite);
@@ -42,7 +42,7 @@ class org_unite {
     }
     }
    
-    public function supprimer($idUnite){
+    public static function supprimer($idUnite){
         $idUte = htmlspecialchars($idUnite);
         if(self::$con->exec('DELETE FROM `org_unite` WHERE idUnite="'.$idUte.'"')){
             self::$idUnite = '';
@@ -52,11 +52,11 @@ class org_unite {
         }
     }
 
-    public function selectionner(){
+    public static function selectionner(){
         return  self::$con->query('SELECT * FROM org_unite ORDER BY idUnite ASC');
     }
     //
-    public function rechercher($idUnite){
+    public static function rechercher($idUnite){
         $idUte = htmlspecialchars($idUnite);
         return $var = self::$con->query("SELECT * FROM org_unite WHERE idUnite =".$idUte." ORDER BY idUnite ASC");
         // foreach($var as $sel){
