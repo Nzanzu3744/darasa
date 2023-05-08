@@ -23,7 +23,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
             $i++;
             if($tr==1){echo '<tr style="margin:3px">';}
             ?>
-               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:red">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?></center></br></td>
+               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:red">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?><br> <mark style="color:black"><?=($seldv['actif']!=1)? "DEVOIR DESACTIVE":'ACTIVE'?></mark></center></br></td>
             <?php
              if($tr>=2){$tr=0; echo "</td>";}
              ?>

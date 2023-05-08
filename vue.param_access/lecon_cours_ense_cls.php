@@ -13,7 +13,6 @@ include_once('../model.param_access/crs_lecon.class.php');
             $idC=$_GET['idCours'];
          }
          ?>
-         <!-- <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&leconsgauche_ense&idCours=<?=$idC?>','#leconsgauche','');"  ></input>   -->
             <div class="table-responsive" style="height:548PX" >
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
@@ -26,7 +25,7 @@ include_once('../model.param_access/crs_lecon.class.php');
             $i++;
             if($tr==1){echo '<tr style="margin:3px">';}
             ?>
-               <td style="background-color: aliceblue; font-size:12px">[<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:red">TITRE<br><?=$selLc['titreLecon']?><br><?=$selLc['anneeSco']?><br><a href='#' style='font-size:8px'><?=$selLc['nomUtilisateur'].'  '.$selLc['postnomUtilisateur'].' '.$selLc['prenomUtilisateur']?></a></center></br></td>
+               <td style="background-color: aliceblue; font-size:12px">[<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:red">TITRE<br><?=$selLc['titreLecon']?><br><?=$selLc['anneeSco']?><br><a href='#' style='font-size:8px'><?=$selLc['nomUtilisateur'].'  '.$selLc['postnomUtilisateur'].' '.$selLc['prenomUtilisateur']?></a><br> <mark style="color:black"><?=($selLc['actif']!=1)? "LECON DESACTIVE":'ACTIVE'?></mark></center></br></td>
             <?php
              if($tr>=2){$tr=0; echo "</td>";}
              ?>

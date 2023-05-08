@@ -17,13 +17,13 @@ include_once('../model.param_access/crs_devoirs.class.php');
                 <tbody>
            <?php
            $dv = new crs_devoirs();
-           $devoirs = $dv->selectionnerBytitreCrs($_GET['cours']);
+           $devoirs = $dv->selectionnerBytitreCrsAll($_GET['cours']);
            $i=0;
            foreach($devoirs as $seldv){
             $i++;
             ?>
             <tr>
-               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:green">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?></center></br></td>
+               <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:green">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?><br> <mark style="color:black"><?=($seldv['actif']!=1)? "DEVOIR DESACTIVE":'ACTIVE'?></mark></center></br></td>
                 <td style="height:100%;  background:#f2f2f2"> 
                   <z class="dropdown">
                   <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
@@ -34,7 +34,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                        $sel_C=$sel_C->selectionnerByIdCours($seldv['idCours'])->fetch();
                         ?>
                               <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco','')">Lire le devoirs</a></i></li>
-                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idDevoir=<?=$seldv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
+                              <!-- <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idDevoir=<?=$seldv['idDevoir']?>','#resul','')">Rapporter</a></i></li> -->
                               
                               <li class="divider"></li>
                               <li>

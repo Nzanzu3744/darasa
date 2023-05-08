@@ -26,7 +26,7 @@ include_once('../model.param_access/crs_lecon.class.php');
             $i++;
             if($tr==1){echo '<tr style="margin:3px">';}
             ?>
-               <td style="background-color: #f2f2f2"> Lecon n: [<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:blue">TITRE<br><?=$selLc['titreLecon']?></center></td>
+               <td style="background-color: #f2f2f2"> Lecon n: [<?=$i;?>] Code : <?=$selLc['idLecon']?><br><center style="color:blue">TITRE<br><?=$selLc['titreLecon']?><br></center></td>
             <?php
              if($tr>=2){$tr=0; echo "</td>";}
              ?>
@@ -36,7 +36,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                         <ul class="dropdown-menu pull-right">
                         <?php
 
-                        $sel_C = new crs_lecon();
+                       $sel_C = new crs_lecon();
                        $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
                               <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_eleve=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
@@ -48,6 +48,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                         </ul>
                      </z>                
                </td>
+               
                     
                     
             <?php
