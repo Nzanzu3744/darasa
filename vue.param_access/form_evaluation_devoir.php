@@ -9,7 +9,7 @@
              <div class="col-sm-2">
                 <center style="color:green">CODE DEVOIR :<?=$_GET['idDevoir']?></center>
                 <input  class="col-sm-2 col-lg-2 col-xs-2 form-control" id='pt'  type="text" placeholder="Cote sur 10" />
-                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('../control.param_access/ctr_devoirs.php?idDevoir=<?=$_GET['idDevoir']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#resul','')"  class="btn btn-danger" value="OK"/>
+                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('../control.param_access/ctr_devoirs.php?idDevoir=<?=$_GET['idDevoir']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#valid','')"  class="btn btn-danger" value="OK"/>
 
             </div>
             <div class="col-sm-9 col-lg-9 col-xs-9"> 
@@ -24,9 +24,9 @@
                  $selDvoir =$selDvoir->selectionnerDerByDevoir($_GET['idDevoir'])->fetch();
            ?>
            <labelle id="resul">
-           <?= $selDvoir['actif'];?>
             <input id="actif" <?php if($selDvoir['actif']==1){echo 'Class="btn btn-lg btn-danger" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success" value="__ACTIVER__"';}?>  onclick="Orientation('../control.param_access/ctr_devoirs.php?activer=true&value=<?=$selDvoir['actif']?>&idDevoir=<?=$_GET['idDevoir']?>','#resul','')"  type="button" >
             <labelle>
+            <labelle id="valid"></labelle>
 
            </center>
         </div>

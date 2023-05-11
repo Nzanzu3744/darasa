@@ -11,14 +11,14 @@ $asstion = new crs_assertion();
 if(isset($_GET['AjouterRepCh'])){
     include('../model.param_access/suivie_remise_devoirs.class.php');
     $rms =new suivie_remise_devoirs();
-    $rms->ajouter($_GET['idDevoir'],$_SESSION['idUtilisateur']);
+    $rms->ajouter($_GET['idDevoir'],$_GET['idIns']);
 
 
     if($_GET['modifrep']=="undefined"){
         $Tbasstion = $asstion->selectionnerByQst($_GET['idQst']);
         $tur=1;
-        // echo $_GET['idQst']."_".$_GET['IdAss']."_".$_SESSION['idUtilisateur'];
-        $TbAE=$rpsesChoix->ajouter($_GET['IdAss'],$_SESSION['idUtilisateur']);
+        // echo $_GET['idQst']."_".$_GET['IdAss']."_".$_GET['idIns'];
+        $TbAE=$rpsesChoix->ajouter($_GET['IdAss'],$_GET['idIns']);
 
         echo " <div class='col-sm-12' style='color:green'>Vous avez repondi à la Question : ".$_GET['n']." Brovon! Reponse Validée :</div>";
          
@@ -91,12 +91,12 @@ if(isset($_GET['AjouterRepCh'])){
 }else if(isset($_GET['AjouterRepTr'])){
      include('../model.param_access/suivie_remise_devoirs.class.php');
     $rms =new suivie_remise_devoirs();
-    $rms->ajouter($_GET['idDevoir'],$_SESSION['idUtilisateur']);
+    $rms->ajouter($_GET['idDevoir'],$_GET['idIns']);
      echo " <a style='color:green'>Brovon! Vous avez repondi à la Question [".$_GET['n']."].</a>";
     $rep='repT'.$_GET['n'];
     echo $_POST[$rep];
      if($_GET['modifrep']=="undefined"){
-        $TbAE=$rpses->ajouter($_GET['idQst'],$_SESSION['idUtilisateur'],$_POST[$rep]);
+        $TbAE=$rpses->ajouter($_GET['idQst'],$_GET['idIns'],$_POST[$rep]);
          ?>
              <labelle disabled style="color:green" > Reponse envoyée le <?=' '.$TbAE[1]?></labelle>
              <div style="height:8px"></div>

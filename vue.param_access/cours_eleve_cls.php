@@ -37,7 +37,7 @@ include_once('../model.param_access/param_groupe.class.php');
                 <button data-toggle="dropdown" style="height:60px; ">Options<b class="caret ppull-right"></b></button>
                     <ul class="dropdown-menu pull-right">
                         <li data-toggle="modal" href="#inscri"><a href="#" onclick="showme('#leconsgauche','#editLeco','true');  Orientation('../control.param_access/ctr_lecon.php?leconsgauche_eleve&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">Liste Leçons</a></i></li>
-                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_eleve=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Liste Devoir</a></i></li>
+                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('../control.param_access/ctr_devoirs.php?devoirsgauche_eleve=true&idIns=<?=$_GET['idIns']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Liste Devoir</a></i></li>
                         <li class="divider"></li>
                         <li>
                             <a href="#" onclick="Encour()">Rapport Eleve</a>

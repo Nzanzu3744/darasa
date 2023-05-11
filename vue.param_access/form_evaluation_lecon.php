@@ -9,7 +9,7 @@
              <div class="col-sm-2">
                 <center style="color:green">CODE LECON :<?=$_GET['idLecon']?></center>
                 <input  class="col-sm-2 col-lg-2 col-xs-2 form-control" id='pt'  type="text" placeholder="Cote sur 10" />
-                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('../control.param_access/ctr_lecon.php?evalue=true&idLecon=<?=$_GET['idLecon']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#resul','')"  class="btn btn-danger" value="OK"/>
+                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('../control.param_access/ctr_lecon.php?evalue=true&idLecon=<?=$_GET['idLecon']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#valid','')"  class="btn btn-danger" value="OK"/>
 
             </div>
             <div class="col-sm-9 col-lg-9 col-xs-9"> 
@@ -24,10 +24,9 @@
                  $sellc =$lc->selectionnerDerByLec($_GET['idLecon'])->fetch();
            ?>
            <labelle id="resul">
-           <?= $sellc['actif'];?>
             <input id="actif" <?php if($sellc['actif']==1){echo 'Class="btn btn-lg btn-danger" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success" value="__ACTIVER__"';}?>  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&value=<?=$sellc['actif']?>&idLecon=<?=$_GET['idLecon']?>','#resul','')"  type="button" >
             <labelle>
-
+            <labelle id="valid"></labelle>
            </center>
         </div>
 <script>

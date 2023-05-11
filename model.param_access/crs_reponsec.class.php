@@ -3,7 +3,7 @@ include_once('param_connexion.php');
 class crs_reponsec {
     private static  $idReponse;
     private static $idAssertion;
-    private static $idUtilisateur;
+    private static $idInscription;
     private static $con;
     //CONSTRUCTEUR
     public function __construct(){
@@ -14,18 +14,18 @@ class crs_reponsec {
         return self::$idReponse;
     }
     //METHODES
-    public static function ajouter($idAssertion,$idUtilisateur)
+    public static function ajouter($idAssertion,$idIns)
     {
 
         $idAst= htmlspecialchars($idAssertion);
-        $idUtlst = htmlspecialchars($idUtilisateur);
-        $req=self::$con->prepare('INSERT INTO  `crs_reponsec` ( idAssertion, idUtilisateur, dateCreation) VALUES (?,?,NOW())');
-        if($req->execute(array($idAst,$idUtlst))){
+        $idIns = htmlspecialchars($idIns);
+        $req=self::$con->prepare('INSERT INTO  `crs_reponsec` ( idAssertion, idInscription, dateCreation) VALUES (?,?,NOW())');
+        if($req->execute(array($idAst,$idIns))){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
-            self::$idAssertion = htmlspecialchars($idAst);
-            self::$idUtilisateur = htmlspecialchars($idUtlst);
+            self::$idAssertion = $idAst;
+            self::$idInscription = $idIns;
             $repse = new crs_reponsec();
-            $rps=$repse->verification($idAssertion,$idUtlst);
+            $rps=$repse->verification($idAssertion,$idIns);
             foreach($rps as $seld){
                  return $TbAE[] = array($seld['idReponse'],$seld['dateCreation']);
             }
@@ -65,25 +65,22 @@ class crs_reponsec {
     public function selectionner(){
         return  self::$con->query('SELECT * FROM crs_reponsec ORDER BY idReponse ASC');
     }
+    //EN VERIFIER !!!!!!!!!!!
     public function selectionnerByQst($idQst){
         return  self::$con->query('SELECT * FROM crs_reponsec as ass INNER JOIN crs_question as qst ON ass.idAssertion=qst.idAssertion WHERE ass.idAssertion="'.$idQst.'"');
     }
-    public static function selectionnerByQstUti($idQst,$iuti){
-        return  self::$con->query('SELECT rep.idUtilisateur, rep.idAssertion, astion.idQuestion, astion.correctAssertion, rep.dateCreation  FROM crs_reponsec as rep INNER JOIN crs_assertion as astion ON astion.idAssertion=rep.idAssertion LEFT JOIN crs_question as qst ON astion.idQuestion=qst.idQuestion WHERE qst.idQuestion='.$idQst.' AND rep.idUtilisateur='.$iuti);
+    public function selectionnerByQstAll($idQst){
+        return  self::$con->query('SELECT ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur,ut.photoUtilisateur, gr.genre, rpc.idReponse,ass.correctAssertion, qr.ponderation, ass.assertion FROM `crs_reponsec` as rpc LEFT JOIN crs_assertion as ass ON rpc.idAssertion=ass.idAssertion LEFT JOIN crs_question as qr ON ass.idQuestion=qr.idQuestion LEFT JOIN org_inscription as ins ON ins.idInscription=rpc.idInscription LEFT JOIN param_utilisateur as ut ON ins.idUtilisateur=ut.idUtilisateur LEFT JOIN param_genre as gr ON ut.idGenre=ut.idGenre WHERE qr.idQuestion="'.$idQst.'"');
     }
-    public function verification($idAst,$idUti){
-        return  self::$con->query('SELECT reps.idReponse, reps.dateCreation FROM crs_reponsec as reps INNER JOIN crs_assertion as ass ON reps.idAssertion=ass.idAssertion WHERE reps.idAssertion='.$idAst.' AND reps.idUtilisateur='.$idUti.'  ORDER BY reps.idReponse DESC LIMIT 1');
+    public static function selectionnerByQstUti($idQst,$iuti){
+        return  self::$con->query('SELECT ins.idUtilisateur, rep.idAssertion, astion.idQuestion, astion.correctAssertion, rep.dateCreation  FROM crs_reponsec as rep LEFT JOIN org_inscription as ins ON rep.idInscription=ins.idInscription INNER JOIN crs_assertion as astion ON astion.idAssertion=rep.idAssertion LEFT JOIN crs_question as qst ON astion.idQuestion=qst.idQuestion WHERE qst.idQuestion='.$idQst.' AND ins.idUtilisateur='.$iuti);
+    }
+    public function verification($idAst,$idIns){
+        return  self::$con->query('SELECT reps.idReponse, reps.dateCreation FROM crs_reponsec as reps INNER JOIN crs_assertion as ass ON reps.idAssertion=ass.idAssertion WHERE reps.idAssertion='.$idAst.' AND reps.idInscription='.$idIns.'  ORDER BY reps.idReponse DESC LIMIT 1');
     }
     public function rechercher($idReponse){
         $idrpsc = htmlspecialchars($idReponse);
         return $var = self::$con->query("SELECT * FROM crs_reponsec WHERE idReponse =".$idrpsc." ORDER BY idReponse ASC");
-        // foreach($var as $sel){
-        //     self::$idReponse = $sel['idReponse'];
-        //     self::$idAssertion = $sel['idAssertion'];
-        //     self::$idUtilisateur = $sel['idUtilisateur'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
     }
     //DESTRUCTEUR
     public function __destuct(){

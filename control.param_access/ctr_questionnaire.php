@@ -136,6 +136,12 @@ if(isset($_GET['AjoutQstCh'])){
     include_once('../vue.param_access/form_questionnaire_valide.php');
 }else if(isset($_GET['Liredevoirs_ense'])){
         include_once('../vue.param_access/form_questionnaire_mod.php');
+ }else if(isset($_GET['Correctdevoirs_ense'])){
+        include_once('../vue.param_access/form_questionnaire_correction.php');
+ }else if(isset($_GET['Valide_correction'])){
+    include('../model.param_access/crs_correction.class.php');
+    $correct = new crs_correction();
+    return $correct->ajouter($_GET['idRep'],$_GET['idAfft'],$_GET['cote'],$_GET['cmt'],$_GET['pond']); 
  }else{
     echo "ECHEC QUESTIONNAIRE";
 }

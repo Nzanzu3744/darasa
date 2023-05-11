@@ -17,7 +17,6 @@ class param_role {
     //METHODES
     public static function ajouter($idGroupe,$idutilisateur)
     {
-
         $idGrp= htmlspecialchars($idGroupe);
         $idUtil = htmlspecialchars($idutilisateur);
         $req=self::$con->prepare('INSERT INTO `param_role`(`idGroupe`, `idUtilisateur`) VALUES (?,?)');

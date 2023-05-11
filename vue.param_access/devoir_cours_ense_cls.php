@@ -37,6 +37,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                        $sel_C=$sel_C->selectionnerByIdCours($seldv['idCours'])->fetch();
                         ?>
                               <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco','')">Lire le devoirs</a></i></li>
+                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Correctdevoirs_ense=tue&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco','')">Correction devoirs</a></i></li>
                               
                               <li class="divider"></li>
                               <li>
