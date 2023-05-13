@@ -6,11 +6,10 @@
                     <!-- <div class="page-header" style="height:20px">
                          <center><h3><BOLD>DARASA/COMPLEXE SCOLAIRE NOTRE DAME DE GRACES</BOLD></h3></center>
                     </div> -->
-                <div class="row col-sm-12">
                 <div class="col-sm-12"> 
                 
                     <div id="show" onclick="showme1('.menu')" class="col-sm-1"><i class="btn-lg glyphicon glyphicon-tasks" style="h-2000 background:red"  ></i></div>
-                    <nav class="col-sm-10 navbar navbar-inverse menu" style="display: none;">
+                    <nav class="col-sm-10 navbar navbar-inverse menu" style="display: none;font-size:11px">
                          <ul class="nav navbar-nav nav-pills">
                              <li class="dropdown " id="acc" name="acc" >
                                 <a data-toggle="dropdown" id="acceuil" name="acceuil" value="20uey"  onclick="Orientation('../control.param_access/ctr_acceuil.php?acceuil','#app','')"  ><i class="glyphicon glyphicon-home "></i> ACCEUIL</a>
@@ -97,22 +96,28 @@
                         
                    
                     </nav>
-                     <img style='height:50px; width:50px; display:none; margin:0px;' id="loader" class='pull-right' name="loader" src='../images/ajax_loader.gif'/>
-                    </div>
-<i class="glyphicon glyphicon-use"></i>
-    <div id="entete" class="col-sm-12 " style="display: none; height:70px ">
-                    
-                        <a href="#" class="thumbnail col-sm-2">
-                            <img  style="height:100%; width:50px;" id="image" src="<?=$_SESSION['photoUtilisateur']?>" class="img-rounded">
-                        </a>
-                    
-                    <div class="col-sm-7" style="padding:0%; height:80%">
-                        <h4 id="modalTitre" class="modal-title"><i class="labelles" >Nom</i><?=" : ".strtoupper($_SESSION['nom']);?><i class="labelles" ><br>Post-Nom</i><?=":".strtoupper($_SESSION['postnom'])?><i class="labelles" >/Prenom </i><?=" :".strtoupper($_SESSION['prenom'])?> </h4>
-                    </div>
-
-                    <button class="btn btn-lg  btn-danger pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('../control.param_access/ctr_membre.php?dcxion=true','#app')" >DECONNEXION <i class=" glyphicon glyphicon-log-out"></i></button>               
-    
-    </div>   
-                
+                     <img style='height:40px; width:40px; display:none; margin:0px;' id="loader" class='pull-right' name="loader" src='../images/ajax_loader.gif'/>
+                </div>
+                <i class="glyphicon glyphicon-use"></i>
+                <div id="entete" class="col-sm-12 " style="display: none; font-size:10px; margin:0px; padding:0px; height:100px; border-bottom: 2px solid black">
+                        <center href="#" class="thumbnail" style="width:80px; height:60px; display:inline-block">
+                                <img   style="height:100%; width:100%;" id="image" src="<?=$_SESSION['photoUtilisateur']?>" class="img-rounded">
+                                <br>
+                                <a href="#" style="height:9%;" onclick="Encour()"> Edite</a>
+                        </center>
+                        <!--  -->
+                        <div class="" style="height:60px; width:400px; font-size:10px; margin:0px; padding:0px; display:inline-block">
+                            <li class=""> Nom : <b><?=$_SESSION['nom']?></b></li>
+                            <li class=""> Postnom : <b><?=$_SESSION['postnom']?></b></li>
+                            <li class=""> Prenom : <b><?=$_SESSION['prenom']?></b></li>
+                            <li class=""> Tel : : <b><?=$_SESSION['telUtilisateur']?></b></li>
+                            <li class=""> Mail : <?='<a>'.$_SESSION['mailUtilisateur'].'</a>'?></li>
+                            <li class=""> Genre : <b><?=$_SESSION['genre']?></b></li>
+                        </div>
+                        
+                        <!--  -->
+                        <button class="btn btn-xs btn-danger pull-right" style="height:30px; width:150px; margin-top:25px;display:inline-block" onclick="Orientation('../control.param_access/ctr_membre.php?dcxion=true','#app')" >DECONNEXION <i class=" glyphicon glyphicon-log-out"></i></button>               
+                        <!--  -->
+                </div>                 
                     
 <!-- CA C'EST NOTRE HEADER QUE NOUS ALLONS INCLUDE PRESQUE DANS TOUT LE VUE OU RENDU  -->

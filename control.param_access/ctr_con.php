@@ -18,7 +18,9 @@ if(isset($_GET['lgdfds']) AND isset($_GET['ps'])){
     $_SESSION['postnom']=$sel_Ut['postnomUtilisateur'];
     $_SESSION['prenom']=$sel_Ut['prenomUtilisateur'];
     $_SESSION['photoUtilisateur']=$sel_Ut['photoUtilisateur'];
+    $_SESSION['telUtilisateur']=$sel_Ut['telUtilisateur'];
     $_SESSION['mailUtilisateur']=$sel_Ut['mailUtilisateur'];
+    $_SESSION['genre']=$sel_Ut['genre'];
    
     $_SESSION['actif']=$sel_Ut['actif'];
 

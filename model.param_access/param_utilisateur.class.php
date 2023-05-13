@@ -145,7 +145,7 @@ class param_utilisateur {
      public static function log($lg,$ps){
         $lg=htmlspecialchars($lg);
         $psa=htmlspecialchars($ps);
-        $var = self::$con->query("SELECT * FROM param_utilisateur WHERE log='".$lg."'AND pass='".$psa."' AND actif=1");
+        $var = self::$con->query("SELECT * FROM param_utilisateur as ut LEFT JOIN param_genre as gr ON gr.idGenre=ut.idGenre WHERE log='".$lg."'AND pass='".$psa."' AND actif=1");
         return $var->fetch();
         
     }

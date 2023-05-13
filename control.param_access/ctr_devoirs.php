@@ -214,12 +214,12 @@ include_once('../model.param_access/crs_devoirs.class.php');
     if($_GET['value']==1){
          $actdevoir->activer($_GET['idDevoir'],0);
          ?> 
-         <input id="actif" class="btn btn-lg btn-success" value="__ACTIVER__"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=0','#resul','')"  type="button" >
+         <input id="actif" class="btn btn-lg btn-success btn-xs" value="__ACTIVER__"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=0','#resul','')"  type="button" >
         <?php
     }else{
           $actdevoir->activer($_GET['idDevoir'],1);
          ?> 
-         <input id="actif" class="btn btn-lg btn-danger" value="DESACTIVER"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=1','#resul','')"  type="button" >
+         <input id="actif" class="btn btn-lg btn-danger btn-xs" value="DESACTIVER"  onclick="Orientation('../control.param_access/ctr_lecon.php?activer=true&idDevoir=<?=$_GET['idDevoir']?>&value=1','#resul','')"  type="button" >
         <?php
 
     }

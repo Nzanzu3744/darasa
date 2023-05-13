@@ -24,7 +24,7 @@
                  $selDvoir =$selDvoir->selectionnerDerByDevoir($_GET['idDevoir'])->fetch();
            ?>
            <labelle id="resul">
-            <input id="actif" <?php if($selDvoir['actif']==1){echo 'Class="btn btn-lg btn-danger" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success" value="__ACTIVER__"';}?>  onclick="Orientation('../control.param_access/ctr_devoirs.php?activer=true&value=<?=$selDvoir['actif']?>&idDevoir=<?=$_GET['idDevoir']?>','#resul','')"  type="button" >
+            <input id="actif" <?php if($selDvoir['actif']==1){echo 'Class="btn btn-lg btn-danger btn-xs" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success btn-xs" value="__ACTIVER__"';}?>  onclick="Orientation('../control.param_access/ctr_devoirs.php?activer=true&value=<?=$selDvoir['actif']?>&idDevoir=<?=$_GET['idDevoir']?>','#resul','')"  type="button" >
             <labelle>
             <labelle id="valid"></labelle>
 

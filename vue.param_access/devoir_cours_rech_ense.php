@@ -3,7 +3,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:512PX;background-color: transparent">
+         <section class="fenetre " style="background-color: transparent;height:410px;">
          <?php
          $idC=0;
          if(isset($_GET['idCours'])){
@@ -11,7 +11,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
          }
          ?>
          <input  id="idx" placeholder="Recherche devoir par index" type="text" class="form-control" style="width:120px; padding:6px; width:100%" onkeyup="Orientation('../control.param_access/ctr_devoirs.php?maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$_GET['cours']?>&clerech_ense='+$('#idx').val(),'#filtrer','');"  ></input>  
-            <div class="table-responsive" style="height:530px">
+            <div class="table-responsive" style="height:100%">
             <center><i id="resul"></i></center>
             <table id="filtrer"  class="table table-bordered table-striped table-condensed">
                 <tbody>

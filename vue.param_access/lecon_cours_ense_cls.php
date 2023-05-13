@@ -6,14 +6,16 @@ include_once('../model.param_access/crs_lecon.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:512PX;background-color: transparent">
+         <section class="fenetre " style="background-color: transparent; height:410px;">
          <?php
          $idC=0;
          if(isset($_GET['idCours'])){
             $idC=$_GET['idCours'];
          }
          ?>
-            <div class="table-responsive" style="height:548PX" >
+            <div class="table-responsive" style="height:100%" >
+         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_XXXX.php?devoirsgauche_ense=true&idCours=<?=$idC?>','#devoirssgauche','');"  ></input>  
+
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
            <?php

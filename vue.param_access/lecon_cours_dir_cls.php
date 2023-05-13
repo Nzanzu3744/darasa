@@ -6,7 +6,7 @@ include_once('../model.param_access/crs_lecon.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:500PX;">
+         <section class="fenetre " style="height:410px;">
          <?php
          $idC=0;
          if(isset($_GET['idCours'])){
@@ -14,7 +14,7 @@ include_once('../model.param_access/crs_lecon.class.php');
          }
          ?>
          <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&leconsgauche_dir&idCours=<?=$idC?>','#leconsgauche','');"  ></input>  
-            <div class="table-responsive" style="height:548PX" >
+            <div class="table-responsive" style="height:100%" >
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
            <?php

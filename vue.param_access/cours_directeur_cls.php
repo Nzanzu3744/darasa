@@ -5,7 +5,7 @@ include_once('../model.param_access/param_groupe.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:512px;background-color: transparent">
+         <section class="fenetre " style="height:100%;background-color: transparent">
           <div id='test09' name='test09'></div>
             <table class="table table-bordered table-striped table-condensed">
                  </thead>
