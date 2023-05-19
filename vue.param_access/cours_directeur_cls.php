@@ -5,7 +5,7 @@ include_once('../model.param_access/param_groupe.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:100%;background-color: transparent">
+         <section class="fenetre " style="height:92%;background-color: transparent">
           <div id='test09' name='test09'></div>
             <table class="table table-bordered table-striped table-condensed">
                  </thead>
@@ -28,8 +28,9 @@ include_once('../model.param_access/param_groupe.class.php');
                             <td style="background-color: green; color:white"><?=$i++;?></td>
                             <td><?=$selCrs['idCours']?></td>
                             <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=":<z style=font-size:10px".strtoupper($_GET['maClasse'])?></z></td>
+                            <td style="" ><i class="labelles" >Enseignant : </i><b style='font-size:10px'><?=":".strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></td>
                             
-                            <td ><a  onclick="Orientation('../control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="<?=$selCrs['url']?>"></a></td>
+                            <td ><a  onclick="Orientation('../control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="../images/<?=$selCrs['url']?>"></a></td>
                         <?php if($tr>=3){$tr=0; echo "</td>";}?>
             <?php
             ?>
@@ -46,7 +47,9 @@ include_once('../model.param_access/param_groupe.class.php');
                         <li ><a href="#" onclick="Encour()" >Supprimer</a></i></li>
                         <li class="divider"></li>
                         <li><a href="#" onclick="showme('#leconsgauche','#editLeco','true');Orientation('../control.param_access/ctr_blog.php?commentaire_cours&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">commentaire_cours</a></i></li>
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?rptCours_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Rapport </a> 
+                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?rptCours_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Rapport </a> 
+                         <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_pts=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Points </a> 
+                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
                         </li>
 
                     </ul>

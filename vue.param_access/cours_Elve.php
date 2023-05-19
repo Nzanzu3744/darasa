@@ -24,8 +24,10 @@ include_once('../model.param_access/org_classe.class.php');
             </ul>
         </nav>
     </header>
-<section class="" id="corps" style="height:450px;">
-    <div id="editLeco" style="padding:0px; margin:0px; height:100%; width:80% display: inline-block;" class="well table-responsive">
+<section class="" id="corps" style="height:500px;">
+  <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:blue" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:blue"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
+
+    <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:80% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:10%" >Bonjour APPRENANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> Les classes dans les quelles vous vous etes inscrit du plus ancienne au plus recente.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2" style="display:none">

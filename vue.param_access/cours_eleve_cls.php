@@ -5,7 +5,7 @@ include_once('../model.param_access/param_groupe.class.php');
 ?>
 
 
-         <section class="fenetre " style="height:100%;background-color: transparent">
+         <section class="fenetre " style="height:95%;background-color: transparent">
             <table class="table table-bordered table-striped table-condensed">
                  </thead>
                 </thead>
@@ -27,7 +27,7 @@ include_once('../model.param_access/param_groupe.class.php');
                             <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=": <z style=font-size:10px".strtoupper($_GET['maClasse'])?></z></td>
                             <td style="" ><i class="labelles" >Enseignant : </i><b style='font-size:10px'><?=":".strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></td>
                             
-                            <td ><a  onclick="Orientation('../control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="<?=$selCrs['url']?>"></a></td>
+                            <td ><a  onclick="Orientation('../control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="../images/<?=$selCrs['url']?>"></a></td>
                         <?php if($tr>=3){$tr=0; echo "</td>";}?>
             <?php
             ?>

@@ -7,18 +7,13 @@
 include_once('../model.param_access/crs_assertion.class.php');
 if(isset($_GET['AjoutQstTr'])){
 ?>
-
- <div>
- <div id="<?='QuestT'.$_GET['n']?>" name="<?='QuestT'.$_GET['n']?>" class="col-sm-12" style="margin:1px;padding:0px" >
+<div id="<?='QuestT'.$_GET['n']?>" name="<?='QuestT'.$_GET['n']?>" class="col-sm-12" style="margin:1px;padding:0px" >
     <labelle for=<?='qstT'.$_GET['n']?> class="col-sm-11" style="font-size:20px"> Question :<?=$_GET['n']?></labelle>
     <textarea id=<?='qstT'.$_GET['n']?> name=<?='qstT'.$_GET['n']?>  class="textarea" type="text" class="form-control" placeholder=""><?=$_POST['qstT'.$_GET['n']]?></textarea>  
 </div>
 <div class="col-sm-12" style="marging:0px with:50px" >
     <input id=<?=$_GET['idPond']?> placeholder="Point" value='<?=$_GET['pond']?>'/>
 </div>
-</div>
-
-
 <?php
 }else if(isset($_GET['AjoutQstCh'])){
      
@@ -78,7 +73,7 @@ if(isset($_GET['AjoutQstTr'])){
                 +'&modif3='+$('#modif3<?=$_GET['n']?>').val()
                 +'&modif4='+$('#modif4<?=$_GET['n']?>').val()
                 +'&modif5='+$('#modif5<?=$_GET['n']?>').val()
-                +'&modif6='+$('#modif6<?=$_GET['n']?>').val(),'#<?='QuestC'.$_GET['n']?>','#<?='fseria'.$_GET['n']?>')"  class="btn btn-warning pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$_GET['n']?></button>
+                +'&modif6='+$('#modif6<?=$_GET['n']?>').val(),'#<?='QuestC'.$_GET['n']?>','#<?='fseria'.$_GET['n']?>')"  class="btn btn-danger pull-right btn-xs col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$_GET['n']?></button>
         </div>
 
 

@@ -42,6 +42,18 @@ class suivie_remise_devoirs {
     public static function remis($idDevoir){
         return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE rms.idDevoir='.$idDevoir);
     }
+    // GROUP BY ut.idUtilisateur
+    public static function RemisEleveAll(){
+        // return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN crs_devoirs as dv ON dv.idDevoir = rms.idDevoir INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE dv.idCours="'.$idCours.'" GROUP BY ut.idUtilisateur ');
+        return self::$con->query('SELECT rms.IdRemise, rms.idDevoir, dv.idCours, ut.idUtilisateur, ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN crs_devoirs as dv ON dv.idDevoir = rms.idDevoir INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur UNION ALL SELECT rms.IdRemise, rms.idDevoir, dv.idCours, ut.idUtilisateur, ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur FROM suivie_remise_devoirs as rms INNER JOIN `crs_reler_devoir` as rl ON rl.idDevoir=rms.idDevoir INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur');
+    
+    }
+    //  ORDER BY  rms.idRemise desc
+    public static function remiseDevEleveCours($idutil,$idCours){
+        // return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN crs_devoirs as dv ON dv.idDevoir = rms.idDevoir INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE ut.idUtilisateur="'.$idutil.'" AND dv.idCours="'.$idCours.'"');
+        return self::$con->query('SELECT rms.IdRemise, dv.idDevoir, ut.idUtilisateur FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN crs_devoirs as dv ON dv.idDevoir = rms.idDevoir INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE ut.idUtilisateur="'.$idutil.'" AND dv.idCours="'.$idCours.'"  UNION SELECT rms.IdRemise, dv.idDevoir ,ut.idUtilisateur FROM suivie_remise_devoirs as rms INNER JOIN `crs_reler_devoir` as rl ON rl.idDevoir=rms.idDevoir INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE ut.idUtilisateur="'.$idutil.'" AND dv.idCours='.$idCours);
+    
+    }
 
     //DESTRUCTEUR
     public function __destuct(){

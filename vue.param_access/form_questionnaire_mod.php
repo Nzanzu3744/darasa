@@ -17,10 +17,8 @@
     ?>
 
     <div role="" enctype="" class=" row well" style="width:100%;margin:1px" id="utilisa">
-    <center style="margin-left:10px" class="col-sm-12 titres" > QUESTIONNAIRE <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?></center> 
-        <div style="background:white">
-            <center style="margin-left:0px" class="col-sm-12 titres" > QUESTIONNAIRE DU DEVOIR ID:<?=$seldev['idDevoir'].'CREE LE<z style=color:green>'.$seldev['dateCreation'].' </z>A REMETTRE LE <z style=color:red>'.$seldev['dateRemise'].'</z>'?> </center>
-        </div>
+         <center class="col-sm-12 titres" style="font-size:20px; margin-bottom:10px" >QUESTIONNAIRE DEVOIR DU COURS <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ELEVE) ID DEVOIR:<?="" .$seldev['idDevoir'].' CREER LE <b>'.$seldev['dateCreation'].' </b>A REMETRE LE <b>'.$seldev['dateRemise'].'</b>'?></center>
+
     
 
 
@@ -50,7 +48,7 @@
           <div class="col-sm-12">
              <button onclick="Orientation('../control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
              +$('#idDev').val()
-             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
+             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-danger btn-xs pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
         </div>
         
         <?php
@@ -70,32 +68,32 @@
          foreach($Tbasstion as $selAzioni){
               if($tura==1){
             ?>
-              <input disabled  id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==2){
             ?>
-              <input disabled  id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==3){
             ?>
-              <input disabled  id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==4){
             ?>
-              <input disabled  id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==5){
             ?>
-              <input disabled  id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==6){
             ?>
-              <input disabled  id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }
@@ -210,7 +208,7 @@
                 +'&modif3='+$('#modif3<?=$nub?>').val()
                 +'&modif4='+$('#modif4<?=$nub?>').val()
                 +'&modif5='+$('#modif5<?=$nub?>').val()
-                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
+                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-xs btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
         </div>
       </div>
     </div>

@@ -16,10 +16,6 @@
                     </thead>
                     <tbody>
                         <?php
-                            
-
-
-
                             $prom01 = new org_promotion();
                             $n=0;
                             foreach( $prom01->selectionner() as $selProm)

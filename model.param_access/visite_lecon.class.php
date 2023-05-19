@@ -53,6 +53,12 @@ class visite_lecon {
     public static function vues($idLecon){
         return $vue = self::$con->query('SELECT * FROM `visite_lecon` as vlc INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur WHERE vlc.idLecon='.$idLecon);           
     }
+    public static function visiLecteurAll(){
+        return $vue = self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours  FROM `visite_lecon` as vlc INNER JOIN crs_lecon as lcs ON lcs.idLecon=vlc.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur UNION SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours  FROM `visite_lecon` as vlc INNER JOIN `crs_reler_lecon` as rl ON vlc.idLecon= rl.idLecon INNER JOIN crs_lecon as lcs ON rl.idLecon=lcs.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur');           
+    }
+    public static function vueVisiLecteurUtilCours($idUt,$idCours){
+        return $vue = self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours  FROM `visite_lecon` as vlc INNER JOIN crs_lecon as lcs ON lcs.idLecon=vlc.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur WHERE vlc.idUtilisateur='.$idUt.' AND lcs.idCours="'.$idCours.'"UNION SELECT ut.idUtilisateur, ut.nomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours FROM `visite_lecon` as vlc INNER JOIN `crs_reler_lecon` as rl ON vlc.idLecon= rl.idLecon INNER JOIN crs_lecon as lcs ON rl.idLecon=lcs.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur WHERE vlc.idUtilisateur='.$idUt.' AND lcs.idCours="'.$idCours.'" GROUP BY ut.idUtilisateur');           
+    }
 
     //DESTRUCTEUR
     public function __destuct(){

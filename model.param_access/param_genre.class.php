@@ -57,13 +57,9 @@ class param_genre {
         return  self::$con->query('SELECT * FROM param_genre ORDER BY idGenre ASC');
     }
     
-    public function rechercher($idGenre){
+    public static function rechercher($idGenre){
         $IdGr = htmlspecialchars($idGenre);
-        $var = self::$con->query("SELECT * FROM param_genre WHERE idGenre ='".$IdGr."' ORDER BY idGenre ASC");
-        foreach($var as $sel){
-            self::$genre = $sel['genre'];
-            self::$idGenre = $sel['idGenre'];
-        }
+        $var = self::$con->query("SELECT * FROM `param_genre` WHERE idGenre=".$IdGr);
         return $var; 
     }
     public function filtrer($genre){

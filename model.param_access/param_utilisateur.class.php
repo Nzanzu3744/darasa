@@ -5,6 +5,8 @@ class param_utilisateur {
     private static  $nomUtilisateur;
     private static  $postnomUtilisateur;
     private static  $prenomUtilisateur;
+    private static  $idGenre;
+    private static  $tel;
     private static  $mailUtilisateur;
     private static  $photoUtilisateur;
     private static  $log;
@@ -26,26 +28,30 @@ class param_utilisateur {
     public static function getidutilisateur(){
         return self::$idUtilisateur;
     }
-    public static function ajouter($nomUtilisateur,$postnomUtilisateur, $prenomUtilisateur,$mailUtilisateur,$photoUtilisateur)
+    public static function ajouter($nomUtilisateur,$postnomUtilisateur, $prenomUtilisateur,$idGenre,$tel,$mailUtilisateur,$photoUtilisateur)
     {
 
         $nomUt=htmlspecialchars($nomUtilisateur);
         $postnomUt=htmlspecialchars($postnomUtilisateur);
         $prenomUt=htmlspecialchars($prenomUtilisateur);
+        $idGenre=htmlspecialchars($idGenre);
+        $tel=htmlspecialchars($tel);
         $mailUt=htmlspecialchars($mailUtilisateur);
         $photoUt=htmlspecialchars($photoUtilisateur);
         $log=$nomUtilisateur;
         $pass=$nomUtilisateur;
-        $req=self::$con->prepare('INSERT INTO `param_utilisateur`(`nomUtilisateur`, `postnomUtilisateur`, `prenomUtilisateur`, `mailUtilisateur`, `photoUtilisateur`, `log`, `pass`) VALUES (?,?,?,?,?,?,?)');
-        if($req->execute(array($nomUt,$postnomUt,$prenomUt,$mailUt,$photoUt,$log,$pass))){
+        $req=self::$con->prepare('INSERT INTO `param_utilisateur`(`nomUtilisateur`, `postnomUtilisateur`, `prenomUtilisateur`, idGenre,telUtilisateur, `mailUtilisateur`, `photoUtilisateur`, `log`, `pass`) VALUES (?,?,?,?,?,?,?,?,?)');
+        if($req->execute(array($nomUt,$postnomUt,$prenomUt,$idGenre,$tel,$mailUt,$photoUt,$log,$pass))){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
-            self::$nomUtilisateur=htmlspecialchars($nomUtilisateur);
-            self::$postnomUtilisateur=htmlspecialchars($postnomUtilisateur);
-            self::$prenomUtilisateur=htmlspecialchars($prenomUtilisateur);
-            self::$mailUtilisateur=htmlspecialchars($mailUtilisateur);
-            self::$photoUtilisateur=htmlspecialchars($photoUtilisateur);
-            self::$log=self::$nomUtilisateur;
-            self::$pass=self::$nomUtilisateur;
+            self::$nomUtilisateur=$nomUt;
+            self::$postnomUtilisateur=$postnomUt;
+            self::$prenomUtilisateur=$prenomUtilisateur;
+            self::$idGenre=$idGenre;
+            self::$tel=$tel;
+            self::$mailUtilisateur=$mailUt;
+            self::$photoUtilisateur=$photoUt;
+            self::$log=$nomUt;
+            self::$pass=$nomUt;
             return true;
         }else{
             return false;
@@ -53,17 +59,19 @@ class param_utilisateur {
 
     }
     
-    public static function modifier($idUtilisateur,$nomUtilisateur,$postnomUtilisateur, $prenomUtilisateur,$mailUtilisateur,$photoUtilisateur,$log,$pass)
+    public static function modifier($idUtilisateur,$nomUtilisateur,$postnomUtilisateur, $prenomUtilisateur,$idGenre,$tel,$mailUtilisateur,$photoUtilisateur,$log,$pass)
     {
         $idUt=htmlspecialchars($idUtilisateur);
         $nomUt=htmlspecialchars($nomUtilisateur);
         $postnomUt=htmlspecialchars($postnomUtilisateur);
         $prenomUt=htmlspecialchars($prenomUtilisateur);
+        $idGenre=htmlspecialchars($idGenre);
+        $tel=htmlspecialchars($tel);
         $mailUt=htmlspecialchars($mailUtilisateur);
         $photoUt=htmlspecialchars($photoUtilisateur);
         $log=htmlspecialchars($log);
         $pass=htmlspecialchars($pass);
-            if(self::$con->exec('UPDATE param_utilisateur SET nomUtilisateur="'.$nomUt.'",postnomUtilisateur="'.self::$postnomUt.'",prenomUtilisateur="'.$prenomUt.'",mailUtilisateur="'.$mailUt.'",photoUtilisateur="'.$photoUt.'",log="'.$log.'",pass="'.$pass.'"WHERE idUtilisateur="'.$idUt.'"'))
+            if(self::$con->exec('UPDATE param_utilisateur SET nomUtilisateur="'.$nomUt.'",postnomUtilisateur="'.$postnomUt.'",prenomUtilisateur="'.$prenomUt.'",telUtilisateur="'.$tel.'",mailUtilisateur="'.$mailUt.'",idGenre="'.$idGenre.'",photoUtilisateur="'.$photoUt.'",log="'.$log.'",pass="'.$pass.'" WHERE idUtilisateur="'.$idUt.'"'))
             {
                 self::$idUtilisateur=htmlspecialchars($idUtilisateur);
                 self::$nomUtilisateur=htmlspecialchars($nomUtilisateur);
@@ -73,9 +81,34 @@ class param_utilisateur {
                 self::$photoUtilisateur=htmlspecialchars($photoUtilisateur);
                 self::$log=htmlspecialchars($log);
                 self::$pass=htmlspecialchars($pass);
-                echo true;
+                return true;
             }else{
-                echo false;
+                return false;
+            }
+    }
+    public static function modifierSP($idUtilisateur,$nomUtilisateur,$postnomUtilisateur, $prenomUtilisateur,$idGenre,$tel,$mailUtilisateur,$log,$pass)
+    {
+        $idUt=htmlspecialchars($idUtilisateur);
+        $nomUt=htmlspecialchars($nomUtilisateur);
+        $postnomUt=htmlspecialchars($postnomUtilisateur);
+        $prenomUt=htmlspecialchars($prenomUtilisateur);
+        $idGenre=htmlspecialchars($idGenre);
+        $tel=htmlspecialchars($tel);
+        $mailUt=htmlspecialchars($mailUtilisateur);
+        $log=htmlspecialchars($log);
+        $pass=htmlspecialchars($pass);
+            if(self::$con->exec('UPDATE param_utilisateur SET nomUtilisateur="'.$nomUt.'",postnomUtilisateur="'.$postnomUt.'",prenomUtilisateur="'.$prenomUt.'",idGenre="'.$idGenre.'",telUtilisateur="'.$tel.'",mailUtilisateur="'.$mailUt.'",log="'.$log.'",pass="'.$pass.'" WHERE idUtilisateur="'.$idUt.'"'))
+            {
+                self::$idUtilisateur=htmlspecialchars($idUtilisateur);
+                self::$nomUtilisateur=htmlspecialchars($nomUtilisateur);
+                self::$postnomUtilisateur=htmlspecialchars($postnomUtilisateur);
+                self::$prenomUtilisateur=htmlspecialchars($prenomUtilisateur);
+                self::$mailUtilisateur=htmlspecialchars($mailUtilisateur);
+                self::$log=htmlspecialchars($log);
+                self::$pass=htmlspecialchars($pass);
+                return true;
+            }else{
+                return false;
             }
     }
    
@@ -128,19 +161,8 @@ class param_utilisateur {
     
     public static function rechercher($idUtilisateur){
         $idUtil=htmlspecialchars($idUtilisateur);
-        $var = self::$con->query("SELECT * FROM param_utilisateur WHERE idUtilisateur =".$idUtil);
-        return $var->fetch();
-        // foreach($var as $sel){
-        //     self::$idUtilisateur=$sel['idUtilisateur'];
-        //     self::$nomUtilisateur=$sel['nomUtilisateur'];
-        //     self:: $postnomUtilisateur=$sel['postnomUtilisateur'];
-        //     self:: $prenomUtilisateur=$sel['prenomUtilisateur'];
-        //     self:: $mailUtilisateur=$sel['mailUtilisateur'];
-        //     self:: $photoUtilisateur=$sel['photoUtilisateur'];
-        //     self:: $log=$sel['log'];
-        //     self:: $pass=$sel['pass'];
-        // }
-        
+       $var = self::$con->query("SELECT * FROM param_utilisateur WHERE idUtilisateur =".$idUtil);
+        return $var->fetch();      
     }
      public static function log($lg,$ps){
         $lg=htmlspecialchars($lg);

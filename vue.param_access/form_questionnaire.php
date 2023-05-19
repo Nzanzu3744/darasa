@@ -31,7 +31,7 @@
                  <input onclick="Orientation('../control.param_access/ctr_questionnaire.php?n=<?=$nub?>&form=<?='QuestT'.$nub?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
              +$('#idDev').val()
              +'&modifQst='+$('#modifQst'+<?=$nub?>).val()
-             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
+             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-xs btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
         
             </div>
 

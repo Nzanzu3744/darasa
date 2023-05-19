@@ -8,8 +8,8 @@ include_once('../model.param_access/org_promotion.class.php');
     <div class="form-group col-sm-4">
         <input id="prm" type="text" class="form-control" style="width:250px" placeholder="Promotion ici">
     </div>
-     <button id="" onclick="Orientation('../control.param_access/ctr_structure.php?ajouterPm=true&Promtn='+$('#prm').val(),'#promotion01')"  class="btn btn-success pullright col-sm-3">Valider</button>
-    <button onclick="Encour()"  class="btn btn-primary pullleft col-sm-3">Annuler</button>
+     <button id="" onclick="Orientation('../control.param_access/ctr_structure.php?ajouterPm=true&Promtn='+$('#prm').val(),'#promotion01')"  class="btn btn-xs btn-success pullright col-sm-3">Valider</button>
+    <button onclick="Encour()"  class="btn btn-xs btn-primary pullleft col-sm-3">Annuler</button>
 
         <div id="ec" class="alert alert-block alert-danger" style="display:none">
         <h4>Erreur !</h4>

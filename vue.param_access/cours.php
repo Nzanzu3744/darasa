@@ -6,7 +6,7 @@ include_once('../model.param_access/org_anneesco.class.php');
  <?php
  (empty($_SESSION))?session_start():'';
  ?>
-<div class="panel panel-default col-sm-12">
+<div class="col-sm-12" style="">
    
     
     <header  id="titre">
@@ -49,8 +49,10 @@ include_once('../model.param_access/org_anneesco.class.php');
         </nav>
         
     </header>
-<section class="" id="corps" style="height:450px">
-    <div id="editLeco" style="padding:0px; margin:0px; height:100%; width:80% display: inline-block;" class="well table-responsive">
+<section class="" id="corps" style="height:500px">
+  <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
+
+    <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:80% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) ENSEIGNANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours de votre affectation est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2">

@@ -33,7 +33,7 @@
                 if(empty($veri['idAssertion'])){
                     ?>
                     <form class="form-inline col-sm-12" id="<?='reponsT'.$Cpt?>" name="<?='reponsT'.$Cpt?>">
-                            <labelle for=<?='qstT'.$Cpt?> class="col-sm-12 titres" style="font-size:20px"> Question :<?=$Cpt?> [Sur <?=$selQst['ponderation']?>_point(s)]</labelle>
+                            <label for=<?='qstT'.$Cpt?> class="col-sm-12 titres" style="font-size:20px"> Question :<?=$Cpt?> [Sur <?=$selQst['ponderation']?>_point(s)]</label>
                             <div class="col-sm-12" style="font-size:20px">
                             <?php
                             echo html_entity_decode($selQst['question']);
@@ -52,8 +52,6 @@
                             <div id=<?='reponsesssT'.$Cpt?>>
                                 <a style='color:red'>Veuillez repondre à la Question .<?=" ".$Cpt?>. ci-haut.</a>
                                 <textarea class="textarea" id="<?='repT'.$Cpt?>"  name="<?='repT'.$Cpt?>"  ></textarea>
-                              
-                            
                             <div class="col-sm-12">
                                 <input onclick="Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modifrep<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&iddv=<?=$_GET['iddv']?>&AjouterRepTr=true','<?='#reponsesssT'.$Cpt?>','<?='#reponsT'.$Cpt?>')"  class="btn btn-success pull-right  col-sm-1" value='Valider'/>
                             </div>
@@ -68,7 +66,7 @@
                 }else{
                     ?>
 
-                    <labelle for=<?='qstT'.$Cpt?> class="col-sm-12 titres" style="font-size:40px"> Question :<?=$Cpt?> [Sur <?=$selQst['ponderation']?>_point(s)]</labelle>
+                    <label for=<?='qstT'.$Cpt?> class="col-sm-12 titres" style="font-size:40px"> Question :<?=$Cpt?> [Sur <?=$selQst['ponderation']?>_point(s)]</label>
                         <div class="col-sm-12" style="font-size:20px">
                             <?php
                             echo html_entity_decode($selQst['question']);
@@ -91,7 +89,7 @@
                             ?>
                                 <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                     <input disabled id=<?='asCk1'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?> />
-                                    <labelle disabled style="width:100%"  id=<?='ass1'.$Cpt?> type="text" class="form-control" ><?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%"  id=<?='ass1'.$Cpt?> type="text" class="form-control" ><?=$selAss['assertion']?></label>
                                 </div>
 
                             <?php
@@ -100,7 +98,7 @@
                             ?>
                                 <div class="col-sm-4"   style="border: 1px dashed gray">
                                     <input disabled id=<?='asCk2'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?>  />
-                                    <labelle disabled style="width:100%"  id=<?='ass2'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%"  id=<?='ass2'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></label>
                                 </div>
 
                             <?php
@@ -109,7 +107,7 @@
                             ?>
                                 <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                     <input disabled id=<?='asCk3'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?>  />
-                                    <labelle disabled style="width:100%"  id=<?='ass3'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%"  id=<?='ass3'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></label>
                                 </div>
 
                             <?php
@@ -118,7 +116,7 @@
                             ?>
                                 <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)" >
                                     <input disabled id=<?='asCk4'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?>  />
-                                    <labelle disabled style="width:100%"  id=<?='ass4'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%"  id=<?='ass4'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></label>
                                 </div>
 
                             <?php
@@ -127,7 +125,7 @@
                             ?>
                                 <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                     <input disabled id=<?='asCk5'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?>  />
-                                    <labelle disabled style="width:100%"  id=<?='ass5'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%"  id=<?='ass5'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>
                                 </div> 
 
                             <?php
@@ -136,7 +134,7 @@
                             ?>
                                 <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                     <input disabled id=<?='asCk6'.$Cpt?> type="checkbox" <?=($selAss['idAssertion']==$repondi['idAssertion'])?'checked':'';?>  />
-                                    <labelle disabled style="width:100%" id=<?='ass6'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></labelle>
+                                    <label disabled style="width:100%" id=<?='ass6'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>
                                 </div> 
 
                             <?php
@@ -144,7 +142,7 @@
                             }
                         }
                         ?>
-                         <div><labelle disabled style="color:green" >Assertion selectionnée le<?=' '.$repondi['dateCreation']?></div>
+                         <div><label disabled style="color:green" >Assertion selectionnée le<?=' '.$repondi['dateCreation']?></div>
                          <?php
 
                         }else{
@@ -156,7 +154,7 @@
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                         <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss1<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"  id=<?='asCk1'.$Cpt?> type="checkbox"/>
-                                        <labelle disabled style="width:100%" id=<?='ass1'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></labelle>                                   </div>
+                                        <label disabled style="width:100%" id=<?='ass1'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></label>                                   </div>
 
                                 <?php
                                 $tur++;
@@ -164,7 +162,7 @@
                                 ?>
                                     <div class="col-sm-4"   style="border: 1px dashed gray">
                                         <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss2<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk2'.$Cpt?> type="checkbox" />
-                                        <labelle disabled  style="width:100%" id=<?='ass2'.$Cpt?> type="text"  class="form-control" ><?=$selAss['assertion']?> </labelle>
+                                        <label disabled  style="width:100%" id=<?='ass2'.$Cpt?> type="text"  class="form-control" ><?=$selAss['assertion']?> </label>
                                     </div>
 
                                 <?php
@@ -173,7 +171,7 @@
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                         <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss3<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk3'.$Cpt?> type="checkbox" />
-                                        <labelle disabled style="width:100%" id=<?='ass3'.$Cpt?> type="text" class="form-control" value="<?=$selAss['assertion']?>" /></labelle>                                   </div>
+                                        <label disabled style="width:100%" id=<?='ass3'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></label>                                   </div>
 
                                 <?php
                                 $tur++;
@@ -181,7 +179,7 @@
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)" >
                                         <input  onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss4<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk4'.$Cpt?> type="checkbox"  />
-                                        <labelle disabled style="width:100%" id=<?='ass4'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></labelle>                                    </div>
+                                        <label disabled style="width:100%" id=<?='ass4'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></label>                                    </div>
 
                                 <?php
                                 $tur++;
@@ -189,7 +187,7 @@
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                         <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss5<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk5'.$Cpt?> type="checkbox"/>
-                                        <labelle disabled style="width:100%" id=<?='ass5'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></labelle>                                   </div> 
+                                        <label disabled style="width:100%" id=<?='ass5'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>                                   </div> 
 
                                 <?php
                                 $tur++;
@@ -197,7 +195,7 @@
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
                                         <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss6<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk6'.$Cpt?> type="checkbox"/>
-                                        <labelle disabled style="width:100%" id=<?='ass6'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></labelle>                                   </div> 
+                                        <label disabled style="width:100%" id=<?='ass6'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>                                   </div> 
 
                                 <?php
                                 $tur++;

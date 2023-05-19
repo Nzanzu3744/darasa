@@ -7,7 +7,7 @@ include_once('../model.param_access/dir_directeur.class.php');
  <?php
  (empty($_SESSION))?session_start():'';
  ?>
-<div class="panel panel-default col-sm-12">
+<div class="col-sm-12">
    
     
     <header  id="titre">
@@ -57,13 +57,15 @@ include_once('../model.param_access/dir_directeur.class.php');
         </nav>
         
     </header>
-<section class="" id="corps" style="height:450px">
-    <div id="editLeco" style="padding:0px; margin:0px; height:100%; width:100% display: inline-block;" class="well table-responsive">
+<section class="" id="corps" style="height:500px">
+  <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:green" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:green"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
+
+    <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:100% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:9%" >Bonjour Mr.(Mm) DIRECTEUR(TRICE)<?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours pour les <a>évaluers</a>. </center>
     </div>
     <div id="leconsgauche" class="col-sm-2" >
     </div>
-    <div id="dessoueditLeco" class="col-sm-12 pull-right">
+    <div id="dessoueditLeco" class="col-sm-12 pull-right memu2" style="display: none">
 
     </div>   
 </section>
