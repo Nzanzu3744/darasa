@@ -46,18 +46,22 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
 }else  if(isset($_GET['leconsgauche_eleve']) and isset($_GET['idCours'])){
     include_once('../vue.param_access/lecon_cours_eleve_cls.php');
 //LECTURE LECON
+
+
 }else if(isset($_GET['LireLecon_ense'])){
-    include_once('../model.param_access/visite_lecon.class.php');
-    $visite =new visite_lecon();
-    $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
+    // include_once('../model.param_access/visite_lecon.class.php');
+    // $visite =new visite_lecon();
+    // $visite->ajouter($_GET['idlc'],$_GET['inscr']);
     ?>
         <input disabled style="color:red" id="idlc" value='<?=$_GET['idlc']?>'/>
     <?php
 include_once('../vue.param_access/form_lecon_mod_ense.php');
+
+
 }else if(isset($_GET['LireLecon_dir'])){
-    include_once('../model.param_access/visite_lecon.class.php');
-    $visite =new visite_lecon();
-    $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
+    // include_once('../model.param_access/visite_lecon.class.php');
+    // $visite =new visite_lecon();
+    // $visite->ajouter($_GET['idlc'],$_GET['inscr']);
     ?>
         <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
     <?php
@@ -71,12 +75,18 @@ include_once('../vue.param_access/form_lecon_mod_dir.php');
     $sel_A=$sel_A->selectionnerDerAn()->fetch();
     $rl->ajouter($_GET['idlc'],$_GET['idCours'],$sel_A['idAnneeSco']); 
     echo "Rapportage reussi de la lecon code ".$_GET['idlc']; 
+
+
 }else if(isset($_GET['LireLecon_eleve'])){
-     include_once('../model.param_access/visite_lecon.class.php');
+    include_once('../model.param_access/visite_lecon.class.php');
     $visite =new visite_lecon();
-    $visite->ajouter($_GET['idlc'],$_SESSION['idUtilisateur']);
+    $visite->ajouter($_GET['idlc'],$_GET['idIns']);
     echo '<labelle disabled style="color:blue" id="idlc">'.$_GET['idlc'].'</labelle>';
+    echo $_GET['idIns'].'=Ins';
 include_once('../vue.param_access/lecon_eleve.php');
+
+
+
 }else if(isset($_GET['rechercheGauche_ense'])){
     include_once('../vue.param_access/lecon_cours_rech_ense.php');
 

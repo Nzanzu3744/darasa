@@ -6,11 +6,11 @@ include_once('../model.param_access/crs_lecon.class.php');
 $editeur = new param_utilisateur();
 $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
 ?>
-<div style="border: 1px solid black; pabing:5px">
+<div style="border: 1px solid black; padding:10px; font: size 12px; margin:10px">
 <button class="pull-right btn btn-warning" onclick="Orientation('../control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button>
 <button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button>
     <table class="table table-bordered">
-        <center style="background: aliceblue; font-size:20px" class="col-sm-12"><b> RAPPORT SYNTHESE DU COURS</b></center>
+        <center style="background: aliceblue" class="col-sm-12"><b> RAPPORT SYNTHESE DU COURS</b></center>
     <tbody>
      <tr style="color: white">
                 <td></td>
@@ -25,20 +25,19 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                 <td></td>
                 <td></td>
         </tr>
-        <tr style="desplay: inline-block; height:20px">
+        <tr style="desplay: inline-block; height:15px">
             <td  colspan="7"   STYLE="desplay:inline-block">
                 <center class="col-sm-12"><b> TUTULAIRE DU COURS</b></center>
-                <div style="margin-top:5px">
+                <div style="margin-top:5px;">
                     <ul class="col-sm-7 col-dl-7 col-xs-7 col-lg-7 pull-right">
                             <li class=""> Nom : <b><?=$editeur['nomUtilisateur']?></b></li>
                             <li class=""> Postnom : <b><?=$editeur['postnomUtilisateur']?></b></li>
                             <li class=""> Prenom : <b><?=$editeur['prenomUtilisateur']?></b></li>
                             <li class=""> Tel : : <b><?=$editeur['telUtilisateur']?></b></li>
                             <li class=""> Mail : <?='<a>'.$editeur['mailUtilisateur'].'</a>'?></li>
-                            <li class=""> Genre : <b><?=$editeur['genre']?></b></li>
-                            
+                            <li class=""> Genre : <b><?=$editeur['genre']?></b></li>          
                     </ul>
-                <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="<?=$editeur['photoUtilisateur']?>" style="width:120px; height:120px"/>
+                    <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="../images/<?=$editeur['photoUtilisateur']?>" style="width:120px; height:100px"/>
                 <div>
             </td>
              <td colspan="4"  class="col-sm-8">

@@ -48,7 +48,7 @@ include_once('../model.param_access/param_groupe.class.php');
                         </select>
 
                             </td>
-                            <td><a onclick="Orientation('../control.param_access/ctr_membre.php','#panel')"><img id="image" src="<?=$selut['photoUtilisateur']?>"></a></td>
+                            <td><a onclick="Orientation('../control.param_access/ctr_membre.php','#panel')"><img id="image" src="../images/<?=$selut['photoUtilisateur']?>"></a></td>
                         <?php if($tr>=3){$tr=0; echo "</td>";}?>
             <?php
             ?>

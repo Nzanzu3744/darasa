@@ -59,8 +59,8 @@ class crs_cours {
     }
    
     public function supprimer($idCours){
-        $idIns = htmlspecialchars($idCours);
-        if(self::$con->exec('DELETE FROM `crs_cours` WHERE idCours="'.$idIns.'"')){
+        $idCrs = htmlspecialchars($idCours);
+        if(self::$con->exec('DELETE FROM `crs_cours` WHERE idCours="'.$idCrs.'"')){
             self::$idCours = '';
             return true;
         }else{
@@ -83,17 +83,11 @@ class crs_cours {
     }
 
     //
-    public function rechercher($idCours){
-        $idIns = htmlspecialchars($idCours);
-        return $var = self::$con->query("SELECT * FROM crs_cours WHERE idCours =".$idIns);
-        // foreach($var as $sel){
-        //     self::$idCours = $sel['idCours'];
-        //     self::$idCours = $sel['idCours'];
-        //     self::$cours = $sel['cours'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
+    public static function rechercher($idCours){
+        $idCrs1 = htmlspecialchars($idCours);
+        return self::$con->query('SELECT * FROM crs_cours as crs INNER JOIN org_affectation as ins ON ins.idAffectation=crs.idAffectation WHERE idCours ="'.$idCrs1.'"');
     }
+
     //DESTRUCTEUR
     public function __destuct(){
     }

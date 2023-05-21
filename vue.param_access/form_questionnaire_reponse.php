@@ -21,11 +21,6 @@ if(isset($_GET['AjouterRepTr'])){
 <?php
 }else if(isset($_GET['AjoutQstCh'])){
 ?>
-
-
-
-
-
 <labelle for=<?=$_GET['idqst']?> class="col-sm-12" style="font-size:20px"> Question :<?=$_GET['n']?></labelle>
     <textarea id=<?=$_GET['idqst']?>  class="textarea"  cols="140" placeholder=""><?=$_GET['qst']?></textarea>
     <div class="col-sm-12" style="padding-left:1%" >

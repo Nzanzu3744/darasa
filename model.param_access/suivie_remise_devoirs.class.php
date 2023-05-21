@@ -39,8 +39,17 @@ class suivie_remise_devoirs {
         }
            
     }
-    public static function remis($idDevoir){
-        return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE rms.idDevoir='.$idDevoir);
+    public static function remis($idDevoir,$idClasse){
+        return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE rms.idDevoir='.$idDevoir.' AND ins.idClasse='.$idClasse);
+    }
+    public static function RemisToutEleve(){
+        return self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur FROM `suivie_remise_devoirs` as rms  INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur');
+    
+    }
+    //  ORDER BY  rms.idRemise desc
+    public static function remiseEleve($idUt,$class,$idAn){
+        return self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, rms.idDevoir FROM `suivie_remise_devoirs` as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur WHERE ut.idUtilisateur='.$idUt.' AND ins.idAnneeSco='.$idAn.' AND ins.idClasse='.$class.' ORDER BY rms.idDevoir ASC');
+    
     }
 
     //DESTRUCTEUR

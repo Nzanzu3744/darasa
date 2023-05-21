@@ -35,7 +35,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                         $sel_C = new crs_devoirs();
                         $sel_C=$sel_C->selectionnerDerByIdCours($seldv['idCours'])->fetch();
                         ?>
-                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?Liredevoirs_eleve=tue&idIns=<?=$_GET['idIns']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco')">Lire le devoirs</a></i></li>
+                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?Liredevoirs_eleve=tue&idIns=<?=$_GET['idIns']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco')">Lire le devoirs</a></i></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

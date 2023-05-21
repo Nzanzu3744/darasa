@@ -18,13 +18,7 @@
     ?>
 
     <div role="" enctype="" class=" row well" style="width:100%;margin:1px" id="utilisa">
-    <center style="margin-left:10px" class="col-sm-12 titres" > QUESTIONNAIRE <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?></center> 
-        <div style="background:white">
-            <center style="margin-left:0px" class="col-sm-12 titres" > QUESTIONNAIRE DU DEVOIR ID:<?=$seldev['idDevoir'].'CREE LE<z style=color:green>'.$seldev['dateCreation'].' </z>A REMETTRE LE <z style=color:red>'.$seldev['dateRemise'].'</z>'?> </center>
-        </div>
-    
-
-
+    <center style="margin-left:10px" class="col-sm-12 titres" > QUESTIONNAIRE <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?>  QUESTIONNAIRE DU DEVOIR ID:<?=$seldev['idDevoir'].'CREE LE<z style=color:green>'.$seldev['dateCreation'].' </z>A REMETTRE LE <z style=color:red>'.$seldev['dateRemise'].'</z>'?> </center> 
 
     <?php
         $verif = new crs_assertion();
@@ -41,24 +35,17 @@
         $veri =$ver->fetch();
     if(empty($veri['idAssertion'])){
             ?>
-            <div>
+          <div>
             <form id=<?='QuestT'.$nub?> nam=<?='QuestT'.$nub?>>
            
                     <labelle for=<?='qstT'.$nub?> class="col-sm-11" style="font-size:20px"> Question :<?=$nub?></labelle>
                     <textarea name=<?='qstT'.$nub?>  class="textarea " cols="140" type="text" ><?=$selQst['question']?></textarea>  
-
-                <!-- <input id=<?='pond'.$nub?>  type="text" class="" value="<?=$selQst['ponderation']?>"/> -->
             </form>
-          <!-- <div class="col-sm-12">
-             <button onclick="Orientation('../control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
-             +$('#idDev').val()
-             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
-        </div> -->
         </div>
 
          <?php
          $rpses = new crs_reponset();
-         $rpses = $rpses->selectionnerByQstAvecEleve($selQst['idQuestion'])->fetchAll();
+         $rpses = $rpses->selectionnerByQstAvecEleveClass($selQst['idQuestion'],$_GET['idClasse'])->fetchAll();
          ?>
          
          <?php
@@ -72,7 +59,7 @@
  
                             <label class=""> <?=$selRep['nomUtilisateur'].' '.$selRep['postnomUtilisateur'].' '.$selRep['prenomUtilisateur']?></li>
                             <label class=""><?=$selRep['genre']?></label>
-                            <img class="col-sm-12" src="<?=$selRep['photoUtilisateur']?>">     
+                            <img class="col-sm-12" src="<?='../images/'.$selRep['photoUtilisateur']?>">     
               </center>
               <div class="col-sm-10" style="border: 1px solid white;padding:0px; background:white"><?=$selRep['reponse']?></div>
                       <?php
@@ -125,32 +112,32 @@
          foreach($Tbasstion as $selAzioni){
               if($tura==1){
             ?>
-              <input disabled  id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent" disabled  id="modif1<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==2){
             ?>
-              <input disabled  id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif2<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==3){
             ?>
-              <input disabled  id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif3<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==4){
             ?>
-              <input disabled  id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif4<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }else if($tura==5){
             ?>
-              <input disabled  id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif5<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
             $tura++;
               }else if($tura==6){
             ?>
-              <input disabled  id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
+              <input style="height:0px; width:0px; border: 0px solid transparent"  disabled  id="modif6<?=$nub?>" value='<?=$selAzioni['idAssertion']?>'/>
             <?php
              $tura++; 
               }
@@ -272,9 +259,9 @@
     <table>
      <!--  -->
         <?php
-        include('../model.param_access/crs_reponsec.class.php');
+        include_once('../model.param_access/crs_reponsec.class.php');
         $repondi = new crs_reponsec();
-        $repondi = $repondi->selectionnerByQstAll($selQst['idQuestion']);
+        $repondi = $repondi->selectionnerByQstAvecEleveClass($selQst['idQuestion'],$_GET['idClasse']);
         $nrep=0;
         $tour=1;
         foreach($repondi as $selRep){
@@ -287,7 +274,7 @@
                  <center  style="border: 1px solid white; padding:1px; font-size:9px">
                             <label class=""> <?=$selRep['nomUtilisateur'].' '.$selRep['postnomUtilisateur'].' '.$selRep['prenomUtilisateur']?></li>
                             <label class=""><?=$selRep['genre']?></label>
-                            <img class="col-sm-12" src="<?=$selRep['photoUtilisateur']?>">     
+                            <img class="col-sm-12" src="<?='../images/'.$selRep['photoUtilisateur']?>">     
                   </center>    
                   <center style="height:100%; width:100%; font-size:9px">
                             <?php
@@ -310,7 +297,7 @@
                </td>
             <?php
             $tour++;
-            if($tour==5){echo '<tr>'; $tour=1;}
+            if($tour==12){echo '<tr>'; $tour=1;}
             ?>
               
             <?php

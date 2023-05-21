@@ -16,11 +16,9 @@ if(isset($_GET['NvDevoi'])){
     include_once('../vue.param_access/devoir_cours_dir_cls.php');
 //LECTURE LECON
 }else  if(isset($_GET['devoirsgauche_eleve']) AND isset($_GET['idCours'])){
-    include_once('../vue.param_access/devoir_cours_eleve_cls.php');
-    
+    include_once('../vue.param_access/devoir_cours_eleve_cls.php');   
 //LECTURE LECON
-}if(isset($_GET['Liredevoirs_eleve'])){
-// echo $_GET['iddv']."".$_GET['cours']."".$_GET['idcrs'];
+}else if(isset($_GET['Liredevoirs_eleve'])){
    include_once('../vue.param_access/form_questionnaire_eleve.php');
 }else if(isset($_GET['listeRms'])){
      include_once('../model.param_access/suivie_remise_devoirs.class.php');
@@ -124,7 +122,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
         </table>   
             <?php
            }
-}elseif(isset($_GET['clerech_dir']) AND $_GET['clerech_dir']!=''){    
+}else if(isset($_GET['clerech_dir']) AND $_GET['clerech_dir']!=''){    
 include_once('../model.param_access/crs_devoirs.class.php');
 ?>
  <table id="filtrer"  class="table table-bordered table-striped table-condensed">
@@ -226,7 +224,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
       
      
 }else{
-    echo ".>_-_<.";
+    echo "ECHE CONTROLEUR DEVOIR";
 }
 
 

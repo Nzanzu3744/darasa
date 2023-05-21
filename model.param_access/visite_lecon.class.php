@@ -40,7 +40,7 @@ class visite_lecon {
             }
         }
     }
-   
+   //ici
     public static function estvue($idLecon, $idUti){
         $vue = self::$con->query('SELECT idVisiteLecon FROM `visite_lecon` as vlc WHERE vlc.idLecon='.$idLecon.' AND vlc.idUtilisateur='.$idUti);
         if($vue->fetch()!=null){
@@ -50,8 +50,18 @@ class visite_lecon {
         }
            
     }
-    public static function vues($idLecon){
+    //ici aussi
+    public static function vues($idLecon,$idClasse){
         return $vue = self::$con->query('SELECT * FROM `visite_lecon` as vlc INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur WHERE vlc.idLecon='.$idLecon);           
+    }
+    public static function visiLecteurAll(){
+        return $vue = self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours  FROM `visite_lecon` as vlc INNER JOIN crs_lecon as lcs ON lcs.idLecon=vlc.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur UNION SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, vlc.idVisiteLecon,lcs.idLecon,crs.idCours  FROM `visite_lecon` as vlc INNER JOIN `crs_reler_lecon` as rl ON vlc.idLecon= rl.idLecon INNER JOIN crs_lecon as lcs ON rl.idLecon=lcs.idLecon INNER JOIN crs_cours as crs ON lcs.idCours=crs.idCours INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur GROUP BY ut.idUtilisateur');           
+    }
+     public static function visiteToutEleve(){
+        return $vue = self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur FROM `visite_lecon` as vlc INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur GROUP BY vlc.idUtilisateur');           
+    }
+    public static function visiteUtilCours($idUt){
+        return $vue = self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur, vlc.idLecon FROM `visite_lecon` as vlc INNER JOIN param_utilisateur as ut ON vlc.idUtilisateur = ut.idUtilisateur WHERE vlc.idUtilisateur='.$idUt.' ORDER BY vlc.idLecon ASC');           
     }
 
     //DESTRUCTEUR
