@@ -64,9 +64,9 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
 
                         <th>
                             <?php 
-                                echo strtoupper($tourPrev++.') '.$selLc['titreLecon'].' ['.$selLc['idLecon'].'] ');
+                                echo strtoupper($tourPrev++.') '.$selLc['titreLecon'].' ['.$selLc['idLecon'].'] cours= '.$_GET['idCours'].'class='.$_GET['idClasse']);
                                 $nvues =new visite_lecon();
-                                $nvues = $nvues->vues($selLc['idLecon'],$_GET_['idClasse']);
+                                $nvues = $nvues->vues($selLc['idLecon'],$_GET['idCours'],$_GET['idClasse']);
                                 $nblec=0;
 
                                foreach($nvues as $selNv ){
@@ -82,15 +82,17 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
             </thead>
         <tbody>
                 <?php
+                //SI IL NY A PAS DE DEVOIR A CE COUR NE CHECHER PAS
+                if($TabIdLecon!=null){
                     $grd_tour_vis =new visite_lecon();
-                    $grd_tour_vis= $grd_tour_vis ->visiteToutEleve();
+                    $grd_tour_vis= $grd_tour_vis ->visiteToutEleve($_GET['idClasse'],$_GET['idCours']);
                     $cpt=0;
                      foreach($grd_tour_vis  as $sel_grd_tour_vis){
                         $cpt++;
                         echo '<tr>';
                             echo '<td style="color:red">'.$cpt.'</td><td>'.$sel_grd_tour_vis['idUtilisateur'].'</td><td>'.$sel_grd_tour_vis['nomUtilisateur'].' '.$sel_grd_tour_vis['postnomUtilisateur'].' '.$sel_grd_tour_vis['prenomUtilisateur'].'</td>';
                             $tour_visite_lc_pres =new visite_lecon();
-                            $tour_visite_lc_pres = $tour_visite_lc_pres->visiteUtilCours($sel_grd_tour_vis['idUtilisateur']);
+                            $tour_visite_lc_pres = $tour_visite_lc_pres->visiteUtilCours($sel_grd_tour_vis['idUtilisateur'],$_GET['idCours'],$_GET['idClasse']);
                             $tourRel=0;
                             foreach($tour_visite_lc_pres as $sel_tour_visite_lc_pres){
                                 $key=array_search($sel_tour_visite_lc_pres['idLecon'],$TabIdLecon)-$tourRel;
@@ -98,9 +100,9 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                                 for($i=0; $i<=$key;$i++){
                         
                                     if($i==$key){
-                                        echo '<td style="color:green; font-size:18px"><span class="glyphicon glyphicon-ok">LC='.$sel_tour_visite_lc_pres['idLecon'].'</span></td>';
+                                        echo '<td style="color:green; font-size:18px"><span class="glyphicon glyphicon-ok">Ut='.$sel_grd_tour_vis['idUtilisateur'].'LC='.$sel_tour_visite_lc_pres['idLecon'].'Classe='.$_GET['idClasse'].'</span></td>';
                                     }else{
-                                        echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                        echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove">'.$_GET['idClasse'].'</span></td>';
                                     }
                                     $tourRel++;
                                 }
@@ -110,12 +112,13 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                          if($tourRel<$tourPrev){
                                     $Surp=$tourPrev-$tourRel;
                                         for($u=1;$u<$Surp;$u++){
-                                            echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                            echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove">'.$_GET['idClasse'].'</span></td>';
                                         }
 
                                     }
                         echo '</tr>';
                         }
+                    }
                 ?>
         </tbody>
     </div>

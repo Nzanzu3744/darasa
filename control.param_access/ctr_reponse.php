@@ -1,3 +1,4 @@
+<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script> -->
 <?php
 (empty($_SESSION))?session_start():'';
 include('../model.param_access/crs_reponset.class.php');
@@ -11,7 +12,7 @@ $asstion = new crs_assertion();
 if(isset($_GET['AjouterRepCh'])){
     include('../model.param_access/suivie_remise_devoirs.class.php');
     $rms =new suivie_remise_devoirs();
-    $rms->ajouter($_GET['idDevoir'],$_GET['idIns']);
+    $rms->ajouter($_GET['idDevoir'],$_GET['idCours'],$_GET['idIns']);
 
 
     if($_GET['modifrep']=="undefined"){
@@ -91,7 +92,8 @@ if(isset($_GET['AjouterRepCh'])){
 }else if(isset($_GET['AjouterRepTr'])){
      include('../model.param_access/suivie_remise_devoirs.class.php');
     $rms =new suivie_remise_devoirs();
-    $rms->ajouter($_GET['idDevoir'],$_GET['idIns']);
+    $rms->ajouter($_GET['idDevoir'],$_GET['idCours'],$_GET['idIns']);
+
      echo " <a style='color:green'>Brovon! Vous avez repondi à la Question [".$_GET['n']."].</a>";
     $rep='repT'.$_GET['n'];
     echo $_POST[$rep];

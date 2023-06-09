@@ -1,3 +1,4 @@
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 <?php
 if(isset($_GET['acceuil']) AND isset($_SESSION['IdUtilisateur'])){
     include_once('../vue.param_access/acceuille.php');

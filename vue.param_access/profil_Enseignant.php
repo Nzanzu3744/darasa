@@ -8,7 +8,7 @@
 
                 <div class="col-sm-12 well" style="height:110px;">
                     <center class="col-sm-2" >
-                        <a href="#" class="thumbnail"><img  style="height:75px; width:145px;" id="image" src="<?=$util['photoUtilisateur']?>" class="img-rounded"></a>
+                        <a href="#" class="thumbnail"><img  style="height:75px; width:145px;" id="image" src="../images/<?=$util['photoUtilisateur']?>" class="img-rounded"></a>
                     </center>
                     <div class="col-sm-8" style="padding:0%; height:80%">
                         <h4 id="modalTitre" class="modal-title"><i class="labelles" >Nom</i><?=" : ".strtoupper($util['nomUtilisateur']);?><i class="labelles" ><br>Post-Nom</i><?=":".strtoupper($util['postnomUtilisateur'])?><i class="labelles" ><br>Prenom </i><?=" :".strtoupper($util['prenomUtilisateur'])?> </h4>

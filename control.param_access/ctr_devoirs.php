@@ -71,7 +71,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                     <ul class="dropdown-menu pull-right">
                      <?php
                       $sel_D = new crs_devoirs();
-                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D=$sel_D->selectionnerByCours($selDv['idCours'])->fetch();
                         ?>
                               <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
                               <li><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$_GET['idCours']?>&&idDevoir=<?=$selDv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
@@ -107,7 +107,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                     <ul class="dropdown-menu pull-right">
                      <?php
                       $sel_D = new crs_devoirs();
-                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D=$sel_D->selectionnerByCours($selDv['idCours'])->fetch();
                         ?>
                               <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco','')">Lire le devoir</a></i></li>
                               <li><a href="#" onclick="Orientation('../control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$_GET['idCours']?>&&idDevoir=<?=$selDv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
@@ -145,7 +145,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                     <ul class="dropdown-menu pull-right">
                      <?php
                       $sel_D = new crs_devoirs();
-                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D=$sel_D->selectionnerByCours($selDv['idCours'])->fetch();
                         ?>
                              <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco',''); showme2('#dessoueditLeco');Orientation('../control.param_access/ctr_devoirs.php?Evalue=true&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&idDevoir=<?=$selDv['idDevoir']?>','#dessoueditLeco','')">Lire le devoir</a></i></li>
                               <li class="divider"></li>
@@ -180,7 +180,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                     <ul class="dropdown-menu pull-right">
                      <?php
                       $sel_D = new crs_devoirs();
-                      $sel_D=$sel_D->selectionnerByIdCours($selDv['idCours'])->fetch();
+                      $sel_D=$sel_D->selectionnerByCours($selDv['idCours'])->fetch();
                         ?>
                               <li ><a href="#" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idcrs=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&iddv=<?=$selDv['idDevoir']?>','#editLeco',''); showme2('#dessoueditLeco');Orientation('../control.param_access/ctr_devoirs.php?Evalue=true&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_D['cours']?>&idCours=<?=$sel_D['idCours']?>&cours=<?=$sel_D['cours']?>&idDevoir=<?=$selDv['idDevoir']?>','#dessoueditLeco','')">Lire le devoir</a></i></li>
                               <li class="divider"></li>

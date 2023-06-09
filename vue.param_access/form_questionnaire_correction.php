@@ -16,7 +16,6 @@
     $qst = $qst->selectionnerByIdDevASC($_GET['iddv']);
    
     ?>
-
     <div role="" enctype="" class=" row well" style="width:100%;margin:1px" id="utilisa">
     <center style="margin-left:10px" class="col-sm-12 titres" > QUESTIONNAIRE <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?>  QUESTIONNAIRE DU DEVOIR ID:<?=$seldev['idDevoir'].'CREE LE<z style=color:green>'.$seldev['dateCreation'].' </z>A REMETTRE LE <z style=color:red>'.$seldev['dateRemise'].'</z>'?> </center> 
 
@@ -45,7 +44,7 @@
 
          <?php
          $rpses = new crs_reponset();
-         $rpses = $rpses->selectionnerByQstAvecEleveClass($selQst['idQuestion'],$_GET['idClasse'])->fetchAll();
+         $rpses = $rpses->selectionnerByQstAvecEleveClass($selQst['idQuestion'],$_GET['idClasse']);
          ?>
          
          <?php

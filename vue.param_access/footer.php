@@ -4,9 +4,9 @@
                     </div>
                 </section>
             </div>
-            <!-- <footer class="row col-sm-12">
+            <footer class="row col-sm-12">
                 <div class="panel panel-body">
-                    <center>Tous droit réservé par moi Nzanzu Asingya Dieu-merci [CONTACT]: +243 828 409 897</center>
-                </div> -->
+                    <center>Tout droits réservé [CONTACT]: +243 828 409 897</center>
+                </div>
                
             

@@ -1,5 +1,6 @@
 
-  
+ <!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script> -->
+
 <?php
 include_once('../model.param_access/param_connexion.php');
 include_once('../model.param_access/org_promotion.class.php');

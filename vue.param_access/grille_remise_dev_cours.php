@@ -63,7 +63,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                             <?php 
                                 echo strtoupper($tourPrev++.') '.$seldv['indexation'].' ['.$seldv['idDevoir'].'] ');
                                 $nremis =new suivie_remise_devoirs();
-                                $nremis = $nremis->remis($seldv['idDevoir'],$_GET['idClasse']);
+                                $nremis = $nremis->remis($seldv['idDevoir'],$_GET['idCours'],$_GET['idClasse']);
                                 $nbrm=0;
                         
                                 foreach($nremis as $selRm ){
@@ -80,24 +80,27 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
             </thead>
         <tbody>
                 <?php
+                //SI IL NY A PAS DE DEVOIR A CE COUR NE CHECHER PAS
+                if($TablIdDevoirs!=null){
                     $grd_tour_remis =new suivie_remise_devoirs();
-                    $grd_tour_remis = $grd_tour_remis ->RemisToutEleve();
+                    $grd_tour_remis = $grd_tour_remis ->RemisToutEleve($_GET['idClasse'],$_GET['idCours']);
                     $cpt=0;
                      foreach($grd_tour_remis  as $sel_grd_tour_remis){
                         $cpt++;
                         echo '<tr>';
                             echo '<td style="color:red">'.$cpt.'</td><td>'.$sel_grd_tour_remis['idUtilisateur'].'</td><td>'.$sel_grd_tour_remis['nomUtilisateur'].' '.$sel_grd_tour_remis['postnomUtilisateur'].' '.$sel_grd_tour_remis['prenomUtilisateur'].'</td>';
-                            $anneScofCrs = new crs_cours();
-                            $anneScofCrs = $anneScofCrs->rechercher($_GET['idCours'])->fetch();
+                            $aneeScoCreaCrs = new crs_cours();
+                            $aneeScoCreaCrs = $aneeScoCreaCrs->rechercher($_GET['idCours'])->fetch();
                             $grd_tour_remis_encours =new suivie_remise_devoirs();
-                            $grd_tour_remis_encours = $grd_tour_remis_encours->remiseEleve($sel_grd_tour_remis['idUtilisateur'],$anneScofCrs['idClasse'],$anneScofCrs['idAnneeSco']);
+                            //REMISE DE CETTE ELEVE DANS CETTE CLASSE CETTE ANNEE SCOLAIRE POUR CE COURS.
+                            $grd_tour_remis_encours = $grd_tour_remis_encours->remiseEleve($sel_grd_tour_remis['idUtilisateur'],$aneeScoCreaCrs['idClasse'],$aneeScoCreaCrs['idAnneeSco'],$_GET['idCours']);
                             $tourRel=0;
                             foreach($grd_tour_remis_encours as $sel_grd_tour_remis_encours){
                                 $key=array_search($sel_grd_tour_remis_encours['idDevoir'],$TablIdDevoirs)-$tourRel;
                                 
                                 for($i=0; $i<=$key;$i++){
-                        
-                                    if($i==$key){
+                        //ici bleme
+                                    if($i===$key){
                                         echo '<td style="color:green; font-size:18px"><span class="glyphicon glyphicon-ok">dev='.$sel_grd_tour_remis_encours['idDevoir'].'Ut='.$sel_grd_tour_remis_encours['idUtilisateur'].'</span></td>';
                                     }else{
                                         echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
@@ -116,6 +119,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                                     }
                         echo '</tr>';
                         }
+                }
                 ?>
         </tbody>
     </div>

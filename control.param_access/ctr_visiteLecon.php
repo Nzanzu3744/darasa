@@ -1,3 +1,5 @@
+<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../vue.param_access/script.js"></script> -->
 <?php
 if(isset($_GET['idlc']) AND isset($_GET['Lvit'])){
     include_once('../model.param_access/visite_lecon.class.php');

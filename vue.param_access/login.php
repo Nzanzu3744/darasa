@@ -12,16 +12,47 @@
             <!--  -->
             
             <script src="script.js"></script>
+           
 
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         </head>
-        <body style="font-size:13px;" id="app">
-
-          <div class="col-md-9 col-lg-8 col-xl-8">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Exemple d’image" _mstalt="176397" _msthash="259">
+       <body style="font-size:13px;" id="app">
+          <!-- ACTUALITE -->
+          <div  class="col-md-9 col-lg-9 col-xl-9" style="">
+            <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Exemple d’image" _mstalt="176397" _msthash="259"> -->
+            <div class="table-responsive" style="height:850px">
+              <div>
+                <!-- <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center> -->
+              </div>
+            </div>
+          
+            </div>
           </div>
-          <div class="col-md-8 col-lg-2 col-xl-2 offset-xl-2" style="padding-top:150px">
-            <form>
+          <!-- LOGIN -->
+          <div class="col-md-3 col-lg-3 col-xl-3">
+            <center class="col-sm-12 col-lg-12" style="background:pink; padding:2px; margin-top:5px; margin-bottom:10px"><b>C'EST L'ANNIVERSAIRE DE<b> </center>
+              <div style="height:300px; border:1px solid pink" class="table-responsive col-md-12 col-lg-12 col-xl-12">
+               <section class="row">
+               <?php
+                for($i=1; $i<=30; $i++){
+               ?>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <a href="#" class="thumbnail">
+                      <img src="../images/acc.png" alt="<?="NZANZU ASINGYA D."?>" class="img-rounded">
+                    </a>
+                  </div>
+                  <?php
+                }
+                  ?>
+                </section>
+              </div>
+           
+            <form  style="height:50px" class="col-md-12 col-lg-12 col-xl-12">
               <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                 <p class="lead fw-normal mb-0 me-3" _msttexthash="378001" _msthash="260">Connectez-vous avec</p>
                 <button onclick="Encour()" type="button" class="btn btn-primary btn-floating mx-1">
@@ -63,13 +94,10 @@
               </div>
 
               <div class="text-center text-lg-start mt-4 pt-2">
-
-                <button type="button" id="btn_enreg_lecon" onclick="Orientation('../control.param_access/ctr_con.php?lgdfds='+$('#lg').val()+'&ps='+$('#ps').val(),'#app')" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" _msttexthash="256685" _msthash="268">Connectez-vous</button>
+                <button type="button" id="btn_enreg_lecon" onclick="Orientation('../control.param_access/ctr_con.php?lgdfds='+$('#lg').val()+'&ps='+$('#ps').val(),'#app')" class="btn btn-primary btn-lg btn-floating mx-1" style="padding-left: 2.5rem; padding-right: 2.5rem;" _msttexthash="256685" _msthash="268">Connectez-vous</button>
                 <p class="small fw-bold mt-2 pt-1 mb-0" _msttexthash="2142699" _msthash="269">Vous n’avez pas de compte ? <a href="#!" class="link-danger" onclick="Encour()" _istranslated="1">Registre</a></p>
               </div>
-
             </form>
-          </div>
       </div>
       <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <div>
@@ -89,5 +117,5 @@
         <!-- Right -->                  
     </body>
     
-    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 </html>  
+ <script src="../bootstrap/dist/js/bootstrap.min.js"></script>

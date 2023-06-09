@@ -1,7 +1,7 @@
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 <?php
 if(isset($_GET['commentaire_cours'])){
-    include("../vue.param_access/form_cours.php");
-    // echo "XXXXXXXXxx";
+    include("../vue.param_access/blog.php");
 
  }else if(isset($_GET['AjouteAnnee'])){
 include_once('../model.param_access/org_anneesco.class.php');

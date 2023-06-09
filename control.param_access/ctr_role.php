@@ -1,4 +1,5 @@
-<script src="../vue.param_access/script.js"></script>
+<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../vue.param_access/script.js"></script> -->
 <?php
 if(isset($_GET['idGroupe'])){
     include_once("../vue.param_access/liste_role.php");

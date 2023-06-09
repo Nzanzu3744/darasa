@@ -76,15 +76,16 @@ include_once('../vue.param_access/form_lecon_mod_dir.php');
     $rl->ajouter($_GET['idlc'],$_GET['idCours'],$sel_A['idAnneeSco']); 
     echo "Rapportage reussi de la lecon code ".$_GET['idlc']; 
 
-
+//
 }else if(isset($_GET['LireLecon_eleve'])){
     include_once('../model.param_access/visite_lecon.class.php');
     $visite =new visite_lecon();
-    $visite->ajouter($_GET['idlc'],$_GET['idIns']);
+    $visite->ajouter($_GET['idlc'],$_GET['idCours'],$_SESSION['idUtilisateur'],$_GET['idIns']);
     echo '<labelle disabled style="color:blue" id="idlc">'.$_GET['idlc'].'</labelle>';
-    echo $_GET['idIns'].'=Ins';
+    echo $_GET['idIns'];
+    ECHO '['.$_GET['idcrs'].']';
 include_once('../vue.param_access/lecon_eleve.php');
-
+//
 
 
 }else if(isset($_GET['rechercheGauche_ense'])){

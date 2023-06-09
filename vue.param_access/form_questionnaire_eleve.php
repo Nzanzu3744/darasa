@@ -64,7 +64,7 @@
                                 <a style='color:red'>Veuillez repondre à la Question .<?=" ".$Cpt?>. ci-haut.</a>
                                 <textarea class="textarea" id="<?='repT'.$Cpt?>"  name="<?='repT'.$Cpt?>"  ></textarea>
                             <div class="col-sm-12">
-                                <input onclick="Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modifrep<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&iddv=<?=$_GET['iddv']?>&AjouterRepTr=true','<?='#reponsesssT'.$Cpt?>','<?='#reponsT'.$Cpt?>')"  class="btn btn-success pull-right  col-sm-1" value='Valider'/>
+                                <input onclick="Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modifrep<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&iddv=<?=$_GET['iddv']?>&AjouterRepTr=true','<?='#reponsesssT'.$Cpt?>','<?='#reponsT'.$Cpt?>')"  class="btn btn-success pull-right  col-sm-1" value='Valider'/>
                             </div>
                             </div>   
                     </form>
@@ -173,7 +173,7 @@
                                 if($tur==1){
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
-                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss1<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"  id=<?='asCk1'.$Cpt?> type="checkbox"/>
+                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss1<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"  id=<?='asCk1'.$Cpt?> type="checkbox"/>
                                         <label disabled style="width:100%" id=<?='ass1'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></label>                                   </div>
 
                                 <?php
@@ -181,7 +181,7 @@
                                 }else  if($tur==2){
                                 ?>
                                     <div class="col-sm-4"   style="border: 1px dashed gray">
-                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss2<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk2'.$Cpt?> type="checkbox" />
+                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss2<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk2'.$Cpt?> type="checkbox" />
                                         <label disabled  style="width:100%" id=<?='ass2'.$Cpt?> type="text"  class="form-control" ><?=$selAss['assertion']?> </label>
                                     </div>
 
@@ -190,7 +190,7 @@
                                 }else  if($tur==3){
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
-                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss3<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk3'.$Cpt?> type="checkbox" />
+                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss3<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk3'.$Cpt?> type="checkbox" />
                                         <label disabled style="width:100%" id=<?='ass3'.$Cpt?> type="text" class="form-control"> <?=$selAss['assertion']?></label>                                   </div>
 
                                 <?php
@@ -198,7 +198,7 @@
                                 }else  if($tur==4){
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)" >
-                                        <input  onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss4<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk4'.$Cpt?> type="checkbox"  />
+                                        <input  onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss4<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk4'.$Cpt?> type="checkbox"  />
                                         <label disabled style="width:100%" id=<?='ass4'.$Cpt?> type="text"  class="form-control"><?=$selAss['assertion']?></label>                                    </div>
 
                                 <?php
@@ -206,7 +206,7 @@
                                 }else  if($tur==5){
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
-                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss5<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk5'.$Cpt?> type="checkbox"/>
+                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss5<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk5'.$Cpt?> type="checkbox"/>
                                         <label disabled style="width:100%" id=<?='ass5'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>                                   </div> 
 
                                 <?php
@@ -214,7 +214,7 @@
                                 }else  if($tur==6){
                                 ?>
                                     <div class="col-sm-4"  style="border: 1px dashed hsl(48, 100%, 41%)">
-                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss6<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk6'.$Cpt?> type="checkbox"/>
+                                        <input onclick=" Orientation('../control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modAss6<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&AjouterRepCh=true&assertion=<?=$tur?>&IdAss=<?=$selAss['idAssertion']?>','<?='#reponsesssCh'.$Cpt?>','')"   id=<?='asCk6'.$Cpt?> type="checkbox"/>
                                         <label disabled style="width:100%" id=<?='ass6'.$Cpt?> type="text" class="form-control"><?=$selAss['assertion']?></label>                                   </div> 
 
                                 <?php

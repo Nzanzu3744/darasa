@@ -1,3 +1,4 @@
+<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script> -->
 <?php
 include('../model.param_access/crs_question.class.php');
 include('../model.param_access/crs_assertion.class.php');

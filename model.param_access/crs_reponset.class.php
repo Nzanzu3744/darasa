@@ -48,10 +48,11 @@ class crs_reponset {
     }
 
     public function selectionnerByQstUti($idQst,$iuti){
-        // return  self::$con->query('SELECT rep.idInscription, rep.reponse, rep.idReponse, rep.idQuestion,  rep.dateCreation FROM crs_reponset as rep  LEFT JOIN org_inscription as ins ON rep.idInscription=ins.idInscription INNER JOIN crs_question as qst ON rep.idQuestion=qst.idQuestion WHERE rep.idQuestion='.$idQst.' AND ins.idUtilisateur='.$iuti);
         return  self::$con->query('SELECT rep.idInscription, rep.reponse, rep.idReponse, rep.idQuestion,  rep.dateCreation,  ins.idAnneeSco as idAnneeScoEval, ins.idClasse as idClasseEval, aff.idClasse as idClasseRep, crs.idAnneeSco as idAnneeScoRep FROM crs_reponset as rep  LEFT JOIN crs_question as qst ON rep.idQuestion=qst.idQuestion LEFT JOIN org_inscription as ins ON rep.idInscription=ins.idInscription  LEFT JOIN crs_devoirs as dv ON dv.idDevoir=qst.idDevoir LEFT JOIN crs_cours as crs ON crs.idCours=dv.idCours LEFT JOIN org_affectation as aff ON aff.idAffectation=crs.idAffectation WHERE qst.idQuestion='.$idQst.' AND ins.idUtilisateur='.$iuti);
 
+    
     }
+
   public function verification($idQst,$idIns){
         return  self::$con->query('SELECT rt.idReponse, rt.dateCreation FROM crs_reponset as rt INNER JOIN crs_question as qst ON rt.idQuestion=qst.idQuestion WHERE rt.idQuestion='.$idQst.' AND rt.idInscription='.$idIns.'  ORDER BY rt.idReponse DESC LIMIT 1');
     }

@@ -1,4 +1,5 @@
-<script src="../vue.param_access/script.js"></script>
+<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../vue.param_access/script.js"></script> -->
 <?php
 (empty($_SESSION))?session_start():'';
 include_once('../model.param_access/param_utilisateur.class.php');

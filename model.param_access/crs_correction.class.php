@@ -62,24 +62,6 @@ class crs_correction {
     public function selectionnerByRep($idRep){
         return  self::$con->query('SELECT * FROM crs_correction as cr WHERE idReponset="'.$idRep.'" ORDER BY cr.idCorrection DESC LIMIT 1');
     }
-//     public function selectionnerByQstAvecEleve($idQst){
-//         return  self::$con->query('SELECT * FROM crs_correction as ret INNER JOIN crs_question as qst ON ret.idReponset=qst.idReponset LEFT JOIN org_inscription as ins ON ret.idAffectation=ins.idAffectation LEFT JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur LEFT JOIN param_genre as gr ON gr.idGenre=ut.idGenre WHERE ret.idReponset="'.$idQst.'"');
-//     }
-
-//     public function selectionnerByQstUti($idQst,$iuti){
-//         return  self::$con->query('SELECT rep.idAffectation, rep.reponse, rep.idCorrection, rep.idReponset,  rep.dateCreation FROM crs_correction as rep  LEFT JOIN org_inscription as ins ON rep.idAffectation=ins.idAffectation INNER JOIN crs_question as qst ON rep.idReponset=qst.idReponset WHERE rep.idReponset='.$idQst.' AND ins.idUtilisateur='.$iuti);
-//     }
-//     // public function selectionnerByQstUti($idQst,$iuti){
-//     //     return  self::$con->query('SELECT rep.idUtilisateur, rep.reponse, rep.idCorrection, rep.idReponset,  rep.dateCreation FROM crs_correction as rep INNER JOIN crs_question as qst ON rep.idReponset=qst.idReponset WHERE rep.idReponset='.$idQst.' AND rep.idUtilisateur='.$iuti);
-//     // }
-//   public function verification($idQst,$idIns){
-//         return  self::$con->query('SELECT rt.idCorrection, rt.dateCreation FROM crs_correction as rt INNER JOIN crs_question as qst ON rt.idReponset=qst.idReponset WHERE rt.idReponset='.$idQst.' AND rt.idAffectation='.$idIns.'  ORDER BY rt.idCorrection DESC LIMIT 1');
-//     }
-//     //
-//     public function rechercher($idCorrection){
-//         $ididUtlst = htmlspecialchars($idCorrection);
-//         return $var = self::$con->query("SELECT * FROM crs_correction WHERE idCorrection =".$ididUtlst." ORDER BY idCorrection ASC");
-//     }
     //DESTRUCTEUR
     public function __destuct(){
     }

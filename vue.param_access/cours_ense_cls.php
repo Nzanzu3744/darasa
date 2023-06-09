@@ -27,7 +27,11 @@ include_once('../model.param_access/param_groupe.class.php');
                                 
                             <td style="background-color:red; color:white"><?=$i++;?></td>
                             <td><?=$selCrs['idCours']?></td>
-                            <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=":<z style=font-size:10px".strtoupper($_GET['maClasse'])?></z></td>
+
+
+                            <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=":<z style=font-size:10px>".strtoupper($_GET['maClasse'])?></z></b></td>
+                            <td style="" ><i class="labelles" >Enseignant : </i><b style='font-size:10px'><?=":".strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></b></td>
+                            
                             
                             <td ><a  onclick="Orientation('../control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="../images/<?=$selCrs['url']?>"></a></td>
                         <?php if($tr>=3){$tr=0; echo "</td>";}?>
@@ -50,8 +54,8 @@ include_once('../model.param_access/param_groupe.class.php');
                         <li><a href="#" onclick="showme('#leconsgauche','#editLeco','true');Orientation('../control.param_access/ctr_blog.php?commentaire_cours&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">commentaire_cours</a></i></li>
                         <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?rptCours_ense=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Rapport </a> 
                         <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_remise=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille Remise </a> 
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_pts=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille de Points </a> 
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
+                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_Point=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille de Points  </a> 
+                        <li> <a id="charge" href="#"  onmousedown="Orientation('../control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
                         </li>
 
                     </ul>

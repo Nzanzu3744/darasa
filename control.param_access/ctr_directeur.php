@@ -1,4 +1,3 @@
-<script src="../vue.param_access/script.js"></script>
 <?php
 
 if(isset($_GET['promChk'])){

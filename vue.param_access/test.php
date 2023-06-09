@@ -1,19 +1,68 @@
-<div class="modal fade" id="infos" role="dialog" style="width:100%; height:100% ; display:none" >
-    <div class="modal-dialog" style="width:80%; height:80%">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 id="modalTitre" class="modal-title">Plus d'informationssur le tigre de Sibérie</h4>
-            </div>
-            <div class="modal-body">
-                <blockquote>
-                <?php
-                include_one('../vue.param_access/form_modif_utilisateur.php');
-                ?>
-                    <hr>
-                    <small class="pull-right">Wikipedia</small>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-</div>
+<?php
+                                        //////Debut Calcul de point Obtenu
+                                        $dev = new crs_devoirs();
+                                        $devv=$dev->rechercherr($sel_grd_tour_remis_encours['idDevoir']);
+
+                                        $seldev=$devv->fetch();
+                                    
+                                        $qst = new crs_question();
+                                        $qst = $qst->selectionnerByIdDevASC($sel_grd_tour_remis_encours['idDevoir']);
+                                    
+                                        $verif = new crs_assertion();
+                                        $Cpt=1;
+                                        foreach($qst as $selQst){
+                                            
+                                            $ver = $verif->verification($selQst['idQuestion']);
+                                            $veri =$ver->fetch();
+                                                if(empty($veri['idAssertion'])){
+
+                                                            $repondi = new crs_reponset();
+                                                            $repondi = $repondi->selectionnerByQstUti($selQst['idQuestion'],$_SESSION['idUtilisateur'])->fetchAll();
+
+                                                            $avoirRepo=false;
+                                                            $totapointobtenu=0.0;
+                                                            foreach($repondi as $repondi){
+                                                                if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$_GET['idClasse']){
+                                                                    $avoirRepo=true;
+                                                                    $correct = new crs_correction();
+                                                                    $correct=$correct->selectionnerByRep($repondi['idReponse'])->fetch();
+                                                                    $totapointobtenu=$totapointobtenu+$correct['cote'];
+
+                                                    }
+
+                                                    }
+                                                    $pTotal=$pTotal+$selQst['ponderation'];
+                                                    $Cpt++;
+                                                }else{
+
+                                                
+                                                    $asstion = new crs_assertion();
+                                                    //selectionner l'assertion choisie encore la bonne 
+                                                    $Tbasstion = $asstion->selectionnerByQst($selQst['idQuestion'])->fetch();
+                                                    $tur=1;
+                                                    $repondi = new crs_reponsec();
+                                                    $repondi = $repondi->selectionnerByQstUti($selQst['idQuestion'],$_SESSION['idUtilisateur'])->fetchAll();
+                                                    $avoirRepo=false;
+                                                    $idAssertion;
+                                                    foreach($repondi as $repondi){
+                                                        if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$_GET['idClasse']){
+                                                            $avoirRepo=true;
+                                                            $idAssertion=$repondi['idAssertion'];
+                                                                        if($Tbasstion['idAssertion']==$idAssertion){
+                                                                                    $totapointobtenu=$totapointobtenu+$selQst['ponderation'];
+                                                                        }
+
+                                                        }
+
+                                                    }
+                                                                $pTotal=$pTotal+$selQst['ponderation'];
+                                                                $Cpt++;
+                                                    }
+                                                    echo '<td style="color:green; font-size:18px"><span class="glyphicon glyphicon-ok">Tur=';
+                                                    echo "Obt=".$totapointobtenu.'  Sur='.$pTotal;
+                                                    echo "Tour=".$cote."|Index=".$key;
+                                                    echo '</span></td>';
+                                        
+                                    }   
+                                    ///////Fin calcule de point obtenu
+                                    ?>
