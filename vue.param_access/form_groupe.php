@@ -9,7 +9,7 @@ include_once('../model.param_access/param_groupe.class.php');
         <input id="grp" type="text" class="form-control" placeholder="Groupe ici">
     </div>
     <div style="padding: 10px" >
-    <button id="enrg" onclick="Orientation('../control.param_access/ctr_groupe.php?ajouterGrp=true&grp='+$('#grp').val(),'#panel')"  class="btn btn-success pullright col-sm-6">Valider</button>
+    <button id="enrg" onclick="Orientation('control.param_access/ctr_groupe.php?ajouterGrp=true&grp='+$('#grp').val(),'#panel')"  class="btn btn-success pullright col-sm-6">Valider</button>
     <button onclick="Encour()" class="btn btn-primary pullleft col-sm-6">Annuler</button>
     </div>
       
@@ -62,7 +62,7 @@ include_once('../model.param_access/param_groupe.class.php');
 function charge_Image(){
     $("#image01").show("slow");
     $("#image01").addClass("has-success");
-    $("#image01").html('<img style="height:90%" id="image" src="../images/img.jpg">');
+    $("#image01").html('<img style="height:90%" id="image" src="images/img.jpg">');
     
 }
 </script>

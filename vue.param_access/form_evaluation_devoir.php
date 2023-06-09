@@ -1,15 +1,9 @@
-
-
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
-
-        <div id='' style="border: 1px dashed green" class="col-sm-12 col-lg-12 col-xs-12">
+      <div id='' style="border: 1px dashed green" class="col-sm-12 col-lg-12 col-xs-12">
 
              <div class="col-sm-2">
                 <center style="color:green">CODE DEVOIR :<?=$_GET['idDevoir']?></center>
                 <input  class="col-sm-2 col-lg-2 col-xs-2 form-control" id='pt'  type="text" placeholder="Cote sur 10" />
-                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('../control.param_access/ctr_devoirs.php?idDevoir=<?=$_GET['idDevoir']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#valid','')"  class="btn btn-danger" value="OK"/>
+                <input class="btn btn-success col-sm-2 col-lg-2 col-xs-2  form-control" type="button" onclick="Orientation('control.param_access/ctr_devoirs.php?idDevoir=<?=$_GET['idDevoir']?>&idPromotion=<?=$_GET['idPromotion']?>&Subj='+$('#Subj').val()+'&pt='+$('#pt').val(),'#valid','')"  class="btn btn-danger" value="OK"/>
 
             </div>
             <div class="col-sm-9 col-lg-9 col-xs-9"> 
@@ -24,7 +18,7 @@
                  $selDvoir =$selDvoir->selectionnerDerByDevoir($_GET['idDevoir'])->fetch();
            ?>
            <labelle id="resul">
-            <input id="actif" <?php if($selDvoir['actif']==1){echo 'Class="btn btn-lg btn-danger btn-xs" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success btn-xs" value="__ACTIVER__"';}?>  onclick="Orientation('../control.param_access/ctr_devoirs.php?activer=true&value=<?=$selDvoir['actif']?>&idDevoir=<?=$_GET['idDevoir']?>','#resul','')"  type="button" >
+            <input id="actif" <?php if($selDvoir['actif']==1){echo 'Class="btn btn-lg btn-danger btn-xs" value="DESACTIVER"';}else{echo 'Class="btn btn-lg btn-success btn-xs" value="__ACTIVER__"';}?>  onclick="Orientation('control.param_access/ctr_devoirs.php?activer=true&value=<?=$selDvoir['actif']?>&idDevoir=<?=$_GET['idDevoir']?>','#resul','')"  type="button" >
             <labelle>
             <labelle id="valid"></labelle>
 

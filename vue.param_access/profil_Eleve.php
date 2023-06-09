@@ -8,13 +8,13 @@
 
                 <div class="col-sm-12 well" style="height:110px;">
                     <center class="col-sm-2" >
-                        <a href="#" class="thumbnail"><img  style="height:75px; width:145px;" id="image" src="../images/<?=$util['photoUtilisateur']?>" class="img-rounded"></a>
+                        <a href="#" class="thumbnail"><img  style="height:75px; width:145px;" id="image" src="images/<?=$util['photoUtilisateur']?>" class="img-rounded"></a>
                     </center>
                     <div class="col-sm-8" style="padding:0%; height:80%">
                         <h4 id="modalTitre" class="modal-title"><i class="labelles" >Nom</i><?=" : ".strtoupper($util['nomUtilisateur']);?><i class="labelles" ><br>Post-Nom</i><?=":".strtoupper($util['postnomUtilisateur'])?><i class="labelles" ><br>Prenom </i><?=" :".strtoupper($util['prenomUtilisateur'])?> </h4>
                     </div>
 
-                    <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('../control.param_access/ctr_membre.php?rtn=true&idGroupe=<?=$_GET['idGroupe']?>','#corps')" >Returner</button>               
+                    <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('control.param_access/ctr_membre.php?rtn=true&idGroupe=<?=$_GET['idGroupe']?>','#corps')" >Returner</button>               
     
                 </div>
 
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                        
-                    <button class="btn btn-success" style="height:30px;" onclick="Orientation('../control.param_access/ctr_eleve.php?Valide=true&idGroupe=<?=$_GET['idGroupe']?>&idutil=<?=$_GET['idutil']?>','#corps')" >Valider</button> 
-                    <button class="btn btn-default pull-right" style="height:30px;" onclick="Orientation('../control.param_access/ctr_eleve.php?annul=true&idutil=<?=$_GET['idutil']?>','#corps')" >Annuler</button> 
+                    <button class="btn btn-success" style="height:30px;" onclick="Orientation('control.param_access/ctr_eleve.php?Valide=true&idGroupe=<?=$_GET['idGroupe']?>&idutil=<?=$_GET['idutil']?>','#corps')" >Valider</button> 
+                    <button class="btn btn-default pull-right" style="height:30px;" onclick="Orientation('control.param_access/ctr_eleve.php?annul=true&idutil=<?=$_GET['idutil']?>','#corps')" >Annuler</button> 
                        
                 </div>
                 <script src="../bootstrap/dist/js/bootstrap.min.js"></script>

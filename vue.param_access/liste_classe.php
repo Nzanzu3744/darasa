@@ -34,7 +34,7 @@
                         ?>
                         <tr>
                             <td><?=$n?></td>
-                            <td><input type="checkbox" onchange="Orientation('../control.param_access/ctr_select_util.php?classeChk=true&idClasse=<?=$sel['idClasse']?>')"?></td>
+                            <td><input type="checkbox" onchange="Orientation('control.param_access/ctr_select_util.php?classeChk=true&idClasse=<?=$sel['idClasse']?>')"?></td>
                             <td><?=strtoupper($sel['idClasse'])?></td>
                             <td>                          
                                 <?php

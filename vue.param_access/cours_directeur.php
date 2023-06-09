@@ -32,13 +32,13 @@ include_once('../model.param_access/dir_directeur.class.php');
                         foreach($Maclasse->selectionnerByProm($selDir['idPromotion']) as $sel){
                          $maClasse =" <z style=>".$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$anneeSco."</z>";
                     ?>
-                    <li style="border: 1px dashed green; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme3('#dessoueditLeco');showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours_dir&idPromotion=<?=$sel['idPromotion']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 1px dashed green; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme3('#dessoueditLeco');showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCours_dir&idPromotion=<?=$sel['idPromotion']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                     }
                 ?>   
             </ul>
-            <select onchange="showme3('#dessoueditLeco');Orientation('../control.param_access/ctr_cours.php?VueClasseDir=true&idAnnee='+$(this).val(),'#panel');" style="border: 1px solid white; background:black; height:55px;font-size:11px; color:green;" class="pull-right col-sm-1">
+            <select onchange="showme3('#dessoueditLeco');Orientation('control.param_access/ctr_cours.php?VueClasseDir=true&idAnnee='+$(this).val(),'#panel');" style="border: 1px solid white; background:black; height:55px;font-size:11px; color:green;" class="pull-right col-sm-1">
              <?php 
                     $Maclasse = new org_anneesco();
                     if(isset($_GET['idAnnee'])){

@@ -52,7 +52,7 @@ include_once('../model.param_access/param_genre.class.php');
                         </div>      
 
     <div style="padding: 10px" >
-    <button id="enrg" onclick="Orientation('../control.param_access/ctr_utilisateur.php?ajouterU=true&nom='+$('#nom').val()+'&postnom='+$('#postnom').val()+'&prenom='+$('#prenom').val()+'&mail='+$('#mail').val()+' & photo='+$('#photo').val()+'&groupe1='+$('#groupe1').val()+'&genre='+$('#genre').val()+'&tel='+$('#tel').val(),'#frmuti')"  class="btn btn-success pull-left col-sm-4">Valider</button>
+    <button id="enrg" onclick="Orientation('control.param_access/ctr_utilisateur.php?ajouterU=true&nom='+$('#nom').val()+'&postnom='+$('#postnom').val()+'&prenom='+$('#prenom').val()+'&mail='+$('#mail').val()+' & photo='+$('#photo').val()+'&groupe1='+$('#groupe1').val()+'&genre='+$('#genre').val()+'&tel='+$('#tel').val(),'#frmuti')"  class="btn btn-success pull-left col-sm-4">Valider</button>
    
     <button onclick="Encour()"  class="btn btn-danger pull-right col-sm-4">Annuler</button>
 </div>

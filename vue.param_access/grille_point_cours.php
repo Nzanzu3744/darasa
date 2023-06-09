@@ -14,11 +14,11 @@ $editeur = new param_utilisateur();
 $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
 $pondToutDevoir=0.0;
 ?>
-<div style="border: 1px solid black; padding:10px; font: size 12px; margin:10px; background:white" class="col-sm-12">
-<!-- <button class="pull-right btn btn-warning" onclick="Orientation('../control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button>
-<button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button> -->
-    <div style="desplay:inline-block  " class="col-sm-12 col-lg-12">
-        <!-- <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="../images/lgndg.PNG" style="width:200px; height:100px"/> -->
+<div style="border: 1px solid black; padding:0px; font-size:8px; margin:10px; background:white" class="col-sm-12">
+<!-- <button class="pull-right btn btn-warning" onclick="Orientation('control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button> -->
+<button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button>
+    <!-- <div style="desplay:inline-block  " class="col-sm-12 col-lg-12">
+        <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="images/lgndg.PNG" style="width:200px; height:100px"/>
             <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
                     <span class=""><b>COMPLEXE SCOLAIRE NOTRE DAME DE GRACES</b></span><br>
                     <span class=""><b>DEVISE</b></span><br>
@@ -28,7 +28,7 @@ $pondToutDevoir=0.0;
                     <span class=""><b>Tel : 081XXXXXXXX</b></span><br>
                     <span class="">Mail "<?='<a>'.$editeur['mailUtilisateur'].'</a>'?></span><br>
             </div>
-    </div>
+    </div> -->
    
     <!--  -->
     <div class="col-sm-12" style="">
@@ -36,16 +36,16 @@ $pondToutDevoir=0.0;
     </div>
     <!--  -->
     
- <div style="desplay:inline-block; " class="col-sm-12 col-lg-12">
- <b class="col-lg-12 col-sm-12 pull-left"> IDENTITE DE L'ENSEIGNANT(E)</b>
-            <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="../images/<?=$editeur['photoUtilisateur']?>" style="width:120px; height:100px"/>
-            <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
-                    <span class=""> Nom : <b><b><?=$editeur['nomUtilisateur']?></b> Postnom : <b><?=$editeur['postnomUtilisateur']?></b></span><br>
-                    <span class=""> Prenom : <b><?=$editeur['prenomUtilisateur']?></b></span>
-                    <span class=""> Tel : : <b><?=$editeur['telUtilisateur']?></b></span><br>
-                    <span class=""> Mail : <?='<a>'.$editeur['mailUtilisateur'].'</a>'?></span><br>
-                    <span class=""> Genre : <b><?=$editeur['genre']?></b></span><br>          
-            </div>
+    <div style="desplay:inline-block; " class="col-sm-12 col-lg-12">
+    <b class="col-lg-12 col-sm-12 pull-left" > IDENTITE DE L'ENSEIGNANT(E)</b>
+                <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="images/<?=$editeur['photoUtilisateur']?>" style="width:120px; height:100px"/>
+                <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
+                        <span class=""> Nom : <b><b><?=$editeur['nomUtilisateur']?></b> Postnom : <b><?=$editeur['postnomUtilisateur']?></b></span><br>
+                        <span class=""> Prenom : <b><?=$editeur['prenomUtilisateur']?></b></span>
+                        <span class=""> Tel : : <b><?=$editeur['telUtilisateur']?></b></span><br>
+                        <span class=""> Mail : <?='<a>'.$editeur['mailUtilisateur'].'</a>'?></span><br>
+                        <span class=""> Genre : <b><?=$editeur['genre']?></b></span><br>          
+                </div>
     </div>
 
         <!--  -->
@@ -54,7 +54,7 @@ $pondToutDevoir=0.0;
             <thead>
                 <tr>
                     <th style="background:WHITE" colspan="" >N</th>
-                    <th style="background:WHITE; color:red" colspan="2" ><center>IDENTITE ELEVE<center></th>                
+                    <th style="font-size:10px; color:red" colspan="3" ><center>IDENTITE ELEVE</center></th>                
 
                 <?php
                     $dv = new crs_devoirs();
@@ -85,17 +85,16 @@ $pondToutDevoir=0.0;
                                     $nbrm++;
                                 }
                                 ?>
-                                <center onclick="Orientation('../control.param_access/ctr_devoirs.php?listeRms=true&idDevoir=<?=$seldv['idDevoir']?>&Rmis','<?='#Rm'.$seldv['idDevoir']?>','')"> Remis : <?=$nbrm.' Point:'.$pondDevoir?> </center>
+                                <center onclick="Orientation('control.param_access/ctr_devoirs.php?listeRms=true&idDevoir=<?=$seldv['idDevoir']?>&Rmis','<?='#Rm'.$seldv['idDevoir']?>','')"> Remis : <?=$nbrm.' Point:'.$pondDevoir?> </center>
 
                     <?php
                     }
                     ?>
-                    <td colspan="2">TOTAL SUR RESOLUTION</td>
-                    <td colspan="2">TOTAL SUR TOUT LE DEVOIR</td>
+                    <td colspan="2" style="font-size:10px; color:red"><center>TOTAL</center></td>
                         </th>
                 </tr>
             </thead>
-        <tbody>
+            <tbody>
                 <?php
                 //SI IL NY A PAS DE DEVOIR A CE COUR NE CHECHER PAS
                 if($TablIdDevoirs!=null){
@@ -109,7 +108,9 @@ $pondToutDevoir=0.0;
                      foreach($grd_tour_remis  as $sel_grd_tour_remis){
                         $cpt++;
                         echo '<tr>';
-                            echo '<td style="color:red">'.$cpt.'</td><td>'.$sel_grd_tour_remis['idUtilisateur'].'</td><td>'.$sel_grd_tour_remis['nomUtilisateur'].' '.$sel_grd_tour_remis['postnomUtilisateur'].' '.$sel_grd_tour_remis['prenomUtilisateur'].'</td>';
+                            echo '<td style="color:red">'.$cpt.'</td>';
+                            echo '<td style="color:red"><img style="width:40px; height:40px" src=images/'.$sel_grd_tour_remis['photoUtilisateur'].'></td>';
+                            echo '<td>'.$sel_grd_tour_remis['idUtilisateur'].'</td><td>'.$sel_grd_tour_remis['nomUtilisateur'].' '.$sel_grd_tour_remis['postnomUtilisateur'].' '.$sel_grd_tour_remis['prenomUtilisateur'].'</td>';
                             $aneeScoCreaCrs = new crs_cours();
                             $aneeScoCreaCrs = $aneeScoCreaCrs->rechercher($_GET['idCours'])->fetch();
                             $grd_tour_remis_encours =new suivie_remise_devoirs();
@@ -200,18 +201,18 @@ $pondToutDevoir=0.0;
                                                    $moyenCote=($pTotal/2);
                                                    $cote =$coteEleDev.'/'.$pTotal;
                                                     if($coteEleDev>=$moyenCote AND $coteEleDev<=$pTotal){
-                                                         echo '<td style="color:green; font-size:18px">'.$cote .'</td>';
+                                                         echo '<td style="color:green; font-size:12px">'.$cote .'</td>';
                                                     }elseif($coteEleDev>=0 AND $coteEleDev<$moyenCote){
-                                                         echo '<td style="color:red; font-size:18px">'.$cote .'</td>';
+                                                         echo '<td style="color:red; font-size:12px">'.$cote .'</td>';
                                                         
                                                     }elseif($coteEleDev<0){
-                                                         echo '<td style="color:yellow; font-size:18px">'.$cote .'</td>';
+                                                         echo '<td style="color:yellow; font-size:12px">'.$cote .'</td>';
 
                                                     }elseif($coteEleDev>$pTotal){
-                                                         echo '<td style="color:pink; font-size:18px">'.$cote .'</td>';
+                                                         echo '<td style="color:pink; font-size:12px">'.$cote .'</td>';
 
                                                     }else{
-                                                        echo '<td style="color:yellow; font-size:18px">Erreur</span></td>';
+                                                        echo '<td style="color:yellow; font-size:12px">Erreur</span></td>';
                                                     }
                                         
                                       
@@ -220,7 +221,7 @@ $pondToutDevoir=0.0;
 
                                         echo '</span></td>';
                                     }else{
-                                        echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                        echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
                                     }
                                     $pondTotalDevResolu=$pondTotalDevResolu+$pTotal;
                                     $tourRel++;
@@ -231,55 +232,32 @@ $pondToutDevoir=0.0;
                          if($tourRel<$tourPrev){
                                     $Surp=$tourPrev-$tourRel;
                                         for($u=1;$u<$Surp;$u++){
-                                            echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                            echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
                                         }
 
                                     }
-                                    // 
-                         $pondTotalDevResoluMoyen=($pondTotalDevResolu/2);
-                         $coteResol=$coteTotal.'/'.$pondTotalDevResolu;
-                         $PourcCoteResol=ROUND((($coteTotal*100)/$pondTotalDevResolu),2);
-                        if($coteTotal>$pondTotalDevResoluMoyen AND $coteTotal<=$pondTotalDevResolu){
-                                echo '<td style="color:green; font-size:18px">'.$coteResol.'</span></td>';
-                                 echo '<td style="color:green; font-size:18px">'.$PourcCoteResol.'%</span></td>';
-                        }elseif($coteTotal>=0 AND $coteTotal<=$pondTotalDevResoluMoyen){
-                                echo '<td style="color:red; font-size:18px">'.$coteResol.'</span></td>';
-                                 echo '<td style="color:red; font-size:18px">'.$PourcCoteResol.'%</span></td>';
-                            
-                        }elseif($coteTotal<0){
-                                echo '<td style="color:yellow; font-size:18px">'.$coteResol.'</span></td>';
-                                 echo '<td style="color:pink; font-size:18px">'.$PourcCoteResol.'%</span></td>';
-
-                        }elseif($coteTotal>$pondTotalDevResolu){
-                                echo '<td style="color:pink; font-size:18px">'.$coteResol.'</span></td>';
-                                 echo '<td style="color:pink; font-size:18px">'.$PourcCoteResol.'%</span></td>';
-
-                        }else{
-                            echo '<td style="color:yellow; font-size:18px">Erreur'.$coteTotal.'</span></td>';
-                             echo '<td style="color:yellow; font-size:18px">'.$PourcCoteResol.'%</span></td>';
-                        }
-                        // 
+                             
                          $pondToutDevMoyen=($pondToutDevoir/2);
                          $coteToutDevoir=$coteTotal.'/'.$pondToutDevoir;
                         $PourcCoteToutDev=ROUND((($coteTotal*100)/$pondToutDevoir),2);
                         if($coteTotal>$pondToutDevMoyen AND $coteTotal<=$pondToutDevoir){
-                                echo '<td style="color:green; font-size:18px">'.$coteToutDevoir.'</span></td>';
-                                 echo '<td style="color:green; font-size:18px">'.$PourcCoteToutDev.'%</span></td>';
+                                echo '<td style="color:green; font-size:12px">'.$coteToutDevoir.'</span></td>';
+                                 echo '<td style="color:green; font-size:12px">'.$PourcCoteToutDev.'%</span></td>';
                         }elseif($coteTotal>=0 AND $coteTotal<=$pondToutDevMoyen){
-                                echo '<td style="color:red; font-size:18px">'.$coteToutDevoir.'</span></td>';
-                                 echo '<td style="color:red; font-size:18px">'.$PourcCoteToutDev.'%</span></td>';
+                                echo '<td style="color:red; font-size:12px">'.$coteToutDevoir.'</span></td>';
+                                 echo '<td style="color:red; font-size:12px">'.$PourcCoteToutDev.'%</span></td>';
                             
                         }elseif($coteTotal<0){
-                                echo '<td style="color:yellow; font-size:18px">'.$coteToutDevoir.'</span></td>';
-                                 echo '<td style="color:pink; font-size:18px">'.$PourcCoteToutDev.'%</span></td>';
+                                echo '<td style="color:yellow; font-size:12px">'.$coteToutDevoir.'</span></td>';
+                                 echo '<td style="color:pink; font-size:12px">'.$PourcCoteToutDev.'%</span></td>';
 
                         }elseif($coteTotal>$pondToutDevMoyen){
-                                echo '<td style="color:pink; font-size:18px">'.$coteToutDevoir.'</span></td>';
-                                 echo '<td style="color:pink; font-size:18px">'.$PourcCoteToutDev.'%</span></td>';
+                                echo '<td style="color:pink; font-size:12px">'.$coteToutDevoir.'</span></td>';
+                                 echo '<td style="color:pink; font-size:12px">'.$PourcCoteToutDev.'%</span></td>';
 
                         }else{
-                            echo '<td style="color:yellow; font-size:18px">Erreur'.$coteTotal.'</span></td>';
-                             echo '<td style="color:yellow; font-size:18px">'.$PourcCoteToutDev.'%</span></td>';
+                            echo '<td style="color:yellow; font-size:12px">Erreur'.$coteTotal.'</span></td>';
+                             echo '<td style="color:yellow; font-size:12px">'.$PourcCoteToutDev.'%</span></td>';
                         }
                        
                         
@@ -287,5 +265,6 @@ $pondToutDevoir=0.0;
                         }
                 }
                 ?>
-        </tbody>
+            </tbody>
+        </table>
     </div>

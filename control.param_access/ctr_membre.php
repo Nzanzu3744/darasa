@@ -1,12 +1,11 @@
 <?php
 (empty($_SESSION))?session_start():'';
 if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
-  // echo '<script src="../bootstrap/dist/js/bootstrap.min.js"></script>';
     include_once("../vue.param_access/liste_role.php");
  }else if(isset($_GET['dcxion'])){
    $_SESSION = array();
     session_destroy();
-    include_once('../vue.param_access/login.php');
+    include_once("../vue.param_access/login.php");
  }else if(isset($_GET['modifGroupe'])){
    include_once('../model.param_access/param_role.class.php');
    $role = new param_role();

@@ -3,9 +3,7 @@ session_start();
 include_once('../model.param_access/param_utilisateur.class.php');
 include_once('../model.param_access/org_classe.class.php');
 ?>
- <?php
-//  include_once('../vue.param_access/entete.php');
- ?>
+
 <div id='gdpanel' class="panel panel-inverse col-sm-12">
    
     
@@ -17,7 +15,7 @@ include_once('../model.param_access/org_classe.class.php');
                     foreach($perm->selectionnerByUtIns(($_SESSION['idUtilisateur'])) as $sel){
                         $maClasse =$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$sel['anneeSco'];
                     ?>
-                    <li style="border: 1px dashed blue; font-size:11px"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCoursEleve&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idIns=<?=$sel['idInscription']?>&idClasse=<?=$sel['idClasse']?>','#editLeco','')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 1px dashed blue; font-size:11px"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCoursEleve&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idIns=<?=$sel['idInscription']?>&idClasse=<?=$sel['idClasse']?>','#editLeco','')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                 ?>   

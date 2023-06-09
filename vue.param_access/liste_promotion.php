@@ -24,7 +24,7 @@
                         ?>
                         <tr>
                             <td><?=$n?></td>
-                            <td><input type="checkbox" onchange="Orientation('../control.param_access/ctr_directeur.php?promChk=true&idPromotion=<?=$selProm['idPromotion']?>')"?></td>
+                            <td><input type="checkbox" onchange="Orientation('control.param_access/ctr_directeur.php?promChk=true&idPromotion=<?=$selProm['idPromotion']?>')"?></td>
                             <td><?=strtoupper($selProm['idPromotion'])?></td>
                             <td>                          
                                 <i id="<?=$selProm['idPromotion']?>"><?=strtoupper($selProm['promotion']);?></i>

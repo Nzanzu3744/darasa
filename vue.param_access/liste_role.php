@@ -27,7 +27,7 @@ include_once('../model.param_access/param_groupe.class.php');
                             <td>
 
                                     <i class="labelles"> Groupe</i>
-                                    <select id="groupe" class="form-control col-sm-12" onchange="Orientation('../control.param_access/ctr_membre.php?modifGroupe&idUtilisateur=<?=$selut['idUtilisateur']?>&idGroupe='+$(this).val(),'#corps')">
+                                    <select id="groupe" class="form-control col-sm-12" onchange="Orientation('control.param_access/ctr_membre.php?modifGroupe&idUtilisateur=<?=$selut['idUtilisateur']?>&idGroupe='+$(this).val(),'#corps')">
                                     <?php
                                         $groupeActif = new param_groupe();
                                         $groupeActif = $groupeActif ->selectionDerRolActif($selut['idUtilisateur'])->fetch();
@@ -49,7 +49,7 @@ include_once('../model.param_access/param_groupe.class.php');
 
                             </td>
                         <td>
-                            <a onclick="Orientation('../control.param_access/ctr_membre.php','#panel')"><img style="height:50px; width:50px" id="image" src="../images/<?=$selut['photoUtilisateur']?>"></a>
+                            <a onclick="Orientation('control.param_access/ctr_membre.php','#panel')"><img style="height:50px; width:50px" id="image" src="images/<?=$selut['photoUtilisateur']?>"></a>
                         </td>
                         <?php if($tr>=4){$tr=0; echo "</td>";}?>
             <?php
@@ -63,17 +63,17 @@ include_once('../model.param_access/param_groupe.class.php');
                                     <?php
                                     if($_SESSION['org_inscription_afficher']==1){
                                     ?>
-                                        <li class="btn btn-sm btn-defaulter" style="color: blue"    href="#" onclick="Orientation('../control.param_access/ctr_eleve.php?eleve&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">INSCRIRE ELEVE</a></li>
+                                        <li class="btn btn-sm btn-defaulter" style="color: blue"    href="#" onclick="Orientation('control.param_access/ctr_eleve.php?eleve&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">INSCRIRE ELEVE</a></li>
                                 <?php
                                     }
                                     if($_SESSION['org_affectation_afficher']==1){
                                     ?>
-                                        <li class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('../control.param_access/ctr_enseignant.php?enseigna&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">AFFECTER ENSEIG.</a></li>
+                                        <li class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('control.param_access/ctr_enseignant.php?enseigna&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">AFFECTER ENSEIG.</a></li>
                                     <?php
                                     }
                                     if($_SESSION['dir_directeur_afficher']==1){
                                     ?>
-                                                <li class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('../control.param_access/ctr_directeur.php?directeur&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">AFFECTER DIR.</a></li>
+                                                <li class="btn btn-sm btn-defaulter" style="color: blue"  href="#" onclick="Orientation('control.param_access/ctr_directeur.php?directeur&idutil=<?=$selut['idUtilisateur']?>&idGroupe=<?=$_GET['idGroupe']?>','#corps')"><a href="#">AFFECTER DIR.</a></li>
                                     <?php
                                     }
                                     ?>

@@ -24,12 +24,12 @@ include_once('../model.param_access/org_anneesco.class.php');
                         // .$sel['anneeSco']
                          $maClasse =$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$sel['anneeSco'];
                     ?>
-                    <li style="border: 1px dashed red; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('../control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idAfft=<?=$sel['idAffectation']?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 1px dashed red; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idAfft=<?=$sel['idAffectation']?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                 ?>   
             </ul>
-            <select onchange="Orientation('../control.param_access/ctr_cours.php?VueClasseAff=true&idAnnee='+$(this).val(),'#panel');" style="border: 1px solid white; background:black; height:55px;font-size:11px; color:red;" class="pull-right col-sm-1">
+            <select onchange="Orientation('control.param_access/ctr_cours.php?VueClasseAff=true&idAnnee='+$(this).val(),'#panel');" style="border: 1px solid white; background:black; height:55px;font-size:11px; color:red;" class="pull-right col-sm-1">
              <?php 
                     $perm = new org_anneesco();
                     if(isset($_GET['idAnnee'])){
@@ -50,8 +50,8 @@ include_once('../model.param_access/org_anneesco.class.php');
         
     </header>
 <section class="" id="corps" style="height:500px">
-  <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
-
+    <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red"  onclick="showme('#leconsgauche','#editLeco','true')" ></i>
+    </div>
     <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:80% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) ENSEIGNANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours de votre affectation est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
     </div>

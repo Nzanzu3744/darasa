@@ -13,7 +13,7 @@ include_once('../model.param_access/crs_lecon.class.php');
             $idC=$_GET['idCours'];
          }
          ?>
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&leconsgauche_dir&idCours=<?=$idC?>','#leconsgauche','');"  ></input>  
+         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&leconsgauche_dir&idCours=<?=$idC?>','#leconsgauche','');"  ></input>  
             <div class="table-responsive" style="height:100%" >
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
@@ -40,7 +40,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                        $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
                               
-                              <li><a href='#' onclick="showme2('#dessoueditLeco'); Orientation('../control.param_access/ctr_lecon.php?LireLecon_ense=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco',''); Orientation('../control.param_access/ctr_lecon.php?Evalue=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idLecon=<?=$selLc['idLecon']?>','#dessoueditLeco','')">Lire la leçon</a></i></li>
+                              <li><a href='#' onclick="showme2('#dessoueditLeco'); Orientation('control.param_access/ctr_lecon.php?LireLecon_ense=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco',''); Orientation('control.param_access/ctr_lecon.php?Evalue=tue&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idLecon=<?=$selLc['idLecon']?>','#dessoueditLeco','')">Lire la leçon</a></i></li>
                               <li class="divider"><?=$_GET['idPromotion']?></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

@@ -1,4 +1,3 @@
-<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 <?php
 if(isset($_GET['pukcab'])){
     $databases = ["darasa"];

@@ -1,8 +1,3 @@
-
-
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
 <?php
 include_once('../model.param_access/crs_assertion.class.php');
 if(isset($_GET['AjoutQstTr'])){
@@ -55,7 +50,7 @@ if(isset($_GET['AjoutQstTr'])){
         <input id=<?=$_GET['idpond']?> type="text" placeholder="Point" value='<?=$_GET['pond']?>'/>
     </div>
      <div class="col-sm-12">
-              <button onclick="Orientation('../control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['idDev']?>&modifQst=<?=$_GET['modifQst']?>&AjoutQstCh&INTERDIT&idqstC=<?=$_GET['idqstC']?>&idass1=<?=$_GET['idass1']?>&idass2=<?=$_GET['idass2']?>&idass3=<?=$_GET['idass3']?>&idass4=<?=$_GET['idass4']?>&idass5=<?=$_GET['idass5']?>&idass6=<?=$_GET['idass6']?>&idasCk1=<?=$_GET['idasCk1']?>&idasCk2=<?=$_GET['idasCk2']?>&idasCk3=<?=$_GET['idasCk3']?>&idasCk4=<?=$_GET['idasCk4']?>&idasCk5=<?=$_GET['idasCk5']?>&idasCk6=<?=$_GET['idasCk6']?>&idqst=<?=$_GET['idqst']?>&n=<?=$_GET['n']?>&form=<?=$_GET['form']?>&idpond=<?=$_GET['idpond']?>&pond='+$('#<?=$_GET['idpond']?>').val()
+              <button onclick="Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['idDev']?>&modifQst=<?=$_GET['modifQst']?>&AjoutQstCh&INTERDIT&idqstC=<?=$_GET['idqstC']?>&idass1=<?=$_GET['idass1']?>&idass2=<?=$_GET['idass2']?>&idass3=<?=$_GET['idass3']?>&idass4=<?=$_GET['idass4']?>&idass5=<?=$_GET['idass5']?>&idass6=<?=$_GET['idass6']?>&idasCk1=<?=$_GET['idasCk1']?>&idasCk2=<?=$_GET['idasCk2']?>&idasCk3=<?=$_GET['idasCk3']?>&idasCk4=<?=$_GET['idasCk4']?>&idasCk5=<?=$_GET['idasCk5']?>&idasCk6=<?=$_GET['idasCk6']?>&idqst=<?=$_GET['idqst']?>&n=<?=$_GET['n']?>&form=<?=$_GET['form']?>&idpond=<?=$_GET['idpond']?>&pond='+$('#<?=$_GET['idpond']?>').val()
                 +'&asCk1='+$('#asCk1'+<?=$_GET['n']?>).val()
                 +'&ass1='+$('#ass1'+<?=$_GET['n']?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$_GET['n']?>).val()
@@ -81,9 +76,8 @@ if(isset($_GET['AjoutQstTr'])){
 }
 ?>
 <script>
-$(function () {
-$('.textarea').summernote()
-})
+  $(function () {
+  $('.textarea').summernote()
+  })
 </script>
-
 

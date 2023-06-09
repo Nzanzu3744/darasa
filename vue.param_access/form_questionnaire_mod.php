@@ -1,6 +1,3 @@
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
 <?php
     include_once('../model.param_access/crs_question.class.php');
     include_once('../model.param_access/crs_devoirs.class.php');
@@ -20,7 +17,6 @@
          <center class="col-sm-12 titres" style="font-size:20px; margin-bottom:10px" >QUESTIONNAIRE DEVOIR DU COURS <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ELEVE) ID DEVOIR:<?="" .$seldev['idDevoir'].' CREER LE <b>'.$seldev['dateCreation'].' </b>A REMETRE LE <b>'.$seldev['dateRemise'].'</b>'?></center>
 
     
-
 
 
     <?php
@@ -46,7 +42,7 @@
                 <input id=<?='pond'.$nub?>  type="text" class="" value="<?=$selQst['ponderation']?>"/>
             </form>
           <div class="col-sm-12">
-             <button onclick="Orientation('../control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
+             <button onclick="Orientation('control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
              +$('#idDev').val()
              +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-danger btn-xs pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
         </div>
@@ -190,7 +186,7 @@
         <input  id=<?='pond'.$nub?> type="text" placeholder="Point" value='<?=$selQst['ponderation']?>'/>
     
           <div class="col-sm-12">
-              <button onclick="showme1('#clef');Orientation('../control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
+              <button onclick="showme1('#clef');Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
                 +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
                 +'&ass1='+$('#ass1'+<?=$nub?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$nub?>).val()
@@ -220,7 +216,7 @@
 
 ?>
 <script>
-$(function () {
-$('.textarea').summernote()
-})
+  $(function () {
+  $('.textarea').summernote()
+  })
 </script>

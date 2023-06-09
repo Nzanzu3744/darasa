@@ -6,7 +6,7 @@ include_once('../model.param_access/crs_lecon.class.php');
 ?>
 
 
-         <section class="fenetre " style="background-color: transparent; height:410px;">
+         <section class="fenetre " style="background-color: transparent; height:475px;">
          <?php
          $idC=0;
          if(isset($_GET['idCours'])){
@@ -14,7 +14,7 @@ include_once('../model.param_access/crs_lecon.class.php');
          }
          ?>
             <div class="table-responsive" style="height:100%" >
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('../control.param_access/ctr_XXXX.php?devoirsgauche_ense=true&idCours=<?=$idC?>','#devoirssgauche','');"  ></input>  
+         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_XXXX.php?devoirsgauche_ense=true&idCours=<?=$idC?>','#devoirssgauche','');"  ></input>  
 
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
@@ -40,7 +40,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                         $sel_C = new crs_lecon();
                        $sel_C=$sel_C->selectionnerByIdCours($selLc['idCours'])->fetch();
                         ?>
-                              <li><a onclick="Orientation('../control.param_access/ctr_lecon.php?LireLecon_ense=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
+                              <li><a onclick="Orientation('control.param_access/ctr_lecon.php?LireLecon_ense=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
                               <li class="divider"></li>
                               <li>
                                  <a href="#" onclick="Encour()">Rapport Eleve</a>

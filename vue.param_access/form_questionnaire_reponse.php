@@ -1,8 +1,3 @@
-
-
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
 <?php
 if(isset($_GET['AjouterRepTr'])){
 ?>

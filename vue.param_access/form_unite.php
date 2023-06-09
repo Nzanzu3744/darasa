@@ -7,7 +7,7 @@ include_once('../model.param_access/org_unite.class.php');
     <div class="form-group col-sm-4">
         <input id="unit" type="text" class="form-control" style="width:250px" placeholder="Unite ici">
     </div>
-     <button onclick="Orientation('../control.param_access/ctr_structure.php?ajouterU=true&Unit='+$('#unit').val(),'#unite01')"  class="btn btn-success pullright col-sm-3">Valider</button>
+     <button onclick="Orientation('control.param_access/ctr_structure.php?ajouterU=true&Unit='+$('#unit').val(),'#unite01')"  class="btn btn-success pullright col-sm-3">Valider</button>
     <button onclick="Encour()"  class="btn btn-primary pullleft col-sm-3">Annuler</button>
 </div>
 <!-- MON TABLEAU -->
@@ -36,7 +36,7 @@ include_once('../model.param_access/org_unite.class.php');
             ?>
             <tr>
                 <td><?=$n?></td>
-                <td><input type="checkbox" onchange="Orientation('../control.param_access/ctr_structure.php?uniteChk&idUnite=<?=$sel['idUnite']?>','#promo')"></td>
+                <td><input type="checkbox" onchange="Orientation('control.param_access/ctr_structure.php?uniteChk&idUnite=<?=$sel['idUnite']?>','#promo')"></td>
                 <td><?=strtoupper($sel['idUnite'])?></td>
                 <td><?=strtoupper($sel['unite'])?></td>               
                 <td class="dropdown active pull-right" style="height:9px">

@@ -4,7 +4,7 @@ include_once('../model.param_access/param_utilisateur.class.php');
 $util = new param_utilisateur();
 $util=$util->rechercher($_SESSION['idUtilisateur']);
 ?>
-<form action="../control.param_access/ctr_utilisateur.php" method="POST" enctype="multipart/form-data" class="form_control" style="margin:20px">
+<form action="control.param_access/ctr_utilisateur.php" method="POST" enctype="multipart/form-data" class="form_control" style="margin:20px">
     <div class="form-group col-sm-6">
         <label for="nom" class=" col-sm-2 col-xs-2"> Nom </label>
         <input id="nom" name="nom" type="text" value="<?=$util['nomUtilisateur']?>" class="form-control col-sm-5 col-xs-5 col-lg-5 " placeholder="Nom de l'utilisateur" >

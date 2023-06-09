@@ -1,29 +1,22 @@
 <?php
 include_once('../model.param_access/param_groupe.class.php');
 ?>
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
-        <center class="col-sm-12 titres" style="font-size:20px" >REDACTION D'UNE LECON <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ENSEIGNANT)</center>
+<center class="col-sm-12 titres" style="font-size:20px" >REDACTION D'UNE LECON <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ENSEIGNANT)</center>
 
- <button class="btn btn-default pull-left col-sm-2" onclick="Orientation('../control.param_access/ctr_lecon.php?premiF&maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>','#editLeco','');Orientation('../control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"> NOUVELLE LECON</button>
+ <input class="btn btn-xs btn-default pull-left col-sm-1" value="Nouv. lecon" type="button" onclick="Orientation('control.param_access/ctr_lecon.php?premiF&maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>','#editLeco','');Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"/>
 <form class="form-inline" style="width:100%; height:100%" id="lecon">
-<input id="btn_enreg_lecon" value="ENREGISTRER" type="button" class="btn btn-success pull-left  col-sm-2" style="padding:6px" onclick="Orientation('../control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&tlecon='+$('#tlecon').val()+'&idlc='+$('#idlc').val()+'&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>&ajouterL=true','#editLeco','#lecon');Orientation('../control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  ></input> 
-<input style="width:100%" id ="tlecon" type="text" class="form-control" placeholder="Titre de la lecon"/> 
-    <div class="form-group text-align: center;" style="width:100%; height:100%">              
-       
-        <textarea id="lcn" name="lcn" class="textarea" style="width:9%"></textarea>
+    <input id="btn_enreg_lecon" value="Enregistrer" type="button" class="btn btn-xs btn-default pull-left  col-sm-1"  onclick="Orientation('control.param_access/ctr_lecon.php?maClasse=<?=$_GET['maClasse']?>&tlecon='+$('#tlecon').val()+'&idlc='+$('#idlc').val()+'&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>&ajouterL=true','#editLeco','#lecon');Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  />
+    <input id="btn_exploiation" value="Fiche de Prepa." type="button" class="btn btn-xs btn-default pull-left  col-sm-1" onclick="Orientation('control.param_access/ctr_exploitation.php?ajouterFExp=true&maClasse=<?=$_GET['maClasse']?>&tlecon='+$('#tlecon').val()+'&idlc='+$('#idlc').val()+'&cours=<?=$_GET['cours']?>&idCours=<?=$_GET['idCours']?>&ajouterL=true','#editLeco','#lecon');Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  /> 
+    <input style="width:100%" id ="tlecon" type="text" class="form-control" placeholder="Titre de la lecon"/> 
+        <div class="form-group text-align: center;" style="width:100%; height:100%">              
+            <textarea id="lcn" name="lcn" class="textarea" style="width:9%"></textarea>
+        </div>         
     </div>
-     
-          
-</div>
-      
 </form>
 
-
 <script>
-$(function () {
-$('.textarea').summernote()
-})
+    $(function () {
+        $('.textarea').summernote()
+    })
 </script>
 

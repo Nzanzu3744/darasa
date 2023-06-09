@@ -1,33 +1,14 @@
-<!DOCTYPE HTML>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="../bootstrap/dist/css/monstyle.css" rel=stylesheet>
-            <script src="../jquery/dist/jquery.min.js"></script>
-            
-            <!--    -->
-            <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.css">
-            <!--  -->
-            
-            <script src="script.js"></script>
-           
-
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        </head>
-       <body style="font-size:13px;" id="app">
-          <!-- ACTUALITE -->
+  <!-- ACTUALITE -->
           <div  class="col-md-9 col-lg-9 col-xl-9" style="">
             <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Exemple d’image" _mstalt="176397" _msthash="259"> -->
             <div class="table-responsive" style="height:850px">
               <div>
-                <!-- <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
-                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
-                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
-                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
-                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center>
-                <center class="img-fluid"><img style= "width:100%; height:700px" src="../images/acc.png" alt="Tigre"></center> -->
+                <!-- <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center>
+                <center class="img-fluid"><img style= "width:100%; height:700px" src="images/acc.png" alt="Tigre"></center> -->
               </div>
             </div>
           
@@ -43,7 +24,7 @@
                ?>
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
                     <a href="#" class="thumbnail">
-                      <img src="../images/acc.png" alt="<?="NZANZU ASINGYA D."?>" class="img-rounded">
+                      <img src="images/acc.png" alt="<?="NZANZU ASINGYA D."?>" class="img-rounded">
                     </a>
                   </div>
                   <?php
@@ -94,7 +75,7 @@
               </div>
 
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="button" id="btn_enreg_lecon" onclick="Orientation('../control.param_access/ctr_con.php?lgdfds='+$('#lg').val()+'&ps='+$('#ps').val(),'#app')" class="btn btn-primary btn-lg btn-floating mx-1" style="padding-left: 2.5rem; padding-right: 2.5rem;" _msttexthash="256685" _msthash="268">Connectez-vous</button>
+                <button type="button" id="btn_enreg_lecon" onclick="Orientation('control.param_access/ctr_con.php?lgdfds='+$('#lg').val()+'&ps='+$('#ps').val(),'#app')" class="btn btn-primary btn-lg btn-floating mx-1" style="padding-left: 2.5rem; padding-right: 2.5rem;" _msttexthash="256685" _msthash="268">Connectez-vous</button>
                 <p class="small fw-bold mt-2 pt-1 mb-0" _msttexthash="2142699" _msthash="269">Vous n’avez pas de compte ? <a href="#!" class="link-danger" onclick="Encour()" _istranslated="1">Registre</a></p>
               </div>
             </form>
@@ -114,8 +95,3 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
-        <!-- Right -->                  
-    </body>
-    
-</html>  
- <script src="../bootstrap/dist/js/bootstrap.min.js"></script>

@@ -1,5 +1,3 @@
-<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../vue.param_access/script.js"></script> -->
 <?php
 (empty($_SESSION))?session_start():'';
 include_once('../model.param_access/param_utilisateur.class.php');
@@ -48,11 +46,11 @@ include_once('../model.param_access/param_utilisateur.class.php');
       $idUtilisateur=$_SESSION['idUtilisateur'];
     if($photo!=''){
       $util->modifier($idUtilisateur,$_POST['nom'],$_POST['postnom'],$_POST['prenom'],$_POST['idGenre'],$_POST['tel'],$_POST['mail'],$photo,$_POST['login'],$_POST['ps']);
-      header('location:../vue.param_access/login.php');
-      
+       header('location:../index.php');
+
     }else{
        $util->modifierSP($idUtilisateur,$_POST['nom'],$_POST['postnom'],$_POST['prenom'],$_POST['idGenre'],$_POST['tel'],$_POST['mail'],$_POST['login'],$_POST['ps']);
-        header('location:../vue.param_access/login.php');
+        header('location:../index.php');
       
     }  
  }else {

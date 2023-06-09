@@ -1,6 +1,3 @@
-<!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
-<!--  -->
 <?php
     include_once('../model.param_access/crs_question.class.php');
     include_once('../model.param_access/crs_devoirs.class.php');
@@ -58,7 +55,7 @@
  
                             <label class=""> <?=$selRep['nomUtilisateur'].' '.$selRep['postnomUtilisateur'].' '.$selRep['prenomUtilisateur']?></li>
                             <label class=""><?=$selRep['genre']?></label>
-                            <img class="col-sm-12" src="<?='../images/'.$selRep['photoUtilisateur']?>">     
+                            <img class="col-sm-12" src="<?='images/'.$selRep['photoUtilisateur']?>">     
               </center>
               <div class="col-sm-10" style="border: 1px solid white;padding:0px; background:white"><?=$selRep['reponse']?></div>
                       <?php
@@ -73,7 +70,7 @@
                             <input class="form-control col-sm-2 col-lg-2 col-xs-2" id=<?='cote'.$id?> name='<?='cote'.$id?>' >SUR <?=$selRep['ponderation']?>
                           </label>
                           <textarea class="form-control" id=<?='cmt'.$id?>></textarea>
-                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
+                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
                           <div id=<?='resul'.$id?>></div>
                         </center>  
                 <?php
@@ -84,7 +81,7 @@
                             <input class="form-control col-sm-2 col-lg-2 col-xs-2" id=<?='cote'.$id?> name='<?='cote'.$id?>' value='<?=$correct['cote']?>' >SUR <?=$selRep['ponderation']?>
                           </label>
                           <textarea class="form-control" id=<?='cmt'.$id?>><?=$correct['commentaire']?></textarea>
-                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('../control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
+                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
                           <div id=<?='resul'.$id?>></div>
                         </center>  
                       <?php
@@ -233,7 +230,7 @@
         <!-- <input  id=<?='pond'.$nub?> type="text" placeholder="Point" value='<?=$selQst['ponderation']?>'/>
     
           <div class="col-sm-12">
-              <button onclick="showme1('#clef');Orientation('../control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
+              <button onclick="showme1('#clef');Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
                 +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
                 +'&ass1='+$('#ass1'+<?=$nub?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$nub?>).val()
@@ -273,7 +270,7 @@
                  <center  style="border: 1px solid white; padding:1px; font-size:9px">
                             <label class=""> <?=$selRep['nomUtilisateur'].' '.$selRep['postnomUtilisateur'].' '.$selRep['prenomUtilisateur']?></li>
                             <label class=""><?=$selRep['genre']?></label>
-                            <img class="col-sm-12" src="<?='../images/'.$selRep['photoUtilisateur']?>">     
+                            <img class="col-sm-12" src="<?='images/'.$selRep['photoUtilisateur']?>">     
                   </center>    
                   <center style="height:100%; width:100%; font-size:9px">
                             <?php
@@ -312,7 +309,7 @@
 
 ?>
 <script>
-$(function () {
-$('.textarea').summernote()
-})
+  $(function () {
+  $('.textarea').summernote()
+  })
 </script>

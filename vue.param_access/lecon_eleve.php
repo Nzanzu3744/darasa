@@ -3,7 +3,7 @@ include_once('../model.param_access/param_groupe.class.php');
 include_once('../model.param_access/crs_lecon.class.php');
 ?>
 <!--  -->
-<script src="../jquery/dist/summernote/summernote-bs4.min.js"></script>
+<script src="jquery/dist/summernote/summernote-bs4.min.js"></script>
 <!--  -->
 
 <div class="form-inline" style="width:100%; height:100%" id="lecon"> 

@@ -7,11 +7,11 @@ include_once('../model.param_access/suivie_remise_devoirs.class.php');
 $editeur = new param_utilisateur();
 $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
 ?>
-<div style="border: 1px solid black; padding:10px; font: size 12px; margin:10px; background:white" class="col-sm-12">
-<!-- <button class="pull-right btn btn-warning" onclick="Orientation('../control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button>
-<button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button> -->
-    <div style="desplay:inline-block  " class="col-sm-12 col-lg-12">
-        <!-- <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="../images/lgndg.PNG" style="width:200px; height:100px"/> -->
+<div style="border: 1px solid red; padding:10px; font: size 12px; margin:10px; background:white" class="col-sm-12">
+<!-- <button class="pull-right btn btn-warning" onclick="Orientation('control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button> -->
+<button class="pull-right btn btn-default" onclick="Encour()"> Emprimer</button>
+    <!-- <div style="desplay:inline-block  " class="col-sm-12 col-lg-12">
+        <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="images/lgndg.PNG" style="width:200px; height:100px"/>
             <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
                     <span class=""><b>COMPLEXE SCOLAIRE NOTRE DAME DE GRACES</b></span><br>
                     <span class=""><b>DEVISE</b></span><br>
@@ -21,7 +21,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                     <span class=""><b>Tel : 081XXXXXXXX</b></span><br>
                     <span class="">Mail "<?='<a>'.$editeur['mailUtilisateur'].'</a>'?></span><br>
             </div>
-    </div>
+    </div> -->
    
     <!--  -->
     <div class="col-sm-12" style="">
@@ -29,9 +29,9 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
     </div>
     <!--  -->
     
- <div style="desplay:inline-block; " class="col-sm-12 col-lg-12">
+ <div style="desplay:inline-block;" class="col-sm-12 col-lg-12">
  <b class="col-lg-12 col-sm-12 pull-left"> IDENTITE DE L'ENSEIGNANT(E)</b>
-            <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="../images/<?=$editeur['photoUtilisateur']?>" style="width:120px; height:100px"/>
+            <img class="col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="images/<?=$editeur['photoUtilisateur']?>" style="width:120px; height:100px"/>
             <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
                     <span class=""> Nom : <b><b><?=$editeur['nomUtilisateur']?></b> Postnom : <b><?=$editeur['postnomUtilisateur']?></b></span><br>
                     <span class=""> Prenom : <b><?=$editeur['prenomUtilisateur']?></b></span>
@@ -42,12 +42,13 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
     </div>
 
         <!--  -->
-    <table class="table table-bordered table-striped table-condensed">
+    <div class="table-responsive" style="width:100%">
+    <table class="table table-bordered  table-striped table-condensed">
         
-            <thead>
+            <thead style="font-size:10px">
                 <tr>
                     <th style="background:WHITE" colspan="" >N</th>
-                    <th style="background:WHITE; color:red" colspan="2" ><center>IDENTITE ELEVE<center></th>                
+                    <th style="background:WHITE; color:red" colspan="3" ><center>IDENTITE ELEVE<center></th>                
 
                 <?php
                     $dv = new crs_devoirs();
@@ -70,7 +71,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                                     $nbrm++;
                                 }
                                 ?>
-                                <div onclick="Orientation('../control.param_access/ctr_devoirs.php?listeRms=true&idDevoir=<?=$seldv['idDevoir']?>&Rmis','<?='#Rm'.$seldv['idDevoir']?>','')"> Remis : <?=$nbrm?></div>
+                                <div onclick="Orientation('control.param_access/ctr_devoirs.php?listeRms=true&idDevoir=<?=$seldv['idDevoir']?>&Rmis','<?='#Rm'.$seldv['idDevoir']?>','')"> Remis : <?=$nbrm?></div>
 
                                 <?php
                                 }
@@ -87,8 +88,9 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                     $cpt=0;
                      foreach($grd_tour_remis  as $sel_grd_tour_remis){
                         $cpt++;
-                        echo '<tr>';
-                            echo '<td style="color:red">'.$cpt.'</td><td>'.$sel_grd_tour_remis['idUtilisateur'].'</td><td>'.$sel_grd_tour_remis['nomUtilisateur'].' '.$sel_grd_tour_remis['postnomUtilisateur'].' '.$sel_grd_tour_remis['prenomUtilisateur'].'</td>';
+                        echo '<tr style="font-size:10px"><td style="color:red">'.$cpt.'</td>';
+                        echo '<td style="color:red"><img style="width:40px; height:40px" src=images/'.$sel_grd_tour_remis['photoUtilisateur'].'></td>';
+                        echo '<td>'.$sel_grd_tour_remis['idUtilisateur'].'</td><td>'.$sel_grd_tour_remis['nomUtilisateur'].' '.$sel_grd_tour_remis['postnomUtilisateur'].' '.$sel_grd_tour_remis['prenomUtilisateur'].'</td>';
                             $aneeScoCreaCrs = new crs_cours();
                             $aneeScoCreaCrs = $aneeScoCreaCrs->rechercher($_GET['idCours'])->fetch();
                             $grd_tour_remis_encours =new suivie_remise_devoirs();
@@ -101,9 +103,9 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                                 for($i=0; $i<=$key;$i++){
                         //ici bleme
                                     if($i===$key){
-                                        echo '<td style="color:green; font-size:18px"><span class="glyphicon glyphicon-ok">dev='.$sel_grd_tour_remis_encours['idDevoir'].'Ut='.$sel_grd_tour_remis_encours['idUtilisateur'].'</span></td>';
+                                        echo '<td style="color:green; font-size:12px"><span class="glyphicon glyphicon-ok"></span></td>';
                                     }else{
-                                        echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                        echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
                                     }
                                     $tourRel++;
                                 }
@@ -113,7 +115,7 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                          if($tourRel<$tourPrev){
                                     $Surp=$tourPrev-$tourRel;
                                         for($u=1;$u<$Surp;$u++){
-                                            echo '<td style="color:red; font-size:18px"><span class="glyphicon glyphicon-remove"></span></td>';
+                                            echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
                                         }
 
                                     }
@@ -122,4 +124,6 @@ $editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
                 }
                 ?>
         </tbody>
+    </table>
     </div>
+</div>

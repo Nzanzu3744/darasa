@@ -7,7 +7,7 @@ include_once('../model.param_access/org_section.class.php');
     <div class="form-group col-sm-4">
         <input id="section" type="text" class="form-control" style="width:250px" placeholder="Section ici">
     </div>
-     <button id="enrg" onclick="Orientation('../control.param_access/ctr_structure.php?ajouterS=true&Sectn='+$('#section').val(),'#sect')"  class="btn btn-success pullright col-sm-3">Valider</button>
+     <button id="enrg" onclick="Orientation('control.param_access/ctr_structure.php?ajouterS=true&Sectn='+$('#section').val(),'#sect')"  class="btn btn-success pullright col-sm-3">Valider</button>
     <button onclick="Encour()"  class="btn btn-primary pullleft col-sm-3">Annuler</button>
 
         <div id="ec" class="alert alert-block alert-danger" style="display:none">
@@ -44,7 +44,7 @@ include_once('../model.param_access/org_section.class.php');
             ?>
             <tr>
                 <td><?=$n?></td>
-                <td><input type="checkbox" onchange="Orientation('../control.param_access/ctr_structure.php?sectionChk&idSection=<?=$sel['idSection']?>','#promo')"></td>
+                <td><input type="checkbox" onchange="Orientation('control.param_access/ctr_structure.php?sectionChk&idSection=<?=$sel['idSection']?>','#promo')"></td>
                 <td><?=strtoupper($sel['idSection'])?></td>
                 <td><?=strtoupper($sel['section'])?></td>               
                 <td class="dropdown active pull-right" style="height:9px">

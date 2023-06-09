@@ -27,7 +27,7 @@
     function Ctr_ajout(){
     $.ajax({
         type : 'GET',
-        url : '../control.param_access/ctr_role.php?ajouterU=true&nom='+$("#nom").val()+'&postnom='+$("#postnom").val()+'&prenom='+$("#prenom").val()+'&mail='+$("#mail").val()+' & photo='+$("#photo").val()+'&groupe1='+$("#groupe1").val(),
+        url : 'control.param_access/ctr_role.php?ajouterU=true&nom='+$("#nom").val()+'&postnom='+$("#postnom").val()+'&prenom='+$("#prenom").val()+'&mail='+$("#mail").val()+' & photo='+$("#photo").val()+'&groupe1='+$("#groupe1").val(),
             success:function(serveur){
                 if(serveur==1){
                     $("div.form-group").addClass("has-success");
@@ -46,7 +46,7 @@
 function charge_Image(){
     $("#image01").show("slow");
     $("#image01").addClass("has-success");
-    $("#image01").html('<img style="height:90%; widht:80%" id="image" src="../images/img.jpg">');
+    $("#image01").html('<img style="height:90%; widht:80%" id="image" src="images/img.jpg">');
     
 }
 </script>
