@@ -7,7 +7,7 @@ include_once('../model.param_access/param_groupe.class.php');
 
          <section class="fenetre " style="height:92%;background-color: transparent">
           <div id='test09' name='test09'></div>
-            <table class="table table-bordered table-striped table-condensed">
+            <table class=" table-bordered table-striped table-condensed">
                  </thead>
                 </thead>
                 <tbody>
@@ -20,45 +20,42 @@ include_once('../model.param_access/param_groupe.class.php');
            foreach($cours as $selCrs){
             $tr++;
             ?>
-               <!--  --->
-              
+            <?php if($tr==1){echo '<tr style="margin:3px;">';}?>
+                           <!-- <?=$i++?> -->
+                            <td class="dropdown" style="width:250px;x">
+                                <div role="button" style="width:100%;height:150px border; 1px solid black" data-toggle="dropdown" onclick="Orientation('control.param_access/ctr_co_animateur.php?pre_coa&info=coanimation&idClasse=<?=$_GET['idClasse']?>&idCours=<?=$selCrs['idCours']?>','#fenetre3')">                          
+                                    <img style=" width:100%;height:100px" id="image" src="images/<?=$selCrs['url']?>">
+                                    <center><label><?=strtoupper($selCrs['cours']).' <i>CODE:['.$selCrs['idCours'].']</i>';?></label></center>
+                                    <center style="font-size:8px "><?=strtoupper($_GET['maClasse']).'<br>'.strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></center>
 
-                    <?php if($tr==1){echo '<tr style="margin:3px">';}?>
                                 
-                            <td style="background-color: green; color:white"><?=$i++;?></td>
-                            <td><?=$selCrs['idCours']?></td>
-                            <td style="" ><i class="labelles" >Cours : </i><b><?=":".strtoupper($selCrs['cours']);?><b><i class="labelles" ><br>Classe</i><?=":<z style=font-size:10px".strtoupper($_GET['maClasse'])?></z></b></td>
-                            <td style="" ><i class="labelles" >Enseignant : </i><b style='font-size:10px'><?=":".strtoupper($selCrs['nomUtilisateur'].' '.$selCrs['postnomUtilisateur'].' '.$selCrs['prenomUtilisateur']);?></b></td>
-                            
-                            <td ><a  onclick="Orientation('control.param_access/ctr_membre.php','#panel','')"><img style="width:70px; height:60px" id="image" src="images/<?=$selCrs['url']?>"></a></td>
-                        <?php if($tr>=3){$tr=0; echo "</td>";}?>
-            <?php
-            ?>
-                <!--  -->
-                <td style="height:100%;  background:#f2f2f2">
-                
-                <z class="dropdown">
-                <button data-toggle="dropdown" style="height:60px; ">Options<b class="caret ppull-right"></b></button>
-                    <ul class="dropdown-menu pull-right">
-                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_lecon.php?leconsgauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">Liste Leçons</a></i></li>
-                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_devoirs.php?devoirsgauche_dir=true&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Liste Devoir</a></i></li>
-                        <li class="divider"></li>
-                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_lecon.php?rechercheGauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres lecons</a></i></li>
-                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_devoirs.php?rechercheGauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres Devoirs</a></i></li>
-                        <li class="divider"></li>
-                        <li><a href="#" onclick="showme('#leconsgauche','#editLeco','true');Orientation('control.param_access/ctr_blog.php?commentaire_cours&profil=direct&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">commentaire_cours</a></i></li>
-                        <li class="divider"></li>
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_remise=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille Remise </a> 
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_Point=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille de Points</a> 
-                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
-                        <li class="divider"></li>
-                        <li ><a href="#" onclick="Encour()" >Supprimer</a></i></li>
-                        </li>
+                                </div>
 
-                    </ul>
-                </z>                
-                </td>   
+                                    <ul class="dropdown-menu pull-center">
+                                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_lecon.php?leconsgauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">Liste Leçons</a></i></li>
+                                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_devoirs.php?devoirsgauche_dir=true&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Liste Devoir</a></i></li>
+                                        <li class="divider"></li>
+                                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_lecon.php?rechercheGauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres lecons</a></i></li>
+                                        <li ><a href="#" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_devoirs.php?rechercheGauche_dir&idPromotion=<?=$_GET['idPromotion']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','')">Recherche autres Devoirs</a></i></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="showme('#leconsgauche','#editLeco','true');Orientation('control.param_access/ctr_blog.php?commentaire_cours&profil=direct&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idCls=<?=$_GET['idClasse']?>','#leconsgauche','');">commentaire_cours</a></i></li>
+                                        <li class="divider"></li>
+                                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_remise=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille Remise </a> 
+                                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_Point=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')" data-toggle="modal" href="#infos" > Grille de Points</a> 
+                                        <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
+                                        <li> <a data-toggle="modal" href="#coanimation"> Co-Animation </a>
+                                        <li class="divider"></li>
+                                        <li ><a href="#" onclick="Encour()" >Supprimer</a></i></li>
+                                        </li>
+
+                                    </ul>
+                                              
+                            
+                            </td>
+                        <?php if($tr>=6){$tr=0; echo "</tr>";}?>   
             <?php
+
+
             $idcours=$selCrs['idCours'];
            }
            ?>

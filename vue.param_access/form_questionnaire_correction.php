@@ -70,7 +70,7 @@
                             <input class="form-control col-sm-2 col-lg-2 col-xs-2" id=<?='cote'.$id?> name='<?='cote'.$id?>' >SUR <?=$selRep['ponderation']?>
                           </label>
                           <textarea class="form-control" id=<?='cmt'.$id?>></textarea>
-                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
+                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
                           <div id=<?='resul'.$id?>></div>
                         </center>  
                 <?php
@@ -81,7 +81,7 @@
                             <input class="form-control col-sm-2 col-lg-2 col-xs-2" id=<?='cote'.$id?> name='<?='cote'.$id?>' value='<?=$correct['cote']?>' >SUR <?=$selRep['ponderation']?>
                           </label>
                           <textarea class="form-control" id=<?='cmt'.$id?>><?=$correct['commentaire']?></textarea>
-                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idAfft=<?=$_GET['idAfft']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
+                          <button class="btn btn-xs btn-danger col-sm-12" onclick="Orientation('control.param_access/ctr_questionnaire.php?Valide_correction&pond=<?=$selQst['ponderation']?>&idRep=<?=$selRep['idReponse']?>&cote='+$('#<?='cote'.$id?>').val()+'&cmt='+$('#<?='cmt'.$id?>').val(),'#<?='resul'.$id?>','')">OK</button>
                           <div id=<?='resul'.$id?>></div>
                         </center>  
                       <?php
@@ -227,29 +227,6 @@
      }
         
         ?>
-        <!-- <input  id=<?='pond'.$nub?> type="text" placeholder="Point" value='<?=$selQst['ponderation']?>'/>
-    
-          <div class="col-sm-12">
-              <button onclick="showme1('#clef');Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
-                +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
-                +'&ass1='+$('#ass1'+<?=$nub?>).val()
-                +'&asCk2='+$('#asCk2'+<?=$nub?>).val()
-                +'&ass2='+$('#ass2'+<?=$nub?>).val()
-                +'&ass3='+$('#ass3'+<?=$nub?>).val()
-                +'&asCk3='+$('#asCk3'+<?=$nub?>).val()
-                +'&asCk4='+$('#asCk4'+<?=$nub?>).val()
-                +'&ass4='+$('#ass4'+<?=$nub?>).val()
-                +'&asCk5='+$('#asCk5<?=$nub?>').val()
-                +'&ass5='+$('#ass5'+<?=$nub?>).val()
-                +'&asCk6='+$('#asCk6'+<?=$nub?>).val()
-                +'&ass6='+$('#ass6'+<?=$nub?>).val()
-                +'&modif1='+$('#modif1<?=$nub?>').val()
-                +'&modif2='+$('#modif2<?=$nub?>').val()
-                +'&modif3='+$('#modif3<?=$nub?>').val()
-                +'&modif4='+$('#modif4<?=$nub?>').val()
-                +'&modif5='+$('#modif5<?=$nub?>').val()
-                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
-        </div> -->
       </div>
     </div>
     <table>

@@ -2,18 +2,46 @@ function Orientation(lien,vue,form){
     $.ajax({
         type:'POST',
         url:lien,
-        data: $(form).serialize(),
+        data: $(form).serializeArray(),
         beforeSend:function() {
             $('#loader').show()
             },
         success:function(serveur){
-            // $(vue).html(''); 
             $(vue).html(serveur);      
             $('#loader').hide();                                                  
         } 
     });
     
 };
+
+
+function Orientation2(lien,vue,form){
+    $.ajax({
+        type:'POST',
+        url:lien,
+
+       data : { data1:$(form).serialize()},
+
+        beforeSend:function() {
+            $('#loader').show()
+            },
+        success:function(serveur){
+            $(vue).html(serveur);      
+            $('#loader').hide();                                                  
+        } 
+    });
+    
+};
+
+
+  function imprimer(objet){
+    var contenu = document.getElementById(objet).innerHTML;
+    var contenu_form = document.body.innerHTML;
+    document.body.innerHTML = contenu;
+    window.print();
+    document.body.innerHTML = contenu_form;
+};
+
 function Encour(){
     alert("ATTENTION ! L'option est en Chantier, Contacter le developpeur [NZANZU][+243828409897]" );
 
@@ -46,4 +74,14 @@ function showme3(fn1){
         alert("shewme a un Souci")
     }
   }
+// function blockMoi(){
+//         e.preventDefault();
+// }
 
+
+// $(document).ready(function() {
+//     $('form').submit(function(e) {
+//         e.preventDefault();
+//         // ou return false;
+//     });
+// });

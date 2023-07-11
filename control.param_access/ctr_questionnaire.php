@@ -1,5 +1,6 @@
 <!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script> -->
 <?php
+(empty($_SESSION))?session_start():'';
 include('../model.param_access/crs_question.class.php');
 include('../model.param_access/crs_assertion.class.php');
 $qst = new crs_question();
@@ -142,7 +143,7 @@ if(isset($_GET['AjoutQstCh'])){
  }else if(isset($_GET['Valide_correction'])){
     include('../model.param_access/crs_correction.class.php');
     $correct = new crs_correction();
-    return $correct->ajouter($_GET['idRep'],$_GET['idAfft'],$_GET['cote'],$_GET['cmt'],$_GET['pond']); 
+    return $correct->ajouter($_GET['idRep'],$_SESSION['idUtilisateur'],$_GET['cote'],$_GET['cmt'],$_GET['pond']); 
  }else{
     echo "ECHEC QUESTIONNAIRE";
 }

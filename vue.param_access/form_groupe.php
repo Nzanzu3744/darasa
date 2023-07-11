@@ -57,12 +57,3 @@ include_once('../model.param_access/param_groupe.class.php');
     </table>
 
 </div>
-
-<script>
-function charge_Image(){
-    $("#image01").show("slow");
-    $("#image01").addClass("has-success");
-    $("#image01").html('<img style="height:90%" id="image" src="images/img.jpg">');
-    
-}
-</script>

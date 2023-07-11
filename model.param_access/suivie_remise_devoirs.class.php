@@ -46,7 +46,7 @@ class suivie_remise_devoirs {
         return self::$con->query('SELECT * FROM suivie_remise_devoirs as rms INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur  WHERE rms.idDevoir="'.$idDevoir.'" AND rms.idCours="'.$idCours.'" AND ins.idClasse="'.$idClasse.'" GROUP BY ins.idUtilisateur ASC' );
     }
     public static function RemisToutEleve($idClasse,$idCours){
-        return self::$con->query('SELECT ut.idUtilisateur, ut.nomUtilisateur, ut.photoUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur FROM `suivie_remise_devoirs` as rms  INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur WHERE ins.idClasse='.$idClasse.' AND rms.idCours='.$idCours.' GROUP BY ut.idUtilisateur ORDER BY ut.nomUtilisateur ASC');
+        return self::$con->query('SELECT ins.idInscription,ut.idUtilisateur, ut.nomUtilisateur, ut.photoUtilisateur,ut.postnomUtilisateur, ut.prenomUtilisateur FROM `suivie_remise_devoirs` as rms  INNER JOIN org_inscription as ins ON rms.idInscription = ins.idInscription INNER JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur WHERE ins.idClasse='.$idClasse.' AND rms.idCours='.$idCours.' GROUP BY ut.idUtilisateur ORDER BY ut.nomUtilisateur ASC');
     
     }
     //  ORDER BY  rms.idRemise desc

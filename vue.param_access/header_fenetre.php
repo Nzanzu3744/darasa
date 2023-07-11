@@ -1,8 +1,13 @@
-<div class="modal fade" id="infos" role="dialog" style="width:100%; height:100% ; display:none" >
-    <div class="modal-dialog" style="width:80%; height:200px">
+<div class="modal fade" id="<?=$_GET['info']?>" role="dialog" style="width:100%; height:100% ; display:none" >
+<?php
+            (isset($_GET['wdt']))?$wdt=$_GET['wdt']:$wdt='80%';
+?>
+    <div class="modal-dialog" style="width:<?=$wdt?>">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 id="modalTitre" class="modal-title">...</h4>
+                <button type="button" class="close" style="color:red; font-size:20px" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <div class="modal-body" style="width:100%; height:400px">
+            <?php
+            (isset($_GET['hgt']))?$hgt=$_GET['hgt']:$hgt='400px';
+            ?>
+            <div class="modal-body table-responsive" style="width:100%; height:<?=$hgt?>" id="header_fenetre" name="header_fenetre">

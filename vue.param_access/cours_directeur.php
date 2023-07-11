@@ -32,7 +32,7 @@ include_once('../model.param_access/dir_directeur.class.php');
                         foreach($Maclasse->selectionnerByProm($selDir['idPromotion']) as $sel){
                          $maClasse =" <z style=>".$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$anneeSco."</z>";
                     ?>
-                    <li style="border: 1px dashed green; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme3('#dessoueditLeco');showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCours_dir&idPromotion=<?=$sel['idPromotion']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 1px dashed green; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme3('#dessoueditLeco');showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCours_dir&idPromotion=<?=$sel['idPromotion']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&idClasse=<?=$sel['idClasse']?>','#editLeco');; Orientation('control.param_access/ctr_classe.php?liste_eleve_cls=true&info=liste_eleve&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&hgt=700px','#fenetre4'); Orientation('control.param_access/ctr_bulletin.php?pre_bull=true&info=bulletin01&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&hgt=700px','#fenetre5'); Orientation('control.param_access/ctr_enseignant.php?liste_ensei=true&info=listeEnsi&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$idAnneeSco?>&hgt=700px','#fenetre6')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                     }
@@ -58,7 +58,7 @@ include_once('../model.param_access/dir_directeur.class.php');
         
     </header>
 <section class="" id="corps" style="height:500px">
-  <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:green" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:green"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
+  <div style="margin:0px; padding; 0px"> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:green; font-size:20px" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:green; font-size:20px"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
 
     <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:100% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:9%" >Bonjour Mr.(Mm) DIRECTEUR(TRICE)<?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours pour les <a>évaluers</a>. </center>

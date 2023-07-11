@@ -12,7 +12,7 @@ include_once('../model.param_access/param_groupe.class.php');
            <?php
            $util = new param_utilisateur();
            $utilisateur = $util->selectionnerByIdGroupeRoleActif($_GET['idGroupe']);
-           $i=0;
+           $i=1;
            $tr =0;
            foreach($utilisateur as $selut){
             $tr++;
@@ -57,8 +57,8 @@ include_once('../model.param_access/param_groupe.class.php');
                 <!--  -->
                 <td style="height:100%; padding:0px; background:#f2f2f2"> 
                  <z class="dropdown">
-                  <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
-                        <ul class="dropdown-menu pull-left">
+                  <button data-toggle="dropdown" style=""><b class="caret"></b></button>
+                        <ul class="dropdown-menu  pull-right">
                               <center>
                                     <?php
                                     if($_SESSION['org_inscription_afficher']==1){

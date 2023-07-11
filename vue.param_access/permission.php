@@ -40,5 +40,5 @@ if($_SESSION['param_groupe_ajouter']==1){
 <div id="form" class="col-sm-1" style="display:none">
 <?php include_once('../vue.param_access/form_table.php'); ?>
 </div>
-<!-- <script src="../bootstrap/dist/js/bootstrap.min.js"></script> -->
+
 

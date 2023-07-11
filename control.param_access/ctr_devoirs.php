@@ -1,12 +1,12 @@
 <?php
 if(isset($_GET['NvDevoi'])){
     include_once('../vue.param_access/form_prequestion.php');
-}else if(isset($_GET['PreEb2']) AND isset($_GET['nbQT']) AND isset($_GET['nbQC'])){
+}else if(isset($_GET['PreEb2']) AND isset($_GET['nbQT']) AND isset($_GET['nbQC']) AND isset($_GET['prD'])){
     (empty($_SESSION))?session_start():'';
     include_once('../model.param_access/crs_devoirs.class.php');
     $dv = new crs_devoirs();
      ?>
-        <input disabled style="color:red" id="idDev" value='<?=$dv->ajouter($_GET['idCours'],$_GET['dtremise'],$_GET['idx'],$_SESSION['idUtilisateur'])?>'>
+        <input disabled style="color:red" id="idDev" value='<?=$dv->ajouter($_GET['idCours'],$_GET['prD'],$_GET['dtremise'],$_GET['idx'],$_SESSION['idUtilisateur'])?>'>
     <?php
     include_once('../vue.param_access/form_questionnaire.php');
 }else if(isset($_GET['devoirsgauche_ense'])){
@@ -45,7 +45,16 @@ if(isset($_GET['NvDevoi'])){
      $rl =new crs_reler_devoir();
      $sel_A=new org_anneesco();
     $sel_A=$sel_A->selectionnerDerAn()->fetch();
-    echo $rl->ajouter($_GET['idDevoir'],$_GET['idCours'],$sel_A['idAnneeSco']); 
+    $rl->ajouter($_GET['idDevoir'],$_GET['dateRm'],$_GET['idPr02'],$_GET['idCours'],$sel_A['idAnneeSco']); 
+    include_once('../vue.param_access/devoir_cours_rech_ense.php');
+
+
+}elseif(isset($_GET['Pre_RelierDevoir'])){
+     include_once("../vue.param_access/header_fenetre.php");
+             include_once('../vue.param_access/form_reler_devoir.php');
+    include_once("../vue.param_access/footer_fenetre.php");
+
+
 }else if(isset($_GET['clerech_ense']) AND $_GET['clerech_ense']!=''){    
 include_once('../model.param_access/crs_devoirs.class.php');
 ?>

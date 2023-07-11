@@ -3,6 +3,7 @@
 class crs_devoirs {
     private static  $idDevoir;
     private static $idCours;
+    private static $idPeriode;
     private static $dateCreation;
     private static $dateRemise;
     private static $description;
@@ -17,14 +18,16 @@ class crs_devoirs {
         return self::$idDevoir;
     }
     //METHODES
-    public function ajouter($idCours,$dateRemise,$idx,$idUt)
+    public function ajouter($idCours,$idPer,$dateRemise,$idx,$idUt)
     {
         $idCrs= htmlspecialchars($idCours);
+        $idPer2= htmlspecialchars($idPer);
         $dtRms = htmlspecialchars($dateRemise);
         $idx = htmlspecialchars($idx);
-        if(self::$con->exec('INSERT INTO crs_devoirs (idCours, dateCreation, dateRemise, indexation) VALUES ('.$idCrs.',now(),"'.$dtRms.'","'.$idx.'")')){
+        if(self::$con->exec('INSERT INTO crs_devoirs (idCours, idPeriode, dateRemise, indexation) VALUES ("'.$idCrs.'","'.$idPer2.'","'.$dtRms.'","'.$idx.'")')){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
             self::$idCours = $idCrs;
+            self::$idPeriode = $idPer2;
             self::$dateRemise = $dtRms;
             self::$description = $idx;
 
@@ -39,20 +42,21 @@ class crs_devoirs {
         }
     }
    public static function selectionnerByCours($idCours){
-        return  self::$con->query('SELECT * FROM (SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours.') AS dev ORDER BY dev.idDevoir ASC');
+        return  self::$con->query('SELECT * FROM (SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.idPeriode, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, rl.idPeriode, rl.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours.') AS dev ORDER BY dev.idDevoir ASC');
+    }
+     public static function selectionnerByCoursCal($idCours){
+        return  self::$con->query('SELECT * FROM (SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.idPeriode, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, rl.idPeriode, rl.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours.') AS dev ORDER BY dev.idDevoir ASC');
+    }
+    public static function selectionnerByCoursPeriode($idP02,$idCours){
+        return  self::$con->query('SELECT * FROM (SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.idPeriode, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.idCours='.$idCours.' AND dv.idPeriode='.$idP02.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, rl.idPeriode, rl.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE rl.idCours='.$idCours.' AND rl.idPeriode='.$idP02.') AS dev ORDER BY dev.idDevoir ASC');
     }
     public static function selectionnerByIdCoursActif($idCours){
-        return  self::$con->query('SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.dateRemise,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.actif=1 AND dv.idCours='.$idCours.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.actif=1 AND rl.idCours='.$idCours);
+        return  self::$con->query('SELECT dv.idDevoir,dv.actif, dv.dateCreation, dv.dateRemise, dv.idPeriode,  cr.cours,an.anneeSco,dv.indexation, dv.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_devoirs` as dv INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.actif=1 AND dv.idCours='.$idCours.' UNION SELECT dv.idDevoir,dv.actif, dv.dateCreation, rl.idPeriode, rl.dateRemise, cr.cours,an.anneeSco,dv.indexation, rl.idCours, uti.nomUtilisateur, uti.postnomUtilisateur, uti.prenomUtilisateur FROM `crs_reler_devoir` as rl INNER JOIN crs_devoirs as dv ON rl.idDevoir=dv.idDevoir INNER JOIN crs_cours as cr ON dv.idCours=cr.idCours INNER JOIN org_Affectation as aff ON aff.idAffectation=cr.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=aff.idUtilisateur INNER JOIN org_anneesco as an ON an.idAnneeSco=cr.idAnneeSco WHERE dv.actif=1 AND rl.idCours='.$idCours);
     }
       public static function selectionnerByIdCoursIdUtil($idCours,$idUt){
         return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours INNER JOIN org_affectation as aff ON cr.idAffectation=aff.idAffectation WHERE aff.idUtilisateur='.$idUt.' AND dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC LIMIT 1');
     }
-    //  public static function selectionnerByIdCours($idCours){
-    //     return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC');
-    // }
-    // public static function selectionnerByIdCoursASC($idCours){
-    //     return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir ASC');
-    // }
+
     public static function selectionnerDerByIdCours($idCours){
         return  self::$con->query('SELECT * FROM `crs_devoirs`as dv INNER JOIN crs_cours AS cr ON dv.idCours=cr.idCours WHERE dv.idCours='.$idCours.' ORDER BY dv.idDevoir DESC LIMIT 1');
     }

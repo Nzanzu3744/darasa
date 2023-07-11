@@ -71,26 +71,31 @@ class org_inscription {
     public static function rechercher($idInscription){
         $idIns = htmlspecialchars($idInscription);
         return $var = self::$con->query("SELECT * FROM org_inscription WHERE idInscription =".$idIns);
-        // foreach($var as $sel){
-        //     self::$idInscription = $sel['idInscription'];
-        //     self::$idInscription = $sel['idInscription'];
-        //     self::$idUtilisateur = $sel['idUtilisateur'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
     }
     public static function rechercherByUti($idInscription){
         $idIns = htmlspecialchars($idInscription);
         return $var = self::$con->query("SELECT * FROM org_inscription AS `is` 
         INNER JOIN org_classe AS `cl` ON `is`.`idClasse` = `cl`.`idClasse` 
         INNER JOIN `param_utilisateur` AS `ut` ON `is`.`idUtilisateur` = `ut`.`idUtilisateur` WHERE is.idUtilisateur=".$idIns);
-        // foreach($var as $sel){
-        //     self::$idInscription = $sel['idInscription'];
-        //     self::$idInscription = $sel['idInscription'];
-        //     self::$idUtilisateur = $sel['idUtilisateur'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
+    }
+    public static function rechercherByClAnnee($idCls, $idAnn){
+        $idClass = htmlspecialchars($idCls);
+        $idAnnee = htmlspecialchars($idAnn);
+        return $var = self::$con->query("SELECT * FROM org_inscription AS isc 
+        INNER JOIN org_classe AS cl ON isc .idClasse = cl.idClasse 
+        INNER JOIN param_utilisateur AS ut ON isc .idUtilisateur = ut.idUtilisateur 
+        INNER JOIN param_genre AS gr ON ut.idGenre = gr.idGenre 
+        WHERE isc.idClasse=".$idClass." AND isc.idAnneeSco=".$idAnnee);
+    }
+     public static function rechercherByClAnneeEleve($idCls, $idAnn, $idUtili){
+        $idUtil = htmlspecialchars($idUtili);
+        $idClass = htmlspecialchars($idCls);
+        $idAnnee = htmlspecialchars($idAnn);
+        return $var = self::$con->query("SELECT * FROM org_inscription AS isc 
+        INNER JOIN org_classe AS cl ON isc .idClasse = cl.idClasse 
+        INNER JOIN param_utilisateur AS ut ON isc .idUtilisateur = ut.idUtilisateur 
+        INNER JOIN param_genre AS gr ON ut.idGenre = gr.idGenre 
+        WHERE isc.idClasse=".$idClass." AND isc.idAnneeSco=".$idAnnee." AND ut.idUtilisateur=".$idUtil);
     }
     //DESTRUCTEUR
     public function __destuct(){

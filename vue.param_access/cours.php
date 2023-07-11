@@ -15,16 +15,19 @@ include_once('../model.param_access/org_anneesco.class.php');
                 <?php 
                     $perm = new org_classe();
                     $ann = new org_anneesco();
-                    $ann= $ann->selectionnerDerAnAff($_SESSION['idUtilisateur'])->fetch();
+                    $ann= $ann->selectionnerDerAnAffCoA($_SESSION['idUtilisateur'])->fetch();
+                    $annEE=0;
+                    if($ann==true){
+                               $annEE = $ann['idAnneeSco'];
+                            }
                     $idAnneeSco =0;
-                    (isset($_GET['idAnnee']))?$idAnneeSco=$_GET['idAnnee']:$idAnneeSco =$ann['idAnneeSco'];
+                    (isset($_GET['idAnnee']))?$idAnneeSco=$_GET['idAnnee']:$idAnneeSco =$annEE;
 
 
                     foreach($perm->selectionnerByUt($_SESSION['idUtilisateur'],$idAnneeSco) as $sel){
-                        // .$sel['anneeSco']
                          $maClasse =$sel['section'].":".$sel['unite']." ".$sel['promotion'].' '.$sel['anneeSco'];
                     ?>
-                    <li style="border: 1px dashed red; width:20%; height:50px; font-size:11px"> <a href="#" onclick="showme('#leconsgauche','#editLeco','false'); Orientation('control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idAfft=<?=$sel['idAffectation']?>&idClasse=<?=$sel['idClasse']?>','#editLeco')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
+                    <li style="border: 1px dashed red; width:20%; height:50px; font-size:11px"> <a href="#" onclick="Orientation('control.param_access/ctr_cours.php?VueCours&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&idClasse=<?=$sel['idClasse']?>&idUtilisateur=<?=$sel['idUtilisateur']?>&idAffectation=<?=$sel['idAffectation']?>','#editLeco'); Orientation('control.param_access/ctr_classe.php?liste_eleve_cls=true&info=liste_eleve&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&hgt=500px&idAffectation=<?=$sel['idAffectation']?>','#fenetre4'); Orientation('control.param_access/ctr_bulletin.php?pre_bull=true&info=bulletin01&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&hgt=800px&idAffectation=<?=$sel['idAffectation']?>','#fenetre5'); Orientation('control.param_access/ctr_enseignant.php?liste_ensei=true&info=listeEnsi&idClasse=<?=$sel['idClasse']?>&maClasse=<?=$maClasse?>&idAnneeSco=<?=$sel['idAnneeSco']?>&hgt=500px&idAffectation=<?=$sel['idAffectation']?>','#fenetre6')" name="<?php echo $sel['idClasse']?>"><?php echo strtoupper($maClasse)?></a></li> 
                     <?php 
                      }
                 ?>   
@@ -38,7 +41,7 @@ include_once('../model.param_access/org_anneesco.class.php');
                         <option style="color:white"  value="<?=$annSelect['idAnneeSco']?>"><?=$annSelect['anneeSco']?></option>
                         <?php
                     }
-                    foreach($perm->selectionnerByUtAff($_SESSION['idUtilisateur']) as $sel){
+                    foreach($perm->selectionnerAnAffCoA($_SESSION['idUtilisateur']) as $sel){
                     ?>
                     
                     <option  value="<?=$sel['idAnneeSco']?>"><?=strtoupper($sel['anneeSco'])?></option> 
@@ -50,7 +53,7 @@ include_once('../model.param_access/org_anneesco.class.php');
         
     </header>
 <section class="" id="corps" style="height:500px">
-    <div> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red"  onclick="showme('#leconsgauche','#editLeco','true')" ></i>
+    <div style="margin:0px; padding; 0px"> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red;font-size:20px" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red;font-size:20px"  onclick="showme('#leconsgauche','#editLeco','true')" ></i>
     </div>
     <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:80% display: inline-block;" class="well table-responsive">
         <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) ENSEIGNANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours de votre affectation est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>

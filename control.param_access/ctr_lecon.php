@@ -5,7 +5,7 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
     include_once('../model.param_access/crs_lecon.class.php');
    $var = new crs_lecon();
    ?>
-   <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
+   <input disabled style="color:green" id="idlc"  name="idlc" value='<?=$_GET['idlc']?>'/>
    <?php
    $var->modifier($_GET['idlc'],$_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
     include_once('../vue.param_access/form_lecon_mod_ense.php');
@@ -16,7 +16,7 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
     include_once('../model.param_access/crs_lecon.class.php');
    $var = new crs_lecon();
    ?>
-   <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
+   <input disabled style="color:green" id="idlc"  name="idlc" value='<?=$_GET['idlc']?>'/>
    <?php
    $var->modifier($_GET['idlc'],$_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] );
     include_once('../vue.param_access/form_lecon_mod_dir.php');
@@ -26,9 +26,9 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
     include_once('../model.param_access/crs_lecon.class.php');
         $idLecon = new crs_lecon();
        ?>
-        <input disabled style="color:red" id="idlc" value='<?=$idLecon->ajouter($_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] )?>'>
+        <input disabled style="color:red" id="idlc"  name="idlc" value='<?=$idLecon->ajouter($_GET['idCours'],$_GET['tlecon'],$_POST['lcn'],$_SESSION['idUtilisateur'] )?>'>
         <?php
-        include_once('../vue.param_access/form_lecon_mod_ense.php');
+        // include_once('../vue.param_access/form_lecon_mod_ense.php');
 
 
 
@@ -50,23 +50,11 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
 
 
 }else if(isset($_GET['LireLecon_ense'])){
-    // include_once('../model.param_access/visite_lecon.class.php');
-    // $visite =new visite_lecon();
-    // $visite->ajouter($_GET['idlc'],$_GET['inscr']);
     ?>
-        <input disabled style="color:red" id="idlc" value='<?=$_GET['idlc']?>'/>
+        <input disabled style="color:red" id="idlc"  name="idlc" value='<?=$_GET['idlc']?>'/>
     <?php
 include_once('../vue.param_access/form_lecon_mod_ense.php');
 
-
-}else if(isset($_GET['LireLecon_dir'])){
-    // include_once('../model.param_access/visite_lecon.class.php');
-    // $visite =new visite_lecon();
-    // $visite->ajouter($_GET['idlc'],$_GET['inscr']);
-    ?>
-        <input disabled style="color:green" id="idlc" value='<?=$_GET['idlc']?>'/>
-    <?php
-include_once('../vue.param_access/form_lecon_mod_dir.php');
 
 }else if(isset($_GET['RelierLecon'])){
     include_once('../model.param_access/crs_reler_lecon.class.php');
@@ -82,7 +70,7 @@ include_once('../vue.param_access/form_lecon_mod_dir.php');
     include_once('../model.param_access/visite_lecon.class.php');
     $visite =new visite_lecon();
     $visite->ajouter($_GET['idlc'],$_GET['idCours'],$_SESSION['idUtilisateur'],$_GET['idIns']);
-    echo '<labelle disabled style="color:blue" id="idlc">'.$_GET['idlc'].'</labelle>';
+    echo '<labelle disabled style="color:blue" id="idlc"  name="idlc">'.$_GET['idlc'].'</labelle>';
     echo $_GET['idIns'];
     ECHO '['.$_GET['idcrs'].']';
 include_once('../vue.param_access/lecon_eleve.php');

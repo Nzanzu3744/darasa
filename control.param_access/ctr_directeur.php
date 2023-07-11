@@ -7,7 +7,7 @@ if(isset($_GET['promChk'])){
         $tbjsonC=json_encode($table);
         setcookie('promSel',$tbjsonC, (time()+360*10));
     }else{
-        $table = json_decode($_COOKIE['classeSel']);
+        $table = json_decode($_COOKIE['promSel']);
         array_push($table,$_GET['idPromotion']);
         $tbjsonC=json_encode($table);
         setcookie('promSel',$tbjsonC, (time()+360*10));
@@ -22,11 +22,15 @@ if(isset($_GET['promChk'])){
     if(isset($_COOKIE['promSel'])){
         $tbAff=array();
         $tbAff=json_decode($_COOKIE['promSel']);
-        include_once("../model.param_access/dir_directeur.class.php");
+        
+        include_once("../model.param_access/org_anneesco.class.php");
+        $ann = new org_anneesco();
+        $ann = $ann->selectionnerDerAn()->fetch();
 
+        include_once("../model.param_access/dir_directeur.class.php");
         $affe = new dir_directeur();
             foreach($tbAff as $tbAff){
-                    $affe->ajouter($tbAff,$_GET['idutil'],'1');
+                    $affe->ajouter($tbAff,$_GET['idutil'],$ann['idAnneeSco'],'1');
             }
         setcookie('promSel','', (time()-1));
         include("../vue.param_access/profil_Directeur.php");

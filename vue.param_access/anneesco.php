@@ -10,16 +10,16 @@ include_once('../model.param_access/org_anneesco.class.php');
                     $org = new org_anneesco();
                     foreach($org->selectionner() as $sel){
                         $lien = "control.param_access/ctr_anneesco.php?AjouteRapport&idAnneeSco=".$sel['idAnneeSco'];
-                        $vue = "#corps";
+                        $vue = "#cours";
                     ?>
-                    <li style="border: 2px dashed #337ab7;"> <a href="#" onclick="Orientation('<?=$lien?>','<?=$vue?>')" name="<?php echo $sel['idAnneeSco']?>"><?php echo strtoupper($sel['anneeSco'])?></a></li> 
+                    <li style="border: 1px dashed black;"> <a href="#" onclick="Orientation('<?=$lien?>','<?=$vue?>')" name="<?php echo $sel['idAnneeSco']?>"><?php echo strtoupper($sel['anneeSco'])?></a></li> 
                     <?php 
                      }
                 ?> 
             </ul>
         </nav>
     </header>
-<section class="table-responsive" id="corps" style="height:450px">
+<section class="table-responsive" id="cours" style="height:450px">
    <?php
    include_once('form_anneesco.php');
 

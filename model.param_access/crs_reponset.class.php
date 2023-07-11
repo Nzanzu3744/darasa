@@ -47,8 +47,8 @@ class crs_reponset {
         return  self::$con->query('SELECT * FROM crs_reponset as ret INNER JOIN crs_question as qst ON ret.idQuestion=qst.idQuestion LEFT JOIN org_inscription as ins ON ret.idInscription=ins.idInscription LEFT JOIN param_utilisateur as ut ON ins.idUtilisateur = ut.idUtilisateur LEFT JOIN param_genre as gr ON gr.idGenre=ut.idGenre WHERE ret.idQuestion="'.$idQst.'" AND ins.idClasse="'.$idClasse.'"');
     }
 
-    public function selectionnerByQstUti($idQst,$iuti){
-        return  self::$con->query('SELECT rep.idInscription, rep.reponse, rep.idReponse, rep.idQuestion,  rep.dateCreation,  ins.idAnneeSco as idAnneeScoEval, ins.idClasse as idClasseEval, aff.idClasse as idClasseRep, crs.idAnneeSco as idAnneeScoRep FROM crs_reponset as rep  LEFT JOIN crs_question as qst ON rep.idQuestion=qst.idQuestion LEFT JOIN org_inscription as ins ON rep.idInscription=ins.idInscription  LEFT JOIN crs_devoirs as dv ON dv.idDevoir=qst.idDevoir LEFT JOIN crs_cours as crs ON crs.idCours=dv.idCours LEFT JOIN org_affectation as aff ON aff.idAffectation=crs.idAffectation WHERE qst.idQuestion='.$idQst.' AND ins.idUtilisateur='.$iuti);
+    public function selectionnerByQstUtiClass($idQst,$iuti,$idClass){
+        return  self::$con->query('SELECT rep.idInscription, rep.reponse, rep.idReponse, rep.idQuestion,  rep.dateCreation,  ins.idAnneeSco as idAnneeScoEval, ins.idClasse as idClasseEval, aff.idClasse as idClasseRep, crs.idAnneeSco as idAnneeScoRep FROM crs_reponset as rep  LEFT JOIN crs_question as qst ON rep.idQuestion=qst.idQuestion LEFT JOIN org_inscription as ins ON rep.idInscription=ins.idInscription  LEFT JOIN crs_devoirs as dv ON dv.idDevoir=qst.idDevoir LEFT JOIN crs_cours as crs ON crs.idCours=dv.idCours LEFT JOIN org_affectation as aff ON aff.idAffectation=crs.idAffectation WHERE qst.idQuestion='.$idQst.' AND ins.idClasse='.$idClass.' AND ins.idUtilisateur='.$iuti);
 
     
     }

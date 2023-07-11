@@ -47,9 +47,9 @@ foreach($cmt as $selCmt){
                                         ?>  
                                     </center>
                                 </div>
-                                <div class="media-body">
+                                <span class="media-body">
                                      <p><?=$repCmt['commentaire']?></p>
-                                </div>
+                                </span>
                                 <!--FIN  -->
                             </div>
                             <?php

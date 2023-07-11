@@ -14,7 +14,7 @@ include_once('../model.param_access/crs_lecon.class.php');
          }
          ?>
             <div class="table-responsive" style="height:100%" >
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_XXXX.php?devoirsgauche_ense=true&idCours=<?=$idC?>','#devoirssgauche','');"  ></input>  
+         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  ></input>  
 
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>

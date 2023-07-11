@@ -71,12 +71,19 @@ class crs_cours {
     public function selectionner(){
         return  self::$con->query('SELECT * FROM crs_cours ORDER BY idCours ASC');
     }
-    public function selectionnerCrsByUtClsAnn($idUt,$cls,$ann){
-        return  self::$con->query('SELECT * FROM `crs_cours`  as crs INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur WHERE ut.idUtilisateur='.$idUt.' AND af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );
+    public function selectionnerCrsByUtClsAnn($idUt,$cls,$idAn){
+        return  self::$con->query('
+        SELECT * FROM (SELECT crs.idCours, af.idUtilisateur,af.idClasse, crs.idAnneeSco, crs.cours, crs.url, crs.commentaire, ut.nomUtilisateur, ut.postnomUtilisateur , ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.idGenre, ut.photoUtilisateur FROM `crs_cours` as crs INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur
+
+        UNION 
+
+        SELECT crs.idCours, coa.idUtilisateur, coa.idClasse, crs.idAnneeSco, crs.cours, crs.url, crs.commentaire, ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.idGenre, ut.photoUtilisateur FROM crs_co_animation as coa INNER JOIN crs_cours as crs ON coa.idCours=crs.idCours INNER JOIN org_affectation as af ON crs.idAffectation=crs.idAffectation INNER JOIN param_utilisateur as ut ON af.idUtilisateur=ut.idUtilisateur) AS sel WHERE sel.idUtilisateur='.$idUt.' AND sel.idAnneeSco='.$idAn.' AND sel.idClasse='.$cls.' GROUP BY sel.idCours
+        ');
     }
     public function selectionnerCrsByClsAnn($cls,$ann){
-        return  self::$con->query('SELECT * FROM `crs_cours`  as crs INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur WHERE af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );
+        return  self::$con->query('SELECT * FROM `crs_cours`  as crs LEFT JOIN org_affectation as af ON crs.idAffectation=af.idAffectation LEFT JOIN param_utilisateur as ut ON ut.idUtilisateur=af.idUtilisateur WHERE crs.idAnneeSco='.$ann.' AND af.idClasse='.$cls );
     }
+    
     
      public function selectionnerCrsEleveByCls($cls,$ann){
         return  self::$con->query('SELECT * FROM `crs_cours`  as crs  INNER JOIN org_affectation as af ON crs.idAffectation=af.idAffectation INNER JOIN param_utilisateur as uti ON uti.idUtilisateur=af.idUtilisateur  INNER JOIN org_classe as cls ON cls.idClasse=af.idClasse WHERE af.idAnneeSco='.$ann.' AND af.idClasse='.$cls );

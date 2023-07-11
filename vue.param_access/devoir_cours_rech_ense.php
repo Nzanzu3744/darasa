@@ -24,23 +24,20 @@ include_once('../model.param_access/crs_devoirs.class.php');
             ?>
             <tr>
                <td style="background-color: aliceblue">  [<?=$i;?>] Code : <?=$seldv['idDevoir']?><br><center style="color:red">Devoirs de :<br><?=$_GET['cours']?><br><?=$seldv['anneeSco']?><br><a href='#' style='font-size:8px'><?=$seldv['nomUtilisateur'].'  '.$seldv['postnomUtilisateur'].' '.$seldv['prenomUtilisateur']?></a><br><?=$seldv['indexation']?><br> <mark style="color:black"><?=($seldv['actif']!=1)? "DEVOIR DESACTIVE":'ACTIVE'?></mark></center></br></td>
-                <td style="height:100%;  background:#f2f2f2"> 
+               <!-- <td>R</td> -->
+               <td style="height:100%;  background:#f2f2f2" > 
                   <z class="dropdown">
-                  <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
+                  <button data-toggle="dropdown"   onclick="Orientation('control.param_access/ctr_devoirs.php?Pre_RelierDevoir=true&info=pre_repo&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idCls']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=$_GET['cours']?>&index=<?=$seldv['indexation']?>&idCours=<?=$_GET['idCours']?>&idDevoir=<?=$seldv['idDevoir']?>','#fenetre3')"><b class="caret ppull-right"></b></button>
                         <ul class="dropdown-menu pull-right">
                         <?php
 
                         $sel_C = new crs_devoirs();
                        $sel_C=$sel_C->selectionnerByCours($seldv['idCours'])->fetch();
                         ?>
-                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco','')">Lire le devoirs</a></i></li>
-                              <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('control.param_access/ctr_devoirs.php?RelierDevoir=true&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idCours=<?=$_GET['idCours']?>&cours=<?=$sel_C['cours']?>&idDevoir=<?=$seldv['idDevoir']?>','#resul','')">Rapporter</a></i></li>
-                              
-                              <li class="divider"></li>
-                              <li>
-                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
-                              </li>
-                        </ul>
+                              <li> <a href="#" onclick="Orientation('control.param_access/ctr_questionnaire.php?Liredevoirs_ense=tue&maClasse=<?=$_GET['maClasse']?>&cours=<?=$sel_C['cours']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&iddv=<?=$seldv['idDevoir']?>','#editLeco','')">Lire le devoirs</a></i></li>
+                              <li> <a data-toggle="modal" href="#pre_repo">Rapporter</a></i></li>
+                              <li class="divider"></li>     
+                        </ul>                      
                      </z>                
                </td>
                     
@@ -50,6 +47,9 @@ include_once('../model.param_access/crs_devoirs.class.php');
            ?>
            </tbody>
             </table>
+            </div>
+            <div id="test" style="display:none">
+
             </div>
            
         </section>

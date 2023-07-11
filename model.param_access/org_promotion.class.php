@@ -1,4 +1,5 @@
 <?php
+include_once('param_connexion.php');
 class org_promotion {
     private static  $idPromotion;
     private static $promotion;
@@ -57,14 +58,11 @@ class org_promotion {
     public static function rechercher($idPromotion){
         $idPmt = htmlspecialchars($idPromotion);
         return $var = self::$con->query("SELECT * FROM org_promotion WHERE idPromotion =".$idPmt." LIMIT 1");
-        // foreach($var as $sel){
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$promotion = $sel['promotion'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
     }
+    public static function rechercherDer(){
+        return $var = self::$con->query("SELECT * FROM org_promotion ORDER BY idPromotion DESC LIMIT 1");
+    } 
+    
     //DESTRUCTEUR
     public function __destuct(){
     }

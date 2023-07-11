@@ -95,6 +95,29 @@ class org_affectation {
         // }
         // return $var; 
     }
+    public function filtrerByUti($idUti){
+        $idUti = htmlspecialchars($idUti,);
+        return $var = self::$con->query("SELECT * FROM org_affectation AS `is` 
+        INNER JOIN org_classe AS `cl` ON `is`.`idClasse` = `cl`.`idClasse` 
+        INNER JOIN `org_promotion` AS `promo` ON `promo`.`idPromotion` = `cl`.`idPromotion`
+        INNER JOIN `param_utilisateur` AS `ut` ON `is`.`idUtilisateur` = `ut`.`idUtilisateur` WHERE is.idUtilisateur='".$idUti."' ORDER BY is.idAffectation DESC");
+        // foreach($var as $sel){
+        //     self::$idAffectation = $sel['idAffectation'];
+        //     self::$idAffectation = $sel['idAffectation'];
+        //     self::$idUtilisateur = $sel['idUtilisateur'];
+        //     self::$actif = $sel['actif'];
+        // }
+        // return $var; 
+    }
+    public static function rechercherByClAnnee($idCls, $idAnn){
+        $idClass = htmlspecialchars($idCls);
+        $idAnnee = htmlspecialchars($idAnn);
+        return $var = self::$con->query("SELECT * FROM org_affectation AS afct 
+        INNER JOIN org_classe AS cl ON afct .idClasse = cl.idClasse 
+        INNER JOIN param_utilisateur AS ut ON afct .idUtilisateur = ut.idUtilisateur 
+        INNER JOIN param_genre AS gr ON ut.idGenre = gr.idGenre 
+        WHERE afct.idClasse=".$idClass." AND afct.idAnneeSco=".$idAnnee);
+    }
     //
     public function rechercher($idAffectation){
         $idAffect = htmlspecialchars($idAffectation);

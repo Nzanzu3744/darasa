@@ -3,6 +3,7 @@
   ?>
 <section style= "width:102%;" id="panel" style="">
 <div style="border: 1px solid green; margin-top: 50px; width:100%">
+
 </div>
 <br>
 <center style="margin-top:60px; height:50%" class="col-sm-4 col-lg-4 col-xs-4 col-sm-offset-4 col-lg-offset-4 col-xs-offset-4">

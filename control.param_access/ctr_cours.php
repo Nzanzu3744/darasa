@@ -1,30 +1,5 @@
 <?php
-if(isset($_GET['annul'])){
-    setcookie('classeSel',"", (time()-1));
-    include("../vue.param_access/profil_Eleve.php");
-
-}else if(isset($_GET['Valide'])){
-    
-    if(isset($_COOKIE['classeSel'])){
-        $tbIns=array();
-        $tbIns=json_decode($_COOKIE['classeSel']);
-        include_once("../model.param_access/param_connexion.php");
-        include_once("../model.param_access/org_inscription.class.php");
-        include_once("../model.param_access/org_anneesco.class.php");
-        $Ins = new org_inscription();
-        $sel_A=new org_anneesco();
-        $sel_A=$sel_A->selectionnerDerAn()->fetch();
-            foreach($tbIns as $inscr){
-                    $Ins->ajouter($inscr,$sel_A['idAnneeSco'],$_GET['idutil']);
-            }
-        setcookie('classeSel','', (time()-1));
-        include("../vue.param_access/profil_Eleve.php");
-        
-
-    }else {
-        echo '<center class="col-sm-12" style="color:red">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center> <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick=Orientation("../control.param_access/ctr_membre.php?rtn=true&idGroupe='.$_GET['idGroupe'].'","#corps")>Returner</button>'; 
-    }
-}else if(isset($_GET['VueClasseAff'])){
+if(isset($_GET['VueClasseAff'])){
     include("../vue.param_access/cours.php");
 
  }else if(isset($_GET['VueClasseIns'])){ 
@@ -63,12 +38,11 @@ if(isset($_GET['annul'])){
     $sel_A=new org_anneesco();
     $sel_A=$sel_A->selectionnerDerAn()->fetch();
      $crs=new crs_cours();
-        if($crs->ajouter($affect['idAffectation'],$sel_A['idAnneeSco'],$_GET['nomC'],$_GET['url'],$_GET['CmtC'])){
+        if($crs->ajouter($affect['idAffectation'],$sel_A['idAnneeSco'],$_GET['nomC'],"../images/imgFR.png", $_GET['CmtC'])){
            include("../vue.param_access/cours_ense_cls.php");
         }else{
           echo "ECHEC D'ENREGISTREMENT COURS <><><MODEL><><><";
         }
-   
     
  }else{
    echo "ECHEC LISTE CLASSE OU COURS PAR ENSEIGNANT";

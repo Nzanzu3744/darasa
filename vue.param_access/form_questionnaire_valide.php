@@ -50,7 +50,7 @@ if(isset($_GET['AjoutQstTr'])){
         <input id=<?=$_GET['idpond']?> type="text" placeholder="Point" value='<?=$_GET['pond']?>'/>
     </div>
      <div class="col-sm-12">
-              <button onclick="Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['idDev']?>&modifQst=<?=$_GET['modifQst']?>&AjoutQstCh&INTERDIT&idqstC=<?=$_GET['idqstC']?>&idass1=<?=$_GET['idass1']?>&idass2=<?=$_GET['idass2']?>&idass3=<?=$_GET['idass3']?>&idass4=<?=$_GET['idass4']?>&idass5=<?=$_GET['idass5']?>&idass6=<?=$_GET['idass6']?>&idasCk1=<?=$_GET['idasCk1']?>&idasCk2=<?=$_GET['idasCk2']?>&idasCk3=<?=$_GET['idasCk3']?>&idasCk4=<?=$_GET['idasCk4']?>&idasCk5=<?=$_GET['idasCk5']?>&idasCk6=<?=$_GET['idasCk6']?>&idqst=<?=$_GET['idqst']?>&n=<?=$_GET['n']?>&form=<?=$_GET['form']?>&idpond=<?=$_GET['idpond']?>&pond='+$('#<?=$_GET['idpond']?>').val()
+              <input type="button" onclick="Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['idDev']?>&modifQst=<?=$_GET['modifQst']?>&AjoutQstCh&INTERDIT&idqstC=<?=$_GET['idqstC']?>&idass1=<?=$_GET['idass1']?>&idass2=<?=$_GET['idass2']?>&idass3=<?=$_GET['idass3']?>&idass4=<?=$_GET['idass4']?>&idass5=<?=$_GET['idass5']?>&idass6=<?=$_GET['idass6']?>&idasCk1=<?=$_GET['idasCk1']?>&idasCk2=<?=$_GET['idasCk2']?>&idasCk3=<?=$_GET['idasCk3']?>&idasCk4=<?=$_GET['idasCk4']?>&idasCk5=<?=$_GET['idasCk5']?>&idasCk6=<?=$_GET['idasCk6']?>&idqst=<?=$_GET['idqst']?>&n=<?=$_GET['n']?>&form=<?=$_GET['form']?>&idpond=<?=$_GET['idpond']?>&pond='+$('#<?=$_GET['idpond']?>').val()
                 +'&asCk1='+$('#asCk1'+<?=$_GET['n']?>).val()
                 +'&ass1='+$('#ass1'+<?=$_GET['n']?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$_GET['n']?>).val()
@@ -68,7 +68,7 @@ if(isset($_GET['AjoutQstTr'])){
                 +'&modif3='+$('#modif3<?=$_GET['n']?>').val()
                 +'&modif4='+$('#modif4<?=$_GET['n']?>').val()
                 +'&modif5='+$('#modif5<?=$_GET['n']?>').val()
-                +'&modif6='+$('#modif6<?=$_GET['n']?>').val(),'#<?='QuestC'.$_GET['n']?>','#<?='fseria'.$_GET['n']?>')"  class="btn btn-danger pull-right btn-xs col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$_GET['n']?></button>
+                +'&modif6='+$('#modif6<?=$_GET['n']?>').val(),'#<?='QuestC'.$_GET['n']?>','#<?='fseria'.$_GET['n']?>')"  class="btn btn-success pull-right btn-xs col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$_GET['n']?>"/>
         </div>
 
 

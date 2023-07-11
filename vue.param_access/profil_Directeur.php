@@ -43,5 +43,4 @@
                         <button class="btn btn-success" style="height:30px;" onclick="Orientation('control.param_access/ctr_directeur.php?Valide=true&idGroupe=<?=$_GET['idGroupe']?>&idutil=<?=$_GET['idutil']?>','#corps')" >Valider</button> 
                     <button class="btn btn-default pull-right" style="height:30px;" onclick="Orientation('control.param_access/ctr_directeur.php?annul=true&idutil=<?=$_GET['idutil']?>','#corps')" >Annuler</button> 
                 </div>
-                <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
                 

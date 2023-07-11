@@ -59,13 +59,6 @@ class org_unite {
     public static function rechercher($idUnite){
         $idUte = htmlspecialchars($idUnite);
         return $var = self::$con->query("SELECT * FROM org_unite WHERE idUnite =".$idUte." ORDER BY idUnite ASC");
-        // foreach($var as $sel){
-        //     self::$idUnite = $sel['idUnite'];
-        //     self::$idUnite = $sel['idUnite'];
-        //     self::$unite = $sel['unite'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
     }
     //DESTRUCTEUR
     public function __destuct(){

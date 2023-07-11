@@ -46,6 +46,6 @@ $util=$util->rechercher($_SESSION['idUtilisateur']);
     </div>          
     <div class="modal-footer">
           <input id="btn_add" name="btn_add" class="btn btn-success pull-left col-sm-4" type="submit" value="Valider"/>
-          <!-- <button onclick="Encour()"  class="btn btn-danger pull-right col-sm-4">Annuler</button> -->
+          <button onclick="Encour()"  class="btn btn-danger pull-right col-sm-4">Annuler...</button>
     </div>
 </form>

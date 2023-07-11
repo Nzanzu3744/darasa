@@ -56,6 +56,5 @@ if(isset($_GET['nomT']) && isset($_GET['option']) && isset($_GET['idPermi']) ){
                ?>
                
             </tbody>
-        </tble>
-        <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+        </table>
        

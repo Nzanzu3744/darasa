@@ -77,7 +77,14 @@ class org_classe {
         return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE cls.idPromotion='.$idProm);
     }
     public function selectionnerByUt($idUt,$ansc){
-        return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_affectation as af ON af.idClasse=cls.idClasse INNER JOIN org_anneesco as ansc ON af.idAnneeSco=ansc.idAnneeSco INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE af.actif=1 AND af.idUtilisateur="'.$idUt.'" AND ansc.idAnneeSco="'.$ansc.'" ORDER BY ansc.idAnneeSco DESC');
+        return  self::$con->query('
+        SELECT * FROM (SELECT ut.idUtilisateur, af.idClasse, st.section, un.unite, pm.promotion,af.idAffectation, af.idAnneeSco, an.anneeSco,  ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.idGenre, ut.photoUtilisateur  FROM `org_classe` as cls INNER JOIN org_affectation as af ON af.idClasse=cls.idClasse INNER JOIN org_anneesco as an ON af.idAnneeSco=an.idAnneeSco INNER JOIN param_utilisateur as ut ON af.idUtilisateur=ut.idUtilisateur INNER JOIN org_anneesco as ansc ON af.idAnneeSco=ansc.idAnneeSco INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE af.actif=1
+
+        UNION
+
+        SELECT coa.idUtilisateur, coa.idClasse, st.section, un.unite, pm.promotion,crs.idAffectation, crs.idAnneeSco, an.anneeSco,  ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur, ut.telUtilisateur, ut.mailUtilisateur, ut.idGenre, ut.photoUtilisateur FROM crs_co_animation as coa INNER JOIN crs_cours as crs ON coa.idCours=crs.idCours INNER JOIN org_anneesco as an ON crs.idAnneeSco=an.idAnneeSco INNER JOIN param_utilisateur as ut ON coa.idUtilisateur=ut.idUtilisateur INNER JOIN org_classe as cls ON cls.idClasse=coa.idClasse INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite) AS sel WHERE sel.idUtilisateur='.$idUt.' AND sel.idAnneeSco='.$ansc.'  GROUP BY sel.idClasse
+
+        ');
     }
     public function selectionnerByUtIns($idUt){
         return  self::$con->query('SELECT * FROM `org_classe` as cls INNER JOIN org_inscription as ins ON ins.idClasse=cls.idClasse INNER JOIN org_anneesco as ansc ON ins.idAnneeSco=ansc.idAnneeSco INNER JOIN org_promotion as pm ON pm.idPromotion=cls.idPromotion INNER JOIN org_section as st ON st.idSection=cls.idSection INNER JOIN org_unite as un ON un.idUnite=cls.idUnite WHERE ins.actif=1 AND ins.idUtilisateur='.$idUt);
@@ -86,39 +93,24 @@ class org_classe {
     public function rechercher($idClasse){
         $idCls = htmlspecialchars($idClasse);
         $var = self::$con->query("SELECT * FROM org_classe WHERE idClasse ='".$idCls."' ORDER BY idClasse ASC");
-        // foreach($var as $sel){
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$idClasse = $sel['idClasse'];
-        //     self::$commentaire = $sel['commentaire'];
-        // }
+
         return $var; 
     }
     public function filtrer_Section($idSection){
         $idSt=htmlspecialchars($idSection);
         $var = self::$con->query("SELECT * FROM org_classe WHERE idSection = '".$idSt."' ORDER BY idClasse ASC");
-        // foreach($var as $sel){
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$idClasse = $sel['idClasse'];
-        // }
         return $var;
     }
 
     public function filtrer_Prom($idPromotion){
         $idProm=htmlspecialchars($idPromotion);
         $var = self::$con->query("SELECT * FROM org_classe WHERE idSection='".$idProm."' ORDER BY idClasse ASC");
-        // foreach($var as $sel){
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$idClasse = $sel['idClasse'];
-        // }
+
         return $var;
     }
     public function filtrer_Unite($idUnite){
         $idUnt=htmlspecialchars($idUnite);
         $var = self::$con->query("SELECT * FROM org_classe WHERE idSection='".$idUnt."' ORDER BY idClasse ASC");
-        // foreach($var as $sel){
-        //     self::$idPromotion = $sel['idPromotion'];
-        //     self::$idClasse = $sel['idClasse'];
-        // }
         return $var;
     }
     //DESTRUCTEUR

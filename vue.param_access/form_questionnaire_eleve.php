@@ -6,6 +6,7 @@
     include_once('../model.param_access/crs_reponset.class.php');
     include_once('../model.param_access/crs_reponsec.class.php');
     $pTotal=0;
+    $idCls=$_GET['idClasse'];
     $dev = new crs_devoirs();
     $devv=$dev->rechercherr($_GET['iddv']);
 
@@ -35,12 +36,12 @@
                             <?php
                             echo html_entity_decode($selQst['question']);
                             $repondi = new crs_reponset();
-                            $repondi = $repondi->selectionnerByQstUti($selQst['idQuestion'],$_SESSION['idUtilisateur'])->fetchAll();
+                            $repondi = $repondi->selectionnerByQstUtiClass($selQst['idQuestion'],$_SESSION['idUtilisateur'],$idCls)->fetchAll();
 
                             $avoirRepo=false;
                             $reponse='';
                             foreach($repondi as $repondi){
-                                if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$_GET['idClasse']){
+                                if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$idCls){
                                     $avoirRepo=true;
                                     $reponse=$repondi['reponse'];
                                     
@@ -61,7 +62,7 @@
                                 <a style='color:red'>Veuillez repondre à la Question .<?=" ".$Cpt?>. ci-haut.</a>
                                 <textarea class="textarea" id="<?='repT'.$Cpt?>"  name="<?='repT'.$Cpt?>"  ></textarea>
                             <div class="col-sm-12">
-                                <input onclick="Orientation('control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modifrep<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&iddv=<?=$_GET['iddv']?>&AjouterRepTr=true','<?='#reponsesssT'.$Cpt?>','<?='#reponsT'.$Cpt?>')"  class="btn btn-success pull-right  col-sm-1" value='Valider'/>
+                                <input type="button" onclick="Orientation('control.param_access/ctr_reponse.php?n=<?=$Cpt?>&idCours=<?=$_GET['idcrs']?>&idIns=<?=$_GET['idIns']?>&idDevoir=<?=$seldev['idDevoir']?>&modifrep='+$('#modifrep<?=$Cpt?>').val()+'&idQst=<?=$selQst['idQuestion']?>&iddv=<?=$_GET['iddv']?>&AjouterRepTr=true','<?='#reponsesssT'.$Cpt?>','<?='#reponsT'.$Cpt?>')"  class="btn btn-success pull-right  col-sm-1" value='Valider'/>
                             </div>
                             </div>   
                     </form>
@@ -87,11 +88,11 @@
                     $Tbasstion = $asstion->selectionnerByQst($selQst['idQuestion']);
                     $tur=1;
                     $repondi = new crs_reponsec();
-                    $repondi = $repondi->selectionnerByQstUti($selQst['idQuestion'],$_SESSION['idUtilisateur'])->fetchAll();
+                    $repondi = $repondi->selectionnerByQstUtiClss($selQst['idQuestion'],$_SESSION['idUtilisateur'],$idCls)->fetchAll();
                     $avoirRepo=false;
                     $idAssertion;
                     foreach($repondi as $repondi){
-                        if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$_GET['idClasse']){
+                        if( $repondi['idAnneeScoEval']==$repondi['idAnneeScoRep'] AND $repondi['idClasseEval']==$idCls){
                             $avoirRepo=true;
                             $idAssertion=$repondi['idAssertion'];
                             

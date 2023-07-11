@@ -22,7 +22,7 @@
         </form>
           <div class="col-sm-12" style="marging:0px with:50px" >
               
-                 <input onclick="Orientation('control.param_access/ctr_questionnaire.php?n=<?=$nub?>&form=<?='QuestT'.$nub?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
+                 <input type="button" onclick="Orientation('control.param_access/ctr_questionnaire.php?n=<?=$nub?>&form=<?='QuestT'.$nub?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
              +$('#idDev').val()
              +'&modifQst='+$('#modifQst'+<?=$nub?>).val()
              +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-xs btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
@@ -77,7 +77,7 @@
                 <input  id=<?='pond'.$nub?> type="text" placeholder="Point" />
             
 
-     <input onclick="Orientation('control.param_access/ctr_questionnaire.php?AjoutQstCh&n=<?=$nub?>&idqstC=<?='qstC'.$nub?>&form=<?='QuestC'.$nub?>&idasCk1=<?='asCk1'.$nub?>&idass1=<?='ass1'.$nub?>&idasCk2=<?='asCk2'.$nub?>&idass2=<?='ass2'.$nub?>&idass3=<?='ass3'.$nub?>&idasCk3=<?='asCk3'.$nub?>&idasCk4=<?='asCk4'.$nub?>&idass4=<?='ass4'.$nub?>&idasCk5=<?='asCk5'.$nub?>&idass5=<?='ass5'.$nub?>&idasCk6=<?='asCk6'.$nub?>&idass6=<?='ass6'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
+     <input type="button" onclick="Orientation('control.param_access/ctr_questionnaire.php?AjoutQstCh&n=<?=$nub?>&idqstC=<?='qstC'.$nub?>&form=<?='QuestC'.$nub?>&idasCk1=<?='asCk1'.$nub?>&idass1=<?='ass1'.$nub?>&idasCk2=<?='asCk2'.$nub?>&idass2=<?='ass2'.$nub?>&idass3=<?='ass3'.$nub?>&idasCk3=<?='asCk3'.$nub?>&idasCk4=<?='asCk4'.$nub?>&idass4=<?='ass4'.$nub?>&idasCk5=<?='asCk5'.$nub?>&idass5=<?='ass5'.$nub?>&idasCk6=<?='asCk6'.$nub?>&idass6=<?='ass6'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
 
                 +'&modifQst='+$('#modifQst'+<?=$nub?>).val()
                 +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
@@ -92,7 +92,7 @@
                 +'&ass5='+$('#ass5'+<?=$nub?>).val()
                 +'&asCk6='+$('#asCk6'+<?=$nub?>).val()
                 +'&ass6='+$('#ass6'+<?=$nub?>).val()
-                +'&idDev='+$('#idDev').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
+                +'&idDev='+$('#idDev').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider_Question :<?=$nub?>"/>
             </div>
     </div>
     <?php

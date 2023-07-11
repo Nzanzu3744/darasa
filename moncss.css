@@ -1,0 +1,19 @@
+
+th.rotate {
+  white-space: nowrap;
+  position:relative;
+  height:280px;
+}
+
+th.rotate > div {
+  transform: rotate(-90deg);
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:12px;
+  margin:0px;
+  padding:0px;
+
+  
+}
+  /* color:rgb(rgba(0, 89, 255, 0.909), #176ac3, blue) */

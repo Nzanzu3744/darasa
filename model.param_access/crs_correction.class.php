@@ -3,7 +3,7 @@ include_once('param_connexion.php');
 class crs_correction {
     private static  $idCorrection;
     private static $idReponset;
-    private static $idAffectation;
+    private static $idUtilisateur;
     private static $cote;
     private static $commentaire;
     private static $con;
@@ -12,11 +12,11 @@ class crs_correction {
         self::$con=con();
     }
    
-    public static function ajouter($idReponset,$idAff,$cote,$cmt,$pond)
+    public static function ajouter($idReponset,$idUti,$cote,$cmt,$pond)
     {
 
         $idRep= htmlspecialchars($idReponset);
-        $idAffectation = htmlspecialchars($idAff);
+        $idUtilisateur = htmlspecialchars($idUti);
         $cote= $cote;
         $commentaire= $cmt;
 
@@ -24,11 +24,11 @@ class crs_correction {
         $correct=$correct->selectionnerByRep($idRep)->fetch();
         
         if($correct==''){
-        $req=self::$con->prepare('INSERT INTO  `crs_correction` ( idReponset, idAffectation,cote,commentaire ) VALUES (?,?,?,?)');
+        $req=self::$con->prepare('INSERT INTO  `crs_correction` ( idReponset, idUtilisateur,cote,commentaire ) VALUES (?,?,?,?)');
         if($pond>=$cote){
-            if($req->execute(array($idRep,$idAffectation,$cote,$commentaire))){
+            if($req->execute(array($idRep,$idUtilisateur,$cote,$commentaire))){
             self::$idReponset =$idRep;
-            self::$idAffectation =$idAffectation;
+            self::$idUtilisateur =$idUtilisateur;
             self::$cote =$cote;
             self::$commentaire =$commentaire;  
             echo "Enregistre";
@@ -42,10 +42,10 @@ class crs_correction {
         }else{
             
             if($pond>=$cote){
-                if($req=self::$con->exec('UPDATE  `crs_correction` SET idReponset='.$idRep.', idAffectation='.$idAffectation.', cote='.$cote.', commentaire="'.$commentaire.'" WHERE idCorrection='.$correct['idCorrection'])){
+                if($req=self::$con->exec('UPDATE  `crs_correction` SET idReponset='.$idRep.', idUtilisateur='.$idUtilisateur.', cote='.$cote.', commentaire="'.$commentaire.'" WHERE idCorrection='.$correct['idCorrection'])){
                     self::$idCorrection =$correct;
                     self::$idReponset =$idRep;
-                    self::$idAffectation =$idAffectation;
+                    self::$idUtilisateur =$idUtilisateur;
                     self::$cote =$cote;
                     self::$commentaire =$commentaire;  
                    echo "Modifie";

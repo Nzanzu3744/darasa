@@ -42,9 +42,9 @@
                 <input id=<?='pond'.$nub?>  type="text" class="" value="<?=$selQst['ponderation']?>"/>
             </form>
           <div class="col-sm-12">
-             <button onclick="Orientation('control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
+             <input type="button" onclick="Orientation('control.param_access/ctr_questionnaire.php?INTERDIT&idvv=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&idQt=<?=$selQst['idQuestion']?>&idPond=<?='pond'.$nub?>&AjoutQstTr&idDev='
              +$('#idDev').val()
-             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-danger btn-xs pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
+             +'&pond='+$('#pond'+<?=$nub?>).val(),'#<?='QuestT'.$nub?>','#<?='QuestT'.$nub?>')"  class="btn btn-success btn-xs pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
         </div>
         
         <?php
@@ -186,7 +186,7 @@
         <input  id=<?='pond'.$nub?> type="text" placeholder="Point" value='<?=$selQst['ponderation']?>'/>
     
           <div class="col-sm-12">
-              <button onclick="showme1('#clef');Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
+              <input type="button" onclick="showme1('#clef');Orientation('control.param_access/ctr_questionnaire.php?idDev=<?=$_GET['iddv']?>&n=<?=$nub?>&modifQst=<?=$selQst['idQuestion']?>&AjoutQstCh&INTERDIT&idqstC=<?='qstC'.$nub?>&idass1=<?=$idasCk1?>&idass2=<?=$idasCk2?>&idass3=<?=$idasCk3?>&idass4=<?=$idasCk4?>&idass5=<?=$idasCk5?>&idass6=<?=$idasCk6?>&idasCk1=<?=$idasCk1?>&idasCk2=<?=$idasCk2?>&idasCk3=<?=$idasCk3?>&idasCk4=<?=$idasCk4?>&idasCk5=<?=$idasCk5?>&idasCk6=<?=$idasCk6?>&idqst=<?=$selQst['idQuestion']?>&n=<?=$nub?>&form=<?='qstC'.$nub?>&idpond=<?='pond'.$nub?>&pond='+$('#pond'+<?=$nub?>).val()
                 +'&asCk1='+$('#asCk1'+<?=$nub?>).val()
                 +'&ass1='+$('#ass1'+<?=$nub?>).val()
                 +'&asCk2='+$('#asCk2'+<?=$nub?>).val()
@@ -204,7 +204,7 @@
                 +'&modif3='+$('#modif3<?=$nub?>').val()
                 +'&modif4='+$('#modif4<?=$nub?>').val()
                 +'&modif5='+$('#modif5<?=$nub?>').val()
-                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-xs btn-danger pull-right  col-sm-2 col-lg-2 col-xs-2">Valider Question :<?=$nub?></button>
+                +'&modif6='+$('#modif6<?=$nub?>').val(),'#<?='QuestC'.$nub?>','#<?='fseria'.$nub?>')"  class="btn btn-xs btn-success pull-right  col-sm-2 col-lg-2 col-xs-2" value="Valider Question :<?=$nub?>"/>
         </div>
       </div>
     </div>

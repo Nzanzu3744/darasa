@@ -35,6 +35,10 @@ if(isset($_GET['annul'])){
    include("../vue.param_access/profil_Enseignant.php");
 }else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
    include_once("../vue.param_access/liste_role.php");
+}else if(isset($_GET['liste_ensei'])){
+   include("../vue.param_access/header_fenetre.php");
+    include_once('../vue.param_access/liste_enseignant.php');
+    include("../vue.param_access/footer_fenetre.php");
 }else{
   echo "ECHEC LISTE AFFECTATION";
 }
