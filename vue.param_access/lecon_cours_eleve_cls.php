@@ -41,9 +41,7 @@ include_once('../model.param_access/crs_lecon.class.php');
                         ?>
                               <li data-toggle="modal" href="#inscri"><a href="#" onclick="Orientation('control.param_access/ctr_lecon.php?LireLecon_eleve=tue&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$idC?>&idIns=<?=$_GET['idIns']?>&tlecon=<?=$selLc['titreLecon']?>&idcrs=<?=$sel_C['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
                               <li class="divider"></li>
-                              <li>
-                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
-                              </li>
+                              
                         </ul>
                      </z>                
                </td>

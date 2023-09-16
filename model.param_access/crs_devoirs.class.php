@@ -133,13 +133,6 @@ class crs_devoirs {
     public static function rechercherr($idDevoir){
         $idDvs = htmlspecialchars($idDevoir);
         return $var = self::$con->query("SELECT * FROM crs_devoirs WHERE idDevoir ='".$idDvs."'");
-        // foreach($var as $sel){
-        //     self::$idDevoir = $sel['idDevoir'];
-        //     self::$idDevoir = $sel['idDevoir'];
-        //     self::$dateRemise = $sel['dateRemise'];
-        //     self::$actif = $sel['actif'];
-        // }
-        // return $var; 
     }
     //DESTRUCTEUR
     public function __destuct(){

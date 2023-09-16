@@ -61,7 +61,9 @@ include_once('../model.param_access/dir_directeur.class.php');
   <div style="margin:0px; padding; 0px"> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:green; font-size:20px" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:green; font-size:20px"  onclick="showme('#leconsgauche','#editLeco','true')" ></i></div>
 
     <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:100% display: inline-block;" class="well table-responsive">
-        <center class="titres" style="font-size:30px; padding:9%" >Bonjour Mr.(Mm) DIRECTEUR(TRICE)<?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours pour les <a>évaluers</a>. </center>
+    
+        <center class="titres" style="font-size:30px; padding:10%" > <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> Vous etes dans le profil Directeur (Gestionnaire).<br>Selectionner une classe pour visualiser different cours .</center>
+
     </div>
     <div id="leconsgauche" class="col-sm-2" >
     </div>

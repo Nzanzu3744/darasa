@@ -2,7 +2,10 @@
           <div  class="col-md-9 col-lg-9 col-xl-9" style="">
             <div class="table-responsive" style="height:700px">
               <div>
+                <!-- <center class="img-fluid"><img style= "width:100%;height:700px" src="images/avenure.jpg" alt="Tigre"></center>-->
                 <center class="img-fluid"><img style= "width:100%;height:700px" src="images/avenure.jpg" alt="Tigre"></center>
+                <!-- <center class="img-fluid"><img style= "width:100%;height:700px" src="images/arriereP.png" alt="Tigre"></center> -->
+                <!-- <center class="img-fluid"><img style= "width:100%;height:700px" src="images/KAMABALE_12538.jpg" alt="Tigre"></center> -->
               
               </div>
             </div>

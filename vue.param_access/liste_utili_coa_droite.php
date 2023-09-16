@@ -23,7 +23,7 @@
                                 <tr>
                                     <td><?=$i++?></td>
                                     <td><input style="width:20px; height:20px" id="<?=$selutl['idCoAnimation']?>" name="<?=$selutl['idCoAnimation']?>" value="<?=$selutl['idCoAnimation']?>" type="checkbox" class="form-control"></td>
-                                    <td><img style="width:30px; height:30px" src="<?='../images/'.$selutl['photoUtilisateur']?>"/></td>
+                                    <td><img style="width:30px; height:30px" src="<?='images/'.$selutl['photoUtilisateur']?>"/></td>
                                     <td><?=$selutl['idUtilisateur']?></td>
                                     <td><?=$selutl['nomUtilisateur']?></td>
                                     <td><?=$selutl['postnomUtilisateur']?></td>

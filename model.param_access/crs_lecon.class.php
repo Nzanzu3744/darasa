@@ -129,6 +129,7 @@ class crs_lecon {
         $var = self::$con->query("SELECT * FROM crs_lecon WHERE idCours like '".$idCrs."%' ORDER BY idLecon ASC");
         return $var;
     }
+ 
     //DESTRUCTEUR
     public function __destuct(){
     }

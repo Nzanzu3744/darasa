@@ -14,7 +14,7 @@ include_once('../model.param_access/crs_lecon.class.php');
          }
          ?>
             <div class="table-responsive" style="height:100%" >
-         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche','');"  ></input>  
+         <input  id="" value="Actualiser" type="button" class="btn btn-default " style="width:120px; padding:6px; width:100%" onclick="Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&maClasse=<?=$_GET['maClasse']?>&idCours=<?=$_GET['idCours']?>','#leconsgauche')"></input>  
 
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
@@ -42,9 +42,8 @@ include_once('../model.param_access/crs_lecon.class.php');
                         ?>
                               <li><a onclick="Orientation('control.param_access/ctr_lecon.php?LireLecon_ense=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#editLeco','')">Lire la leçon</a></i></li>
                               <li class="divider"></li>
-                              <li>
-                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
-                              </li>
+                              <li><a style="Color: red" onclick="Orientation('control.param_access/ctr_lecon.php?supLc=tue&maClasse=<?=$_GET['maClasse']?>&tlecon=<?=$selLc['titreLecon']?>&idCours=<?=$selLc['idCours']?>&cours=<?=$sel_C['cours']?>&idlc=<?=$selLc['idLecon']?>','#leconsgauche','')">Supprimer</a></i></li>
+
                         </ul>
                      </z>                
                </td>

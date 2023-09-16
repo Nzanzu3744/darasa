@@ -232,6 +232,24 @@ include_once('../model.param_access/crs_devoirs.class.php');
     }
       
      
+}elseif(isset($_GET['supDev']) AND isset($_GET['idCours']) AND isset($_GET['idDev'])){
+    include_once('../model.param_access/crs_devoirs.class.php');
+    $dv = new crs_devoirs();
+    $idDev= htmlspecialchars($_GET['idDev']);
+    $fct= htmlspecialchars($_GET['fct']);
+    switch ($fct) {
+        case 'ense':
+             $devoirs = $dv->supprimer($idDev); 
+            include_once('../vue.param_access/devoir_cours_ense_cls.php');  
+            break;
+        case 'dir':
+            $devoirs = $dv->supprimer($idDev); 
+            echo "DIR";
+            break;
+        default :
+            echo "VOUS N'ETES PAS AUTORISE ";
+            break;
+    }
 }else{
     echo "ECHE CONTROLEUR DEVOIR";
 }

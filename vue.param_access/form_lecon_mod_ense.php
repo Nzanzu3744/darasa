@@ -33,6 +33,7 @@ if(isset($_GET['LireLecon_ense'])){
 }else{
   ?>
   <textarea id="lcn" name="lcn" class="textarea" style="width:99%"><?=$_POST['lcn']?></textarea>
+  
   <?php
   }
 

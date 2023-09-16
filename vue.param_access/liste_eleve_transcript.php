@@ -3,12 +3,10 @@
      include_once('../model.param_access/org_periode.class.php');
 ?>
 <div class="form-inline well" style="width:850px; font-size:12px; margin-left:15%;margin-top:1%; background:white">
-   
     <?php
     $idDevaoirTrad='undefined';
     if(isset($_GET['idDevaoirTrad'])){
-       $idDevaoirTrad= htmlspecialchars($_GET['idDevaoirTrad']);
-       
+       $idDevaoirTrad= htmlspecialchars($_GET['idDevaoirTrad']); 
     ?>
      <center style="margin-left:10px" class="col-sm-12" ><label> MODIFICATION DE COTES TRANSCIPT A<?=" ".$_GET['cours'].' CLASSE :'.$_GET['maClasse']?></label></center> 
         <span style="paddind-top:10px; border-top: 1px solid black"> CODE TRANSCRIPTION : <input disabled id="idDevaoirTrad"  name="idDevaoirTrad" style="width:50px; height:10px; color:green;" name="idDevaoirTrad" type="text" class="btn-xs form-control" value="<?=$idDevaoirTrad?>"/></span>
@@ -21,8 +19,6 @@
         <?php
     }
     ?>
-
-
     <div class=" col-sm-12 well"  style="padding-top:10px; ">
         <div class=" col-sm-5" style=" border-top: 1px solid red">
             <div style="" >
@@ -76,7 +72,6 @@
  
 <form  id="lstEleve" name="lstEleve" enctype="multipart/form-data">
  <table class="table table-bordered table-striped table-condensed" > 
- 
                 <thead>
                     <tr>
                         <th>N</th>
@@ -113,7 +108,7 @@
                         <!-- width:0px;height:0px;border: 0px solid white -->
                         <td style="display:none"><input  id="<?=$i?>" name="<?=$i?>" style="width:50px;" type="hidden" class="form-control" value="<?=$selEleve['idInscription']?>"/></td>
                         <td><label style="color:green"><?=$selEleve['idUtilisateur']?></label></td>
-                        <td><img style="width:30px; height:30px" src="<?='../images/'.$selEleve['photoUtilisateur']?>"/></td>
+                        <td><img style="width:30px; height:30px" src="<?='images/'.$selEleve['photoUtilisateur']?>"/></td>
                        <td><?=$selEleve['nomUtilisateur']?></td>
                        <td><?=$selEleve['postnomUtilisateur']?></td>
                        <td><?=$selEleve['prenomUtilisateur']?></td>
@@ -125,9 +120,7 @@
                         $i++;
                         
                     }
-                        ?>
-                    
-                            
+                        ?>           
                 </tbody>
             </table>
             

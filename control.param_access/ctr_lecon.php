@@ -55,6 +55,13 @@ if(isset($_GET['ajouterL']) AND isset($_POST['lcn']) AND $_GET['idlc']!="undefin
     <?php
 include_once('../vue.param_access/form_lecon_mod_ense.php');
 
+//LIRE LECON POUR RAPPORTAGE
+}else if(isset($_GET['LireLecon'])){
+    ?>
+        <input disabled style="color:red" id="idlc"  name="idlc" value='<?=$_GET['idlc']?>'/>
+    <?php
+include_once('../vue.param_access/form_lecon_mod_ense.php');
+
 
 }else if(isset($_GET['RelierLecon'])){
     include_once('../model.param_access/crs_reler_lecon.class.php');
@@ -258,12 +265,14 @@ include_once('../model.param_access/crs_lecon.class.php');
     }
       
      
+}else if(isset($_GET['supLc']) ){
+    include_once('../model.param_access/crs_lecon.class.php');
+    $Leson = new crs_lecon();
+    $Leson->supprimer($_GET['idlc']);
+    $Leson = new crs_lecon();
+    $Leson->supprimer($_GET['idlc']);
+    include_once('../vue.param_access/lecon_cours_ense_cls.php');
 }else{
     echo "ECHEC LECON";
 }
-
-
-
-
-
 ?>

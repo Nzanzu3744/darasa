@@ -13,7 +13,8 @@
                         <th><center>POST-NOM</center></th>
                         <th><center>PRENOM</center></th>
                         <th><center>GENRE</center></th>
-                        <th><center>INSC</center></th>
+                        <th><center>TELEPHONE</center></th>
+                        <th><center>INS</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,13 +31,13 @@
                     <tr>
                         <td><?=$i++?></td>
                         <td><label style="color:green"><?=$selEleve['idUtilisateur']?></label></td>
-
-                        <td><img style="width:30px; height:30px" src="<?='../images/'.$selEleve['photoUtilisateur']?>"/></td>
-                       <td><?=$selEleve['nomUtilisateur']?></td>
-                       <td><?=$selEleve['postnomUtilisateur']?></td>
-                       <td><?=$selEleve['prenomUtilisateur']?></td>
-                       <td><?=$selEleve['genre']?></td>
-                       <td><?=$selEleve['idInscription']?></td>
+                        <td><img style="width:30px; height:30px" src="<?='images/'.$selEleve['photoUtilisateur']?>"/></td>
+                        <td><?=$selEleve['nomUtilisateur']?></td>
+                        <td><?=$selEleve['postnomUtilisateur']?></td>
+                        <td><?=$selEleve['prenomUtilisateur']?></td>
+                        <td><?=$selEleve['genre']?></td>
+                        <td><?=$selEleve['telUtilisateur']?></td>
+                        <td><?=$selEleve['idInscription']?></td>
                        </tr>
                         <?php
                         

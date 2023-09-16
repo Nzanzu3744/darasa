@@ -44,6 +44,18 @@ if(isset($_GET['VueClasseAff'])){
           echo "ECHEC D'ENREGISTREMENT COURS <><><MODEL><><><";
         }
     
+ }else if($_GET['supCrs'] AND $_GET['supCrs']==true ){
+   include_once('../model.param_access/crs_cours.class.php');
+   $crs=new crs_cours();
+   $crs->supprimer($_GET['idCrs']);
+   switch ($_GET['fct']) {
+      case 'dir':
+      include("../vue.param_access/cours_directeur_cls.php");
+      break;
+      default:
+         include("../vue.param_access/cours_ense_cls.php");
+   }
+   
  }else{
    echo "ECHEC LISTE CLASSE OU COURS PAR ENSEIGNANT";
 }

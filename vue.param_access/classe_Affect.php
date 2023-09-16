@@ -58,9 +58,8 @@
                                 <button style="width:100%; height:100%" data-toggle="dropdown" href="#"> Options<b class="caret pull-right"></b></button>
                                 <ul class="dropdown-menu pull-right">
                                     <li><a href="#" onclick="Encour()">Modifier</a></li>
-                                    <li><a href="#" onclick="Encour()">Supprimer</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Rapport de Class</a></li>
+                                    <li ><a href="#" onclick="Encour()" style="color: red">Supprimer</a></li>
 
                                 </ul>
                             </td>

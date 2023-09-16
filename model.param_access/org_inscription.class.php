@@ -85,7 +85,7 @@ class org_inscription {
         INNER JOIN org_classe AS cl ON isc .idClasse = cl.idClasse 
         INNER JOIN param_utilisateur AS ut ON isc .idUtilisateur = ut.idUtilisateur 
         INNER JOIN param_genre AS gr ON ut.idGenre = gr.idGenre 
-        WHERE isc.idClasse=".$idClass." AND isc.idAnneeSco=".$idAnnee);
+        WHERE isc.idClasse=".$idClass." AND isc.idAnneeSco=".$idAnnee." ORDER BY ut.nomUtilisateur ASC");
     }
      public static function rechercherByClAnneeEleve($idCls, $idAnn, $idUtili){
         $idUtil = htmlspecialchars($idUtili);

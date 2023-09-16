@@ -7,8 +7,6 @@ include_once('../model.param_access/org_anneesco.class.php');
  (empty($_SESSION))?session_start():'';
  ?>
 <div class="col-sm-12" style="">
-   
-    
     <header  id="titre">
         <nav class="navbar navbar-default table-responsive" style="height:56px;"> 
             <ul class="nav navbar-nav col-sm-11 ">
@@ -56,7 +54,7 @@ include_once('../model.param_access/org_anneesco.class.php');
     <div style="margin:0px; padding; 0px"> <i class="btn-xs glyphicon glyphicon-circle-arrow-left" style="color:red;font-size:20px" onclick="showme('#leconsgauche','#editLeco','false')"  ></i><i class="btn-xs glyphicon glyphicon-circle-arrow-right" style="color:red;font-size:20px"  onclick="showme('#leconsgauche','#editLeco','true')" ></i>
     </div>
     <div id="editLeco" style="padding:0px; margin:0px; height:95%; width:80% display: inline-block;" class="well table-responsive">
-        <center class="titres" style="font-size:30px; padding:10%" >Bonjour Mr.(Mm) ENSEIGNANT(E) <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> La derniere année en cours de votre affectation est Selectionnée par defaut.<br>Selectionner une classe pour visualiser les lecons et devoirs par cours. </center>
+        <center class="titres" style="font-size:30px; padding:10%" > <?=' <b> '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</b>  !'?><br> Vous etes dans le profil élève.<br>Selectionner une classe pour visualiser different cours .</center>
     </div>
     <div id="leconsgauche" class="col-sm-2">
     </div>

@@ -30,7 +30,7 @@
                         <td><?=$i++?></td>
                         <td><input style="width:20px; height:20px" id="<?=$selEleve['idUtilisateur']?>" name="<?=$selEleve['idUtilisateur']?>" value="<?=$selEleve['idUtilisateur']?>" type="checkbox" class="form-control"></td>
 
-                        <td><img style="width:30px; height:30px" src="<?='../images/'.$selEleve['photoUtilisateur']?>"/></td>
+                        <td><img style="width:30px; height:30px" src="<?='images/'.$selEleve['photoUtilisateur']?>"/></td>
                        <td><?=$selEleve['nomUtilisateur']?></td>
                        <td><?=$selEleve['postnomUtilisateur']?></td>
                        <td><?=$selEleve['prenomUtilisateur']?></td>

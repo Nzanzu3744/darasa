@@ -288,24 +288,30 @@ $pondToutDevoirTitre=0.0;
                                 $coteTrat = new crs_cote_devoirs_trad();
                                 $coteTrat = $coteTrat->filterDevTraEleve($seldevTrat['idDevaoirTrad'],$sel_eleve['idInscription'])->fetch();
                                  //  echo '<td style="color:green; font-size:12px">'.$coteTrat['coteDevoirTrad'].'/'.$seldevTrat['poderation'].'</span></td>';
-                                    $moyenCote=($seldevTrat['poderation']/2);
-                                    
-                                    $cote =$coteTrat['coteDevoirTrad'].'/'.$seldevTrat['poderation'];
-                                    $coteTotal=$coteTotal+$coteTrat['coteDevoirTrad'];
-                                    if($coteTrat['coteDevoirTrad']>=$moyenCote AND $coteTrat['coteDevoirTrad']<=$seldevTrat['poderation']){
-                                            echo '<td style="color:green; font-size:12px">'.$cote .'</td>';
-                                    }elseif($coteTrat['coteDevoirTrad']>=0 AND $coteTrat['coteDevoirTrad']<$moyenCote){
-                                            echo '<td style="color:red; font-size:12px">'.$cote .'</td>';
-                                        
-                                    }elseif($coteTrat['coteDevoirTrad']<0){
-                                            echo '<td style="color:yellow; font-size:12px">'.$cote .'</td>';
+                                   
+                                    if($coteTrat==true){
+                                         $moyenCote=($seldevTrat['poderation']/2);
+                                        $cote =$coteTrat['coteDevoirTrad'].'/'.$seldevTrat['poderation'];
+                                        $coteTotal=$coteTotal+$coteTrat['coteDevoirTrad'];
+                                        if($coteTrat['coteDevoirTrad']>=$moyenCote AND $coteTrat['coteDevoirTrad']<=$seldevTrat['poderation']){
+                                                echo '<td style="color:green; font-size:12px">'.$cote .'</td>';
+                                        }elseif($coteTrat['coteDevoirTrad']>=0 AND $coteTrat['coteDevoirTrad']<$moyenCote){
+                                                echo '<td style="color:red; font-size:12px">'.$cote .'</td>';
+                                            
+                                        }elseif($coteTrat['coteDevoirTrad']<0){
+                                                echo '<td style="color:yellow; font-size:12px">'.$cote .'</td>';
 
-                                    }elseif($coteTrat['coteDevoirTrad']>$seldevTrat['poderation']){
-                                            echo '<td style="color:pink; font-size:12px">'.$cote .'</td>';
+                                        }elseif($coteTrat['coteDevoirTrad']>$seldevTrat['poderation']){
+                                                echo '<td style="color:pink; font-size:12px">'.$cote .'</td>';
 
+                                        }else{
+                                            echo '<td style="color:yellow; font-size:12px">Erreur</span></td>';
+                                        }
                                     }else{
-                                        echo '<td style="color:yellow; font-size:12px">Erreur</span></td>';
-                                    }
+                                        // break;
+                                       echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
+
+                                    } 
                                     
 
 

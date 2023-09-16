@@ -72,7 +72,9 @@
                             <li>
                                 <a href="#" onclick="Encour()">BLOG</a>
                             </li>
-    
+                            <?php
+                            if($_SESSION['param_table_afficher']==1){
+                            ?>
                             <li class="dropdown primary">
                                 <a data-toggle="dropdown" href="#">BACK-UP<b class="caret pull-right"></b></a>
                                     <ul class="dropdown-menu">
@@ -82,6 +84,10 @@
                                     
                                 </ul>
                             </li>
+                            <?php
+                            }
+
+                            ?>
                             <li class="dropdown primary">
                                 <a data-toggle="dropdown" href="#">AIDE<b class="caret pull-right"></b></a>
                                     <ul class="dropdown-menu">

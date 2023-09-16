@@ -40,7 +40,7 @@ include_once('../model.param_access/crs_devoirs.class.php');
                               
                               <li class="divider"></li>
                               <li>
-                                 <a href="#" onclick="Encour()">Rapport Eleve</a>
+                                 <a onclick="Orientation('control.param_access/ctr_devoirs.php?supDev=true&fct=dir&idDev=<?=$seldv['idDevoir']?>&maClasse=<?=$_GET['maClasse']?>&cours=<?=strtoupper($sel_C['cours'])?>&idCours=<?=$sel_C['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idClasse=<?=$_GET['idClasse']?>','#leconsgauche','')" style="color: red" >Supprimer</a>
                               </li>
                         </ul>
                      </z>                

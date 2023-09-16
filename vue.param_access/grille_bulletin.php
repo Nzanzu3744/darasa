@@ -229,10 +229,8 @@ include_once('../model.param_access/crs_cote_devoirs_trad.class.php');
 
                                                                             }
 
-                                                                        }
-                                                                                    
-                                                                                    
-                                                                                    $nbQst++;
+                                                                        }      
+                                                                            $nbQst++;
                                                                         }
                                                                         $pondePeriod+=$selQst['ponderation'];
                                                                         $pondeTotal+=$selQst['ponderation'];
@@ -253,16 +251,19 @@ include_once('../model.param_access/crs_cote_devoirs_trad.class.php');
                                                     ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
                                                     $dvTrad2 = new crs_devoirs_trad();
                                                     $dvTrad2 = $dvTrad2->selectionnerByCoursPeriode($selpr2['idPeriode'],$selcrs['idCours'])->fetchAll();
-                                                                                                    
+                                                                                              
                                                     foreach($dvTrad2 as $seldvTrad2){
                                                         $coteEleDev=0.0;
                                                         $coteTrat = new crs_cote_devoirs_trad();
                                                         $coteTrat = $coteTrat->filterDevTraEleve($seldvTrad2['idDevaoirTrad'],$selEleve['idInscription'])->fetch();
-                                                    
-                                                        $coteEleDev+=$coteTrat['coteDevoirTrad'];
-                                                        $CotePeriode+=$coteTrat['coteDevoirTrad'];
-                                                        $coteTotal+=$coteTrat['coteDevoirTrad'];
-                                                        $coteTG+=$coteTrat['coteDevoirTrad'];
+                                                        if($coteTrat==true){
+                                                            $coteEleDev+=$coteTrat['coteDevoirTrad'];
+                                                            $CotePeriode+=$coteTrat['coteDevoirTrad'];
+                                                            $coteTotal+=$coteTrat['coteDevoirTrad'];
+                                                            $coteTG+=$coteTrat['coteDevoirTrad'];
+                                                        }else{
+                                                             break;
+                                                        }
                                                      
                                                    
                                                             
@@ -270,6 +271,7 @@ include_once('../model.param_access/crs_cote_devoirs_trad.class.php');
                                                     $pondeTotal+=$seldvTrad2['poderation'];
                                                     $pondeTG+=$seldvTrad2['poderation'];           
                                                     }
+                                                    
                                                  
                                                    ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 

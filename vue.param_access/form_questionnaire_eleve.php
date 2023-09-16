@@ -16,8 +16,11 @@
     $qst = $qst->selectionnerByIdDevASC($_GET['iddv']);
    
     ?>
-     <center class="col-sm-12 titres" style="font-size:20px; margin-bottom:10px" >QUESTIONNAIRE DEVOIR DU COURS <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ELEVE) ID DEVOIR:<?="" .$seldev['idDevoir'].' CREER LE <b>'.$seldev['dateCreation'].' </b>A REMETRE LE <b>'.$seldev['dateRemise'].'</b>'?></center>
-
+    <center style="font-size:18px">COMPLEXE SCOLAIRE NOTRE DAME DE GRACES</center>
+    <center>
+        B.P. 923 BUNIA
+        DEVOIR DE (D' ) <?= $_GET['cours'] ?> N° <?=' '.$seldev['idDevoir']?> DU <?=' '.$seldev['dateCreation']?> A REMETTRE LE <?=$seldev['dateRemise']?>   
+    </center>
 <!--  -->
 <div class=" table-responsive well" style="height:600px">
 

@@ -45,7 +45,7 @@ include_once('../model.param_access/param_groupe.class.php');
                                         <li> <a id="charge" href="#"  onmousedown="Orientation('control.param_access/ctr_rapport.php?grille_ltr=true&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idClasse']?>&cours=<?=strtoupper($selCrs['cours'])?>&idCours=<?=$selCrs['idCours']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idCls=<?=$_GET['idClasse']?>','#editLeco','')"> Grille de Lecteurs </a> 
                                         <li> <a data-toggle="modal" href="#coanimation"> Co-Animation </a>
                                         <li class="divider"></li>
-                                        <li ><a href="#" onclick="Encour()" >Supprimer</a></i></li>
+                                        <li ><a href="#" style="color:red" onclick="Orientation('control.param_access/ctr_cours.php?supCrs=true&maClasse=<?=$_GET['maClasse']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idClasse=<?=$_GET['idClasse']?>&idCrs=<?=$selCrs['idCours']?>&fct=dir','#editLeco','')" >Supprimer</a></i></li>
                                         </li>
 
                                     </ul>
