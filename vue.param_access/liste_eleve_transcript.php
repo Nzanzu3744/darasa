@@ -15,6 +15,7 @@
     $dvTrad = $dvTrad->selectionnerByIdDevTrad($idDevaoirTrad)->fetch();
     }else{
         ?>
+        
          <center style="margin-left:10px" class="col-sm-12" ><label> TRANSCIPTION DE COTE  <?=" ".$_GET['cours']." CLASSE :".$_GET['maClasse']?></label></center> 
         <?php
     }

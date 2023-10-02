@@ -74,14 +74,3 @@ function showme3(fn1){
         alert("shewme a un Souci")
     }
   }
-// function blockMoi(){
-//         e.preventDefault();
-// }
-
-
-// $(document).ready(function() {
-//     $('form').submit(function(e) {
-//         e.preventDefault();
-//         // ou return false;
-//     });
-// });

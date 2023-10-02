@@ -3,7 +3,6 @@ include_once('../model.param_access/crs_devoirs_trad.class.php');
 include_once('../model.param_access/crs_devoirs.class.php');
 ?>
 
-
          <section class="fenetre " style="background-color: transparent; height:410px;">
          <?php
          $idC=htmlspecialchars($_GET['idCours']);

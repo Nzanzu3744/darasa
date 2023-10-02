@@ -14,8 +14,7 @@ if(isset($_GET['TranscriptCote'])){
             $idDvTrad = $_GET['idDevaoirTrad'];
         }else{
             $idDvTrad = $drt->ajouter($_GET['idCours'],$_GET['prD'],$_GET['idAffectation'],$_GET['pond'],$_GET['idx']);
-        }
-
+        } 
         // print_r($_POST['data1']);
         $tab = deserialiser($_POST['data1']);
         // print_r($tab);

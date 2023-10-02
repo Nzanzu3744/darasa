@@ -91,8 +91,8 @@
                             <li class="dropdown primary">
                                 <a data-toggle="dropdown" href="#">AIDE<b class="caret pull-right"></b></a>
                                     <ul class="dropdown-menu">
-                                    <li><a href="#"onclick="Encour()">info@darasa.org</a></li>
-                                    <li><a href="#"onclick="Encour()">support@darasa.org</a></li>
+                                    <li><a href="#"onclick="Orientation('control.param_access/ctr_infos.php?infos','#panel')">info@notredame.org</a></li>
+                                    <li><a href="#"onclick="Orientation('control.param_access/ctr_contact.php?contact','#panel')">contact@notredame.org</a></li>
                                      <li class="divider"></li>
                                     <li><a href="#"onclick="Encour()">Tel: [RDC] +243 828 409 897</a></li>
                                 </ul>
