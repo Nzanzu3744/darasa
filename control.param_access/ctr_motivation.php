@@ -10,6 +10,7 @@ include_once('../model.param_access/prep_motivation.class.php');
         $moti->supprimer($_GET['idMot']);
         include_once('../vue.param_access/liste_motivation.php');
     }else{
-        echo "Echec Motivation";
+        include_once('../control.param_access/mes_methodes.php');
+        echec_controleur('MOTIVATION');
     }
 ?>

@@ -14,6 +14,7 @@ $grp_P2 = new param_groupe_periode();
     $grp_P2->supprimer($_GET['idgrp']);
  include_once('../vue.param_access/liste_groupe_periode.php');
  }else{
- echo 'ECHEC GROUPE';
+include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('GROUPE PERIODE');
  }
 ?>

@@ -21,6 +21,7 @@ include_once('../model.param_access/prep_discipline.class.php');
             </select>
             <?php
     }else{
-        echo "Echec Discipline";
+        include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('DISCIPLINE');
     }
 ?>

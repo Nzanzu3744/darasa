@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class crs_question {
     private static  $idQuestion;
     private static $idDevoir;
@@ -41,8 +41,11 @@ class crs_question {
       public static function selectionnerByIdDevdDESC($idDv){
         return  self::$con->query('SELECT * FROM `crs_question`as qt INNER JOIN crs_devoirs AS dv ON dv.idDevoir=qt.idDevoir WHERE dv.idDevoir="'.$idDv.'" ORDER BY qt.idQuestion DESC');
     }
-     public static function selectionnerByIdDevASC($idDv){
-        return  self::$con->query('SELECT * FROM `crs_question`as qt INNER JOIN crs_devoirs AS dv ON dv.idDevoir=qt.idDevoir WHERE dv.idDevoir="'.$idDv.'" ORDER BY qt.idQuestion ASC');
+    //  public static function selectionnerByIdDevASC($idDv){
+    //     return  self::$con->query('SELECT * FROM crs_question as qt INNER JOIN crs_devoirs AS dv ON dv.idDevoir=qt.idDevoir WHERE dv.idDevoir="'.$idDv.'" ORDER BY qt.idQuestion ASC');
+    // }
+    public static function selectionnerByIdDevASC($idDv){
+        return  self::$con->query('SELECT qt.idQuestion, qt.idDevoir,qt.question,qt.ponderation,qt.dateCreation, dv.idDevoir, dv.idCours,dv.idPeriode,dv.idUtilisateur,dv.dateCreation,dv.dateRemise,dv.indexation,dv.actif,dv.typedev,dv.ponderation as pondGeneral FROM crs_question as qt INNER JOIN crs_devoirs AS dv ON dv.idDevoir=qt.idDevoir WHERE dv.idDevoir="'.$idDv.'" ORDER BY qt.idQuestion ASC');
     }
     
     public static function modifier($idQuestion,$idDevoir, $question,$ponderation)
@@ -65,7 +68,7 @@ class crs_question {
    
     public static function supprimer($idQuestion){
         $idQst = htmlspecialchars($idQuestion);
-        if(self::$con->exec('DELETE FROM `crs_question` WHERE idQuestion="'.$idQst.'"')){
+        if(self::$con->exec('DELETE FROM crs_question WHERE idQuestion="'.$idQst.'"')){
             self::$idQuestion = '';
             return true;
         }else{

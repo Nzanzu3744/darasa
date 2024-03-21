@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class crs_correction {
     private static  $idCorrection;
     private static $idReponset;
@@ -20,8 +20,10 @@ class crs_correction {
         $cote= $cote;
         $commentaire= $cmt;
 
-        $correct = new crs_correction();
-        $correct=$correct->selectionnerByRep($idRep)->fetch();
+        
+        $correct=self::selectionnerByRep($idRep)->fetch();
+
+    
         
         if($correct==''){
         $req=self::$con->prepare('INSERT INTO  `crs_correction` ( idReponset, idUtilisateur,cote,commentaire ) VALUES (?,?,?,?)');
@@ -59,7 +61,7 @@ class crs_correction {
 
     }
  
-    public function selectionnerByRep($idRep){
+    public static function selectionnerByRep($idRep){
         return  self::$con->query('SELECT * FROM crs_correction as cr WHERE idReponset="'.$idRep.'" ORDER BY cr.idCorrection DESC LIMIT 1');
     }
     //DESTRUCTEUR

@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class crs_reponset {
     private static  $idReponse;
     private static $idQuestion;
@@ -21,7 +21,7 @@ class crs_reponset {
         $idQst= htmlspecialchars($idQuestion);
         $idIns = htmlspecialchars($idIns);
         $rept= $reponse;
-        $req=self::$con->prepare('INSERT INTO  `crs_reponset` ( `idQuestion`, `idInscription`, `reponse`, dateCreation ) VALUES (?,?,?,NOW())');
+        $req=self::$con->prepare('INSERT INTO  crs_reponset ( idQuestion, idInscription, reponse, dateCreation ) VALUES (?,?,?,NOW())');
         if($req->execute(array($idQst,$idIns,$rept))){
             self::$idQuestion =$idQst;
             self::$idInscription =$idIns;

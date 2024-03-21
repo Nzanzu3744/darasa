@@ -10,6 +10,7 @@ include_once('../model.param_access/prep_verif_acquis.class.php');
         $rev->supprimer($_GET['idVerif_acq']);
         include_once('../vue.param_access/liste_verif_acquis.php');
     }else{
-        echo "Echec Verification des acquis";
+        include_once('../control.param_access/mes_methodes.php');
+        echec_controleur('VERIFICATION DES ACQUIS');
     }
 ?>

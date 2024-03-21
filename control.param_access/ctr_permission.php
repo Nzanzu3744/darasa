@@ -13,6 +13,7 @@
   }elseif(isset($_GET['echeMod'])){
   include_once("../vue.param_access/liste_permission.php");
   }else{
-    echo "Echec controleur permission";
+    include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('PERMISSION');
   }
 ?>

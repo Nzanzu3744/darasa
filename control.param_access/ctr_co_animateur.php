@@ -31,6 +31,7 @@
         }
          include_once('../vue.param_access/form_co_animation.php');
     }else{
-        return 'ECHEC CTR CO-ANIMATION';
+        include_once('../control.param_access/mes_methodes.php');
+        echec_controleur('CO - ANIMATEUR');
     }
 ?>

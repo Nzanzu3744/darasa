@@ -1,46 +1,73 @@
 <?php
-    include_once('../model.param_access/param_utilisateur.class.php');
-    
-    $util= new param_utilisateur();
-    $util = $util->rechercher($_GET['idutil']);
+include_once('../model.param_access/param_utilisateur.class.php');
+
+$util = new param_utilisateur();
+$util = $util->rechercher($_GET['idutil']);
 ?>
 
-                <div class="col-sm-12 well" style="height:110px;">
-                    <center class="col-sm-2" >
-                        <a href="#" class="thumbnail"><img  style="height:75px; width:145px;" id="image" src="images/<?=$util['photoUtilisateur']?>" class="img-rounded"></a>
-                    </center>
-                    <div class="col-sm-8" style="padding:0%; height:80%">
-                        <h4 id="modalTitre" class="modal-title"><i class="labelles" >Nom</i><?=" : ".strtoupper($util['nomUtilisateur']);?><i class="labelles" ><br>Post-Nom</i><?=":".strtoupper($util['postnomUtilisateur'])?><i class="labelles" ><br>Prenom </i><?=" :".strtoupper($util['prenomUtilisateur'])?> </h4>
-                    </div>
+<center class="col-sm-12">
+    <img style="height:65px; width:130px;" id="image" src="../images/<?= $util["photoUtilisateur"] ?>" class="img-rounded"><br>
 
-                    <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('control.param_access/ctr_membre.php?rtn=true&idGroupe=<?=$_GET['idGroupe']?>','#corps')" >Returner</button>               
-    
-                </div>
+    <span style="margin-top:0px" id="modalTitre" class="modal-title"><?= strtoupper($util['nomUtilisateur'] . ' ' . $util['postnomUtilisateur'] . ' ' . $util['prenomUtilisateur']) ?> </span>
+</center>
+<center style="font-size:20px;">
+    <form id="frm_grp" name="frm_grp" class=" rows col-sm-12" style="font-size: 20px;">
+        <?php
 
-                <div class="col-sm-7" style="padding:0px; margin:0px">
-                    <center style="font-size:20px;" class="col-sm-12"><bold>FORMULAIRE D'AFFECTATION DIRECTEUR</bold></center>
-                    <div style="margin:10px" class="row">
-                       <a style="padding-top:10px" class="col-sm-6" >LISTE DES PROMOTION OU ETABLISSEMENT</a><input  id="" type="text" class="form-control col-sm-3 " style="width:280px;"  placeholder="RECH PAR PROMOTION">
-                    </div>
-                    <div id="" style="padding:0px">
-                        <?php
-                            include("liste_promotion.php");
-                        ?>   
-                    </div>
-                    </div>
-                                        
-                    <div class="col-sm-5" style="padding:0px">
-                    <center style="font-size:20px;" class="col-sm-12"><bold>LISTE D'ETABLISSEMENT DIRIGE</bold></center>
-                    <div style="margin:10px" class="row">
-                       <a style="padding-top:10px" class="col-sm-8" > EST AFFECTE COMME DIRECTEUR</a><input  id="" type="text" class="form-control col-sm-3 " style="width:150px;"  placeholder="RECH PAR PROMOTION">
-                    </div>
-                    <div id="" style="padding:0px">
-                        <?php
-                        include("promotion_Affect.php");
-                        ?>
-                    </div>
-                </div>
-                        <button class="btn btn-success" style="height:30px;" onclick="Orientation('control.param_access/ctr_directeur.php?Valide=true&idGroupe=<?=$_GET['idGroupe']?>&idutil=<?=$_GET['idutil']?>','#corps')" >Valider</button> 
-                    <button class="btn btn-default pull-right" style="height:30px;" onclick="Orientation('control.param_access/ctr_directeur.php?annul=true&idutil=<?=$_GET['idutil']?>','#corps')" >Annuler</button> 
-                </div>
-                
+        include_once("../model.param_access/param_groupe.class.php");
+        $ecole = param_groupe::selectionnerByEcole($_SESSION['monEcole']['idEcole'])->fetchAll();
+        $tour = 0;
+        $existe = false;
+        foreach ($ecole as $sel) {
+            $groupe = param_groupe::selectionDerRolActif($util['idUtilisateur'], $_SESSION['monEcole']['idEcole'])->fetch();
+
+            if ($groupe == true) {
+                $existe = true;
+
+        ?>
+
+                <span>
+                    <input type="radio" checked style="width:20px;height:15px" value="<?= $sel['idGroupe'] ?>" name="slectbtn01" id="slectbtn01" class=" formredio" /><?= strtoupper($sel['idGroupe'] . '}' . $sel['groupe']) ?>
+                </span>
+
+            <?php
+            } else {
+            ?>
+                <span>
+                    <input type="radio" <?= ($tour == 0 || $existe == false) ? 'checked' : '' ?> style="width:20px;height:15px" value="<?= $sel['idGroupe'] ?>" name="slectbtn01" id="slectbtn01" class=" formredio" /><?= strtoupper($sel['idGroupe'] . ')' . $sel['groupe']) ?>
+                </span>
+
+        <?php
+            }
+            $existe++;
+        }
+        ?>
+
+
+    </form>
+</center>
+<div class="col-sm-12 row">
+
+    <div class="col-sm-5" style="padding:0px; margin:0px">
+        <center style="font-size:20px;" class="col-sm-12">FORMULAIRE D'AFFECTATION DIRECTEUR</center>
+
+        <form id="frm_promo" name="frm_promo" style="padding:10px;margin:10px">
+            <?php
+            include("liste_promotion.php");
+            ?>
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-success col-sm-12" style="height:30px; margin-top:50%" onclick='Orientation("../control.param_access/ctr_groupe.php?changeGP=true&idutil=<?= $util["idUtilisateur"] ?>","#editLeco","#frm_grp"); Orientation2("../control.param_access/ctr_directeur.php?Valide=true&idutil=<?= $_GET["idutil"] ?>","#editLeco","#frm_promo")'><span class="glyphicon glyphicon-share-alt"></span></button>
+        <input class="btn btn-default col-sm-12" style="height:30px; margin-top:10%" type="button" onclick='Orientation("../control.param_access/ctr_directeur.php?annul=true&idutil=<?= $_GET["idutil"] ?>","#editLeco")' value="Annuler">
+    </div>
+
+    <div class="col-sm-5" style="padding:0px">
+        <center style="font-size:20px; " class="col-sm-12">LISTE D'ETABLISSEMENT DIRIGE</center>
+        <div id="" style="padding:10px;margin:10px">
+            <?php
+            include("promotion_Affect.php");
+            ?>
+        </div>
+    </div>
+</div>

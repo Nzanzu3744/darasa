@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class prep_sous_domaine{
     private static  $idSousDomaine;
     private static  $sousDomaine;

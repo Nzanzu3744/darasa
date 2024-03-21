@@ -1,120 +1,147 @@
 <?php
-
-include_once('../model.param_access/param_utilisateur.Class.php');
+(empty($_SESSION)) ? session_start() : '';
 include_once('../model.param_access/crs_devoirs.class.php');
 include_once('../model.param_access/crs_lecon.class.php');
- include_once('../model.param_access/visite_lecon.class.php');
-$editeur = new param_utilisateur();
-$editeur = $editeur->selectionnerUtByCrs($_GET['idCours'])->fetch();
+include_once('../model.param_access/visite_lecon.class.php');
+include_once('../control.param_access/mes_methodes.php');
+include_once('../model.param_access/crs_cours.class.php');
+include_once('../model.param_access/org_inscription.class.php');
+
+$idCrs01 = htmlspecialchars($_GET['idCours']);
+$idClasse = htmlspecialchars($_GET['idClasse']);
+$idAnneeSco = htmlspecialchars($_GET['idAnneeSco']);
 ?>
-<div style="border: 1px solid black;" id="grille_lecteur">
-<!-- <button class="pull-right btn btn-warning" onclick="Orientation('control.param_access/ctr_cours.php?VueCours&idAnneeSco=<?=$_GET['idAnneeSco']?>&idAfft=<?=$_GET['idAfft']?>&maClasse=<?=$_GET['maClasse']?>&idClasse=<?=$_GET['idCls']?>','#editLeco')"> RETOUR</button> -->
-<button class="pull-right btn btn-default" onclick="imprimer('grille_lecteur')"> Emprimer</button>
-   
-    <!--  -->
-    <div class="col-sm-12" style="">
-        <b><center style="font-size:20px ; color:green; margin-left:5%; margin-top:5%"><b>GRILLE DE LECTEURS DU COURS DE (D') <?=' '.$_GET['cours'].'</b><br>'.$_GET['maClasse'];?></center></b>
-    </div>
-    <!--  -->
-    
- <div style="desplay:inline-block; " class="col-sm-12 col-lg-12">
- <b class="col-lg-12 col-sm-12 pull-left">IDENTITE DE L'ENSEIGNANT(E)</b>
-            <img class=" img-circle col-sm-1 col-sm-1 col-dl-1 col-xs-1 col-lg-1" src="images/<?=$editeur['photoUtilisateur']?>" style="width:100px; height:100px"/>
-            <div style="margin-top:5px;" class="col-sm-10 col-sm-10 col-dl-10 col-xs-10 col-lg-10">
-                    <span class=""> Nom : <b><b><?=$editeur['nomUtilisateur']?></b> Postnom : <b><?=$editeur['postnomUtilisateur']?></b></span><br>
-                    <span class=""> Prenom : <b><?=$editeur['prenomUtilisateur']?></b></span>
-                    <span class=""> Tel : : <b><?=$editeur['telUtilisateur']?></b></span><br>
-                    <span class=""> Mail : <?='<a>'.$editeur['mailUtilisateur'].'</a>'?></span><br>
-                    <span class=""> Genre : <b><?=$editeur['genre']?></b></span><br>          
-            </div>
-    </div>
+<div class=" heightSous_Fen">
+    <div class="col-sm-12 rubaBoutonDoc">
+        <span type="button" class=" btn btn-sm btn-default  glyphicon glyphicon-print" style="margin:3px" value="Imprimer" onclick="imprimer('grille_lecteur')"></span>
 
-        <!--  -->
-    <div align="center" class="table-responsive" style="width:100%">
-    <table class=" table-bordered table-striped table-condensed">
-        
+    </div>
+    <div style="margin: 70px;" id='grille_lecteur'>
+        <?php
+        $crs = crs_cours::rechercher($idCrs01)->fetch();
+        // $etab = $_SESSION['monEcole']['nomEcole'];;
+        // $logo = $_SESSION['monEcole']['logoEcole'];
+        // $bp = "B.P." . $_SESSION['monEcole']['bpEcole'] . " " . $_SESSION['monEcole']['nomVilleTerritoire'];
+        // $t1 = "GRILLE DE LECTEURS   COURS  [ " . $crs['cours'] . "] ";
+        // $t2 = " CLASSE :" . $_GET['maClasse'];
+        // $editer = array($crs['nomUtilisateur'], $crs['postnomUtilisateur'], $crs['prenomUtilisateur']);
+        // entete_doc($etab, $logo, $bp, $t1, $t2, $editer);
+        ?>
+        <?php
+        include_once('../vue.param_access/enteteDL.php');
+        ?>
+        <p class="titreLecon">
+            GRILLE DE LECTEURS COURS <? ' ' . $crs['cours'] ?>
+        </p>
+        <table class="table-bordered table-responsive  table-striped table-condensed">
             <thead>
-                <tr style="font-size:10px">
-                    <th style="background:WHITE" colspan="" >N</th>
-                    <th style="background:WHITE; color:red" colspan="3" ><center>IDENTITE ELEVE<center></th> 
+                <tr>
+                    <th style="background:WHITE" colspan="">N</th>
+                    <th style="background:WHITE; color:red" colspan="3">
+                        <center>IDENTITE ELEVE<center>
+                    </th>
+                    <?php
+                    $lc = crs_lecon::selectionnerByCours($idCrs01)->fetchAll();
+                    $tourPrev = 1;
 
-                
+                    foreach ($lc as $selLc) {
 
-                <?php
-                    $lc = new crs_lecon();
-                    $lc = $lc->selectionnerByCours($_GET['idCours'])->fetchAll();
-
-                    $tourPrev =1;
-                    $TabIdLecon = array();
-       
-                    foreach($lc as $selLc){
-                    array_push($TabIdLecon,$selLc['idLecon']);
                     ?>
 
                         <th class="rotate">
-                        <div>
-                            <span>
-                            <?php 
-                                echo strtoupper($tourPrev++.') '.$selLc['titreLecon'].' ['.$selLc['idLecon'].']');
-                                $nvues =new visite_lecon();
-                                $nvues = $nvues->vues($selLc['idLecon'],$_GET['idCours'],$_GET['idClasse']);
-                                $nblec=0;
-
-                               foreach($nvues as $selNv ){
-                                $nblec++;
-                                    }
+                            <div>
+                                <span>
+                                    <?php
+                                    echo strtoupper($tourPrev++ . ') ' . $selLc['titreLecon'] . ' [' . $selLc['idLecon'] . ']');
                                     ?>
-                                    <a href="#" onclick="Orientation('control.param_access/ctr_visiteLecon.php?idlc=<?=$selLc['idLecon']?>&Lvit','<?='#lv'.$selLc['idLecon']?>','')">Vues : <?=$nblec?></a>  
-                            </span>
+
+                                </span>
+
                             </div>
-                            </th>
-                            <?php
-                                }   
-                            ?>
+                        </th>
+                    <?php
+                    }
+                    ?>
+                    <th>
+                        <center> TOTAL PAR ELEVE </center>
+                    </th>
                 </tr>
             </thead>
-        <tbody>
+            <tbody>
                 <?php
                 //SI IL NY A PAS DE DEVOIR A CE COUR NE CHECHER PAS
-                if($TabIdLecon!=null){
-                    $grd_tour_vis =new visite_lecon();
-                    $grd_tour_vis= $grd_tour_vis ->visiteToutEleve($_GET['idClasse'],$_GET['idCours']);
-                    $cpt=0;
-                     foreach($grd_tour_vis  as $sel_grd_tour_vis){
-                        $cpt++;
-                        echo '<tr style="font-size:10px" ><td style="color:red">'.$cpt.'</td>';
-                        echo '<td style="color:red"><img style="width:40px; height:40px" src=images/'.$sel_grd_tour_vis['photoUtilisateur'].'></td>';
-                        echo '<td>'.$sel_grd_tour_vis['idUtilisateur'].'</td><td style="font-size:11px">'.$sel_grd_tour_vis['nomUtilisateur'].' '.$sel_grd_tour_vis['postnomUtilisateur'].' '.$sel_grd_tour_vis['prenomUtilisateur'].'</td>';
-                            $tour_visite_lc_pres =new visite_lecon();
-                            $tour_visite_lc_pres = $tour_visite_lc_pres->visiteUtilCours($sel_grd_tour_vis['idUtilisateur'],$_GET['idCours'],$_GET['idClasse']);
-                            $tourRel=0;
-                            foreach($tour_visite_lc_pres as $sel_tour_visite_lc_pres){
-                                $key=array_search($sel_tour_visite_lc_pres['idLecon'],$TabIdLecon)-$tourRel;
-                                
-                                for($i=0; $i<=$key;$i++){
-                        
-                                    if($i==$key){
-                                        echo '<td style="color:green; font-size:12px"><span class="glyphicon glyphicon-ok"></span></td>';
-                                    }else{
-                                        echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
-                                    }
-                                    $tourRel++;
-                                }
-                               
-                                
-                        }
-                         if($tourRel<$tourPrev){
-                                    $Surp=$tourPrev-$tourRel;
-                                        for($u=1;$u<$Surp;$u++){
-                                            echo '<td style="color:red; font-size:12px"><span class="glyphicon glyphicon-remove"></span></td>';
-                                        }
 
-                                    }
-                        echo '</tr>';
-                        }
-                    }
+
+                $grd_tour_vis = org_inscription::rechercherByClAnnee($idClasse, $idAnneeSco);
+
+                $cpt = 0;
+                foreach ($grd_tour_vis  as $sel_grd_tour_vis) {
+                    $cpt++;
+                    echo '<tr style="font-size:10px" ><td style="color:red">' . $cpt . '</td>';
+                    echo '<td style="color:red"><img style="width:40px; height:40px" src=../images/' . $sel_grd_tour_vis['photoUtilisateur'] . '></td>';
+                    echo '<td>' . $sel_grd_tour_vis['idUtilisateur'] . '</td><td style="font-size:11px">' . $sel_grd_tour_vis['nomUtilisateur'] . ' ' . $sel_grd_tour_vis['postnomUtilisateur'] . ' ' . $sel_grd_tour_vis['prenomUtilisateur'] . '</td>';
+                    $sommeVueEleve = 0;
+
+                    foreach ($lc as $selLc) {
                 ?>
-        </tbody>
-        </div>
+
+                        <td>
+                            <?php
+
+                            if (visite_lecon::vuesByIns($selLc['idLecon'], $idCrs01, $selLc['type'], $idClasse, $sel_grd_tour_vis['idInscription'])->fetchAll() != null) {
+                                $sommeVueEleve += 1;
+                            ?>
+                                <span style="color:green; font-size:12px" class="glyphicon glyphicon-ok"></span>
+                            <?php
+                            } else {
+                            ?>
+                                <span style="color:red; font-size:12px" class="glyphicon glyphicon-remove"></span>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                    <?php
+                    }
+                    ?>
+                    <th style="font-size:18px;">
+                        <?php
+                        echo $sommeVueEleve;
+                        ?>
+                    </th>
+                <?php
+                    //-------------------------------------
+                }
+                ?>
+                </tr>
+                <tr>
+
+                    <th colspan="4">
+                        <center>TOTAL VUES PAR LECON<center>
+                    </th>
+                    <?php
+                    $sommeVue = 0;
+                    foreach ($lc as $selLc) {
+
+                    ?>
+
+                        <th style="font-size:18px">
+                            <?php
+                            echo $vue = count(visite_lecon::vues($selLc['idLecon'], $idCrs01, $selLc['type'], $idClasse)->fetchAll());
+
+                            $sommeVue += $vue;
+
+                            ?>
+                        </th>
+                    <?php
+                    }
+                    ?>
+                    <th style="font-size:18px">
+                        <?php
+                        echo $sommeVue;
+                        ?>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
     </div>
-         <?php
+</div>

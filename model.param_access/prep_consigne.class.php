@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class prep_consigne{
     private static  $idExploitation;
     private static  $idConsigne;
@@ -31,7 +31,7 @@ class prep_consigne{
         return $req=self::$con->query('SELECT * FROM prep_consigne  WHERE idExploitation='.$idExp);
     }
     public static function supprimer($idCons){
-        return $req=self::$con->query('DELETE FROM `prep_consigne` WHERE idConsigne='.$idCons);
+        return $req=self::$con->query('DELETE FROM prep_consigne WHERE idConsigne='.$idCons);
     }
    
     //DESTRUCTEUR

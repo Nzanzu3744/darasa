@@ -8,9 +8,11 @@ include_once('../model.param_access/param_groupe.class.php');
     <div class="form-group">
         <input id="grp" type="text" class="form-control" placeholder="Groupe ici">
     </div>
+    <?php
+    ?>
     <div style="padding: 10px" >
-    <button id="enrg" onclick="Orientation('control.param_access/ctr_groupe.php?ajouterGrp=true&grp='+$('#grp').val(),'#panel')"  class="btn btn-success pullright col-sm-6">Valider</button>
-    <button onclick="Encour()" class="btn btn-primary pullleft col-sm-6">Annuler</button>
+    <input id="enrg" onclick='Orientation("../control.param_access/ctr_groupe.php?ajouterGrp=true&grp="+$("#grp").val(),"#panel")'  class="btn btn-success pull-right col-sm-6" value="Enregistrer">
+    
     </div>
       
 </form>
@@ -31,7 +33,7 @@ include_once('../model.param_access/param_groupe.class.php');
             <?php
                 $grps = new param_groupe();
                 $n=0;
-                foreach( $grps->selectionner()  as $sel)
+                foreach( $grps->selectionnerByEcole($_SESSION['monEcole']['idEcole']) as $sel)
                 { 
                     $n++;
             ?>

@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class param_genre {
     private static  $idGenre;
     private static  $genre;
@@ -45,7 +45,7 @@ class param_genre {
    
     public function supprimer($idGenre){
         $IdGr = htmlspecialchars($idGenre);
-        if(self::$con->exec('DELETE FROM `param_genre` WHERE idGenre="'.$IdGr.'"')){
+        if(self::$con->exec('DELETE FROM param_genre WHERE idGenre="'.$IdGr.'"')){
             self::$idGenre = '';
             return true;
         }else{
@@ -59,7 +59,7 @@ class param_genre {
     
     public static function rechercher($idGenre){
         $IdGr = htmlspecialchars($idGenre);
-        $var = self::$con->query("SELECT * FROM `param_genre` WHERE idGenre=".$IdGr);
+        $var = self::$con->query("SELECT * FROM param_genre WHERE idGenre=".$IdGr);
         return $var; 
     }
     public function filtrer($genre){

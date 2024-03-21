@@ -1,32 +1,84 @@
 <?php
 include_once('../model.param_access/param_groupe.class.php');
-include_once('../model.param_access/crs_cours.class.php')
+include_once('../model.param_access/crs_cours.class.php');
+include_once('../model.param_access/crs_prepacours.class.php');
 ?>
-<div class="form-inline well" style="width:241px; height:475px">
-    <form id="frmcrs" name="frmcrs" action="control.param_access/ctr_cours?ajouter.php" method="POST" enctype="multipart/form-data" class="form_control">
-  
-        <div >
-                <labelle for="nomC" class=" col-sm-12"> Nom du Cours </labelle>
-                <input style="width:100%" style="width:100%" id="nomC" type="text" class="form-control " placeholder="Nom du cours">
-            
-                <labelle for="photo" class=" col-sm-12">Icon</labelle>    
-                <input id="url" style="width:100%" id="photo"  type="file" class=" form-control" ><p>
-                
-                    <labelle for="CmtC" class=" col-sm-12"> Commentaire </labelle>
-                    <textarea style="width:100%; height:250px" id="CmtC" type="textarea" class="form-control" placeholder="Commentair"></textarea> 
-        </div>
-        <div style="padding-top:10px">
-            <input type="submit"  class="btn btn-success pull-left col-sm-5 btn-xs" id="enrg" onclick="showme('#leconsgauche','#editLeco','true'); Orientation('control.param_access/ctr_cours.php?ajouterC=true&maClasse=<?=$_GET['maClasse']?>&idAnneeSco=<?=$_GET['idAnneeSco']?>&idClasse=<?=$_GET['idClasse']?>&nomC='+$('#nomC').val()+'&CmtC='+$('#CmtC').val()+'&url='+$('#url').val(),'#editLeco');Orientation('control.param_access/ctr_lecon.php?leconsgauche_ense&idCours=<?=$_GET['idCours']?>','#leconsgauche');" value="Enregistrer"/>
-            <button onclick="Encour()"  class="btn btn-xs btn-danger pull-right col-sm-5">Annuler</button>
-        </div>
-    </form>
-</div>
-<script>
+<div class="">
+    <form id="frmcrs" name="frmcrs" action="../control.param_access/ctr_cours.php?ajouter.php" method="POST" enctype="multipart/form-data" class="form_control">
 
-$(document).ready(function() {
-    $('form').submit(function(e) {
-        e.preventDefault();
-        // ou return false;
+        <div>
+            <labelle for="idPrepaCours" class=" col-sm-12"> Nom du Cours </labelle>
+
+            <select style="width:100%" style="width:100%" id="idPrepaCours" name="idPrepaCours" type="text" class="form-control " placeholder="Nom du cours">
+                <?php
+                $prepacrs = new crs_prepacours();
+                $prepacrs = $prepacrs->selectionner();
+                $u = 0;
+                foreach ($prepacrs as $sel) {
+                ?>
+                    <option value="<?= $sel['idPrepaCours'] ?>"><?= $sel['idPrepaCours'] . " : " . strtoupper($sel['cours']) ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <labelle for="image" class=" col-sm-12">Icon</labelle>
+            <input style="width:100%" id="image" name="image" accept="image/*" type="file" class=" form-control">
+
+
+
+            <labelle for="ponderat" class=" col-sm-12">Ponderation Période</labelle>
+            <input style="width:100%" id="ponderat" name="ponderat" type="text" class=" form-control">
+            <p>
+
+                <labelle for="CmtC" class=" col-sm-12"> Commentaire </labelle>
+                <textarea style="width:100%; height:200px" id="CmtC" name="CmtC" type="textarea" class="form-control" placeholder="Commentair"></textarea>
+
+        </div>
+
+        <div style="padding-top:10px">
+            <input type="submit" id="Enreg" value="Enregistre" class="btn btn-xs btn-success col-sm-5" onclick='showme("#leconsgauche","#editLeco","true");' />
+
+        </div>
+        <div id="err" name="err" style='color:red'>
+
+        </div>
+
+    </form>
+
+
+</div>
+
+<script>
+    $(document).ready(function(e) {
+        $("#frmcrs").on('submit', (function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "../control.param_access/ctr_cours.php?avecImage=true&maClasse=<?= $_GET["maClasse"] ?>&idAnneeSco=<?= $_GET["idAnneeSco"] ?>&idAffectation=<?= $_GET["idAffectation"] ?>&idClasse=<?= $_GET["idClasse"] ?>",
+                type: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if (data == 'invalid') {
+                        // invalid file format.
+                        $("#err").html("Format fichier invalide !").fadeIn();
+                    } else if (data == 'champsVide') {
+                        $("#err").html("Merci de completer les champs").fadeIn();
+                    } else {
+
+                        $("#editLeco").html(data).fadeIn();
+                        $("#frmcrs")[0].reset();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }
+            });
+        }));
     });
-});
 </script>

@@ -2,7 +2,7 @@
 include_once('../model.param_access/prep_motivation.class.php');
 ?>         
             <thead>
-                <tr style="">
+                <tr>
                     <th>N</th>
                     <th><center>MOTIVATION</center></th>
                     <th> <center>COMPREHENSION DE LA SITUATION</center></th>
@@ -26,10 +26,10 @@ include_once('../model.param_access/prep_motivation.class.php');
                             <td><p><?=$selMot['comprehension']?></p></td>
                             <td style="height:100%;  background:#f2f2f2"> 
                                 <z class="dropdown">
-                                <button data-toggle="dropdown" style=""><b class="caret ppull-right"></b></button>
+                                <button data-toggle="dropdown"><b class="caret ppull-right"></b></button>
                                         <ul class="dropdown-menu pull-right">
                                             <li>
-                                                <a href="#" onclick="Orientation('control.param_access/ctr_motivation.php?sup_mot=true&idlc=<?=$_GET['idlc']?>&idMot=<?=$selMot['idSituation']?>','#motivation')">Supprimer</a>
+                                                <a href="#" onclick="Orientation('../control.param_access/ctr_motivation.php?sup_mot=true&idlc=<?=$_GET['idlc']?>&idMot=<?=$selMot['idSituation']?>','#motivation')">Supprimer</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>

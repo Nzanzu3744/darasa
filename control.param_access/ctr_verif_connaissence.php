@@ -10,6 +10,7 @@ include_once('../model.param_access/prep_verif_connaissence.class.php');
         $rev->supprimer($_GET['idVerifC']);
         include_once('../vue.param_access/liste_verif_connaissence.php');
     }else{
-        echo "Echec Revision";
+        include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('VERIFICTION CONNAISSENCE');
     }
 ?>

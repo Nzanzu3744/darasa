@@ -1,15 +1,15 @@
 <?php
-function con(){
-try
+(empty($_SESSION)) ? session_start() : '';
+function con()
 {
-    $ordin="localhost";
-    $user="root";
-    $base="darasa";
-    $pass="";
-    $con = new PDO("mysql:host=$ordin;dbname=$base",$user,$pass);
-    return $con;
-}catch(Exception $e)
-{
-die('Connexion à la base d\'access a echoué');
-}
+    try {
+        $ordin = 'localhost';
+        $user = 'root';
+        $base = 'cp2118587p04_bddecole';
+        $pass = '';
+        $con = new PDO("mysql:host=$ordin;dbname=$base", $user, $pass);
+        return $con;
+    } catch (Exception $e) {
+        header("location:../index.php?db=false");
+    }
 }

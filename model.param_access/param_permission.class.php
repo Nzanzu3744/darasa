@@ -145,21 +145,29 @@ class param_permission {
    
     public function supprimer($idPermission){
         $idPmt = htmlspecialchars($idPermission);
-        if(self::$con->exec('DELETE FROM `param_permission` WHERE idPermission="'.$idPmt.'"')){
+        if(self::$con->exec('DELETE FROM param_permission WHERE idPermission="'.$idPmt.'"')){
             self::$idPermission = '';
             return true;
         }else{
             return false;
         }
     }
-
+    public function supprimer_permi_groupe($idGroupe){
+        $idgrP = htmlspecialchars($idGroupe);
+        if(self::$con->exec('DELETE FROM param_permission WHERE idGroupe="'.$idgrP.'"')){
+            self::$idPermission = '';
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function selectionner(){
         return  self::$con->query('SELECT * FROM param_permission ORDER BY idPermission ASC');
     }
     public static function selectionnerByIdGroupe($idGroupe){
         return  self::$con->query('SELECT * FROM param_permission as pr LEFT JOIN param_groupe as pg ON pr.idGroupe=pg.idGroupe WHERE pr.idGroupe='.$idGroupe);
     }
-    //
+    
     public function rechercher($idPermission){
         $idPmt = htmlspecialchars($idPermission);
         $var = self::$con->query("SELECT * FROM param_permission WHERE idPermission ='".$idPmt."' ORDER BY idPermission ASC");

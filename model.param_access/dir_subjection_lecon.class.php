@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class dir_subjection_lecon {
     private static  $idSubjection;
     private static  $idDirecteur;

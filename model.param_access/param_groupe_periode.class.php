@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class param_groupe_periode {
     private static  $idGroupePeriode;
     private static  $groupePeriode;
@@ -39,7 +39,7 @@ class param_groupe_periode {
    
     public static function supprimer($idGroupePeriode){
         $idgrouepe = htmlspecialchars($idGroupePeriode);
-        if(self::$con->exec('DELETE FROM `param_groupe_periode` WHERE idGroupePeriode="'.$idgrouepe.'"')){
+        if(self::$con->exec('DELETE FROM param_groupe_periode WHERE idGroupePeriode="'.$idgrouepe.'"')){
             return true;
         }else{
             return false;

@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class org_promotion {
     private static  $idPromotion;
     private static $promotion;
@@ -16,7 +16,7 @@ class org_promotion {
     public function ajouter($promotion)
     {
         $pmtion = htmlspecialchars($promotion);
-        $req=self::$con->prepare('INSERT INTO `org_promotion`( `promotion`) VALUES (?)');
+        $req=self::$con->prepare('INSERT INTO org_promotion( promotion) VALUES (?)');
         if($req->execute(array($pmtion))){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
             self::$promotion = htmlspecialchars($pmtion);
@@ -43,7 +43,7 @@ class org_promotion {
    
     public static function supprimer($idPromotion){
         $idPmt = htmlspecialchars($idPromotion);
-        if(self::$con->exec('DELETE FROM `org_promotion` WHERE idPromotion="'.$idPmt.'"')){
+        if(self::$con->exec('DELETE FROM org_promotion WHERE idPromotion="'.$idPmt.'"')){
             self::$idPromotion = '';
             return true;
         }else{

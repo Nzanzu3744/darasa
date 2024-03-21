@@ -16,8 +16,9 @@ if(isset($_GET['idlc']) AND isset($_GET['Lvit'])){
     ?>
         </ol>
     <?php
-
-
+}else{
+    include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('VISITE LECON');
 }
 
 ?>

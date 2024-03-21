@@ -10,6 +10,7 @@ include_once('../model.param_access/prep_synthese.class.php');
         $synthz->supprimer($_GET['idSynth']);
         include_once('../vue.param_access/liste_synthese.php');
     }else{
-        echo "Echec Objectif";
+        include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('SYNTHESE');
     }
 ?>

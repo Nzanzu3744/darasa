@@ -1,6 +1,6 @@
 
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class org_unite {
     private static  $idUnite;
     private static $unite;
@@ -14,13 +14,12 @@ class org_unite {
         return self::$idUnite;
     }
     //METHODES
-    public static function ajouter($unite)
+    public static function ajouter($unite,$idSect)
     {
         $ute = htmlspecialchars($unite);
-        $req=self::$con->prepare('INSERT INTO `org_unite`( `unite`) VALUES (?)');
-        if($req->execute(array($ute))){
-            //je doit revenir ici pour recuperer le dernier ajoute genre mapping
-            self::$unite = htmlspecialchars($ute);
+        $idSec = htmlspecialchars($idSect);
+        $req=self::$con->prepare('INSERT INTO org_unite( unite, idSection) VALUES (?,?)');
+        if($req->execute(array($ute,$idSec))){
             return true;
         }else{
             return false;
@@ -44,7 +43,7 @@ class org_unite {
    
     public static function supprimer($idUnite){
         $idUte = htmlspecialchars($idUnite);
-        if(self::$con->exec('DELETE FROM `org_unite` WHERE idUnite="'.$idUte.'"')){
+        if(self::$con->exec('DELETE FROM org_unite WHERE idUnite="'.$idUte.'"')){
             self::$idUnite = '';
             return true;
         }else{
@@ -53,12 +52,12 @@ class org_unite {
     }
 
     public static function selectionner(){
-        return  self::$con->query('SELECT * FROM org_unite ORDER BY idUnite ASC');
+        return  self::$con->query('SELECT * FROM org_unite as un INNER JOIN org_section as st ON st.idSection=un.idSection INNER JOIN org_promotion as pm ON pm.idPromotion=st.idPromotion ORDER BY un.idUnite ASC');
     }
     //
     public static function rechercher($idUnite){
         $idUte = htmlspecialchars($idUnite);
-        return $var = self::$con->query("SELECT * FROM org_unite WHERE idUnite =".$idUte." ORDER BY idUnite ASC");
+        return $var = self::$con->query("SELECT * FROM org_unite as un INNER JOIN org_section as st ON st.idSection=un.idSection INNER JOIN org_promotion as pm ON pm.idPromotion=st.idPromotion WHERE un.idUnite =".$idUte." ORDER BY idUnite ASC");
     }
     //DESTRUCTEUR
     public function __destuct(){

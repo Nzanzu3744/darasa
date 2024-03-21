@@ -17,6 +17,7 @@ $cmt= new blog_commentaire_cours();
 $cmt=$cmt->ajouter($_GET['cmtaire'], $_SESSION['idUtilisateur'],$_GET['idCours'],($_GET['cmtp']!='undefined')?$_GET['cmtp']:-1);
 include("../vue.param_access/commentaire_cours.php");
  }else{
- echo 'ECHEC BLOCG';
+     include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('BLOG');
  }
 ?>

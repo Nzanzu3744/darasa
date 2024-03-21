@@ -1,4 +1,5 @@
 <?php
+include_once('../model.param_access/param_connexion.php');
 class crs_annexedevoir {
     private static  $idAnnexeDevoir;
     private static  $idDevoir;

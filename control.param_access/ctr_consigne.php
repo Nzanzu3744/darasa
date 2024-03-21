@@ -10,6 +10,7 @@ include_once('../model.param_access/prep_consigne.class.php');
         $rev->supprimer($_GET['idConsig']);
         include_once('../vue.param_access/liste_consigne.php');
     }else{
-        echo "Echec Revision";
+        include_once('../control.param_access/mes_methodes.php');
+        echec_controleur('CONSIGNE');
     }
 ?>

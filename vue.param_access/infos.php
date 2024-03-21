@@ -1,10 +1,14 @@
+<?php
+(empty($_SESSION))?session_start():'';
+?>
 <section>
-    <img src="images/info.webp" style="width:98%; height:70%">
+    <img src="../images/info.webp" style="width:98%; height:70%">
     <div>
         <center style="font-size: 14px;">
         Notre histoire<br>
 
-Notre ecole se trouve dans la région de bunia en République Démocratique du Congo "R.D.C". Nous avons acquis notre réputation grâce aux relations que nous avons développées avec nos partenaires au fil des années. Nous sommes convaincus que tous nos clients méritent les meilleurs services, et nous faisons tout notre possible pour vous satisfaire. Contactez-nous pour en savoir plus
+Notre ecole se trouve dans la région de <?=' '.$_SESSION['monEcole']['nomVilleTerritoire']?>, province de <?=' '.$_SESSION['monEcole']['nomProvince']?> en  <?=' '.$_SESSION['monEcole']['nomPays'].' '.$_SESSION['monEcole']['codePays']?>. 
+<?=' '.$_SESSION['monEcole']['deviseEcole']?>. Contactez-nous sur <?=' '.$_SESSION['monEcole']['telephoneEcole1']?> ou<?=' '.$_SESSION['monEcole']['telephoneEcole2']?> ou soit le mail ci-après <?=' '.$_SESSION['monEcole']['mailEcole']?>.
         </center>
     </div>
 </section>

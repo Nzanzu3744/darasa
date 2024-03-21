@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class param_table {
     private static  $nomTable;
     private static  $commentaire;
@@ -47,7 +47,7 @@ class param_table {
    
     public function supprimer($nomTable){
         $nomT = htmlspecialchars($nomTable);
-        if(self::$con->exec('DELETE FROM `param_table` WHERE nomTable="'.$nomT.'"')){
+        if(self::$con->exec('DELETE FROM param_table WHERE nomTable="'.$nomT.'"')){
             self::$nomTable = '';
             return true;
         }else{

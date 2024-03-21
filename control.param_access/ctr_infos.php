@@ -2,6 +2,7 @@
 if(isset($_GET['infos'])){
      include_once("../vue.param_access/infos.php");
 }else{
-    Echo 'Ereur Infos [Controleur infos].';
+    include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('INFO');
 }
 ?>

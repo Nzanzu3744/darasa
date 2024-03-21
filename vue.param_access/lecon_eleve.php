@@ -6,31 +6,31 @@ include_once('../model.param_access/crs_lecon.class.php');
 <script src="jquery/dist/summernote/summernote-bs4.min.js"></script>
 <!--  -->
 
-<div class="form-inline" style="width:100%; height:100%" id="lecon"> 
-<div class="form-group text-align: center;" style="width:100%; height:100%">              
-        
-        <center class="col-sm-12 titres" style="font-size:20px" >LECON <?=" <b>[ ".$_GET['cours']."]</b> à  ".$_GET['maClasse']?> (COTE ELEVE)</center>
-        <center class="col-sm-12 titres" style="font-size:19px" ><?=$_GET['tlecon']?></center>
-    <?php
-        if(isset($_GET['LireLecon_eleve'])){
-  $lec = new crs_lecon();
-  $lec =$lec->rechercher($_GET['idlc']);
-  $lec = $lec->fetch();
-  echo '<textarea id="lcn" name="lcn" class="textarea" style="width:99%">'.$lec['lecon'].'</textarea>';
+<div class="form-inline" id="lecon">
+    <div class="col-sm-12 rubaBoutonDoc">
+        <input value="Imprimer" type="button" class="btn btn-xs btn-default col-sm-1 " onclick="imprimer('lcons')" />
+    </div>
+    <div class="form-group text-align: center;" style="width:80%; height:80%; margin:10%" id="lcons">
 
-}
+        <!-- <center class="col-sm-12 titres" style="font-size:20px">LECON <?= " <b>[ " . $_GET['cours'] . "]</b> à  " . $_GET['maClasse'] ?> (COTE ELEVE)</center> -->
 
-?>
-    </div> 
-          
-</div>      
+        <?php
+        include_once('../vue.param_access/enteteDL.php');
+        ?>
+        <p class="titreLecon">
+            <?= $_GET['tlecon'] ?>
+        </p>
+        <?php
+        if (isset($_GET['LireLecon_eleve'])) {
+            $lec = new crs_lecon();
+            $lec = $lec->rechercher($_GET['idlc']);
+            $lec = $lec->fetch();
+        ?>
+            <p style="" id="lcn" name="lcn"><?= html_entity_decode($lec['lecon']) ?></p>
+        <?php
+        }
+
+        ?>
+    </div>
+
 </div>
-
-
-</script>
-<script>
-$(function () {
-$('.textarea').summernote()
-})
-</script>
-

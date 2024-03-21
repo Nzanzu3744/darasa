@@ -1,5 +1,5 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
 class crs_reponsec {
     private static  $idReponse;
     private static $idAssertion;
@@ -19,7 +19,7 @@ class crs_reponsec {
 
         $idAst= htmlspecialchars($idAssertion);
         $idIns = htmlspecialchars($idIns);
-        $req=self::$con->prepare('INSERT INTO  `crs_reponsec` ( idAssertion, idInscription, dateCreation) VALUES (?,?,NOW())');
+        $req=self::$con->prepare('INSERT INTO  crs_reponsec ( idAssertion, idInscription, dateCreation) VALUES (?,?,NOW())');
         if($req->execute(array($idAst,$idIns))){
             //je doit revenir ici pour recuperer le dernier ajoute genre mapping
             self::$idAssertion = $idAst;
@@ -54,7 +54,7 @@ class crs_reponsec {
 
     public function supprimer($idReponse){
         $idrpsc = htmlspecialchars($idReponse);
-        if(self::$con->exec('DELETE FROM `crs_reponsec` WHERE idReponse="'.$idrpsc.'"')){
+        if(self::$con->exec('DELETE FROM  crs_reponsec  WHERE idReponse="'.$idrpsc.'"')){
             self::$idReponse = '';
             return true;
         }else{
@@ -70,7 +70,7 @@ class crs_reponsec {
         return  self::$con->query('SELECT * FROM crs_reponsec as ass INNER JOIN crs_question as qst ON ass.idAssertion=qst.idAssertion WHERE ass.idAssertion="'.$idQst.'"');
     }
     public function selectionnerByQstAvecEleveClass($idQst,$idClasse){
-        return  self::$con->query('SELECT ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur,ut.photoUtilisateur, gr.genre, rpc.idReponse,ass.correctAssertion, qr.ponderation, ass.assertion FROM `crs_reponsec` as rpc LEFT JOIN crs_assertion as ass ON rpc.idAssertion=ass.idAssertion LEFT JOIN crs_question as qr ON ass.idQuestion=qr.idQuestion LEFT JOIN org_inscription as ins ON ins.idInscription=rpc.idInscription LEFT JOIN param_utilisateur as ut ON ins.idUtilisateur=ut.idUtilisateur LEFT JOIN param_genre as gr ON gr.idGenre=ut.idGenre WHERE qr.idQuestion="'.$idQst.'" AND ins.idClasse="'.$idClasse.'"');
+        return  self::$con->query('SELECT ut.nomUtilisateur, ut.postnomUtilisateur, ut.prenomUtilisateur,ut.photoUtilisateur, gr.genre, rpc.idReponse,ass.correctAssertion, qr.ponderation, ass.assertion FROM  crs_reponsec  as rpc LEFT JOIN crs_assertion as ass ON rpc.idAssertion=ass.idAssertion LEFT JOIN crs_question as qr ON ass.idQuestion=qr.idQuestion LEFT JOIN org_inscription as ins ON ins.idInscription=rpc.idInscription LEFT JOIN param_utilisateur as ut ON ins.idUtilisateur=ut.idUtilisateur LEFT JOIN param_genre as gr ON gr.idGenre=ut.idGenre WHERE qr.idQuestion="'.$idQst.'" AND ins.idClasse="'.$idClasse.'"');
     }
 
     public static function selectionnerByQstUtiClss($idQst,$idUti,$idClase){

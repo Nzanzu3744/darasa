@@ -1,5 +1,7 @@
 <?php
-include_once('param_connexion.php');
+include_once('../model.param_access/param_connexion.php');
+
+
 class blog_commentaire_cours {
     private static  $idCommentaire;
     private static  $commentaire;

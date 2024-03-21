@@ -13,6 +13,7 @@ if(isset($_GET['classeChk'])){
         setcookie('classeSel',$tbjsonC, (time()+360*10));
     }
 }else{
-    echo "ECHEC SELCTION <><><crt_selct_util.php";
+    include_once('../control.param_access/mes_methodes.php');
+   echec_controleur('SELECTION UTILISATEUR');
 }
 ?>

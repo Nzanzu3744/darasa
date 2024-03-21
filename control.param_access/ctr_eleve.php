@@ -1,33 +1,56 @@
 <?php
 
-if(isset($_GET['annul'])){
-    (empty($_SESSION))?session_start():'';
-    setcookie('classeSel',"", (time()-1));
+if (isset($_GET['annul'])) {
     include("../vue.param_access/profil_Eleve.php");
-}else if(isset($_GET['Valide'])){
-    if(isset($_COOKIE['classeSel'])){
-        $tbIns=array();
-        $tbIns=json_decode($_COOKIE['classeSel']);
-        include_once("../model.param_access/param_connexion.php");
+} else if (isset($_GET['Valide'])) {
+    include_once("../control.param_access/mes_methodes.php");
+    $classes = deserialiser($_POST['data1']);
+    if (!empty($classes)) {
         include_once("../model.param_access/org_inscription.class.php");
         include_once("../model.param_access/org_anneesco.class.php");
-        $Ins = new org_inscription();
-        $sel_A=new org_anneesco();
-        $sel_A=$sel_A->selectionnerDerAn()->fetch();
-            foreach($tbIns as $inscr){
-                    $Ins->ajouter($inscr,$sel_A['idAnneeSco'],$_GET['idutil']);
-            }
-        setcookie('classeSel','', (time()-1));
-        include("../vue.param_access/profil_Eleve.php");
-    }else {
-        echo '<center class="col-sm-12" style="color:red">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center> <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick=Orientation("../control.param_access/ctr_membre.php?rtn=true&idGroupe='.$_GET['idGroupe'].'","#corps")>Returner</button>'; 
-    }
-}else if(isset($_GET['idutil']) AND isset($_GET['eleve'])){ 
-    include("../vue.param_access/profil_Eleve.php");
- }else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
-    include_once("../vue.param_access/liste_role.php");
- }else{
-   echo "ECHEC LISTE INSCRIPTION";
-}
 
+        $Ins = new org_inscription();
+        $sel_A = new org_anneesco();
+        $sel_A = $sel_A->selectionnerDerAnEcode($_SESSION['monEcole']['idEcole'])->fetch();
+        foreach ($classes as $inscr) {
+
+            $siexist = $Ins->rechercherByClAnneeEleve($inscr, $sel_A['idAnneeSco'], $_GET['idutil'])->fetch();
+            if ($siexist != true) {
+                $Ins->ajouter($inscr, $sel_A['idAnneeSco'], $_GET['idutil']);
+            } else {
+                include_once('../control.param_access/mes_methodes.php');
+                echec_controleur('ELEVE EST DEJA INSCRIT DANS CETTE CLASSE');
+            }
+        }
+
+        include("../vue.param_access/profil_Eleve.php");
+    } else {
 ?>
+        <center class="col-sm-12" style="color:red; margin-top:15%">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center>
+                <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('../control.param_access/ctr_eleve.php?eleve&idutil=<?= $_GET['idutil'] ?>&idGroupe=<?= $_GET['idGroupe'] ?>','#corps')">Returner</button>
+            <?php
+        }
+    } else if (isset($_GET['idutil']) and isset($_GET['eleve'])) {
+        include("../vue.param_access/profil_Eleve.php");
+    } else if (isset($_GET['rtn']) and isset($_GET['idGroupe'])) {
+        include_once("../vue.param_access/liste_role.php");
+    } else if (isset($_GET['supIns'])) {
+        $idInsc = htmlspecialchars($_GET['supIns']);
+        include_once("../model.param_access/org_inscription.class.php");
+        $insc = new org_inscription();
+        if ($insc->supprimer($idInsc)) {
+            include("../vue.param_access/profil_Eleve.php");
+        } else {
+            ?>
+                <center class="col-sm-12" style="color:red; margin-top:15%">NOUS NE POUVONS PAS SUPPRIME UNE INSCRIPTION DEJA LIEN AUX TRAVAUX<center>
+                        <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('control.param_access/ctr_eleve.php?eleve&idutil=<?= $_GET['idutil'] ?>&idGroupe=<?= $_GET['idGroupe'] ?>','#corps')">Returner</button>
+                <?php
+
+
+            };
+        } else {
+            include_once('../control.param_access/mes_methodes.php');
+            echec_controleur('ELEVE');
+        }
+
+                ?>

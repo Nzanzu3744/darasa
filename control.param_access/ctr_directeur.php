@@ -1,50 +1,47 @@
 <?php
-
-if(isset($_GET['promChk'])){
-    $table=array();
-    if(!isset($_COOKIE['promSel'])){    
-        $table=array($_GET['idPromotion']);
-        $tbjsonC=json_encode($table);
-        setcookie('promSel',$tbjsonC, (time()+360*10));
-    }else{
-        $table = json_decode($_COOKIE['promSel']);
-        array_push($table,$_GET['idPromotion']);
-        $tbjsonC=json_encode($table);
-        setcookie('promSel',$tbjsonC, (time()+360*10));
-    }
-}else if(isset($_GET['annul'])){
-    session_start();
-    setcookie('promSel',"", (time()-1));
+if (isset($_GET['annul'])) {
     include("../vue.param_access/profil_Directeur.php");
+} else if (isset($_GET['Valide'])) {
+    include_once("../control.param_access/mes_methodes.php");
+    $classes = deserialiser($_POST['data1']);
+    if (!empty($classes)) {
 
-}else if(isset($_GET['Valide'])){
-    
-    if(isset($_COOKIE['promSel'])){
-        $tbAff=array();
-        $tbAff=json_decode($_COOKIE['promSel']);
-        
         include_once("../model.param_access/org_anneesco.class.php");
         $ann = new org_anneesco();
-        $ann = $ann->selectionnerDerAn()->fetch();
-
-        include_once("../model.param_access/dir_directeur.class.php");
-        $affe = new dir_directeur();
-            foreach($tbAff as $tbAff){
-                    $affe->ajouter($tbAff,$_GET['idutil'],$ann['idAnneeSco'],'1');
+        $ann = $ann->selectionnerDerAnEcode($_SESSION['monEcole']['idEcole'])->fetch();
+        if ($ann == true) {
+            include_once("../model.param_access/dir_directeur.class.php");
+            foreach ($classes as $dir) {
+                dir_directeur::ajouter($dir, $_GET['idutil'], $ann['idAnneeSco'], '1', $_SESSION['monEcole']['idEcole']);
             }
-        setcookie('promSel','', (time()-1));
-        include("../vue.param_access/profil_Directeur.php");
-        
-
-    }else {
-        echo '<center class="col-sm-12" style="color:red">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center> <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick=Orientation("../control.param_access/ctr_membre.php?rtn=true&idGroupe='.$_GET['idGroupe'].'","#corps")>Returner</button>'; 
+            include("../vue.param_access/profil_Directeur.php");
+        } else {
+            include_once('../control.param_access/mes_methodes.php');
+            echec_controleur('AJOUTER DIRECTEUR AUCUNE ANNEE SCOLAIRE TROUVEE');
+        }
+    } else {
+        echo '<center class="col-sm-12" style="color:red">VEUILLEZ SELECTINNER UNE CLASSE POUR L\'INSCRIPTION<center> <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick=Orientation("../control.param_access/ctr_membre.php?rtn=true&idGroupe=' . $_GET['idGroupe'] . '","#corps")>Returner</button>';
     }
-}else if(isset($_GET['idutil']) AND isset($_GET['directeur']) AND isset($_GET['idGroupe'])){ 
-    session_start();
-   include("../vue.param_access/profil_Directeur.php");
-}else if(isset($_GET['rtn']) AND isset($_GET['idGroupe'])){
-   include_once("../vue.param_access/liste_role.php");
-}else{
-  echo "ECHEC LISTE AFFECTATION DIRECTEUR";
-}
+} else if (isset($_GET['idutil']) and isset($_GET['directeur'])) {
+
+    include("../vue.param_access/profil_Directeur.php");
+} else if (isset($_GET['rtn']) and isset($_GET['idGroupe'])) {
+    include("../vue.param_access/profil_Directeur.php");
+} else if (isset($_GET['supAffDir'])) {
+    $idAffectDir = htmlspecialchars($_GET['supAffDir']);
+    include_once("../model.param_access/dir_directeur.class.php");
+    if (dir_directeur::supprimer($idAffectDir)) {
+        include("../vue.param_access/profil_Directeur.php");
+    } else {
 ?>
+        <center class="col-sm-12" style="color:red; margin-top:15%">NOUS NE POUVONS PAS SUPPRIME UNE INSCRIPTION DEJA LIEN AUX TRAVAUX<center>
+                <button class="btn btn-warning pull-right" style="height:40px; margin-top:13px;" onclick="Orientation('control.param_access/dir_directeur.php?directeur&idutil=<?= $_GET['idutil'] ?>&idGroupe=<?= $_GET['idGroupe'] ?>','#corps')">Returner</button>
+        <?php
+
+
+    };
+} else {
+    include_once('../control.param_access/mes_methodes.php');
+    echec_controleur('DIRECTOR');
+}
+        ?>
