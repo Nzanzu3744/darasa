@@ -66,7 +66,6 @@ if (isset($_POST['ps']) == true and isset($_POST['lg']) == true or isset($_GET['
                 $_SESSION[$selPerm['nomTable'] . '_modifier'] = $selPerm['modifier'];
                 $_SESSION[$selPerm['nomTable'] . '_supprimer'] = $selPerm['supprimer'];
             }
-
             include_once('../vue.param_access/acceuille.php');
         } else {
             header("location:../index.php?mbr=false");

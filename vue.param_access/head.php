@@ -120,20 +120,11 @@
                         </li>
                     <?php
                     }
-
                     ?>
-
-
-
                 </div>
-
-
             </nav>
-
             <form id="ecole" name="ecole" class="pull-right col-sm-2" style="padding:0px; margin:0px;">
-
                 <select onchange='Orientation("../control.param_access/ctr_con.php?chgEcole=true&idEcole="+$(this).val(),"#app")' id="AutEcole" name="AutEcole" style="background:#212223; height:50px; padding:0px; margin:0px; color: white; width:100%; " class="">
-
                     <?php
                     $i = 0;
                     $verif = false;
@@ -237,13 +228,11 @@
                         <a class="pull-right">
                             <?= $util['mailUtilisateur'] ?>
                         </a><br>
-
                     </p>
                     <center class="rubriProf">ECOLE ENCOURS</center>
                     <p>
                         NOM : <x class="pull-right"><?= $_SESSION['monEcole']['nomEcole'] ?></x><br>
                         BP. : <x class="pull-right"><?= $_SESSION['monEcole']['bpEcole'] ?></x><br>
-
                     </p>
 
 

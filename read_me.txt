@@ -27,5 +27,11 @@ Alors replacer 'Require local' with 'Require all granted'.
 
 
 PARAMETRE VS CODE
-Extension : PHP Intelephense; Github
+Extension : PHP Intelephense;emmet, Github
 Parametre : edite: format on save, auto save, 
+
+COMMENTS GIT 
+-GIT INIT
+-GIT ADD .
+-git init
+- git commit -m "le Message"
